@@ -1,10 +1,10 @@
 
 #' Combine an Infectious Disease Model To a Demographic Model
-#'
+#' @description  Similarly to \code{\link[idmodelr]{combine_strat_model_output}} this functions
+#' dedimensionalises model output into just the demographic components.
+#' @inherit combine_strat_model_output
 #' @param df A dataframe of model output.
 #' @param compartments A character vector of the disease model compartments to combine.
-#' @param age_com The number of age compartments that have been modelled.
-#' @param hold_out_var The variables that have not been stratified by age.
 #' @param total_pop A logical indicating whether to calculate the total population. Defaults
 #' to true.
 #' @return A dataframe which summarises the demographic process of a model.
@@ -16,14 +16,32 @@
 #' @import magrittr
 #' @examples
 #'
-#'df <- data.frame(S1 = 1, S2 = 1, E1 = 1, E2 = 1, time = 1)
+#'df <- data.frame(S1 = c(1,2), S2 = (1, 3), E1 = (4, 1), E2 = c(3, 4), time = c(1, 2))
 #'
-#'combine_to_age_model(df, age_com = 2, compartments = c("S", "E"), hold_out_var = "time")
-combine_to_age_model <- function(df, age_com = 3,
-                                 compartments = c("S", "S_v", "E", "E_v", "I", "I_v"),
-                                 hold_out_var = c("time", "traj"),
+#'combine_to_age_model(df, age_com = 2, hold_out_var = "time")
+combine_to_age_model <- function(df, age_com = NULL,
+                                 compartments = NULL,
+                                 hold_out_var = NULL,
                                  total_pop = TRUE
 ) {
+
+  if (is.null(age_com)) {
+    stop("The number of age compartments (age_com) is required")
+  }
+
+  if (is.null(compartments)) {
+    compartments_long <- colnames(df)[!colnames(df) %in% hold_out_var]
+    compartments <- str_extract(compartments_long, "[aA-zZ]+") %>%
+      unique
+  }else{
+    compartments_long <- compartments %>%
+      add_pointer_struct(length = age_com)
+  }
+
+  if (is.null(hold_out_var)) {
+    hold_out_var <- colnames(df)[!colnames(df) %in% compartments_long]
+  }
+
 
   tmp <- compartments %>%
     map(add_pointer_struct, age_com) %>%

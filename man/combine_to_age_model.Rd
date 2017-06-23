@@ -4,17 +4,15 @@
 \alias{combine_to_age_model}
 \title{Combine an Infectious Disease Model To a Demographic Model}
 \usage{
-combine_to_age_model(df, age_com = 3, compartments = c("S", "S_v", "E",
-  "E_v", "I", "I_v"), hold_out_var = c("time", "traj"), total_pop = TRUE)
+combine_to_age_model(df, age_com = NULL, compartments = NULL,
+  hold_out_var = NULL, total_pop = TRUE)
 }
 \arguments{
 \item{df}{A dataframe of model output.}
 
-\item{age_com}{The number of age compartments that have been modelled.}
-
 \item{compartments}{A character vector of the disease model compartments to combine.}
 
-\item{hold_out_var}{The variables that have not been stratified by age.}
+\item{hold_out_var}{A character vector specifying the variables to keep unchanged. Defaults to NULL}
 
 \item{total_pop}{A logical indicating whether to calculate the total population. Defaults
 to true.}
@@ -23,13 +21,14 @@ to true.}
 A dataframe which summarises the demographic process of a model.
 }
 \description{
-Combine an Infectious Disease Model To a Demographic Model
+Similarly to \code{\link[idmodelr]{combine_strat_model_output}} this functions
+dedimensionalises model output into just the demographic components.
 }
 \examples{
 
-df <- data.frame(S1 = 1, S2 = 1, E1 = 1, E2 = 1, time = 1)
+df <- data.frame(S1 = c(1,2), S2 = (1, 3), E1 = (4, 1), E2 = c(3, 4), time = c(1, 2))
 
-combine_to_age_model(df, age_com = 2, compartments = c("S", "E"), hold_out_var = "time")
+combine_to_age_model(df, age_com = 2, hold_out_var = "time")
 }
 \seealso{
 combine_strat_model_output
