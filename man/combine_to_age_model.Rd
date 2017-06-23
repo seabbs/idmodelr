@@ -10,6 +10,8 @@ combine_to_age_model(df, age_com = NULL, compartments = NULL,
 \arguments{
 \item{df}{A dataframe of model output.}
 
+\item{age_com}{Integer indicating the number of age compartments.}
+
 \item{compartments}{A character vector of the disease model compartments to combine.}
 
 \item{hold_out_var}{A character vector specifying the variables to keep unchanged. Defaults to NULL}
@@ -26,7 +28,7 @@ dedimensionalises model output into just the demographic components.
 }
 \examples{
 
-df <- data.frame(S1 = c(1,2), S2 = (1, 3), E1 = (4, 1), E2 = c(3, 4), time = c(1, 2))
+df <- data.frame(S1 = c(1,2), S2 = c(1, 3), E1 = c(4, 1), E2 = c(3, 4), time = c(1, 2))
 
 combine_to_age_model(df, age_com = 2, hold_out_var = "time")
 }

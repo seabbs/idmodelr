@@ -84,11 +84,12 @@
     </div>
 
     
-    <p>Combine an Infectious Disease Model To a Demographic Model</p>
+    <p>Similarly to <code><a href='combine_strat_model_output.html'>combine_strat_model_output</a></code> this functions
+dedimensionalises model output into just the demographic components.</p>
     
 
-    <pre class="usage"><span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"S_v"</span>, <span class='st'>"E"</span>,
-  <span class='st'>"E_v"</span>, <span class='st'>"I"</span>, <span class='st'>"I_v"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"time"</span>, <span class='st'>"traj"</span>), <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -99,7 +100,7 @@
     </tr>
     <tr>
       <th>age_com</th>
-      <td><p>The number of age compartments that have been modelled.</p></td>
+      <td><p>Integer indicating the number of age compartments.</p></td>
     </tr>
     <tr>
       <th>compartments</th>
@@ -107,7 +108,7 @@
     </tr>
     <tr>
       <th>hold_out_var</th>
-      <td><p>The variables that have not been stratified by age.</p></td>
+      <td><p>A character vector specifying the variables to keep unchanged. Defaults to NULL</p></td>
     </tr>
     <tr>
       <th>total_pop</th>
@@ -127,12 +128,13 @@ to true.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>S1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>S2</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>E1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>E2</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>S1</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>S2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='kw'>E1</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>1</span>), <span class='kw'>E2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>), <span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 
-<span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"E"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 4
+<span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt;   age_group_1 age_group_2  time     N
 #&gt;         &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1           2           2     1     4</div></pre>
+#&gt; 1           5           4     1     9
+#&gt; 2           3           7     2    10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
