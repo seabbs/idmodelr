@@ -1,0 +1,18 @@
+Package: idmodelr
+Type: Package
+Version: 0.1.1.9000
+Title: Utility Functions for Infectious Disease Modelling
+Authors@R: c(person("Sam Abbott", role = c("aut", "cre"),
+                     email = "contact@samabbott.co.uk"))
+Description: Contains utility functions for use in infectious disease modelling. Basic modelling tools are also supplied as starting blocks for more complex models.
+License: GPL-3 | file LICENSE
+Imports: 
+Suggests: testthat,
+    rmarkdown
+VignetteBuilder: knitr
+URL: http://www.samabbott.co.uk/idmodelr, 
+     https://github.com/seabbs/idmodelr
+BugReports: https://github.com/seabbs/idmodelr/issues
+Encoding: UTF-8
+RoxygenNote: 6.0.1
+LazyData: true
