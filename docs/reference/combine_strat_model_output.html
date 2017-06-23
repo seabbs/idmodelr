@@ -84,12 +84,12 @@
     </div>
 
     
-    <p>Reduces the Dimensionality of a Stratifed Model</p>
+    <p>Reduces the dimensions of stratified model output. Default behaviour is to remove stratification for all
+variables. However, variables to dedimensionalise can be selected, as can variables to preserve with there structure intact.</p>
     
 
-    <pre class="usage"><span class='fu'>combine_strat_model_output</span>(<span class='no'>df</span>, <span class='no'>strat</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"S_v"</span>, <span class='st'>"E"</span>, <span class='st'>"E_v"</span>,
-  <span class='st'>"I"</span>, <span class='st'>"I_v"</span>, <span class='st'>"N_SI"</span>, <span class='st'>"N_SI_v"</span>, <span class='st'>"N_EI"</span>, <span class='st'>"N_EI_v"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"time"</span>,
-  <span class='st'>"traj"</span>))</pre>
+    <pre class="usage"><span class='fu'>combine_strat_model_output</span>(<span class='no'>df</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -104,11 +104,12 @@
     </tr>
     <tr>
       <th>compartments</th>
-      <td><p>A character vector specifying the unique population compartments.</p></td>
+      <td><p>A character vector specifying the unique population compartments. If not set then defaults to all
+all columns that are not in hold_out_var</p></td>
     </tr>
     <tr>
       <th>hold_out_var</th>
-      <td><p>A character vector specifying the variables to keep unchanged.</p></td>
+      <td><p>A character vector specifying the variables to keep unchanged. Defaults to NULL</p></td>
     </tr>
     </table>
     
@@ -124,10 +125,8 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>S1</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>S2</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>S3</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
-<span class='fu'>combine_strat_model_output</span>(<span class='no'>df</span>, <span class='fl'>3</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='st'>"S"</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;       S  time
-#&gt;   &lt;dbl&gt; &lt;lgl&gt;
-#&gt; 1    NA    NA</div><div class='input'>
+<span class='fu'>combine_strat_model_output</span>(<span class='no'>df</span>, <span class='fl'>3</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='st'>"S"</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt;   time  S
+#&gt; 1   NA NA</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

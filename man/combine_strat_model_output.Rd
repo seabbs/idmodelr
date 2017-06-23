@@ -4,24 +4,25 @@
 \alias{combine_strat_model_output}
 \title{Reduces the Dimensionality of a Stratifed Model}
 \usage{
-combine_strat_model_output(df, strat, compartments = c("S", "S_v", "E", "E_v",
-  "I", "I_v", "N_SI", "N_SI_v", "N_EI", "N_EI_v"), hold_out_var = c("time",
-  "traj"))
+combine_strat_model_output(df, strat = NULL, compartments = NULL,
+  hold_out_var = NULL)
 }
 \arguments{
 \item{df}{A data frame.}
 
 \item{strat}{An integer specifying the number of stratifications to reduce.}
 
-\item{compartments}{A character vector specifying the unique population compartments.}
+\item{compartments}{A character vector specifying the unique population compartments. If not set then defaults to all
+all columns that are not in hold_out_var}
 
-\item{hold_out_var}{A character vector specifying the variables to keep unchanged.}
+\item{hold_out_var}{A character vector specifying the variables to keep unchanged. Defaults to NULL}
 }
 \value{
 A dataframe of model output that has its dimensionality reduced
 }
 \description{
-Reduces the Dimensionality of a Stratifed Model
+Reduces the dimensions of stratified model output. Default behaviour is to remove stratification for all
+variables. However, variables to dedimensionalise can be selected, as can variables to preserve with there structure intact.
 }
 \examples{
 
