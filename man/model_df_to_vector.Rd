@@ -23,7 +23,7 @@ Returns a numeric vector, summarised if required.
 Extracts a Single Column, Summarises if from Simulation
 }
 \examples{
-library(tidyverse)
+library(dplyr)
 ## Extract a vector with no repeats
 model_df_to_vector(iris, Petal.Length)
 

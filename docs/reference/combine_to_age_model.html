@@ -129,7 +129,10 @@ to true.</p></td>
     <pre class="examples"><div class='input'>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>S1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>S2</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>E1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>E2</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 
-<span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"E"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in compartments %&gt;% map(add_pointer_struct, age_com) %&gt;% map(~select(df,     .dots = .)): could not find function "%&gt;%"</span></div></pre>
+<span class='fu'>combine_to_age_model</span>(<span class='no'>df</span>, <span class='kw'>age_com</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"E"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 4
+#&gt;   age_group_1 age_group_2  time     N
+#&gt;         &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1           2           2     1     4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -109,7 +109,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>add_pointer_struct</span>(<span class='st'>"S"</span>, <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='error'>Error in char %&gt;% map(~sprintf(paste0(., "%1d"), seq_len(length))) %&gt;%     unlist: could not find function "%&gt;%"</span></div></pre>
+<span class='co'>## For a single variable</span>
+<span class='fu'>add_pointer_struct</span>(<span class='st'>"S"</span>, <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "S1" "S2" "S3"</div><div class='input'>
+<span class='co'>## For multiple variables</span>
+<span class='fu'>add_pointer_struct</span>(<span class='fu'>c</span>(<span class='st'>"S"</span>, <span class='st'>"I"</span>), <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "S1" "S2" "S3" "I1" "I2" "I3"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

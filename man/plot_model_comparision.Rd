@@ -43,7 +43,7 @@ A comparision plot between two model vectors
 Compare Deterministic Model Trajectories and Stochastic Mean Field Dynamics
 }
 \examples{
-library(tidyverse)
+library(dplyr)
 ## Example for unique model output
 plot_model_comparision(iris, iris, Petal.Length)
 

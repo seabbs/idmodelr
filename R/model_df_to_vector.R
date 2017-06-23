@@ -10,7 +10,7 @@
 #' @import magrittr
 #' @importFrom dplyr enquo pull group_by summarise bind_rows
 #' @examples
-#' library(tidyverse)
+#' library(dplyr)
 #' ## Extract a vector with no repeats
 #' model_df_to_vector(iris, Petal.Length)
 #'

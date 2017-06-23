@@ -19,5 +19,9 @@ Adds Pointer Structure to R objects for use in Pomp
 }
 \examples{
 
+## For a single variable
 add_pointer_struct("S", 3)
+
+## For multiple variables
+add_pointer_struct(c("S", "I"), length = 3)
 }
