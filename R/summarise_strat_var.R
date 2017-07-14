@@ -12,8 +12,7 @@
 #' @importFrom tibble as_tibble
 #' @seealso summarise_var_by_strat
 #' @examples
-#' library(dplyr)
-#' df <- mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
+#' df <- dplyr::mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
 #'
 #' summarise_strat_var(df, vars = c("Petal.Length"), strat = 2, new_var = "sum")
 summarise_strat_var <- function(df, vars, strat, new_var = "sum") {

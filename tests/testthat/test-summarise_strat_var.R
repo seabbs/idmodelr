@@ -10,6 +10,6 @@ test_that("summarise_strat_var correctly summarises a numbered vector", {
   expect_equal(c(2.8, 2.8, 2.6, 3.0, 2.8), df_results$sum)
 })
 
-test_that("summarise_strat_var errors when no varibales to stratofy are supplied", {
+test_that("summarise_strat_var errors when no varibales to stratify are supplied", {
   expect_error(summarise_strat_var(df, strat = 2, new_var = "sum"))
 })
