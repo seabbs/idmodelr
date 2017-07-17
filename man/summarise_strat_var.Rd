@@ -22,8 +22,7 @@ Returns the original dataframe with an additional summarised variable
 Sum a Stratified Variable
 }
 \examples{
-library(dplyr)
-df <- mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
+df <- dplyr::mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
 
 summarise_strat_var(df, vars = c("Petal.Length"), strat = 2, new_var = "sum")
 }
