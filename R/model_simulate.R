@@ -27,7 +27,7 @@ model_simulate <- function(params, model, sim_fn, as_tibble = TRUE, ...) {
          paste0(", ", class(params)))
   }
 
-  sim <- sim_fn(model, params = params_as_matrix, as.data.frame = as_data_frame, ...)
+  sim <- sim_fn(model, params = params_as_matrix, as.data.frame = as_tibble, ...)
 
   if (as_tibble) {
     sim <- as_tibble(sim)
