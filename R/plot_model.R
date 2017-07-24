@@ -28,7 +28,7 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
     message("Trajectories/simulations have already been summarised by idmodelr - passing directly to plotting function")
     sum_model <- traj
   }else{
-    sum_model <- summarise_model(df = traj, state.names = state.names, time.column = time.column,
+    sum_model <- summarise_model(traj, state.names = state.names, time.column = time.column,
                                 summary = summary, replicate.column = replicate.column, non.extinct,
                                 init.date = init.date, verbose = verbose)
   }
