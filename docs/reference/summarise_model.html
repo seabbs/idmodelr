@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Summarise and Plot Model Trajectories — plot_model • idmodelr</title>
+<title>Summarise Model Trajectories — summarise_model • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,22 +80,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Summarise and Plot Model Trajectories</h1>
+    <h1>Summarise Model Trajectories</h1>
     </div>
 
     
-    <p>This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-manipulation of several simulations or data. Additionally if data is present, then an additional plot can be displayed
-with data and potentially observations generated. This function is heaviliy
-based on [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
+    <p>This function checks, cleans and summarises inputed model trajectories. This function is based on
+  [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
 the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).</p>
     
 
-    <pre class="usage"><span class='fu'>plot_model</span>(<span class='kw'>traj</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>time.column</span> <span class='kw'>=</span> <span class='st'>"time"</span>, <span class='kw'>lines.data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>replicate.column</span> <span class='kw'>=</span> <span class='st'>"replicate"</span>, <span class='kw'>non.extinct</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"firebrick2"</span>, <span class='kw'>set_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>,
-  <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>summarise_model</span>(<span class='kw'>traj</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>time.column</span> <span class='kw'>=</span> <span class='st'>"time"</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>replicate.column</span> <span class='kw'>=</span> <span class='st'>"replicate"</span>,
+  <span class='kw'>non.extinct</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -120,10 +116,6 @@ the observation name should also match one of those found in the model object.</
       <td><p>A character vector. The column in the data that indicates time</p></td>
     </tr>
     <tr>
-      <th>lines.data</th>
-      <td><p>Logical. If <code>TRUE</code>, the data will be plotted as lines.</p></td>
-    </tr>
-    <tr>
       <th>summary</th>
       <td><p>Logical. If <code>TRUE</code>, the mean, median as well as the 50th and 95th percentile
 of the trajectories are plotted (default). If <code>FALSE</code>, all individual trajectories are plotted.</p></td>
@@ -141,44 +133,24 @@ epidemics over time. An epidemic has faded-out when all the infected states (who
 This is only relevant for stochastic models.</p></td>
     </tr>
     <tr>
-      <th>alpha</th>
-      <td><p>Transparency of the trajectories (between 0 and 1).</p></td>
-    </tr>
-    <tr>
-      <th>plot</th>
-      <td><p>if <code>TRUE</code> the plot is displayed, and returned otherwise.</p></td>
-    </tr>
-    <tr>
-      <th>colour</th>
-      <td><p>A character vector. If a character, will use that colour to plot trajectories. If "all", use all available colours.
-If <code>NULL</code>, don't set the colour.</p></td>
-    </tr>
-    <tr>
-      <th>set_theme</th>
-      <td><p>Set the ggplot2 theme, defaults to theme_minimal.</p></td>
-    </tr>
-    <tr>
       <th>init.date</th>
       <td><p>Character. Date of the first point of the time series (default to <code>NULL</code>). If provided, the x-axis will be
 in calendar format. NB: currently only works if the unit of time is the day.</p></td>
     </tr>
     <tr>
-      <th>same</th>
-      <td><p>Logical. If <code>TRUE</code> does not facet plots.</p></td>
-    </tr>
-    <tr>
       <th>verbose</th>
       <td><p>Logical (defaults to <code>FALSE</code>), indicates if internal process messages should be printed</p></td>
+    </tr>
+    <tr>
+      <th>set_theme</th>
+      <td><p>Set the ggplot2 theme, defaults to theme_minimal.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Optionally prints or stores a plot of trajectories</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>summarise_model</p>
+    <p>A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
+  of extinction, and model summary trajectories.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -191,8 +163,6 @@ in calendar format. NB: currently only works if the unit of time is the day.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
