@@ -29,8 +29,13 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
     sum_model <- traj
   }else{
     sum_model <- summarise_model(traj, state.names = state.names, time.column = time.column,
-                                summary = summary, replicate.column = replicate.column, non.extinct,
-                                init.date = init.date, verbose = verbose)
+                                summary = summary, replicate.column = replicate.column,
+                                non.extinct = non.extinct, init.date = init.date, verbose = verbose)
+  }
+  if (!is.null(traj) & !is.null(sum_model[["sum_traj"]])) {
+    if (summary) {
+      summary <- FALSE
+    }
   }
   if (colour == "all" && summary == TRUE) {
     warning("Ignoring ", sQuote("colour = \"all\""), " which doesn't make sense if ",
@@ -120,17 +125,17 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
       p <- ggplot()
     }
     if (!is.null(data)) {
-      obs_names <- grep("obs", names(data), value = TRUE)
+      obs_names <- grep("obs", names(sum_model[["obs"]]), value = TRUE)
       if (length(obs_names) == 0) {
-        obs_names <- setdiff(names(data), time.column)
+        obs_names <- setdiff(names(sum_model[["obs"]]), time.column)
       }
-      data <- melt(data, measure.vars = obs_names, variable.name = "state")
+      data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = "state")
       if (lines.data) {
-        p <- p + geom_line(data = data, aes_string(x = time.column,
+        p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
                                                    y = "value"), colour = "black")
       }
       else {
-        p <- p + geom_point(data = data, aes_string(x = time.column,
+        p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
                                                     y = "value"), colour = "black")
       }
     }
