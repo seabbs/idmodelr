@@ -13,13 +13,14 @@
 #' @return Trajectories as a tibble, optionally returns the default \code{sim_fn} output.
 #' @export
 #' @importFrom tibble as_tibble
+#' @importFrom foreach
 #'
 #' @examples
 #'
 model_simulate <- function(model, sim_fn, params, as_tibble = TRUE,
                            aggregate_to = NULL, compartments = NULL,
-                           strat = NULL, hold_out_var = NULL,
-                           new_var = "incidence", total_pop = TRUE, ...) {
+                           strat = NULL, hold_out_var = NULL, new_var = "incidence",
+                           total_pop = TRUE, ...) {
 
   if ("data.frame" %in% class(params)) {
     params_as_matrix <- t(as.matrix(params))
@@ -33,8 +34,6 @@ model_simulate <- function(model, sim_fn, params, as_tibble = TRUE,
   if (!is.null(aggregate_to)) {
     as_tibble <- TRUE
   }
-
-  sim <- sim_fn(model, params = params_as_matrix, as.data.frame = as_tibble, ...)
 
   if (as_tibble) {
     sim <- as_tibble(sim)
