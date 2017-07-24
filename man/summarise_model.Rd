@@ -6,9 +6,9 @@
 \usage{
 summarise_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", summary = TRUE, replicate.column = "replicate",
-  non.extinct = NULL, init.date = NULL, aggregate_to = aggregate_to,
-  compartments = compartments, strat = strat, hold_out_var = hold_out_var,
-  new_var = new_var, total_pop = total_pop, verbose = FALSE)
+  non.extinct = NULL, init.date = NULL, aggregate_to = NULL,
+  compartments = NULL, strat = NULL, hold_out_var = NULL,
+  new_var = "incidence", total_pop = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
