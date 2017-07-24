@@ -16,8 +16,8 @@
 #' @seealso aggregate_model aggregate_model_internal combine_to_age_model combine_strat_model_output summarise_var_by_strat
 #' @examples
 #'
-aggregate_model_internal <- function(df, aggregate_to, compartments,
-                                     strat, hold_out_var, new_var = new_var, total_pop = TRUE) {
+aggregate_model_internal <- function(df, aggregate_to = NULL, compartments = NULL,
+                                     strat = NULL, hold_out_var= NULL, new_var = "incidence", total_pop = TRUE) {
 
   if (aggregate_to %in% "demographic") {
     df <- combine_to_age_model(df, age_com = strat, compartments = compartments,

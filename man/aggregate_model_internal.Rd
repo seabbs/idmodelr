@@ -4,8 +4,9 @@
 \alias{aggregate_model_internal}
 \title{An Internal Function to Aggregate Model Output Using other Idmodelr functions.}
 \usage{
-aggregate_model_internal(df, aggregate_to, compartments, strat, hold_out_var,
-  new_var = new_var, total_pop = TRUE)
+aggregate_model_internal(df, aggregate_to = NULL, compartments = NULL,
+  strat = NULL, hold_out_var = NULL, new_var = "incidence",
+  total_pop = TRUE)
 }
 \arguments{
 \item{df}{A dataframe of Model Output.}

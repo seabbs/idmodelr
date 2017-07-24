@@ -25,6 +25,8 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
       stop("The aggregate_to contains ", length(aggregate_to),
            " actions, whilst compartments contains ", length(compartments),
            ". Compartments must either be of a vector of compartments or a list of equal length to aggregate_to.")
+    }else{
+      compartments <- list(compartments)
     }
 
     if (length(hold_out_var) == 1) {
@@ -47,7 +49,7 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
   for (i in 1:length(aggregate_to)) {
   df <- aggregate_model_internal(df, aggregate_to = aggregate_to[i], compartments = compartments[[i]],
                                  strat = strat[i], hold_out_var = hold_out_var[[i]], new_var = new_var,
-                                 total_pop = TRUE)
+                                 total_pop = total_pop)
   }
 
   return(df)
