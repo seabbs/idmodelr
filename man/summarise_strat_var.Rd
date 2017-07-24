@@ -4,7 +4,7 @@
 \alias{summarise_strat_var}
 \title{Sum a Stratified Variable}
 \usage{
-summarise_strat_var(df, vars, strat, new_var = "sum")
+summarise_strat_var(df, vars, strat = NULL, new_var = "sum")
 }
 \arguments{
 \item{df}{A dataframe of model output.}

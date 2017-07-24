@@ -16,8 +16,13 @@
 #' df <- tibble::as_tibble(df)
 #'
 #' summarise_strat_var(df, vars = c("Petal.Length"), strat = 2, new_var = "sum")
-summarise_strat_var <- function(df, vars, strat, new_var = "sum") {
-  var_strat <-  add_pointer_struct(vars, length = strat)
+summarise_strat_var <- function(df, vars, strat = NULL, new_var = "sum") {
+
+  if (!is.null(strat)) {
+    var_strat <-  add_pointer_struct(vars, length = strat)
+  }else {
+    var_strat <- vars
+  }
 
  new_var <- df %>%
     select(.vars = var_strat) %>%

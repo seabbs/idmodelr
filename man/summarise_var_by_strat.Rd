@@ -4,7 +4,7 @@
 \alias{summarise_var_by_strat}
 \title{Sum a Stratified Variable by Stratification Level}
 \usage{
-summarise_var_by_strat(df, vars, strat, new_var)
+summarise_var_by_strat(df, vars, strat = NULL, new_var)
 }
 \arguments{
 \item{df}{A dataframe of model output.}
@@ -27,6 +27,8 @@ Takes compartmental infectious disease output and adds summary statisitics for
 each stratified population, adding a final summary statistic for the whole population.
 }
 \examples{
+df <- data.frame(A = 1, B = 2)
+summarise_var_by_strat(df, vars = c("A", "B"), new_var = "C")
 
 df <- data.frame(A1 = 1, B1 = 1, A2 = 1, B2 = 1, A3 = 1, B3 = 1)
 summarise_var_by_strat(df, vars = c("A", "B"), strat = 3, new_var = "C")
