@@ -101,7 +101,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
   }else{
     df.traj <- NULL
     df.p.ext <- NULL
-    traj.CI <- NUL
+    traj.CI <- NULL
   }
 
   sum_model <- c(df.traj, df.p.ext, traj.CI)
