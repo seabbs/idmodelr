@@ -32,7 +32,7 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                 summary = summary, replicate.column = replicate.column,
                                 non.extinct = non.extinct, init.date = init.date, verbose = verbose)
   }
-  if (!is.null(traj) & !is.null(sum_model[["sum_traj"]])) {
+  if (!is.null(traj) & is.null(sum_model[["sum_traj"]])) {
     if (summary) {
       summary <- FALSE
     }
