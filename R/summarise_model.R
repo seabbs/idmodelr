@@ -20,9 +20,8 @@
 #' This is only relevant for stochastic models.
 #' @param init.date Character. Date of the first point of the time series (default to \code{NULL}). If provided, the x-axis will be
 #' in calendar format. NB: currently only works if the unit of time is the day.
-#' @param set_theme Set the ggplot2 theme, defaults to theme_minimal.
 #' @param verbose Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed
-#' @import reshape2 ggplot2 stringr
+#' @import reshape2 ggplot2 stringr magrittr
 #' @importFrom dplyr do mutate group_by
 #' @importFrom tibble as_tibble
 #' @return A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
@@ -33,7 +32,7 @@
 #'
 summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
                             summary = TRUE, replicate.column = "replicate",
-                            non.extinct = NULL, init.date = NULL, same = FALSE,
+                            non.extinct = NULL, init.date = NULL,
                             verbose = FALSE) {
 
   if (!is.null(init.date)) {
@@ -73,7 +72,8 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                           variable.name = "state")
       df.p.ext <- df.infected %>%
         group_by(time.column) %>%
-        do(data.frame(value = sum(.$value == 0)/nrow(.)))
+        do(data.frame(value = sum(.$value == 0)/nrow(.))) %>%
+        as_tibble
 
       df.p.ext$state <- "p.extinction"
       df.p.ext[replicate.column] <- 0
@@ -85,7 +85,8 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
       df.p.ext <- NULL
     }
     df.traj <- melt(traj, measure.vars = state.names, variable.name = "state")
-    df.traj <- subset(df.traj, !is.na(value))
+    df.traj <- subset(df.traj, !is.na(value)) %>%
+      as_tibble
 
 
     if (summary) {
@@ -96,7 +97,8 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                       median = quantile(.$value, prob = 0.5)[[1]],
                       up_50 = quantile(.$value, prob = 0.75)[[1]],
                       up_95 = quantile(.$value, prob = 0.975)[[1]],
-                      mean = mean(.$value)))
+                      mean = mean(.$value))) %>%
+        as_tibble
     }else{
       traj.CI <- NULL
     }
@@ -107,7 +109,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     traj.CI <- NULL
   }
 
-  sum_model <- c(df.traj, df.p.ext, traj.CI)
+  sum_model <- list(df.traj, df.p.ext, traj.CI)
   names(sum_model) <- c("traj", "prob_ext", "sum_traj")
   class(sum_model) <- c(class(sum_model), "idmodelr")
   return(sum_model)

@@ -13,8 +13,8 @@ model_simulate(params, model, sim_fn, as_tibble = TRUE, ...)
 recommended.}
 
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
-a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{\link[pomp]{trajectory}}
-  and \code{\link[pomp]{simulate}}.}
+a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
+  and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
 
 \item{as_tibble}{Logical (defaults to \code{TRUE}) indicating if the output
 should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.}

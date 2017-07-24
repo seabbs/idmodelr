@@ -6,7 +6,7 @@
 \usage{
 summarise_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", summary = TRUE, replicate.column = "replicate",
-  non.extinct = NULL, init.date = NULL, same = FALSE, verbose = FALSE)
+  non.extinct = NULL, init.date = NULL, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
@@ -35,8 +35,6 @@ This is only relevant for stochastic models.}
 in calendar format. NB: currently only works if the unit of time is the day.}
 
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
-
-\item{set_theme}{Set the ggplot2 theme, defaults to theme_minimal.}
 }
 \value{
 A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
