@@ -23,6 +23,7 @@
 #' @param set_theme Set the ggplot2 theme, defaults to theme_minimal.
 #' @param verbose Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed
 #' @import reshape2 ggplot2 stringr
+#' @importFrom dplyr do mutate group_by
 #' @importFrom tibble as_tibble
 #' @return A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
 #'   of extinction, and model summary trajectories.
@@ -96,6 +97,8 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                       up_50 = quantile(.$value, prob = 0.75)[[1]],
                       up_95 = quantile(.$value, prob = 0.975)[[1]],
                       mean = mean(.$value)))
+    }else{
+      traj.CI <- NULL
     }
 
   }else{
