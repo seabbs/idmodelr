@@ -35,6 +35,9 @@ model_simulate <- function(model, sim_fn, params, as_tibble = TRUE,
     as_tibble <- TRUE
   }
 
+  sim <- sim_fn(model, params = params_as_matrix, as.data.frame = as_tibble, ...)
+
+
   if (as_tibble) {
     sim <- as_tibble(sim)
   }
