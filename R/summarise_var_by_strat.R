@@ -39,7 +39,7 @@ summarise_var_by_strat <- function(df, vars, strat = NULL, new_var) {
     }, vars, df, new_var) %>%
       bind_cols
 
-    df <- bind_cols(df, strat_sum)
+    df <- bind_cols(df[new_var], strat_sum, df[!(colnames(df) %in% new_var)])
   }
 
   return(df)

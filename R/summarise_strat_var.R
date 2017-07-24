@@ -30,7 +30,7 @@ summarise_strat_var <- function(df, vars, strat = NULL, new_var = "sum") {
     as_tibble %>%
     set_names(new_var)
 
- df <- bind_cols(df, new_var)
+ df <- bind_cols(new_var, df)
 
  return(df)
 }

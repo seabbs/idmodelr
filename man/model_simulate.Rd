@@ -23,7 +23,7 @@ should be returned as a tibble, otherwise returned as the default \code{sim_fn} 
 
 \item{...}{Additional arguments to pass to \code{sim_fn}}
 
-\item{inheritParams}{agrregate_model}
+\item{inheritParams}{aggregate_model}
 }
 \value{
 Trajectories as a tibble, optionally returns the default \code{sim_fn} output.
