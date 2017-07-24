@@ -85,17 +85,20 @@
 
     
     <p>This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-manipulation of several simulations or data. Additionally if data is present, then an additional plot can be displayed
+manipulation of several simulations or data. It also allows complex model output to be aggregated.
+Additionally if data is present, then an additional plot can be displayed
 with data and potentially observations generated. This function is heaviliy
-based on [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
-the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).</p>
+based on <a href='https://github.com/sbfnk/fitR/blob/master/R/plot.r'>plotTraj</a> from
+the <a href='https://github.com/sbfnk/fitR'>fitR</a> package written by <a href='http://sbfnk.github.io/'>Sebaustian Funk</a>.</p>
     
 
     <pre class="usage"><span class='fu'>plot_model</span>(<span class='kw'>traj</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>time.column</span> <span class='kw'>=</span> <span class='st'>"time"</span>, <span class='kw'>lines.data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>replicate.column</span> <span class='kw'>=</span> <span class='st'>"replicate"</span>, <span class='kw'>non.extinct</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"firebrick2"</span>, <span class='kw'>set_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>,
-  <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -103,7 +106,7 @@ the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](h
     <tr>
       <th>traj</th>
       <td><p>Data frame, generic model output although tailored
-to work with [pomp](https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp) model objects.</p></td>
+to work with <a href='https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp'>pomp</a> model objects.</p></td>
     </tr>
     <tr>
       <th>state.names</th>
@@ -167,6 +170,36 @@ in calendar format. NB: currently only works if the unit of time is the day.</p>
       <td><p>Logical. If <code>TRUE</code> does not facet plots.</p></td>
     </tr>
     <tr>
+      <th>aggregate_to</th>
+      <td><p>A character vector or list specifying the aggregation operations to perfrom on the
+model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
+and incidence.</p></td>
+    </tr>
+    <tr>
+      <th>compartments</th>
+      <td><p>A character vector or list specifying the unique compartments to aggregate. May either be
+specified once for all aggregation functions or for each function seperately.</p></td>
+    </tr>
+    <tr>
+      <th>strat</th>
+      <td><p>The number of stratified groups in the model.</p></td>
+    </tr>
+    <tr>
+      <th>hold_out_var</th>
+      <td><p>A character vector or list specifying the unique compartments that will not be aggregated. May either be
+specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+not need to be used.</p></td>
+    </tr>
+    <tr>
+      <th>new_var</th>
+      <td><p>A character vevtor specifying the new variable to add when aggregating incidence.</p></td>
+    </tr>
+    <tr>
+      <th>total_pop</th>
+      <td><p>A logical vector (defaults to <code>TRUE</code>) indicating if the total population should be
+calculated when summarsing the model demographics.</p></td>
+    </tr>
+    <tr>
       <th>verbose</th>
       <td><p>Logical (defaults to <code>FALSE</code>), indicates if internal process messages should be printed</p></td>
     </tr>
@@ -178,9 +211,12 @@ in calendar format. NB: currently only works if the unit of time is the day.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>summarise_model</p>
+    <p>summarise_model aggregate_model</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -190,7 +226,9 @@ in calendar format. NB: currently only works if the unit of time is the day.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

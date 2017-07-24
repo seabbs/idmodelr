@@ -1,11 +1,10 @@
 #' A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing
-#'
-#' @param params A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.
 #' @param model A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
 #' recommended.
 #' @param sim_fn A generic simulation function, with the first arguement as the model object,
 #' a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
 #'   and \code{simulate} from the \code{\link[pomp]{pomp}} package.
+#' @param params A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.
 #' @param as_tibble Logical (defaults to \code{TRUE}) indicating if the output
 #'  should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.
 #' @param ... Additional arguments to pass to \code{sim_fn}
@@ -16,7 +15,7 @@
 #'
 #' @examples
 #'
-model_simulate <- function(params, model, sim_fn, as_tibble = TRUE, ...) {
+model_simulate <- function(model, sim_fn, params, as_tibble = TRUE, ...) {
 
   if ("data.frame" %in% class(params)) {
     params_as_matrix <- t(as.matrix(params))

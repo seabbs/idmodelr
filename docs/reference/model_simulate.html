@@ -87,15 +87,11 @@
     <p>A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing</p>
     
 
-    <pre class="usage"><span class='fu'>model_simulate</span>(<span class='no'>params</span>, <span class='no'>model</span>, <span class='no'>sim_fn</span>, <span class='kw'>as_tibble</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>model_simulate</span>(<span class='no'>model</span>, <span class='no'>sim_fn</span>, <span class='no'>params</span>, <span class='kw'>as_tibble</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>params</th>
-      <td><p>A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.</p></td>
-    </tr>
     <tr>
       <th>model</th>
       <td><p>A model compatible with your <code>sim_fn</code>. A <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> model object is
@@ -104,8 +100,12 @@ recommended.</p></td>
     <tr>
       <th>sim_fn</th>
       <td><p>A generic simulation function, with the first arguement as the model object,
-a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code><a href='http://www.rdocumentation.org/packages/pomp/topics/lowlevel'>trajectory</a></code>
-  and <code>simulate</code>.</p></td>
+a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code>trajectory</code>
+and <code>simulate</code> from the <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> package.</p></td>
+    </tr>
+    <tr>
+      <th>params</th>
+      <td><p>A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.</p></td>
     </tr>
     <tr>
       <th>as_tibble</th>
@@ -123,6 +123,9 @@ should be returned as a tibble, otherwise returned as the default <code>sim_fn</
     <p>Trajectories as a tibble, optionally returns the default <code>sim_fn</code> output.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -130,7 +133,9 @@ should be returned as a tibble, otherwise returned as the default <code>sim_fn</
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

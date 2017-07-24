@@ -1,6 +1,7 @@
 #' Summarise and Plot Model Trajectories
 #' @description This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-#' manipulation of several simulations or data. Additionally if data is present, then an additional plot can be displayed
+#' manipulation of several simulations or data. It also allows complex model output to be aggregated.
+#' Additionally if data is present, then an additional plot can be displayed
 #' with data and potentially observations generated. This function is heaviliy
 #' based on [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
 #' the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
@@ -16,13 +17,16 @@
 #' @importFrom tibble as_tibble
 #' @return Optionally prints or stores a plot of trajectories
 #' @export
-#' @seealso summarise_model
+#' @seealso summarise_model aggregate_model
 #' @examples
 #'
 plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
                              lines.data = FALSE, summary = TRUE, replicate.column = "replicate",
-                             non.extinct = NULL, alpha = 1, plot = TRUE, colour = "firebrick2", set_theme = theme_minimal,
-                             init.date = NULL, same = FALSE, verbose = FALSE)
+                             non.extinct = NULL, alpha = 1, plot = TRUE, colour = "firebrick2",
+                             set_theme = theme_minimal, init.date = NULL, same = FALSE,
+                             aggregate_to = NULL, compartments = NULL,
+                             strat = NULL, hold_out_var = NULL, new_var = "incidence",
+                             total_pop = TRUE, verbose = FALSE)
 {
   if (!is.null(traj) && "idmodelr" %in% class(traj)) {
     message("Trajectories/simulations have already been summarised by idmodelr - passing directly to plotting function")

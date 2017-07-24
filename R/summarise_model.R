@@ -1,8 +1,9 @@
 #' Summarise Model Trajectories
 #'
-#' @description This function checks, cleans and summarises inputed model trajectories. This function is based on
+#' @description This function checks, cleans, aggregates and summarises inputed model trajectories. This function is based on
 #'   [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
 #' the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
+#' @inheritParams aggregate_model
 #' @param traj Data frame, generic model output although tailored
 #' to work with [pomp](https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp) model objects.
 #' @param state.names A character vector. Names of the state variables to plot.
@@ -24,16 +25,17 @@
 #' @import reshape2 ggplot2 stringr magrittr
 #' @importFrom dplyr do mutate group_by
 #' @importFrom tibble as_tibble
-#' @return A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
+#' @return A list of summarised/aggregated dataframes for an inputed model trajectory. These are the model trajectories, probability
 #'   of extinction, and model summary trajectories.
 #' @export
-#' @seealso plot_model
+#' @seealso plot_model aggregate_model
 #' @examples
 #'
 summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
-                            summary = TRUE, replicate.column = "replicate",
-                            non.extinct = NULL, init.date = NULL,
-                            verbose = FALSE) {
+                            summary = TRUE, replicate.column = "replicate", non.extinct = NULL,
+                            init.date = NULL, aggregate_to = aggregate_to, compartments = compartments,
+                            strat = strat, hold_out_var = hold_out_var, new_var = new_var,
+                            total_pop = total_pop, verbose = FALSE) {
 
   if (!is.null(init.date)) {
     init.date <- as.Date(init.date)
@@ -55,7 +57,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                                             replicate.column))
   }
   else if (!is.character(state.names))
-    stop(sQuote("state.names"), ", if given, must be a numeric vector")
+    stop(sQuote("state.names"), ", if given, must be a character vector")
   if (!is.null(init.date)) {
     traj[[time.column]] <- traj[[time.column]] + init.date
     if (!is.null(data)) {
@@ -63,6 +65,11 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     }
   }
 
+  if (!is.null(aggregate_to)) {
+    traj <- aggregate_model(traj, aggregate_to = aggregate_to, compartments = compartments, strat = strat,
+                                hold_out_var = hold_out_var,
+                                new_var = new_var, total_pop = total_pop)
+  }
 
   if (!is.null(traj)) {
     if (!is.null(non.extinct)) {

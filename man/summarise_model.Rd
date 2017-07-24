@@ -6,11 +6,13 @@
 \usage{
 summarise_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", summary = TRUE, replicate.column = "replicate",
-  non.extinct = NULL, init.date = NULL, verbose = FALSE)
+  non.extinct = NULL, init.date = NULL, aggregate_to = aggregate_to,
+  compartments = compartments, strat = strat, hold_out_var = hold_out_var,
+  new_var = new_var, total_pop = total_pop, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
-to work with [pomp](https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp) model objects.}
+to work with \href{https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp}{pomp} model objects.}
 
 \item{state.names}{A character vector. Names of the state variables to plot.
 If \code{NULL} (default) all state variables are plotted.}
@@ -34,20 +36,38 @@ This is only relevant for stochastic models.}
 \item{init.date}{Character. Date of the first point of the time series (default to \code{NULL}). If provided, the x-axis will be
 in calendar format. NB: currently only works if the unit of time is the day.}
 
+\item{aggregate_to}{A character vector or list specifying the aggregation operations to perfrom on the
+model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
+and incidence.}
+
+\item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
+specified once for all aggregation functions or for each function seperately.}
+
+\item{strat}{The number of stratified groups in the model.}
+
+\item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
+specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+not need to be used.}
+
+\item{new_var}{A character vevtor specifying the new variable to add when aggregating incidence.}
+
+\item{total_pop}{A logical vector (defaults to \code{TRUE}) indicating if the total population should be
+calculated when summarsing the model demographics.}
+
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
 }
 \value{
-A list of summarised dataframes for an inputed model trajectory. These are the model trajectories, probability
-  of extinction, and model summary trajectories.
+A list of summarised/aggregated dataframes for an inputed model trajectory. These are the model trajectories, probability
+of extinction, and model summary trajectories.
 }
 \description{
-This function checks, cleans and summarises inputed model trajectories. This function is based on
-  [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
-the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
+This function checks, cleans, aggregates and summarises inputed model trajectories. This function is based on
+\href{https://github.com/sbfnk/fitR/blob/master/R/plot.r}{plotTraj} from
+the \href{https://github.com/sbfnk/fitR}{fitR} package written by \href{http://sbfnk.github.io/}{Sebaustian Funk}.
 }
 \examples{
 
 }
 \seealso{
-plot_model
+plot_model aggregate_model
 }

@@ -8,11 +8,13 @@ plot_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", lines.data = FALSE, summary = TRUE,
   replicate.column = "replicate", non.extinct = NULL, alpha = 1,
   plot = TRUE, colour = "firebrick2", set_theme = theme_minimal,
-  init.date = NULL, same = FALSE, verbose = FALSE)
+  init.date = NULL, same = FALSE, aggregate_to = NULL,
+  compartments = NULL, strat = NULL, hold_out_var = NULL,
+  new_var = "incidence", total_pop = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
-to work with [pomp](https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp) model objects.}
+to work with \href{https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp}{pomp} model objects.}
 
 \item{state.names}{A character vector. Names of the state variables to plot.
 If \code{NULL} (default) all state variables are plotted.}
@@ -49,6 +51,24 @@ in calendar format. NB: currently only works if the unit of time is the day.}
 
 \item{same}{Logical. If \code{TRUE} does not facet plots.}
 
+\item{aggregate_to}{A character vector or list specifying the aggregation operations to perfrom on the
+model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
+and incidence.}
+
+\item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
+specified once for all aggregation functions or for each function seperately.}
+
+\item{strat}{The number of stratified groups in the model.}
+
+\item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
+specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+not need to be used.}
+
+\item{new_var}{A character vevtor specifying the new variable to add when aggregating incidence.}
+
+\item{total_pop}{A logical vector (defaults to \code{TRUE}) indicating if the total population should be
+calculated when summarsing the model demographics.}
+
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
 }
 \value{
@@ -56,14 +76,15 @@ Optionally prints or stores a plot of trajectories
 }
 \description{
 This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-manipulation of several simulations or data. Additionally if data is present, then an additional plot can be displayed
+manipulation of several simulations or data. It also allows complex model output to be aggregated.
+Additionally if data is present, then an additional plot can be displayed
 with data and potentially observations generated. This function is heaviliy
-based on [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
-the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
+based on \href{https://github.com/sbfnk/fitR/blob/master/R/plot.r}{plotTraj} from
+the \href{https://github.com/sbfnk/fitR}{fitR} package written by \href{http://sbfnk.github.io/}{Sebaustian Funk}.
 }
 \examples{
 
 }
 \seealso{
-summarise_model
+summarise_model aggregate_model
 }

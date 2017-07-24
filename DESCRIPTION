@@ -23,4 +23,5 @@ URL: http://www.samabbott.co.uk/idmodelr,
 BugReports: https://github.com/seabbs/idmodelr/issues
 Encoding: UTF-8
 RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
 LazyData: true

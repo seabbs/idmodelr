@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sum a Stratified Variable — summarise_strat_var • idmodelr</title>
+<title>A Function to Apply Multiple Aggregations to Model Output — aggregate_model • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,63 +80,68 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sum a Stratified Variable</h1>
+    <h1>A Function to Apply Multiple Aggregations to Model Output</h1>
     </div>
 
     
-    <p>Sum a Stratified Variable</p>
+    <p>A Function to Apply Multiple Aggregations to Model Output</p>
     
 
-    <pre class="usage"><span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='no'>vars</span>, <span class='no'>strat</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</pre>
+    <pre class="usage"><span class='fu'>aggregate_model</span>(<span class='no'>df</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>,
+  <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A dataframe of model output.</p></td>
+      <td><p>A dataframe of Model Output.</p></td>
     </tr>
     <tr>
-      <th>vars</th>
-      <td><p>A character vector containing the unstratified variables to summarise</p></td>
+      <th>aggregate_to</th>
+      <td><p>A character vector or list specifying the aggregation operations to perfrom on the
+model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
+and incidence.</p></td>
+    </tr>
+    <tr>
+      <th>compartments</th>
+      <td><p>A character vector or list specifying the unique compartments to aggregate. May either be
+specified once for all aggregation functions or for each function seperately.</p></td>
     </tr>
     <tr>
       <th>strat</th>
-      <td><p>The number of stratifications present in the data set</p></td>
+      <td><p>The number of stratified groups in the model.</p></td>
+    </tr>
+    <tr>
+      <th>hold_out_var</th>
+      <td><p>A character vector or list specifying the unique compartments that will not be aggregated. May either be
+specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+not need to be used.</p></td>
     </tr>
     <tr>
       <th>new_var</th>
-      <td><p>The name of the summarised variable</p></td>
+      <td><p>A character vevtor specifying the new variable to add when aggregating incidence.</p></td>
+    </tr>
+    <tr>
+      <th>total_pop</th>
+      <td><p>A logical vector (defaults to <code>TRUE</code>) indicating if the total population should be
+calculated when summarsing the model demographics.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns the original dataframe with an additional summarised variable</p>
+    <p>An aggregated dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>summarise_var_by_strat</p>
+    <p>aggregate_model aggregate_model_internal combine_to_age_model combine_strat_model_output summarise_var_by_strat</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='no'>iris</span>, <span class='kw'>Petal.Length1</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>Petal.Length2</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>)
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble</a></span>(<span class='no'>df</span>)
-
-<span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Petal.Length"</span>), <span class='kw'>strat</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</div><div class='output co'>#&gt; # A tibble: 150 x 8
-#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Petal.Length1
-#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;         &lt;dbl&gt;
-#&gt;  1          5.1         3.5          1.4         0.2  setosa           1.4
-#&gt;  2          4.9         3.0          1.4         0.2  setosa           1.4
-#&gt;  3          4.7         3.2          1.3         0.2  setosa           1.3
-#&gt;  4          4.6         3.1          1.5         0.2  setosa           1.5
-#&gt;  5          5.0         3.6          1.4         0.2  setosa           1.4
-#&gt;  6          5.4         3.9          1.7         0.4  setosa           1.7
-#&gt;  7          4.6         3.4          1.4         0.3  setosa           1.4
-#&gt;  8          5.0         3.4          1.5         0.2  setosa           1.5
-#&gt;  9          4.4         2.9          1.4         0.2  setosa           1.4
-#&gt; 10          4.9         3.1          1.5         0.1  setosa           1.5
-#&gt; # ... with 140 more rows, and 2 more variables: Petal.Length2 &lt;dbl&gt;, sum &lt;dbl&gt;</div></pre>
+    <pre class="examples"><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

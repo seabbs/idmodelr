@@ -23,6 +23,7 @@ Sum a Stratified Variable
 }
 \examples{
 df <- dplyr::mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
+df <- tibble::as_tibble(df)
 
 summarise_strat_var(df, vars = c("Petal.Length"), strat = 2, new_var = "sum")
 }
