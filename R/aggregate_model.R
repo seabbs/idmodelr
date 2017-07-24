@@ -25,8 +25,6 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
       stop("The aggregate_to contains ", length(aggregate_to),
            " actions, whilst compartments contains ", length(compartments),
            ". Compartments must either be of a vector of compartments or a list of equal length to aggregate_to.")
-    }else{
-      compartments <- list(compartments)
     }
 
     if (length(hold_out_var) == 1) {
@@ -38,12 +36,15 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
     }
 
     if (length(strat) == 1) {
-      hold_out_var <- rep(strat, length(aggregate_to))
+      strat <- rep(strat, length(aggregate_to))
     }else if (!(length(strat) == length(aggregate_to))) {
       stop("The aggregate_to contains ", length(aggregate_to),
            " actions, whilst strat contains ", length(strat),
-           ". strat must either be of a single number or a numeric vecotor of equal length to aggregate_to.")
+           ". strat must either be of a single number or a numeric vector of equal length to aggregate_to.")
     }
+  }else{
+      compartments <- list(compartments)
+      hold_out_var <- list(hold_out_var)
   }
 
   for (i in 1:length(aggregate_to)) {

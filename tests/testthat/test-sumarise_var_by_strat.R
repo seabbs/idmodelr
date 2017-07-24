@@ -14,3 +14,9 @@ test_that("summarise_var_by_strat correctly summarises a data frame", {
 test_that("summarise_strat_var errors when no varibales to stratify are supplied", {
   expect_error(summarise_var_by_strat(df, strat = 2, new_var = "sum"))
 })
+
+test_that("summarise_strat_var correctly summarises a dataframe when no stratification is present", {
+  df <- data.frame(A = 1, B = 2)
+  df_results <- data.frame(A = 1, B = 2 , C = 3)
+  expect_equal(df_results, summarise_var_by_strat(df, vars = c("A", "B"), new_var = "C"))
+})
