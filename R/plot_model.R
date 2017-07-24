@@ -34,7 +34,9 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
   }else{
     sum_model <- summarise_model(traj, state.names = state.names, time.column = time.column,
                                 summary = summary, replicate.column = replicate.column,
-                                non.extinct = non.extinct, init.date = init.date, verbose = verbose)
+                                non.extinct = non.extinct, init.date = init.date, aggregate_to = aggregate_to,
+                                compartments = compartments, strat = strat, hold_out_var = hold_out_var,
+                                new_var = new_var, total_pop = total_pop, verbose = verbose)
   }
   if (!is.null(traj) & is.null(sum_model[["sum_traj"]])) {
     if (summary) {
