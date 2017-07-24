@@ -49,6 +49,13 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
       summary <- FALSE
     }
   }
+
+  if (!is.null(aggregate_to)) {
+    traj <- aggregate_model(traj, aggregate_to = aggregate_to, compartments = compartments, strat = strat,
+                                hold_out_var = hold_out_var,
+                                new_var = new_var, total_pop = total_pop)
+  }
+
   if (is.null(state.names)) {
     numeric.names <- names(traj)[sapply(names(traj), function(x) {
       any(class(traj[[x]]) %in% c("numeric", "integer"))
@@ -63,12 +70,6 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     if (!is.null(data)) {
       data[[time.column]] <- data[[time.column]] + init.date
     }
-  }
-
-  if (!is.null(aggregate_to)) {
-    traj <- aggregate_model(traj, aggregate_to = aggregate_to, compartments = compartments, strat = strat,
-                                hold_out_var = hold_out_var,
-                                new_var = new_var, total_pop = total_pop)
   }
 
   if (!is.null(traj)) {
