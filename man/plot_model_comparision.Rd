@@ -49,10 +49,10 @@ plot_model_comparision(iris, iris, Petal.Length)
 
 ## Example for simulated model output
 df <- bind_rows(iris \%>\% mutate(sim = 1, id = 1:length(sim)),
- iris \%>\% mutate(sim = 2 , id = 1:length(sim)))
+ iris \%>\% mutate(sim = 2, id = 1:length(sim)))
 
  plot_model_comparision(df, iris, com_var = Petal.Length, id_var = "id")
 }
 \seealso{
-plot_model_comparision model_df_to_vector
+plot_model_comparision model_df_to_vector aggregate_model_internal
 }
