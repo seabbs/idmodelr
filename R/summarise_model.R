@@ -104,7 +104,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     traj.CI <- NUL
   }
 
-  sum_model <- c(df.traj, df.p.ext, traj.ci)
+  sum_model <- c(df.traj, df.p.ext, traj.CI)
   names(sum_model) <- c("traj", "prob_ext", "sum_traj")
   class(sum_model) <- c(class(sum_model), "idmodelr")
   return(sum_model)
