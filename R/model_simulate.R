@@ -1,5 +1,5 @@
 #' A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing
-#' @param inheritParams aggregate_model
+#' @inheritParams aggregate_model
 #' @param model A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
 #' recommended.
 #' @param sim_fn A generic simulation function, with the first arguement as the model object,

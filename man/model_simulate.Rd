@@ -21,9 +21,25 @@ and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
 \item{as_tibble}{Logical (defaults to \code{TRUE}) indicating if the output
 should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.}
 
-\item{...}{Additional arguments to pass to \code{sim_fn}}
+\item{aggregate_to}{A character vector or list specifying the aggregation operations to perfrom on the
+model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
+and incidence.}
 
-\item{inheritParams}{aggregate_model}
+\item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
+specified once for all aggregation functions or for each function seperately.}
+
+\item{strat}{The number of stratified groups in the model.}
+
+\item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
+specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+not need to be used.}
+
+\item{new_var}{A character vevtor specifying the new variable to add when aggregating incidence.}
+
+\item{total_pop}{A logical vector (defaults to \code{TRUE}) indicating if the total population should be
+calculated when summarsing the model demographics.}
+
+\item{...}{Additional arguments to pass to \code{sim_fn}}
 }
 \value{
 Trajectories as a tibble, optionally returns the default \code{sim_fn} output.

@@ -2,7 +2,7 @@
 #' A Function to Apply Multiple Aggregations to Model Output
 #'
 #' @inherit aggregate_model_internal
-#' @param aggregate_to A character vector or list specifying the aggregation operations to perfrom on the
+#' @param aggregate_to A character vector or list specifying the aggregation operations to perform on the
 #' model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 #' and incidence.
 #' @param compartments A character vector or list specifying the unique compartments to aggregate. May either be
