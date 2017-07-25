@@ -36,7 +36,8 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                 summary = summary, replicate.column = replicate.column,
                                 non.extinct = non.extinct, init.date = init.date, aggregate_to = aggregate_to,
                                 compartments = compartments, strat = strat, hold_out_var = hold_out_var,
-                                new_var = new_var, total_pop = total_pop, verbose = verbose)
+                                new_var = new_var, total_pop = total_pop, summary_var = summary_var,
+                                verbose = verbose)
   }
   if (!is.null(traj) & is.null(sum_model[["sum_traj"]])) {
     if (summary) {

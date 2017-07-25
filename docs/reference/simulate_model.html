@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Summarise Model Trajectories — summarise_model • idmodelr</title>
+<title>A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing — simulate_model • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,65 +80,39 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Summarise Model Trajectories</h1>
+    <h1>A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing</h1>
     </div>
 
     
-    <p>This function checks, cleans, aggregates and summarises inputed model trajectories. This function is based on
-<a href='https://github.com/sbfnk/fitR/blob/master/R/plot.r'>plotTraj</a> from
-the <a href='https://github.com/sbfnk/fitR'>fitR</a> package written by <a href='http://sbfnk.github.io/'>Sebaustian Funk</a>.</p>
+    <p>A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing</p>
     
 
-    <pre class="usage"><span class='fu'>summarise_model</span>(<span class='kw'>traj</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>time.column</span> <span class='kw'>=</span> <span class='st'>"time"</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>replicate.column</span> <span class='kw'>=</span> <span class='st'>"replicate"</span>,
-  <span class='kw'>non.extinct</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>simulate_model</span>(<span class='no'>model</span>, <span class='no'>sim_fn</span>, <span class='no'>params</span>, <span class='kw'>as_tibble</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>summary_var</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>traj</th>
-      <td><p>Data frame, generic model output although tailored
-to work with <a href='https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp'>pomp</a> model objects.</p></td>
+      <th>model</th>
+      <td><p>A model compatible with your <code>sim_fn</code>. A <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> model object is
+recommended.</p></td>
     </tr>
     <tr>
-      <th>state.names</th>
-      <td><p>A character vector. Names of the state variables to plot.
-If <code>NULL</code> (default) all state variables are plotted.</p></td>
+      <th>sim_fn</th>
+      <td><p>A generic simulation function, with the first arguement as the model object,
+a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code>trajectory</code>
+and <code>simulate</code> from the <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> package.</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>A data frame. Observation times and observed data. The time column must match that used in the model object, whilt
-the observation name should also match one of those found in the model object.</p></td>
+      <th>params</th>
+      <td><p>A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.</p></td>
     </tr>
     <tr>
-      <th>time.column</th>
-      <td><p>A character vector. The column in the data that indicates time</p></td>
-    </tr>
-    <tr>
-      <th>summary</th>
-      <td><p>Logical. If <code>TRUE</code>, the mean, median as well as the 50th and 95th percentile
-of the trajectories are plotted (default). If <code>FALSE</code>, all individual trajectories are plotted.</p></td>
-    </tr>
-    <tr>
-      <th>replicate.column</th>
-      <td><p>A character vector. The column in the data that indicates the replicate
-(if muliple replicates are to be plotted, i.e. if <code>summary</code> is <code>FALSE</code></p></td>
-    </tr>
-    <tr>
-      <th>non.extinct</th>
-      <td><p>A character vector. Names of the infected states which must be non-zero so the epidemic is still ongoing.
-When the names of these states are provided, the extinction probability is plotted by computing the proportion of faded-out
-epidemics over time. An epidemic has faded-out when all the infected states (whose names are provided) are equal to 0.
-This is only relevant for stochastic models.</p></td>
-    </tr>
-    <tr>
-      <th>init.date</th>
-      <td><p>Character. Date of the first point of the time series (default to <code>NULL</code>). If provided, the x-axis will be
-in calendar format. NB: currently only works if the unit of time is the day.</p></td>
+      <th>as_tibble</th>
+      <td><p>Logical (defaults to <code>TRUE</code>) indicating if the output
+should be returned as a tibble, otherwise returned as the default <code>sim_fn</code> output.</p></td>
     </tr>
     <tr>
       <th>aggregate_to</th>
@@ -176,19 +150,18 @@ calculated when summarsing the model demographics.</p></td>
 all stratified levels.</p></td>
     </tr>
     <tr>
-      <th>verbose</th>
-      <td><p>Logical (defaults to <code>FALSE</code>), indicates if internal process messages should be printed</p></td>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code>sim_fn</code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of summarised/aggregated dataframes for an inputed model trajectory. These are the model trajectories, probability
-of extinction, and model summary trajectories.</p>
+    <p>Trajectories as a tibble, optionally returns the default <code>sim_fn</code> output.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>plot_model aggregate_model</p>
+    <p>aggregate_model</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

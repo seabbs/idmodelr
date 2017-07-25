@@ -16,7 +16,7 @@
 #'
 #' @examples
 #'
-model_simulate <- function(model, sim_fn, params, as_tibble = TRUE,
+simulate_model <- function(model, sim_fn, params, as_tibble = TRUE,
                            aggregate_to = NULL, compartments = NULL,
                            strat = NULL, hold_out_var = NULL, new_var = "incidence",
                            total_pop = TRUE, summary_var, ...) {

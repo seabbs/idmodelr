@@ -35,7 +35,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                             summary = TRUE, replicate.column = "replicate", non.extinct = NULL,
                             init.date = NULL, aggregate_to = NULL, compartments = NULL,
                             strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                            total_pop = TRUE, verbose = FALSE) {
+                            total_pop = TRUE, summary_var = FALSE, verbose = FALSE) {
 
   if (!is.null(init.date)) {
     init.date <- as.Date(init.date)

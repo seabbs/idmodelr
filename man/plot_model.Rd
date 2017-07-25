@@ -70,6 +70,9 @@ not need to be used.}
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}
 
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+all stratified levels.}
+
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
 }
 \value{

@@ -8,7 +8,8 @@ summarise_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", summary = TRUE, replicate.column = "replicate",
   non.extinct = NULL, init.date = NULL, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, verbose = FALSE)
+  new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
+  verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
@@ -53,6 +54,9 @@ not need to be used.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}
+
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+all stratified levels.}
 
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
 }
