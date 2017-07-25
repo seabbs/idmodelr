@@ -40,13 +40,15 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                 summary_var = summary_var, verbose = verbose)
   }
 
-  if (aggregate_to %in% "tidy") {
-    if (same) {
-      if (verbose) {
-        message("Cannot plot all states and stratifications on the same graph, seeting same to be FALSE")
+  if (!is.null(aggregate_to)) {
+    if (aggregate_to %in% "tidy") {
+      if (same) {
+        if (verbose) {
+          message("Cannot plot all states and stratifications on the same graph, seeting same to be FALSE")
+        }
+        same <- FALSE
       }
-      same <- FALSE
-    }
+  }
 
     if (is.null(id_col)) {
       id_col <- "id"

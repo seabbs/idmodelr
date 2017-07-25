@@ -50,10 +50,12 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
       summary <- FALSE
     }
   }
-
+if (!is.null(aggregate_to)) {
   if (aggregate_to %in% "tidy" && is.null(id_col)) {
     id_col <- "id"
   }
+
+}
 
   if (!is.null(aggregate_to)) {
     traj <- aggregate_model(traj, aggregate_to = aggregate_to, compartments = compartments, strat = strat,
