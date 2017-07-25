@@ -6,7 +6,7 @@
 \usage{
 model_simulate(model, sim_fn, params, as_tibble = TRUE, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, ...)
+  new_var = "incidence", total_pop = TRUE, summary_var, ...)
 }
 \arguments{
 \item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
@@ -21,7 +21,7 @@ and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
 \item{as_tibble}{Logical (defaults to \code{TRUE}) indicating if the output
 should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.}
 
-\item{aggregate_to}{A character vector or list specifying the aggregation operations to perfrom on the
+\item{aggregate_to}{A character vector or list specifying the aggregation operations to perform on the
 model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 and incidence.}
 
@@ -34,10 +34,13 @@ specified once for all aggregation functions or for each function seperately.}
 specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
 not need to be used.}
 
-\item{new_var}{A character vevtor specifying the new variable to add when aggregating incidence.}
+\item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
 
-\item{total_pop}{A logical vector (defaults to \code{TRUE}) indicating if the total population should be
+\item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}
+
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+all stratified levels.}
 
 \item{...}{Additional arguments to pass to \code{sim_fn}}
 }

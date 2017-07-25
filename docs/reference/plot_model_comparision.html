@@ -151,7 +151,7 @@ combined using grid.arrange.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>plot_model_comparision model_df_to_vector</p>
+    <p>plot_model_comparision model_df_to_vector aggregate_model_internal</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -163,7 +163,7 @@ combined using grid.arrange.</p></td>
 #&gt; 2 2 (1-1,2-2) arrange gtable[layout]</div><div class='input'>
 <span class='co'>## Example for simulated model output</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/bind'>bind_rows</a></span>(<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)),
- <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span> , <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
+ <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
 
  <span class='fu'>plot_model_comparision</span>(<span class='no'>df</span>, <span class='no'>iris</span>, <span class='kw'>com_var</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>id_var</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><img src='plot_model_comparision-5.png' alt='' width='540' height='400' /><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
 #&gt;   z     cells    name           grob

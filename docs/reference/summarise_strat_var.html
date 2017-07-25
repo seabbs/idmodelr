@@ -87,7 +87,7 @@
     <p>Sum a Stratified Variable</p>
     
 
-    <pre class="usage"><span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='no'>vars</span>, <span class='no'>strat</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</pre>
+    <pre class="usage"><span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='no'>vars</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,19 +124,20 @@
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble</a></span>(<span class='no'>df</span>)
 
 <span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Petal.Length"</span>), <span class='kw'>strat</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</div><div class='output co'>#&gt; # A tibble: 150 x 8
-#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Petal.Length1
-#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;         &lt;dbl&gt;
-#&gt;  1          5.1         3.5          1.4         0.2  setosa           1.4
-#&gt;  2          4.9         3.0          1.4         0.2  setosa           1.4
-#&gt;  3          4.7         3.2          1.3         0.2  setosa           1.3
-#&gt;  4          4.6         3.1          1.5         0.2  setosa           1.5
-#&gt;  5          5.0         3.6          1.4         0.2  setosa           1.4
-#&gt;  6          5.4         3.9          1.7         0.4  setosa           1.7
-#&gt;  7          4.6         3.4          1.4         0.3  setosa           1.4
-#&gt;  8          5.0         3.4          1.5         0.2  setosa           1.5
-#&gt;  9          4.4         2.9          1.4         0.2  setosa           1.4
-#&gt; 10          4.9         3.1          1.5         0.1  setosa           1.5
-#&gt; # ... with 140 more rows, and 2 more variables: Petal.Length2 &lt;dbl&gt;, sum &lt;dbl&gt;</div></pre>
+#&gt;      sum Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;    &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;
+#&gt;  1   2.8          5.1         3.5          1.4         0.2  setosa
+#&gt;  2   2.8          4.9         3.0          1.4         0.2  setosa
+#&gt;  3   2.6          4.7         3.2          1.3         0.2  setosa
+#&gt;  4   3.0          4.6         3.1          1.5         0.2  setosa
+#&gt;  5   2.8          5.0         3.6          1.4         0.2  setosa
+#&gt;  6   3.4          5.4         3.9          1.7         0.4  setosa
+#&gt;  7   2.8          4.6         3.4          1.4         0.3  setosa
+#&gt;  8   3.0          5.0         3.4          1.5         0.2  setosa
+#&gt;  9   2.8          4.4         2.9          1.4         0.2  setosa
+#&gt; 10   3.0          4.9         3.1          1.5         0.1  setosa
+#&gt; # ... with 140 more rows, and 2 more variables: Petal.Length1 &lt;dbl&gt;,
+#&gt; #   Petal.Length2 &lt;dbl&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

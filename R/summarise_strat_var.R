@@ -4,7 +4,6 @@
 #' @param vars A character vector containing the unstratified variables to summarise
 #' @param strat The number of stratifications present in the data set
 #' @param new_var The name of the summarised variable
-#'
 #' @return Returns the original dataframe with an additional summarised variable
 #' @export
 #' @import magrittr

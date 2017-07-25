@@ -98,7 +98,8 @@ the <a href='https://github.com/sbfnk/fitR'>fitR</a> package written by <a href=
   <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"firebrick2"</span>, <span class='kw'>set_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>,
   <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -171,7 +172,7 @@ in calendar format. NB: currently only works if the unit of time is the day.</p>
     </tr>
     <tr>
       <th>aggregate_to</th>
-      <td><p>A character vector or list specifying the aggregation operations to perfrom on the
+      <td><p>A character vector or list specifying the aggregation operations to perform on the
 model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 and incidence.</p></td>
     </tr>
@@ -192,11 +193,11 @@ not need to be used.</p></td>
     </tr>
     <tr>
       <th>new_var</th>
-      <td><p>A character vevtor specifying the new variable to add when aggregating incidence.</p></td>
+      <td><p>A character vector specifying the new variable to add when aggregating incidence.</p></td>
     </tr>
     <tr>
       <th>total_pop</th>
-      <td><p>A logical vector (defaults to <code>TRUE</code>) indicating if the total population should be
+      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the total population should be
 calculated when summarsing the model demographics.</p></td>
     </tr>
     <tr>

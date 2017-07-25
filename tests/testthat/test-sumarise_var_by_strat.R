@@ -4,7 +4,7 @@ df <- data.frame(A1 = 1, B1 = 1, A2 = 1, B2 = 1, A3 = 1, B3 = 1)
 
 df_results <- summarise_var_by_strat(df, vars = c("A", "B"), strat = 3, new_var = "C")
 
-df_check <- dplyr::bind_cols(tibble::tibble(C = 6, C1 = 2, C2 = 2, C3 = 2), df)
+df_check <- dplyr::bind_cols(tibble::tibble(C1 = 2, C2 = 2, C3 = 2), df)
 
 
 test_that("summarise_var_by_strat correctly summarises a data frame", {
@@ -19,4 +19,11 @@ test_that("summarise_strat_var correctly summarises a dataframe when no stratifi
   df <- tibble::tibble(A = 1, B = 2)
   df_results <- tibble::tibble(C = 3, A = 1, B = 2)
   expect_equal(df_results, summarise_var_by_strat(df, vars = c("A", "B"), new_var = "C"))
+})
+
+test_that("summarise_strat_var can correctly add a summary variable across stratifications levels", {
+  df_results <- summarise_var_by_strat(df, vars = c("A", "B"), strat = 3, new_var = "C", summary_var = TRUE)
+  df_check <- dplyr::bind_cols(tibble::tibble(C = 6, C1 = 2, C2 = 2, C3 = 2), df)
+
+  expect_equal(df_results, df_check)
 })

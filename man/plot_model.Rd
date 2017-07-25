@@ -10,7 +10,8 @@ plot_model(traj = NULL, state.names = NULL, data = NULL,
   plot = TRUE, colour = "firebrick2", set_theme = theme_minimal,
   init.date = NULL, same = FALSE, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, verbose = FALSE)
+  new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
+  verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
@@ -51,7 +52,7 @@ in calendar format. NB: currently only works if the unit of time is the day.}
 
 \item{same}{Logical. If \code{TRUE} does not facet plots.}
 
-\item{aggregate_to}{A character vector or list specifying the aggregation operations to perfrom on the
+\item{aggregate_to}{A character vector or list specifying the aggregation operations to perform on the
 model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 and incidence.}
 
@@ -64,9 +65,9 @@ specified once for all aggregation functions or for each function seperately.}
 specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
 not need to be used.}
 
-\item{new_var}{A character vevtor specifying the new variable to add when aggregating incidence.}
+\item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
 
-\item{total_pop}{A logical vector (defaults to \code{TRUE}) indicating if the total population should be
+\item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}
 
 \item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}

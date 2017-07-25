@@ -89,7 +89,7 @@
 
     <pre class="usage"><span class='fu'>aggregate_model</span>(<span class='no'>df</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>,
-  <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -100,7 +100,7 @@
     </tr>
     <tr>
       <th>aggregate_to</th>
-      <td><p>A character vector or list specifying the aggregation operations to perfrom on the
+      <td><p>A character vector or list specifying the aggregation operations to perform on the
 model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 and incidence.</p></td>
     </tr>
@@ -121,12 +121,17 @@ not need to be used.</p></td>
     </tr>
     <tr>
       <th>new_var</th>
-      <td><p>A character vevtor specifying the new variable to add when aggregating incidence.</p></td>
+      <td><p>A character vector specifying the new variable to add when aggregating incidence.</p></td>
     </tr>
     <tr>
       <th>total_pop</th>
-      <td><p>A logical vector (defaults to <code>TRUE</code>) indicating if the total population should be
+      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the total population should be
 calculated when summarsing the model demographics.</p></td>
+    </tr>
+    <tr>
+      <th>summary_var</th>
+      <td><p>A logical (defaults to <code>FALSE</code>), specifiying whether to add an additional summary variable across
+all stratified levels.</p></td>
     </tr>
     </table>
     

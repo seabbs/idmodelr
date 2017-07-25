@@ -1,7 +1,9 @@
 #' Sum a Stratified Variable by Stratification Level
 #'
 #' @details Takes compartmental infectious disease output and adds summary statisitics for
-#' each stratified population, adding a final summary statistic for the whole population.
+#' each stratified population, optionally adding a final summary statistic for the whole population.
+#' @param summary_var A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+#' all stratified levels when aggregating incidence.
 #' @inherit summarise_strat_var
 #' @import magrittr
 #' @importFrom purrr map
@@ -17,12 +19,15 @@
 #'
 #' df <- data.frame(A1 = 1, B1 = 1, A2 = 1, B2 = 1, A3 = 1, B3 = 1)
 #' summarise_var_by_strat(df, vars = c("A", "B"), strat = 3, new_var = "C")
-#'
-summarise_var_by_strat <- function(df, vars, strat = NULL, new_var) {
+#' summarise_var_by_strat(df, vars = c("A", "B"), strat = 3, new_var = "C", summary_var = TRUE)
+summarise_var_by_strat <- function(df, vars, strat = NULL, new_var, summary_var = FALSE) {
 
   ## summary strat across all levels
-  df <- summarise_strat_var(df = df, vars = vars,
-                            strat = strat, new_var = new_var)
+  if (is.null(strat) | summary_var) {
+    df <- summarise_strat_var(df = df, vars = vars,
+                              strat = strat, new_var = new_var)
+  }
+
 
   if (!is.null(strat)) {
     ## summary strat for each  level
@@ -39,7 +44,13 @@ summarise_var_by_strat <- function(df, vars, strat = NULL, new_var) {
     }, vars, df, new_var) %>%
       bind_cols
 
-    df <- bind_cols(df[new_var], strat_sum, df[!(colnames(df) %in% new_var)])
+    if (summary_var) {
+      df <- bind_cols(df[new_var], strat_sum, df[!(colnames(df) %in% new_var)])
+    }else {
+      df <- bind_cols(strat_sum, df)
+    }
+
+
   }
 
   return(df)

@@ -17,7 +17,7 @@
 #'
 aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat = NULL,
                             hold_out_var = NULL,
-                            new_var = "incidence", total_pop = TRUE) {
+                            new_var = "incidence", total_pop = TRUE, summary_var = FALSE) {
   if (length(aggregate_to) > 1) {
     if (length(compartments) == 1) {
       compartments <- rep(list(compartments), length(aggregate_to))
