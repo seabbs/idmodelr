@@ -38,7 +38,7 @@ save_data <- function(df, name = NULL, path = NULL,
 
   if (verbose) {
     if (is.null(message)) {
-      message <- "Data has been saved to: "
+      message <- paste0(name, " has been saved to: ")
     }
     message(message, save_file_path)
     message("Formated as", paste0(", ", format))
