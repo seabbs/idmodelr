@@ -19,7 +19,7 @@
 simulate_model <- function(model, sim_fn, params, as_tibble = TRUE,
                            aggregate_to = NULL, compartments = NULL,
                            strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                           total_pop = TRUE, summary_var, ...) {
+                           total_pop = TRUE, summary_var = FALSE, ...) {
 
   if ("data.frame" %in% class(params)) {
     params_as_matrix <- t(as.matrix(params))
@@ -44,7 +44,7 @@ simulate_model <- function(model, sim_fn, params, as_tibble = TRUE,
   if (!is.null(aggregate_to)) {
     sim <- aggregate_model(sim, aggregate_to = aggregate_to, compartments = compartments,
                            strat = strat, hold_out_var = hold_out_var, new_var = new_var,
-                           total_pop = total_pop)
+                           total_pop = total_pop, summary_var = summary_var)
 
   }
 
