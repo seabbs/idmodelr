@@ -107,7 +107,6 @@ if (!is.null(aggregate_to)) {
     df.traj <- subset(df.traj, !is.na(value)) %>%
       as_tibble
 
-
     if (summary) {
       group_var <- c(time.column, "state")
       if (!is.null(id_col)) {
