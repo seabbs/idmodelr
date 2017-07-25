@@ -2,10 +2,9 @@
 #'
 #' @description Reduces the dimensions of stratified model output. Default behaviour is to remove stratification for all
 #' variables. However, variables to dedimensionalise can be selected, as can variables to preserve with there structure intact.
-#' @param df A data frame.
+#' @param df A data frame with variables stratified using numeric labels.
 #' @param strat An integer specifying the number of stratifications to reduce.
-#' @param compartments A character vector specifying the unique population compartments. If not set then defaults to all
-#' all columns that are not in hold_out_var
+#' @param compartments A character vector specifying the unique population compartments.
 #' @param hold_out_var A character vector specifying the variables to keep unchanged. Defaults to NULL
 #' @importFrom purrr map
 #' @importFrom dplyr select bind_cols

@@ -6,7 +6,7 @@
 \usage{
 simulate_model(model, sim_fn, params, as_tibble = TRUE, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, summary_var, ...)
+  new_var = "incidence", total_pop = TRUE, summary_var = FALSE, ...)
 }
 \arguments{
 \item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>An Internal Function to Aggregate Model Output Using other Idmodelr functions. — aggregate_model_internal • idmodelr</title>
+<title>A Function to Gather Multiple Stratified Variables into a Tidy Format — gather_strat_multi_variable • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,76 +80,61 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>An Internal Function to Aggregate Model Output Using other Idmodelr functions.</h1>
+    <h1>A Function to Gather Multiple Stratified Variables into a Tidy Format</h1>
     </div>
 
     
-    <p>An Internal Function to Aggregate Model Output Using other Idmodelr functions.</p>
+    <p>A Function to Gather Multiple Stratified Variables into a Tidy Format</p>
     
 
-    <pre class="usage"><span class='fu'>aggregate_model_internal</span>(<span class='no'>df</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>,
-  <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>gather_strat_multi_variable</span>(<span class='no'>df</span>, <span class='no'>id_col</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A dataframe of Model Output.</p></td>
-    </tr>
-    <tr>
-      <th>aggregate_to</th>
-      <td><p>A character vector specifying the aggregation function to apply possible values are;
-disease, demographic, or incidence.</p></td>
-    </tr>
-    <tr>
-      <th>compartments</th>
-      <td><p>A character vector specifying the unique compartments to aggregate.</p></td>
-    </tr>
-    <tr>
-      <th>strat</th>
-      <td><p>The number of stratified groups in the model.</p></td>
-    </tr>
-    <tr>
-      <th>hold_out_var</th>
-      <td><p>A character  vector specifying the unique compartments not to aggregate.</p></td>
-    </tr>
-    <tr>
-      <th>new_var</th>
-      <td><p>A character vector specifying the new variable to add when aggregating incidence.</p></td>
+      <td><p>A data frame with variables stratified using numeric labels.</p></td>
     </tr>
     <tr>
       <th>id_col</th>
       <td><p>A character string containing the name of the new id column.</p></td>
     </tr>
     <tr>
+      <th>compartments</th>
+      <td><p>A character vector specifying the unique population compartments.</p></td>
+    </tr>
+    <tr>
+      <th>hold_out_var</th>
+      <td><p>A character vector specifying the variables to keep unchanged. Defaults to NULL</p></td>
+    </tr>
+    <tr>
+      <th>strat</th>
+      <td><p>An integer specifying the number of stratifications to reduce.</p></td>
+    </tr>
+    <tr>
       <th>groups</th>
       <td><p>A character vector with length equal to the level of stratification. Used to name the stratified levels.</p></td>
-    </tr>
-    <tr>
-      <th>total_pop</th>
-      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the total population should be
-calculated when summarsing the model demographics.</p></td>
-    </tr>
-    <tr>
-      <th>summary_var</th>
-      <td><p>A logical (defaults to <code>FALSE</code>), specifiying whether to add an additional summary variable across
-all stratified levels.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An aggregated dataframe.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>aggregate_model aggregate_model_internal combine_to_age_model combine_strat_model_output summarise_var_by_strat</p>
+    <p>A dataframe of stratified model output with multiple Tidy variables.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>A1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>A2</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>A3</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>B1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>B2</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>B3</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='fu'>gather_strat_multi_variable</span>(<span class='no'>df</span>, <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='st'>"Age"</span>, <span class='kw'>compartment</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>), <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='st'>"time"</span>,
+                            <span class='kw'>strat</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Children"</span>, <span class='st'>"Young adults"</span>, <span class='st'>"Adults"</span>))</div><div class='output co'>#&gt; # A tibble: 3 x 4
+#&gt;    time          Age     A     B
+#&gt;   &lt;dbl&gt;       &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     0     Children     1     2
+#&gt; 2     0 Young adults     2     3
+#&gt; 3     0       Adults     3     0</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -158,8 +143,6 @@ all stratified levels.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

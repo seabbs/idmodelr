@@ -13,7 +13,8 @@ Imports: dplyr,
     purrr,
     reshape2,
     stringr,
-    tibble
+    tibble,
+    tidyr
 Suggests: testthat,
     rmarkdown,
     knitr

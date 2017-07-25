@@ -6,7 +6,7 @@
 \usage{
 aggregate_model_internal(df, aggregate_to = NULL, compartments = NULL,
   strat = NULL, hold_out_var = NULL, new_var = "incidence",
-  total_pop = TRUE, summary_var = FALSE)
+  id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE)
 }
 \arguments{
 \item{df}{A dataframe of Model Output.}
@@ -21,6 +21,10 @@ disease, demographic, or incidence.}
 \item{hold_out_var}{A character  vector specifying the unique compartments not to aggregate.}
 
 \item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
+
+\item{id_col}{A character string containing the name of the new id column.}
+
+\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}

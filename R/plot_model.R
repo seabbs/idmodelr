@@ -26,7 +26,7 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                              set_theme = theme_minimal, init.date = NULL, same = FALSE,
                              aggregate_to = NULL, compartments = NULL,
                              strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                             total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
+                             id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
 {
   if (!is.null(traj) && "idmodelr" %in% class(traj)) {
     message("Trajectories/simulations have already been summarised by idmodelr - passing directly to plotting function")
@@ -36,9 +36,30 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                 summary = summary, replicate.column = replicate.column,
                                 non.extinct = non.extinct, init.date = init.date, aggregate_to = aggregate_to,
                                 compartments = compartments, strat = strat, hold_out_var = hold_out_var,
-                                new_var = new_var, total_pop = total_pop, summary_var = summary_var,
-                                verbose = verbose)
+                                id_col = id_col, groups = groups, new_var = new_var, total_pop = total_pop,
+                                summary_var = summary_var, verbose = verbose)
   }
+
+  if (aggregate_to %in% "tidy") {
+    if (same) {
+      if (verbose) {
+        message("Cannot plot all states and stratifications on the same graph, seeting same to be FALSE")
+      }
+      same <- FALSE
+    }
+
+    if (is.null(id_col)) {
+      id_col <- "id"
+    }
+  }
+
+  if (!is.null(id_col) && !is.null(colour)) {
+    if (verbose) {
+      message("Cannot customise colour when tidy aggregating")
+    }
+    colour <- NULL
+  }
+
   if (!is.null(traj) & is.null(sum_model[["sum_traj"]])) {
     if (summary) {
       summary <- FALSE
@@ -51,12 +72,15 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
   }
   if (!is.null(traj)) {
     if (summary) {
-        traj.CI.line <- melt(sum_model[["sum_traj"]][c(time.column, "state",
-                                       "mean", "median")], id.vars = c(time.column,
-                                                                       "state"))
-        traj.CI.area <- melt(sum_model[["sum_traj"]][c(time.column, "state",
-                                       "low_95", "low_50", "up_50", "up_95")], id.vars = c(time.column,
-                                                                                           "state"))
+      melt_states <- c(time.column, "state")
+      if (!is.null(id_col)) {
+        melt_states <- c(melt_states, id_col)
+      }
+        traj.CI.line <- melt(sum_model[["sum_traj"]][c(melt_states,
+                                       "mean", "median")], id.vars = melt_states)
+        traj.CI.area <- melt(sum_model[["sum_traj"]][c(melt_states,
+                                       "low_95", "low_50", "up_50", "up_95")], id.vars = melt_states)
+
         traj.CI.area$type <- sapply(traj.CI.area$variable,
                                     function(x) {
                                       str_split(x, "_")[[1]][1]
@@ -66,18 +90,28 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                     str_split(x, "_")[[1]][2]
                                   })
         traj.CI.area$variable <- NULL
-        traj.CI.area <- dcast(traj.CI.area, paste0(time.column,
-                                                   "+state+CI~type"))
+        caststates <- paste(c(melt_states, "CI~type"), sep = "+", collapse = "+")
+        traj.CI.area <- dcast(traj.CI.area, caststates)
 
         p <- ggplot(traj.CI.area)
         if (!same) {
           p <- p + facet_wrap(~state, scales = "free_y")
         }
         if (is.null(colour)) {
-          p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
-                                                               ymin = "low", ymax = "up", alpha = "CI"))
-          p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
-                                                             y = "value", linetype = "variable"))
+          if (is.null(id_col)) {
+            p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
+                                                                 ymin = "low", ymax = "up", alpha = "CI", fill = id_col,
+                                                                 group = id_col, colour = id_col))
+            p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
+                                                               y = "value", linetype = "variable", fill = id_col,
+                                                               group = id_col, colour = id_col))
+          }else {
+            p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
+                                                                 ymin = "low", ymax = "up", alpha = "CI"))
+            p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
+                                                               y = "value", linetype = "variable"))
+          }
+
         }
         else if (colour == "all") {
           p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
@@ -108,8 +142,16 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                                alpha = alpha)
           }
           else {
-            p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column,
-                                                          y = "value", group = replicate.column), alpha = alpha)
+            if (is.null(id_col)) {
+              p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column, y = "value",
+                                                                        group = id_col, colour = id_col),
+                                 alpha = alpha)
+            }else {
+              p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column, y = "value",
+                                                                        group = replicate.column),
+                                 alpha = alpha)
+            }
+
           }
         }
         else if (colour == "all") {
@@ -136,14 +178,28 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
       if (length(obs_names) == 0) {
         obs_names <- setdiff(names(sum_model[["obs"]]), time.column)
       }
-      data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = "state")
-      if (lines.data) {
-        p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                   y = "value"), colour = "black")
-      }
-      else {
-        p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                    y = "value"), colour = "black")
+      if (is.null(id_col)) {
+        data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = "state")
+
+        if (lines.data) {
+          p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
+                                                                   y = "value"), colour = "black")
+        }
+        else {
+          p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
+                                                                    y = "value"), colour = "black")
+        }
+      }else{
+        data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = c("state", id_col))
+
+        if (lines.data) {
+          p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
+                                                                   y = "value", group = id_col, colour = id_col))
+        }
+        else {
+          p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
+                                                                    y = "value", group = ic_col, colour = id_col))
+        }
       }
     }
     p <- p  + set_theme() + theme(legend.position = "bottom", legend.box = "horizontal")

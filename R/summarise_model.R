@@ -35,7 +35,8 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                             summary = TRUE, replicate.column = "replicate", non.extinct = NULL,
                             init.date = NULL, aggregate_to = NULL, compartments = NULL,
                             strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                            total_pop = TRUE, summary_var = FALSE, verbose = FALSE) {
+                            id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE,
+                            verbose = FALSE) {
 
   if (!is.null(init.date)) {
     init.date <- as.Date(init.date)
@@ -50,9 +51,13 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     }
   }
 
+  if (aggregate_to %in% "tidy" && is.null(id_col)) {
+    id_col <- "id"
+  }
+
   if (!is.null(aggregate_to)) {
     traj <- aggregate_model(traj, aggregate_to = aggregate_to, compartments = compartments, strat = strat,
-                                hold_out_var = hold_out_var,
+                                hold_out_var = hold_out_var, id_col = id_col, groups = groups,
                                 new_var = new_var, total_pop = total_pop)
   }
 
@@ -92,14 +97,22 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
     }else {
       df.p.ext <- NULL
     }
-    df.traj <- melt(traj, measure.vars = state.names, variable.name = "state")
+    melt_vars <- "state"
+    if (!is.null(id_col)) {
+      melt_vars <- c(melt_vars, id_col)
+    }
+    df.traj <- melt(traj, measure.vars = state.names, variable.name = melt_vars)
     df.traj <- subset(df.traj, !is.na(value)) %>%
       as_tibble
 
 
     if (summary) {
+      group_var <- c(time.column, "state")
+      if (!is.null(id_col)) {
+        group_var <- c(group_var, id_col)
+      }
       traj.CI <- df.traj %>%
-        group_by(.dots = c(time.column, "state")) %>%
+        group_by(.dots = group_var) %>%
         do(data.frame(low_95 = quantile(.$value, prob = 0.025)[[1]],
                       low_50 = quantile(.$value, prob = 0.25)[[1]],
                       median = quantile(.$value, prob = 0.5)[[1]],

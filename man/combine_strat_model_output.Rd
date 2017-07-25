@@ -8,12 +8,11 @@ combine_strat_model_output(df, strat = NULL, compartments = NULL,
   hold_out_var = NULL)
 }
 \arguments{
-\item{df}{A data frame.}
+\item{df}{A data frame with variables stratified using numeric labels.}
 
 \item{strat}{An integer specifying the number of stratifications to reduce.}
 
-\item{compartments}{A character vector specifying the unique population compartments. If not set then defaults to all
-all columns that are not in hold_out_var}
+\item{compartments}{A character vector specifying the unique population compartments.}
 
 \item{hold_out_var}{A character vector specifying the variables to keep unchanged. Defaults to NULL}
 }

@@ -16,7 +16,7 @@
 #' @examples
 #'
 aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat = NULL,
-                            hold_out_var = NULL,
+                            hold_out_var = NULL, id_col = id_col, groups = NULL,
                             new_var = "incidence", total_pop = TRUE, summary_var = FALSE) {
   if (length(aggregate_to) > 1) {
     if (length(compartments) == 1) {
@@ -50,7 +50,7 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
   for (i in 1:length(aggregate_to)) {
   df <- aggregate_model_internal(df, aggregate_to = aggregate_to[i], compartments = compartments[[i]],
                                  strat = strat[i], hold_out_var = hold_out_var[[i]], new_var = new_var,
-                                 total_pop = total_pop, summary_var = summary_var)
+                                 id_col = id_col, groups = groups, total_pop = total_pop, summary_var = summary_var)
   }
 
   return(df)

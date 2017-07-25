@@ -8,8 +8,8 @@ summarise_model(traj = NULL, state.names = NULL, data = NULL,
   time.column = "time", summary = TRUE, replicate.column = "replicate",
   non.extinct = NULL, init.date = NULL, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
-  verbose = FALSE)
+  new_var = "incidence", id_col = NULL, groups = NULL, total_pop = TRUE,
+  summary_var = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Data frame, generic model output although tailored
@@ -51,6 +51,10 @@ specified once for all aggregation functions or for each function seperately. If
 not need to be used.}
 
 \item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
+
+\item{id_col}{A character string containing the name of the new id column.}
+
+\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarsing the model demographics.}

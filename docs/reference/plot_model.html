@@ -98,8 +98,8 @@ the <a href='https://github.com/sbfnk/fitR'>fitR</a> package written by <a href=
   <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"firebrick2"</span>, <span class='kw'>set_theme</span> <span class='kw'>=</span> <span class='no'>theme_minimal</span>,
   <span class='kw'>init.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>same</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -194,6 +194,14 @@ not need to be used.</p></td>
     <tr>
       <th>new_var</th>
       <td><p>A character vector specifying the new variable to add when aggregating incidence.</p></td>
+    </tr>
+    <tr>
+      <th>id_col</th>
+      <td><p>A character string containing the name of the new id column.</p></td>
+    </tr>
+    <tr>
+      <th>groups</th>
+      <td><p>A character vector with length equal to the level of stratification. Used to name the stratified levels.</p></td>
     </tr>
     <tr>
       <th>total_pop</th>
