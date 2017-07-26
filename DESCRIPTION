@@ -14,7 +14,8 @@ Imports: dplyr,
     reshape2,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    plotly
 Suggests: testthat,
     rmarkdown,
     knitr

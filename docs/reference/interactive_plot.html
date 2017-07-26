@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sum a Stratified Variable — summarise_strat_var • idmodelr</title>
+<title>A Utility Function that Controls if a Plot is Returned/Printed and if it
+is Interactive. — interactive_plot • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,64 +74,48 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sum a Stratified Variable</h1>
+    <h1>A Utility Function that Controls if a Plot is Returned/Printed and if it
+is Interactive.</h1>
     </div>
 
     
-    <p>Sum a Stratified Variable</p>
+    <p>A Utility Function that Controls if a Plot is Returned/Printed and if it
+is Interactive.</p>
     
 
-    <pre class="usage"><span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='no'>vars</span>, <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</pre>
+    <pre class="usage"><span class='fu'>interactive_plot</span>(<span class='no'>plot</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A dataframe of model output.</p></td>
+      <th>plot</th>
+      <td><p>A ggplot object</p></td>
     </tr>
     <tr>
-      <th>vars</th>
-      <td><p>A character vector containing the unstratified variables to summarise</p></td>
+      <th>interactive</th>
+      <td><p>A logicial indicating whether a interactive plot should be returned.
+Defaults to <code>TRUE</code></p></td>
     </tr>
     <tr>
-      <th>strat</th>
-      <td><p>The number of stratifications present in the data set</p></td>
+      <th>print</th>
+      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the plot should be printed.</p></td>
     </tr>
     <tr>
-      <th>new_var</th>
-      <td><p>The name of the summarised variable</p></td>
+      <th>return</th>
+      <td><p>A logical (defaults to <code>FALSE</code>) indicating if the plot should be returned.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns the original dataframe with an additional summarised variable</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>summarise_var_by_strat</p>
+    <p>A ggplot or ggplotly object.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw'>dplyr</span><span class='kw'>::</span><span class='fu'>mutate</span>(<span class='no'>iris</span>, <span class='kw'>Petal.Length1</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>Petal.Length2</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>)
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw'>tibble</span><span class='kw'>::</span><span class='fu'>as_tibble</span>(<span class='no'>df</span>)
+    <pre class="examples"><div class='input'>
 
-<span class='fu'>summarise_strat_var</span>(<span class='no'>df</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Petal.Length"</span>), <span class='kw'>strat</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"sum"</span>)</div><div class='output co'>#&gt; # A tibble: 150 x 8
-#&gt;      sum Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-#&gt;    &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;
-#&gt;  1   2.8          5.1         3.5          1.4         0.2  setosa
-#&gt;  2   2.8          4.9         3.0          1.4         0.2  setosa
-#&gt;  3   2.6          4.7         3.2          1.3         0.2  setosa
-#&gt;  4   3.0          4.6         3.1          1.5         0.2  setosa
-#&gt;  5   2.8          5.0         3.6          1.4         0.2  setosa
-#&gt;  6   3.4          5.4         3.9          1.7         0.4  setosa
-#&gt;  7   2.8          4.6         3.4          1.4         0.3  setosa
-#&gt;  8   3.0          5.0         3.4          1.5         0.2  setosa
-#&gt;  9   2.8          4.4         2.9          1.4         0.2  setosa
-#&gt; 10   3.0          4.9         3.1          1.5         0.1  setosa
-#&gt; # ... with 140 more rows, and 2 more variables: Petal.Length1 &lt;dbl&gt;,
-#&gt; #   Petal.Length2 &lt;dbl&gt;</div></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -138,8 +123,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
