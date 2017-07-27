@@ -44,7 +44,7 @@
 #' scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
 #'                   sim_fn = dummy_sim_fn, cores = 1, save = FALSE)
 scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL, sim_fn = NULL,
-                              cores = 1, save = TRUE, save_name = "parameter_permutations",
+                              cores = 1, save = TRUE, save_name = "scenario_analysis_results",
                               save_path = NULL, save_format = NULL, rerun = FALSE,
                               verbose = FALSE, test = FALSE) {
   file_rds <- paste0(save_name, ".rds")
