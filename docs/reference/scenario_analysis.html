@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Function to Generate Parameter Permutations — generate_parameter_permutations • idmodelr</title>
+<title>A Function to Perform Scenario Analysis for a Generic Model Object. — scenario_analysis • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,60 +73,46 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Function to Generate Parameter Permutations</h1>
+    <h1>A Function to Perform Scenario Analysis for a Generic Model Object.</h1>
     </div>
 
     
-    <p>A function to generate paramter permutations from a generic sampling function (or if not given
-from the inputed parameters). This function can be used to rapidly generate new parameter combinations given
-parameters to be varied, and scenarios to be investigated.</p>
+    <p>This function uses parameter permutations produced by
+<code><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></code> to simulate from a supplied model function.
+It can be used to examine multiple scenarios, with any number of parameter variations, for multiple samples.</p>
     
 
-    <pre class="usage"><span class='fu'>generate_parameter_permutations</span>(<span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fixed_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sample_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sampling_function</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"parameter_permutations"</span>, <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>parameter_df</th>
+      <td><p>A dataframe of parameter permutations as produced by <code><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></code>.
+Using the default options it will save results when run for the first time, and afterwards load them in.</p></td>
+    </tr>
+    <tr>
       <th>variable_params</th>
-      <td><p>A dataframe containing any parameter variations to be investigated. If
-these paramters would normalling be sampled then they should be added to the excluded_params arguement.</p></td>
+      <td><p>A character vector containing the names of the paramters that are varied in <code>parameter_df</code>.</p></td>
     </tr>
     <tr>
-      <th>fixed_params</th>
-      <td><p>A named vector of parameters that are not sampled by the sampling function. If
-these paramters would normalling be sampled then they should be added to the excluded_params arguement.</p></td>
+      <th>model</th>
+      <td><p>A model compatible with your <code>sim_fn</code>. A <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> model object is
+recommended.</p></td>
     </tr>
     <tr>
-      <th>sample_params</th>
-      <td><p>A named vector of paramters to be sampled. If a sampling function is not supplied these
-parameters will be used in the final permutation dataframe.</p></td>
+      <th>sim_fn</th>
+      <td><p>A generic simulation function, with the first arguement as the model object,
+a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code>trajectory</code>
+and <code>simulate</code> from the <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> package.</p></td>
     </tr>
     <tr>
-      <th>excluded_params</th>
-      <td><p>A character vector indicating which parameters should have there sampled values
-kept.</p></td>
-    </tr>
-    <tr>
-      <th>scenarios</th>
-      <td><p>A dataframe of possible scenarios to investigate. It must contain a scenario variable to
-identify each seperate scenarios. If parameters are included here that would normally be sampled then they
-should be added to the excluded_params arguement</p></td>
-    </tr>
-    <tr>
-      <th>sampling_function</th>
-      <td><p>A sampling function, this should be designed such that it's input is a matrix
-with each paramter having a named row. It should return it's output in the same format. This has been tested with
-the <code>rprior</code> function from the <a href = 'https://kingaa.github.io/pomp/'>pomp</a>. If not supplied defaults to passing
-through parameters, this may not be the required behaviour.</p></td>
-    </tr>
-    <tr>
-      <th>parameter_samples</th>
-      <td><p>The number of parameter samples to take, defaults to one.</p></td>
+      <th>cores</th>
+      <td><p>The number of cores to use for the scenario analysis, defaults to 1.</p></td>
     </tr>
     <tr>
       <th>save</th>
@@ -155,14 +141,16 @@ Defaults to <code>FALSE</code>.</p></td>
       <td><p>A logical, indicating if progress messages should be printed, defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguements to be passed to the sampling_function.</p></td>
+      <th>test</th>
+      <td><p>A logical (defaults to <code>FALSE</code>) if <code>TRUE</code> function uses multicore functionality regardless
+of the number of cores specified.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe containing sampled parameter permutations</p>
+    <p>A tidy dataframe containing simulated model trajectories for each scenario
+varied parameter combination. Use <code><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></code> to examine all simulation results.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -172,18 +160,29 @@ Defaults to <code>FALSE</code>.</p></td>
 <span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
 <span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
 
-<span class='fu'>generate_parameter_permutations</span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
-                                <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
-                                <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 11
-#&gt;   scenario variable sample scenario_param fixed_1 fixed_21 fixed_22 fixed_23
-#&gt;      &lt;chr&gt;    &lt;dbl&gt;  &lt;int&gt;          &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1   test_1      0.0      1              0       2        1        3        4
-#&gt; 2   test_2      0.0      1              1       2        1        3        4
-#&gt; 3   test_1      0.5      1              0       2        1        3        4
-#&gt; 4   test_2      0.5      1              1       2        1        3        4
-#&gt; 5   test_1      1.0      1              0       2        1        3        4
-#&gt; 6   test_2      1.0      1              1       2        1        3        4
-#&gt; # ... with 3 more variables: sample_1 &lt;dbl&gt;, sample_21 &lt;dbl&gt;, sample_22 &lt;dbl&gt;</div></pre>
+<span class='no'>parameter_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
+                                                <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
+                                                <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'>## set up dummy simulation function (returning an empty dataframe)</span>
+<span class='no'>dummy_sim_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>params</span>, <span class='no'>as.data.frame</span>) {
+ <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw'>tibble</span><span class='kw'>::</span><span class='fu'>tibble</span>()
+ <span class='fu'>return</span>(<span class='no'>x</span>)
+}
+
+<span class='no'>dummy_model</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){}
+
+<span class='co'>## Run scenario analysis</span>
+<span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
+                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
+#&gt;   scenario variable        parameters      simulations
+#&gt;      &lt;chr&gt;    &lt;dbl&gt;            &lt;list&gt;           &lt;list&gt;
+#&gt; 1   test_1      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 2   test_2      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 3   test_1      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 4   test_2      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 5   test_1      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 6   test_2      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
