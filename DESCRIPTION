@@ -21,6 +21,7 @@ Imports: dplyr,
 Suggests: testthat,
     rmarkdown,
     knitr
+Remotes: hadley/multidplyr
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/idmodelr, 
      https://github.com/seabbs/idmodelr
