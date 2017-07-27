@@ -28,9 +28,9 @@ identify each seperate scenarios. If parameters are included here that would nor
 should be added to the excluded_params arguement}
 
 \item{sampling_function}{A sampling function, this should be designed such that it's input is a matrix
-with each paramter having a named row. It should return it's input in the same format. This has been test with
+with each paramter having a named row. It should return it's output in the same format. This has been tested with
 the \code{rprior} function from the \href{https://kingaa.github.io/pomp/}{pomp}. If not supplied defaults to passing
-through paramters, this may not be the required behaviour.}
+through parameters, this may not be the required behaviour.}
 
 \item{parameter_samples}{The number of parameter samples to take, defaults to one.}
 
@@ -38,7 +38,7 @@ through paramters, this may not be the required behaviour.}
 
 \item{save_name}{A character string of the name the results should be saved under.}
 
-\item{save_path}{A character string indicating the saving location for the  results.
+\item{save_path}{A character string indicating the saving location for the results.
 If not specified defaults to saving in the working directory.}
 
 \item{save_format}{If additional file formats are required, see \code{\link[idmodelr]{save_data}}.}

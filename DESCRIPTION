@@ -15,7 +15,9 @@ Imports: dplyr,
     stringr,
     tibble,
     tidyr,
-    plotly
+    plotly,
+    parallel,
+    multidplyr
 Suggests: testthat,
     rmarkdown,
     knitr
