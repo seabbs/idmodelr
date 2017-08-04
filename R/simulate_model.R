@@ -31,8 +31,8 @@
 #'times <- seq(tbegin, tend, 1)
 #'
 #' ##Vectorise input
-#'parameters <- c(beta = beta)
-#'inits <- c(S = S_0, I = I_0)
+#'parameters <- data.frame(beta = beta)
+#'inits <- data.frame(S = S_0, I = I_0)
 #'
 #'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
 simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = NULL,

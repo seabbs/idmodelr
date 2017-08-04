@@ -31,19 +31,19 @@
 #'times <- seq(tbegin, tend, 1)
 #'
 #' ##Vectorise input
-#'parameters <- c(beta = beta)
-#'inits <- c(S = S_0, I = I_0)
+#'parameters <- as.matrix(c(beta = beta))
+#'inits <- as.matrix(c(S = S_0, I = I_0))
 #'
 #'solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 
 
 solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, as.data.frame = TRUE, ...) {
-
+browser()
   if ("matrix" %in% class(params)) {
     solved_ode <- map(1:ncol(params), function(i) {
-      params_vect <- as.vector(params[,i])
+      params_vect <- params[,i]
       if ("matrix" %in% class(inits)) {
-        initial <- as.vector(inits[, i])
+        initial <- inits[, i]
       }else{
         initial <- inits
       }
@@ -52,7 +52,9 @@ solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, a
 
       if (as.data.frame) {
         solved_ode <- as_tibble(solved_ode)
-        solved_ode$traj <- i
+        if (ncol(params) != 1) {
+          solved_ode$traj <- i
+        }
       }
     })
 
