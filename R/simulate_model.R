@@ -5,7 +5,9 @@
 #' @param sim_fn A generic simulation function, with the first arguement as the model object,
 #' a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
 #'   and \code{simulate} from the \code{\link[pomp]{pomp}} package.
+#' @param inits A dataframe of initial conditions, optionally a named vector can be used.
 #' @param params A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.
+#' @param times A vector of the times to sample the model for, from a starting time to a final time.
 #' @param as_tibble Logical (defaults to \code{TRUE}) indicating if the output
 #'  should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.
 #' @param ... Additional arguments to pass to \code{sim_fn}
@@ -16,8 +18,25 @@
 #'
 #' @examples
 #'
-simulate_model <- function(model, sim_fn, params, as_tibble = TRUE,
-                           aggregate_to = NULL, compartments = NULL,
+#'#'## Intialise
+#'N = 100000
+#'I_0 = 1
+#'S_0 = N - I_0
+#'R_0 = 1.1
+#'beta = R_0
+#'
+#' ##Time for model to run over
+#'tbegin = 0
+#'tend = 50
+#'times <- seq(tbegin, tend, 1)
+#'
+#' ##Vectorise input
+#'parameters <- c(beta = beta)
+#'inits <- c(S = S_0, I = I_0)
+#'
+#'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
+simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = NULL,
+                           as_tibble = TRUE, aggregate_to = NULL, compartments = NULL,
                            strat = NULL, hold_out_var = NULL, new_var = "incidence",
                            total_pop = TRUE, summary_var = FALSE, ...) {
 
@@ -30,14 +49,29 @@ simulate_model <- function(model, sim_fn, params, as_tibble = TRUE,
          paste0(", ", class(params)))
   }
 
-  if (!is.null(aggregate_to)) {
-    as_tibble <- TRUE
-  }
+    if ("data.frame" %in% class(inits)) {
+      inits_as_matrix <- t(as.matrix(inits))
 
-  sim <- sim_fn(model, params = params_as_matrix, as.data.frame = as_tibble, ...)
+      if (nrow(inits) == nrow(params)) {
+        stop("There must be the same number of parameter sets as initial conditions")
+      }
+
+    } else if ("numeric" %in% class(inits) | is.null(inits)) {
+      inits_as_matrix <- inits
+    }else {
+      stop("The initial conditions must be formated as a dataframe or named vector. Not as a",
+           paste0(", ", class(inits)))
+    }
+
+    if (!is.null(aggregate_to)) {
+      as_tibble <- TRUE
+    }
 
 
-  if (as_tibble) {
+  sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, times = times, as.data.frame = as_tibble, ...)
+
+
+  if (as_tibble && !"tbl_df" %in% class(sim)) {
     sim <- as_tibble(sim)
   }
 

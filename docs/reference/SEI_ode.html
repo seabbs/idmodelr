@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>An Internal Function to Aggregate Model Output Using other Idmodelr functions. — aggregate_model_internal • idmodelr</title>
+<title>A Simple Susceptible-Exposed-Infected Infectious Disease Model — SEI_ode • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,77 +80,49 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>An Internal Function to Aggregate Model Output Using other Idmodelr functions.</h1>
+    <h1>A Simple Susceptible-Exposed-Infected Infectious Disease Model</h1>
     </div>
 
     
-    <p>An Internal Function to Aggregate Model Output Using other Idmodelr functions.</p>
+    <p>A Simple Susceptible-Exposed-Infected Infectious Disease Model</p>
     
 
-    <pre class="usage"><span class='fu'>aggregate_model_internal</span>(<span class='no'>df</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>,
-  <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>SEI_ode</span>(<span class='no'>t</span>, <span class='no'>x</span>, <span class='no'>params</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A dataframe of Model Output.</p></td>
+      <th>t</th>
+      <td><p>The timestep overwhich to calculate derivatives</p></td>
     </tr>
     <tr>
-      <th>aggregate_to</th>
-      <td><p>A character vector specifying the aggregation function to apply possible values are;
-disease, demographic, or incidence.</p></td>
+      <th>x</th>
+      <td><p>A numeric vector of compartment populations.</p></td>
     </tr>
     <tr>
-      <th>compartments</th>
-      <td><p>A character vector specifying the unique compartments to aggregate.</p></td>
-    </tr>
-    <tr>
-      <th>strat</th>
-      <td><p>The number of stratified groups in the model.</p></td>
-    </tr>
-    <tr>
-      <th>hold_out_var</th>
-      <td><p>A character  vector specifying the unique compartments not to aggregate.</p></td>
-    </tr>
-    <tr>
-      <th>new_var</th>
-      <td><p>A character vector specifying the new variable to add when aggregating incidence.</p></td>
-    </tr>
-    <tr>
-      <th>id_col</th>
-      <td><p>A character string containing the name of the new id column.</p></td>
-    </tr>
-    <tr>
-      <th>groups</th>
-      <td><p>A character vector with length equal to the level of stratification. Used to name the stratified levels.</p></td>
-    </tr>
-    <tr>
-      <th>total_pop</th>
-      <td><p>A logical (defaults to <code>TRUE</code>) indicating if the total population should be
-calculated when summarsing the model demographics.</p></td>
-    </tr>
-    <tr>
-      <th>summary_var</th>
-      <td><p>A logical (defaults to <code>FALSE</code>), specifiying whether to add an additional summary variable across
-all stratified levels.</p></td>
+      <th>params</th>
+      <td><p>A named vector of paramter values.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An aggregated dataframe.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>aggregate_model aggregate_model_internal combine_to_age_model combine_strat_model_output summarise_var_by_strat</p>
+    <p>A vector of derivatives</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>##Model Input</span>
+<span class='no'>S_0</span> <span class='kw'>&lt;-</span> <span class='fl'>989</span>
+<span class='no'>E_0</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
+<span class='no'>I_0</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
+<span class='no'>beta</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
+<span class='no'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>2</span>
+<span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='no'>gamma</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>E</span> <span class='kw'>=</span> <span class='no'>E_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
+
+<span class='fu'>SEI_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.list(parameters): object 'parameters' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,8 +130,6 @@ all stratified levels.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

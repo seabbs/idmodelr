@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -121,7 +128,7 @@ should be added to the excluded_params arguement</p></td>
       <th>sampling_function</th>
       <td><p>A sampling function, this should be designed such that it's input is a matrix
 with each paramter having a named row. It should return it's output in the same format. This has been tested with
-the <code>rprior</code> function from the <a href = 'https://kingaa.github.io/pomp/'>pomp</a>. If not supplied defaults to passing
+the <code>rprior</code> function from the <a href='https://kingaa.github.io/pomp/'>pomp</a>. If not supplied defaults to passing
 through parameters, this may not be the required behaviour.</p></td>
     </tr>
     <tr>
@@ -167,8 +174,8 @@ Defaults to <code>FALSE</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='kw'>tibble</span><span class='kw'>::</span><span class='fu'>data_frame</span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
-<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='kw'>tibble</span><span class='kw'>::</span><span class='fu'>data_frame</span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
+<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>data_frame</a></span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>data_frame</a></span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
 <span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
 <span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
 

@@ -33,7 +33,7 @@
 #'                                                 parameter_samples = 10, save = FALSE)
 #'
 #' ## set up dummy simulation function (returning an empty dataframe)
-#' dummy_sim_fn <- function(object, params, as.data.frame) {
+#' dummy_sim_fn <- function(object, inits, params, times, as.data.frame) {
 #'  x <- tibble::tibble()
 #'  return(x)
 #' }

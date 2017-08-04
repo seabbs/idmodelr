@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -155,8 +162,8 @@ combined using grid.arrange.</p></td>
 #&gt; 1 1 (1-1,1-1) arrange gtable[layout]
 #&gt; 2 2 (1-1,2-2) arrange gtable[layout]</div><div class='input'>
 <span class='co'>## Example for simulated model output</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>bind_rows</span>(<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'>mutate</span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)),
- <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'>mutate</span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/bind'>bind_rows</a></span>(<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)),
+ <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
 
  <span class='fu'>plot_model_comparision</span>(<span class='no'>df</span>, <span class='no'>iris</span>, <span class='kw'>com_var</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>id_var</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><img src='plot_model_comparision-5.png' alt='' width='540' height='400' /><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
 #&gt;   z     cells    name           grob

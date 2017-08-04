@@ -20,6 +20,24 @@
 #' @seealso summarise_model aggregate_model
 #' @examples
 #'
+#'#'#'## Intialise
+#'N = 100000
+#'I_0 = 1
+#'S_0 = N - I_0
+#'R_0 = 1.1
+#'beta = R_0
+#'
+#' ##Time for model to run over
+#'tbegin = 0
+#'tend = 50
+#'times <- seq(tbegin, tend, 1)
+#'
+#' ##Vectorise input
+#'parameters <- c(beta = beta)
+#'inits <- c(S = S_0, I = I_0)
+#'
+#'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
+#'
 plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
                              lines.data = FALSE, summary = TRUE, replicate.column = "replicate",
                              non.extinct = NULL, alpha = 1, plot = TRUE, colour = "firebrick2",

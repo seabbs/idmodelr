@@ -4,9 +4,10 @@
 \alias{simulate_model}
 \title{A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing}
 \usage{
-simulate_model(model, sim_fn, params, as_tibble = TRUE, aggregate_to = NULL,
-  compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, summary_var = FALSE, ...)
+simulate_model(model, sim_fn, inits = NULL, params = NULL, times = NULL,
+  as_tibble = TRUE, aggregate_to = NULL, compartments = NULL,
+  strat = NULL, hold_out_var = NULL, new_var = "incidence",
+  total_pop = TRUE, summary_var = FALSE, ...)
 }
 \arguments{
 \item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
@@ -16,7 +17,11 @@ recommended.}
 a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
 and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
 
+\item{inits}{A dataframe of initial conditions, optionally a named vector can be used.}
+
 \item{params}{A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.}
+
+\item{times}{A vector of the times to sample the model for, from a starting time to a final time.}
 
 \item{as_tibble}{Logical (defaults to \code{TRUE}) indicating if the output
 should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.}
@@ -52,6 +57,23 @@ A Function to Simulate a Model from a Generic Simulation Function, with Pre and 
 }
 \examples{
 
+#'## Intialise
+N = 100000
+I_0 = 1
+S_0 = N - I_0
+R_0 = 1.1
+beta = R_0
+
+##Time for model to run over
+tbegin = 0
+tend = 50
+times <- seq(tbegin, tend, 1)
+
+##Vectorise input
+parameters <- c(beta = beta)
+inits <- c(S = S_0, I = I_0)
+
+SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
 }
 \seealso{
 aggregate_model
