@@ -47,9 +47,7 @@ times <- seq(tbegin, tend, 1)
 parameters <- c(beta = beta)
 inits <- c(S = S_0, I = I_0)
 
-SI_sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
-
-plot_model(SI_sim)
+solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 }
 \seealso{
 \code{\link[deSolve]{lsoda}} \code{\link[idmodelr]{SI_ode}}

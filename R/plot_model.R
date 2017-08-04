@@ -20,7 +20,7 @@
 #' @seealso summarise_model aggregate_model
 #' @examples
 #'
-#'#'#'## Intialise
+#'## Intialise
 #'N = 100000
 #'I_0 = 1
 #'S_0 = N - I_0
@@ -37,6 +37,8 @@
 #'inits <- c(S = S_0, I = I_0)
 #'
 #'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
+#'
+#'plot_model(SI_sim)
 #'
 plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
                              lines.data = FALSE, summary = TRUE, replicate.column = "replicate",

@@ -23,7 +23,7 @@ SI_demo_ode <- function(t, x, params) {
   S <- x[1]
   I <- x[2]
 
-  with(as.list(parameters),{
+  with(as.list(params),{
 
     ## Specify total population
     N = S + I

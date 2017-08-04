@@ -24,7 +24,7 @@ SEI_demo_ode <- function(t, x, params) {
   E <- x[2]
   I <- x[3]
 
-  with(as.list(parameters),{
+  with(as.list(params),{
 
     ## Specify total population
     N = S + E + I

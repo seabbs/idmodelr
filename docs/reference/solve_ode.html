@@ -149,8 +149,9 @@ the timestep used by the solver</p></td>
 <span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
 <span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
-<span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'>solve_ode</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in lsoda(inits, times, SI_ode, params, ...): could not find function "lsoda"</span></div><div class='input'>
-<span class='fu'><a href='plot_model.html'>plot_model</a></span>(<span class='no'>SI_sim</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot_model(SI_sim): object 'SI_sim' not found</span></div></pre>
+<span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'>solve_ode</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'><a href='plot_model.html'>plot_model</a></span>(<span class='no'>SI_sim</span>)</div><img src='solve_ode-2.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

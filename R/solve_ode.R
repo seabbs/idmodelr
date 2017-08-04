@@ -34,9 +34,8 @@
 #'parameters <- c(beta = beta)
 #'inits <- c(S = S_0, I = I_0)
 #'
-#'SI_sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
-#'
-#'plot_model(SI_sim)
+#'solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
+
 
 solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, as.data.frame = TRUE, ...) {
 
@@ -49,7 +48,7 @@ solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, a
         initial <- inits
       }
 
-      solved_ode <- lsoda(initial, times, SI_ode, params_vect, ...)
+      solved_ode <- deSolve::lsoda(initial, times, SI_ode, params_vect, ...)
 
       if (as.data.frame) {
         solved_ode <- as_tibble(solved_ode)
@@ -61,7 +60,7 @@ solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, a
       solved_ode <- do.call(bind_rows, solved_ode)
       }
   }else{
-    solved_ode <- lsoda(inits, times, SI_ode, params, ...)
+    solved_ode <- deSolve::lsoda(inits, times, SI_ode, params, ...)
 
     if (as.data.frame) {
       solved_ode <- as.data.frame(solved_ode)
