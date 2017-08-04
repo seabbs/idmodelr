@@ -38,7 +38,7 @@
 
 
 solve_ode <- function(model = NULL, inits = NULL, params = NULL, times = NULL, as.data.frame = TRUE, ...) {
-browser()
+
   if ("matrix" %in% class(params)) {
     solved_ode <- map(1:ncol(params), function(i) {
       params_vect <- params[,i]
@@ -48,21 +48,23 @@ browser()
         initial <- inits
       }
 
-      solved_ode <- deSolve::lsoda(initial, times, SI_ode, params_vect, ...)
+      solved_ode <- deSolve::lsoda(initial, times, model, params_vect, ...)
 
       if (as.data.frame) {
+        solved_ode <- as.data.frame(solved_ode)
         solved_ode <- as_tibble(solved_ode)
         if (ncol(params) != 1) {
           solved_ode$traj <- i
         }
       }
+      return(solved_ode)
     })
 
     if (as.data.frame) {
       solved_ode <- do.call(bind_rows, solved_ode)
       }
   }else{
-    solved_ode <- deSolve::lsoda(inits, times, SI_ode, params, ...)
+    solved_ode <- deSolve::lsoda(inits, times, model, params, ...)
 
     if (as.data.frame) {
       solved_ode <- as.data.frame(solved_ode)

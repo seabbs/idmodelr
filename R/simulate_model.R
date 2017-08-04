@@ -18,7 +18,7 @@
 #'
 #' @examples
 #'
-#'#'## Intialise
+#'## Intialise
 #'N = 100000
 #'I_0 = 1
 #'S_0 = N - I_0
@@ -39,7 +39,6 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
                            as_tibble = TRUE, aggregate_to = NULL, compartments = NULL,
                            strat = NULL, hold_out_var = NULL, new_var = "incidence",
                            total_pop = TRUE, summary_var = FALSE, ...) {
-
   if ("data.frame" %in% class(params)) {
     params_as_matrix <- t(as.matrix(params))
   } else if ("numeric" %in% class(params)) {

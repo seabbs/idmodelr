@@ -57,7 +57,7 @@ A Function to Simulate a Model from a Generic Simulation Function, with Pre and 
 }
 \examples{
 
-#'## Intialise
+## Intialise
 N = 100000
 I_0 = 1
 S_0 = N - I_0

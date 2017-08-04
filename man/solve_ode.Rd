@@ -44,8 +44,8 @@ tend = 50
 times <- seq(tbegin, tend, 1)
 
 ##Vectorise input
-parameters <- c(beta = beta)
-inits <- c(S = S_0, I = I_0)
+parameters <- as.matrix(c(beta = beta))
+inits <- as.matrix(c(S = S_0, I = I_0))
 
 solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 }
