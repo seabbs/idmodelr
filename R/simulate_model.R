@@ -52,7 +52,7 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
     if ("data.frame" %in% class(inits)) {
       inits_as_matrix <- t(as.matrix(inits))
 
-      if (nrow(inits) == nrow(params)) {
+      if (nrow(inits) != nrow(params)) {
         stop("There must be the same number of parameter sets as initial conditions")
       }
 
