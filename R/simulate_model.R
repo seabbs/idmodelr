@@ -51,7 +51,7 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
     if ("data.frame" %in% class(inits)) {
       inits_as_matrix <- t(as.matrix(inits))
 
-      if (nrow(inits) != nrow(params)) {
+      if (nrow(inits) != nrow(params) && "data.frame" %in% class(params)) {
         stop("There must be the same number of parameter sets as initial conditions")
       }
 
@@ -66,8 +66,11 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
       as_tibble <- TRUE
     }
 
-
-  sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, times = times, as.data.frame = as_tibble, ...)
+  if (is.null(times)) {
+    sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, as.data.frame = as_tibble, ...)
+  }else {
+    sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, times = times, as.data.frame = as_tibble, ...)
+  }
 
 
   if (as_tibble && !"tbl_df" %in% class(sim)) {
