@@ -39,7 +39,7 @@
 #'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
 #'
 #'plot_model(SI_sim)
-#'
+ #'
 plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
                              lines.data = FALSE, summary = TRUE, replicate.column = "replicate",
                              non.extinct = NULL, alpha = 1, plot = TRUE, colour = "firebrick2",

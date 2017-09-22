@@ -18,7 +18,8 @@ Imports: dplyr,
     plotly,
     parallel,
     multidplyr,
-    readr
+    readr,
+    deSolve
 Suggests: testthat,
     rmarkdown,
     knitr

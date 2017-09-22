@@ -17,6 +17,7 @@
 #' @importFrom purrr map
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr bind_rows
+#' @importFrom deSolve lsoda
 #' @examples
 #'## Intialise
 #'N = 100000
