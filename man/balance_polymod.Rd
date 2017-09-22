@@ -17,7 +17,7 @@ with two variables: age_group and population.}
 style mixing matrices this gives contacts per day.}
 }
 \value{
-A balanced POLYMOD style mixing matrix
+A balanced POLYMOD style mixing matrix as a dataframe
 }
 \description{
 Function to Balance a POLYMOD Like Matrix Using Population Data

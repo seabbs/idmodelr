@@ -7,10 +7,11 @@
 #' @param scale A number to scale contacts by, defaults to null. With POLYMOD
 #' style mixing matrices this gives contacts per day.
 #'
-#' @return A balanced POLYMOD style mixing matrix
+#' @return A balanced POLYMOD style mixing matrix as a dataframe
 #' @export
 #' @import magrittr
-#' @importFrom dplyr full_join mutate_at funs select
+#' @importFrom dplyr full_join mutate_at funs select mutate
+#' @importFrom tibble as_tibble
 #' @examples
 #'
 balance_polymod <- function(polymod, population, scale = NULL) {
@@ -48,6 +49,10 @@ balance_polymod <- function(polymod, population, scale = NULL) {
   if (!is.null(scale)) {
     balanced_polymod <- balanced_polymod * scale
   }
+
+  balanced_polymod <- as_tibble(balanced_polymod) %>%
+    mutate(age_group = colnames(balanced_polymod)) %>%
+    select(age_group, everything())
 
   return(balanced_polymod)
 }
