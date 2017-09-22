@@ -230,7 +230,7 @@ all stratified levels.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>#'#'## Intialise</span>
+<span class='co'>## Intialise</span>
 <span class='no'>N</span> <span class='kw'>=</span> <span class='fl'>100000</span>
 <span class='no'>I_0</span> <span class='kw'>=</span> <span class='fl'>1</span>
 <span class='no'>S_0</span> <span class='kw'>=</span> <span class='no'>N</span> - <span class='no'>I_0</span>
@@ -246,7 +246,10 @@ all stratified levels.</p></td>
 <span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
 <span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
-<span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='simulate_model.html'>simulate_model</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>solve_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>)</div></pre>
+<span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='simulate_model.html'>simulate_model</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>solve_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>)
+
+<span class='fu'>plot_model</span>(<span class='no'>SI_sim</span>)</div><img src='plot_model-2.png' alt='' width='540' height='400' /><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

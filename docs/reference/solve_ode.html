@@ -146,12 +146,23 @@ the timestep used by the solver</p></td>
 <span class='no'>times</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='no'>tbegin</span>, <span class='no'>tend</span>, <span class='fl'>1</span>)
 
 <span class='co'>##Vectorise input</span>
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>))
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>))
 
-<span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'>solve_ode</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'><a href='plot_model.html'>plot_model</a></span>(<span class='no'>SI_sim</span>)</div><img src='solve_ode-2.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>solve_ode</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>, <span class='kw'>as.data.frame</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
+#&gt;     time        S            I
+#&gt;    &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+#&gt;  1     0 99999.00     1.000000
+#&gt;  2     1 99997.00     3.004114
+#&gt;  3     2 99990.98     9.024325
+#&gt;  4     3 99972.89    27.105692
+#&gt;  5     4 99918.61    81.385864
+#&gt;  6     5 99755.90   244.098706
+#&gt;  7     6 99270.26   729.743463
+#&gt;  8     7 97839.33  2160.670056
+#&gt;  9     8 93778.42  6221.581681
+#&gt; 10     9 83381.54 16618.462259
+#&gt; # ... with 41 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -175,7 +175,7 @@ all stratified levels.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>#'## Intialise</span>
+<span class='co'>## Intialise</span>
 <span class='no'>N</span> <span class='kw'>=</span> <span class='fl'>100000</span>
 <span class='no'>I_0</span> <span class='kw'>=</span> <span class='fl'>1</span>
 <span class='no'>S_0</span> <span class='kw'>=</span> <span class='no'>N</span> - <span class='no'>I_0</span>
@@ -188,8 +188,8 @@ all stratified levels.</p></td>
 <span class='no'>times</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='no'>tbegin</span>, <span class='no'>tend</span>, <span class='fl'>1</span>)
 
 <span class='co'>##Vectorise input</span>
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
 <span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'>simulate_model</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>solve_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>)</div></pre>
   </div>
