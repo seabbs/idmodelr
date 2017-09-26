@@ -17,7 +17,7 @@
 #' @return Trajectories as a tibble, optionally returns the default \code{sim_fn} output.
 #' @export
 #' @importFrom tibble as_tibble
-#'
+#' @importFrom purrr map_df
 #' @examples
 #'
 #'## Intialise
