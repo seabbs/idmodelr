@@ -181,15 +181,7 @@ varied parameter combination. Use <code><a href='http://www.rdocumentation.org/p
 
 <span class='co'>## Run scenario analysis</span>
 <span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
-                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
-#&gt;   scenario variable        parameters      simulations
-#&gt;      &lt;chr&gt;    &lt;dbl&gt;            &lt;list&gt;           &lt;list&gt;
-#&gt; 1   test_1      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 2   test_2      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 3   test_1      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 4   test_2      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 5   test_1      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 6   test_2      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;</div></pre>
+                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>rowwise</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in scenario_analysis(parameter_df, variable_params = "variable",     model = dummy_model, sim_fn = dummy_sim_fn, rowwise = FALSE,     cores = 1, save = FALSE): unused argument (rowwise = FALSE)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
