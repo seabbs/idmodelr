@@ -71,14 +71,14 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
     as_tibble <- TRUE
 
     if (is.null(times)) {
-      sim <- map_df(1:ncol(inits_as_matrix), function(i) {
+      sim <- map_df(1:ncol(params_as_matrix), function(i) {
         traj <- sim_fn(model, inits = inits_as_matrix[, i], params = params_as_matrix[, i], as.data.frame = as_tibble, ...)
         traj$traj <- i
 
         return(traj)
       })
     }else {
-      sim <- map_df(1:ncol(inits_as_matrix), function(i) {
+      sim <- map_df(1:ncol(params_as_matrix), function(i) {
         traj <- sim_fn(model, inits = inits_as_matrix[,i], params = params_as_matrix[,i], as.data.frame = as_tibble, ...)
         traj$traj <- i
 
