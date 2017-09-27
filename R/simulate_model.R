@@ -11,7 +11,9 @@
 #' @param as_tibble Logical (defaults to \code{TRUE}) indicating if the output
 #'  should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.
 #' @param by_row Logical (defaults to \code{FALSE}) indicating if inputed parameters should be inputed as a block to \code{sim_fn}
-#' or individually. If \code{TRUE} then function will always return a tibble.
+#' or individually. If \code{TRUE} then function will always return a tibble. Does not currently work with sim_fn that produces
+#' multiple simulations for a single parameter set - for this scenario a block based approach or post processing is required.
+#' @param verbose Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.
 #' @param ... Additional arguments to pass to \code{sim_fn}
 #' @seealso aggregate_model
 #' @return Trajectories as a tibble, optionally returns the default \code{sim_fn} output.
@@ -40,7 +42,7 @@
 simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = NULL,
                            as_tibble = TRUE, by_row = FALSE, aggregate_to = NULL, compartments = NULL,
                            strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                           total_pop = TRUE, summary_var = FALSE, ...) {
+                           total_pop = TRUE, summary_var = FALSE, verbose = FALSE, ...) {
   if ("data.frame" %in% class(params)) {
     params_as_matrix <- t(as.matrix(params))
   } else if ("numeric" %in% class(params)) {
@@ -75,6 +77,9 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
         traj <- sim_fn(model, inits = inits_as_matrix[, i], params = params_as_matrix[, i], as.data.frame = as_tibble, ...)
         traj$traj <- i
 
+        if (verbose) {
+          message("Parameter set: ", i)
+        }
         return(traj)
       })
     }else {
@@ -82,6 +87,9 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
         traj <- sim_fn(model, inits = inits_as_matrix[,i], params = params_as_matrix[,i], as.data.frame = as_tibble, ...)
         traj$traj <- i
 
+        if (verbose) {
+          message("Parameter set: ", i)
+        }
         return(traj)
       })
     }

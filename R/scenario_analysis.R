@@ -105,6 +105,7 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
                                                                   sim_fn = sim_fn,
                                                                   params = .,
                                                                   as_tibble = TRUE,
+                                                                  verbose = verbose,
                                                                   ...)
                                        )
       )
