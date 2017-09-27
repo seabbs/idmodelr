@@ -7,7 +7,8 @@
 scenario_analysis(parameter_df, variable_params = NULL, model = NULL,
   sim_fn = NULL, cores = 1, save = TRUE,
   save_name = "scenario_analysis_results", save_path = NULL,
-  save_format = NULL, rerun = FALSE, verbose = FALSE, test = FALSE)
+  save_format = NULL, rerun = FALSE, verbose = FALSE, by_row = FALSE,
+  test = FALSE, ...)
 }
 \arguments{
 \item{parameter_df}{A dataframe of parameter permutations as produced by \code{\link[idmodelr]{generate_parameter_permutations}}.
@@ -36,10 +37,16 @@ If not specified defaults to saving in the working directory.}
 \item{rerun}{A logical indicating if the function should be rerun or saved results should be loaded.
 Defaults to \code{FALSE}.}
 
-\item{verbose}{A logical, indicating if progress messages should be printed, defaults to \code{FALSE}.}
+\item{verbose}{Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.}
+
+\item{by_row}{Logical (defaults to \code{FALSE}) indicating if inputed parameters should be inputed as a block to \code{sim_fn}
+or individually. If \code{TRUE} then function will always return a tibble. Does not currently work with sim_fn that produces
+multiple simulations for a single parameter set - for this scenario a block based approach or post processing is required.}
 
 \item{test}{A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 of the number of cores specified.}
+
+\item{...}{Additional arguments to pass to \code{sim_fn}}
 }
 \value{
 A tidy dataframe containing simulated model trajectories for each scenario

@@ -92,7 +92,8 @@ It can be used to examine multiple scenarios, with any number of parameter varia
     <pre class="usage"><span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"scenario_analysis_results"</span>, <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>by_row</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -145,12 +146,22 @@ Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>A logical, indicating if progress messages should be printed, defaults to <code>FALSE</code>.</p></td>
+      <td><p>Logical (defaults to <code>FALSE</code>) indicating if progress information should be printed to the console.</p></td>
+    </tr>
+    <tr>
+      <th>by_row</th>
+      <td><p>Logical (defaults to <code>FALSE</code>) indicating if inputed parameters should be inputed as a block to <code>sim_fn</code>
+or individually. If <code>TRUE</code> then function will always return a tibble. Does not currently work with sim_fn that produces
+multiple simulations for a single parameter set - for this scenario a block based approach or post processing is required.</p></td>
     </tr>
     <tr>
       <th>test</th>
       <td><p>A logical (defaults to <code>FALSE</code>) if <code>TRUE</code> function uses multicore functionality regardless
 of the number of cores specified.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments to pass to <code>sim_fn</code></p></td>
     </tr>
     </table>
     
@@ -181,7 +192,15 @@ varied parameter combination. Use <code><a href='http://www.rdocumentation.org/p
 
 <span class='co'>## Run scenario analysis</span>
 <span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
-                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>rowwise</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in scenario_analysis(parameter_df, variable_params = "variable",     model = dummy_model, sim_fn = dummy_sim_fn, rowwise = FALSE,     cores = 1, save = FALSE): unused argument (rowwise = FALSE)</span></div></pre>
+                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
+#&gt;   scenario variable        parameters      simulations
+#&gt;      &lt;chr&gt;    &lt;dbl&gt;            &lt;list&gt;           &lt;list&gt;
+#&gt; 1   test_1      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 2   test_2      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 3   test_1      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 4   test_2      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 5   test_1      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
+#&gt; 6   test_2      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

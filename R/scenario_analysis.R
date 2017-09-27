@@ -60,8 +60,12 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
     if (cores > 1 || test) {
       ## Set up cluster and export functions
       cluster <- create_cluster(cores)
-      parallel::clusterExport(cluster, c(as.character(quote(model)),
-                               as.character(quote(sim_fn))), envir = environment())
+      parallel::clusterExport(cluster,
+                              c(as.character(quote(model)),
+                               as.character(quote(sim_fn)),
+                               as.character(quote(by_row)),
+                               as.character(quote(verbose))),
+                              envir = environment())
     }
 
     ## Run model trajectories
