@@ -100,11 +100,7 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
       sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, times = times, as.data.frame = as_tibble, ...)
     }
   }
-  if (is.null(times)) {
-    sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, as.data.frame = as_tibble, ...)
-  }else {
-    sim <- sim_fn(model, inits = inits_as_matrix, params = params_as_matrix, times = times, as.data.frame = as_tibble, ...)
-  }
+
 
 
   if (as_tibble && !"tbl_df" %in% class(sim)) {
