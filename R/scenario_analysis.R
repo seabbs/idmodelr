@@ -12,6 +12,7 @@
 #' @param cores The number of cores to use for the scenario analysis, defaults to 1.
 #' @param test A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 #' of the number of cores specified.
+#' @param ... Pass additional arguements to sim_fn. Only implemented when a single core is used.
 #' @return A tidy dataframe containing simulated model trajectories for each scenario
 #'  varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
 #' @export

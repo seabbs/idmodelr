@@ -46,7 +46,7 @@ multiple simulations for a single parameter set - for this scenario a block base
 \item{test}{A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 of the number of cores specified.}
 
-\item{...}{Additional arguments to pass to \code{sim_fn}}
+\item{...}{Pass additional arguements to sim_fn. Only implemented when a single core is used.}
 }
 \value{
 A tidy dataframe containing simulated model trajectories for each scenario
