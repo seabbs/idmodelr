@@ -6,7 +6,7 @@
 #' @param variable_params A dataframe containing any parameter variations to be investigated. If
 #' these paramters would normalling be sampled then they should be added to the excluded_params arguement.
 #' @param fixed_params A named vector of parameters that are not sampled by the sampling function. If
-#' these paramters would normalling be sampled then they should be added to the excluded_params arguement.
+#' these paramters would usuallybe sampled then they should be added to the excluded_params arguement.
 #' @param sample_params A named vector of paramters to be sampled. If a sampling function is not supplied these
 #' parameters will be used in the final permutation dataframe.
 #' @param excluded_params A character vector indicating which parameters should have there sampled values

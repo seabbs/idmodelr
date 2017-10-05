@@ -15,7 +15,7 @@ generate_parameter_permutations(variable_params = NULL, fixed_params = NULL,
 these paramters would normalling be sampled then they should be added to the excluded_params arguement.}
 
 \item{fixed_params}{A named vector of parameters that are not sampled by the sampling function. If
-these paramters would normalling be sampled then they should be added to the excluded_params arguement.}
+these paramters would usuallybe sampled then they should be added to the excluded_params arguement.}
 
 \item{sample_params}{A named vector of paramters to be sampled. If a sampling function is not supplied these
 parameters will be used in the final permutation dataframe.}
