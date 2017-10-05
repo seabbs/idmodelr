@@ -12,7 +12,7 @@ estimate_norm_dist_from_ci(lower_interval = NULL, upper_interval = NULL,
 
 \item{upper_interval}{Numeric, the upper CI}
 
-\item{interval}{A character string indicating the percentage interval the CI represents. Defaults to 95%.}
+\item{interval}{A character string indicating the percentage interval the CI represents. Defaults to "95\%".}
 }
 \value{
 A dataframe containing the mean and standard deviation of the normal distribution summarised by the provided CI's.
@@ -23,9 +23,11 @@ A Function to Estimate a Normal Distribution from Credible or Confidence Interva
 \examples{
 
 ## Run function to estimate normal distribution for a 95\% CI of 1, to 2
+
 df <- estimate_norm_dist_from_ci(1,2)
 
 ## Check
+
 x <- rnorm(10000, df$mean, df$sd)
 
 quantile(x, c(0.025, 0.975))

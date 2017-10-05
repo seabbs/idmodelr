@@ -83,7 +83,9 @@
     <h1>A Function to Estimate a Normal Distribution from Credible or Confidence Intervals</h1>
     </div>
 
-
+    
+    <p>A Function to Estimate a Normal Distribution from Credible or Confidence Intervals</p>
+    
 
     <pre class="usage"><span class='fu'>estimate_norm_dist_from_ci</span>(<span class='kw'>lower_interval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper_interval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>interval</span> <span class='kw'>=</span> <span class='st'>"95%"</span>)</pre>
@@ -101,17 +103,37 @@
     </tr>
     <tr>
       <th>interval</th>
-      <td><p>A character string indicating the percentage interval the CI represents. Defaults to 95<!-- %.} --></p></td>
+      <td><p>A character string indicating the percentage interval the CI represents. Defaults to "95%".</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A dataframe containing the mean and standard deviation of the normal distribution summarised by the provided CI's.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'>## Run function to estimate normal distribution for a 95% CI of 1, to 2</span>
+
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>estimate_norm_dist_from_ci</span>(<span class='fl'>1</span>,<span class='fl'>2</span>)
+
+<span class='co'>## Check</span>
+
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>rnorm</span>(<span class='fl'>10000</span>, <span class='no'>df</span>$<span class='no'>mean</span>, <span class='no'>df</span>$<span class='no'>sd</span>)
+
+<span class='fu'>quantile</span>(<span class='no'>x</span>, <span class='fu'>c</span>(<span class='fl'>0.025</span>, <span class='fl'>0.975</span>))</div><div class='output co'>#&gt;     2.5%    97.5% 
+#&gt; 1.001343 1.992519 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
