@@ -131,7 +131,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
           as_data_frame %>%
           mutate(sample = x) %>%
           select(sample, everything())
-        if (!repeat_sample) assign("master_prior_sample", prior_sample, env = parent.frame())
+        if (!repeat_sample) assign("master_prior_sample", prior_sample, envir = parent.frame())
       }else{
         prior_sample <- master_prior_sample
       }
