@@ -18,3 +18,10 @@ context("generate_parameter_permutations")
            sampling functions is specified", {
              expect_equal(df_results, df_check)
            })
+
+ test_that("generate_parameter_permutations can use a single parameter sample", {
+   df_results <- generate_parameter_permutations(variable_params, fixed_params, sample_params,
+                                                 excluded_params = c("variable"), scenarios,
+                                                 parameter_samples = 1, save = FALSE, repeat_sample = FALSE)
+             expect_equal(df_results, df_check)
+           })

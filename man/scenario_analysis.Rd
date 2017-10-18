@@ -25,18 +25,6 @@ and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
 
 \item{cores}{The number of cores to use for the scenario analysis, defaults to 1.}
 
-\item{save}{Logical specifying if the results should be saved. Defaults to \code{TRUE}.}
-
-\item{save_name}{A character string of the name the results should be saved under.}
-
-\item{save_path}{A character string indicating the saving location for the results.
-If not specified defaults to saving in the working directory.}
-
-\item{save_format}{If additional file formats are required, see \code{\link[idmodelr]{save_data}}.}
-
-\item{rerun}{A logical indicating if the function should be rerun or saved results should be loaded.
-Defaults to \code{FALSE}.}
-
 \item{verbose}{Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.}
 
 \item{by_row}{Logical (defaults to \code{FALSE}) indicating if inputed parameters should be inputed as a block to \code{sim_fn}

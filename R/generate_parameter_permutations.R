@@ -6,7 +6,7 @@
 #' @param variable_params A dataframe containing any parameter variations to be investigated. If
 #' these paramters would normalling be sampled then they should be added to the excluded_params arguement.
 #' @param fixed_params A named vector of parameters that are not sampled by the sampling function. If
-#' these paramters would usuallybe sampled then they should be added to the excluded_params arguement.
+#' these paramters would usually be sampled then they should be added to the excluded_params arguement.
 #' @param sample_params A named vector of paramters to be sampled. If a sampling function is not supplied these
 #' parameters will be used in the final permutation dataframe.
 #' @param excluded_params A character vector indicating which parameters should have there sampled values
@@ -19,6 +19,8 @@
 #' the \code{rprior} function from the [pomp](https://kingaa.github.io/pomp/). If not supplied defaults to passing
 #' through parameters, this may not be the required behaviour.
 #' @param parameter_samples The number of parameter samples to take, defaults to one.
+#' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independantly
+#' sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.
 #' @param save Logical specifying if the results should be saved. Defaults to \code{TRUE}.
 #' @param save_name A character string of the name the results should be saved under.
 #' @param save_path A character string indicating the saving location for the results.
@@ -38,7 +40,7 @@
 #'
 #' @examples
 #'
-#' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+#'#' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
 #' variable_params <-  tibble::data_frame(variable = c(0, 0.5, 1))
 #' fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3, 4))
 #' sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
@@ -49,9 +51,10 @@
 generate_parameter_permutations <- function(variable_params = NULL, fixed_params = NULL,
                                             sample_params = NULL, excluded_params = NULL,
                                             scenarios = NULL, sampling_function = NULL,
-                                            parameter_samples = 1, save = TRUE,
-                                            save_name = "parameter_permutations", save_path = NULL,
-                                            save_format = NULL, rerun = FALSE, verbose = FALSE, ...) {
+                                            parameter_samples = 1, repeat_sample = TRUE,
+                                            save = TRUE, save_name = "parameter_permutations",
+                                            save_path = NULL, save_format = NULL, rerun = FALSE,
+                                            verbose = FALSE, ...) {
   ## defaults to saving file as RDS other options can be specified in addition
   file_rds <- paste0(save_name, ".rds")
   file_path <- ifelse(!is.null(save_path),
@@ -122,11 +125,16 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
         as.matrix %>%
         t
 
-      prior_sample  <- sampling_function(params = params_as_matrix, ...) %>%
-        t %>%
-        as_data_frame %>%
-        mutate(sample = x) %>%
-        select(sample, everything())
+      if (x == 1 | repeat_sample) {
+        prior_sample  <- sampling_function(params = params_as_matrix, ...) %>%
+          t %>%
+          as_data_frame %>%
+          mutate(sample = x) %>%
+          select(sample, everything())
+        if (!repeat_sample) assign("master_prior_sample", prior_sample, env = parent.frame())
+      }else{
+        prior_sample <- master_prior_sample
+      }
 
       join_params <- c("id", "scenario")
       if (!is.null(exc_params)) {
@@ -153,3 +161,4 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
 
   return(sample_params)
 }
+
