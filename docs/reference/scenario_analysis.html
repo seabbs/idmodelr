@@ -85,7 +85,7 @@
 
     
     <p>This function uses parameter permutations produced by
-<code>generate_parameter_permutations</code> to simulate from a supplied model function.
+<code><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></code> to simulate from a supplied model function.
 It can be used to examine multiple scenarios, with any number of parameter variations, for multiple samples.</p>
     
 
@@ -100,7 +100,7 @@ It can be used to examine multiple scenarios, with any number of parameter varia
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>parameter_df</th>
-      <td><p>A dataframe of parameter permutations as produced by <code>generate_parameter_permutations</code>.
+      <td><p>A dataframe of parameter permutations as produced by <code><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></code>.
 Using the default options it will save results when run for the first time, and afterwards load them in.</p></td>
     </tr>
     <tr>
@@ -109,18 +109,40 @@ Using the default options it will save results when run for the first time, and 
     </tr>
     <tr>
       <th>model</th>
-      <td><p>A model compatible with your <code>sim_fn</code>. A <code>pomp</code> model object is
+      <td><p>A model compatible with your <code>sim_fn</code>. A <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> model object is
 recommended.</p></td>
     </tr>
     <tr>
       <th>sim_fn</th>
       <td><p>A generic simulation function, with the first arguement as the model object,
 a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code>trajectory</code>
-and <code>simulate</code> from the <code>pomp</code> package.</p></td>
+and <code>simulate</code> from the <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> package.</p></td>
     </tr>
     <tr>
       <th>cores</th>
       <td><p>The number of cores to use for the scenario analysis, defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>save</th>
+      <td><p>Logical specifying if the results should be saved. Defaults to <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>save_name</th>
+      <td><p>A character string of the name the results should be saved under.</p></td>
+    </tr>
+    <tr>
+      <th>save_path</th>
+      <td><p>A character string indicating the saving location for the results.
+If not specified defaults to saving in the working directory.</p></td>
+    </tr>
+    <tr>
+      <th>save_format</th>
+      <td><p>If additional file formats are required, see <code><a href='save_data.html'>save_data</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>rerun</th>
+      <td><p>A logical indicating if the function should be rerun or saved results should be loaded.
+Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -156,7 +178,7 @@ varied parameter combination. Use <code><a href='http://www.rdocumentation.org/p
 <span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
 <span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
 
-<span class='no'>parameter_df</span> <span class='kw'>&lt;-</span> <span class='fu'>generate_parameter_permutations</span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
+<span class='no'>parameter_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
                                                 <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
                                                 <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 

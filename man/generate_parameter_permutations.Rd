@@ -63,7 +63,7 @@ parameters to be varied, and scenarios to be investigated.
 }
 \examples{
 
-#' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
 variable_params <-  tibble::data_frame(variable = c(0, 0.5, 1))
 fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3, 4))
 sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
