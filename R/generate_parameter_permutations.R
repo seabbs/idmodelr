@@ -133,12 +133,11 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
 
     ## Generate parameter permutations
     gen_params_sample <-  function(x, df, exc_params, repeat_sample){
-
       if (repeat_sample) {
         param_sample <- gen_single_param_sample(df)
       }else{
         param_sample <- gen_single_param_sample(df[1,]) %>%
-          map(rep, 2) %>%
+          map(rep, nrow(df)) %>%
           as_tibble
       }
 
