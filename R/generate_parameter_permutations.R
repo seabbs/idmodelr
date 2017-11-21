@@ -34,8 +34,8 @@
 #' @return A dataframe containing sampled parameter permutations
 #' @importFrom dplyr mutate full_join select bind_cols everything
 #' @import magrittr
-#' @importFrom tibble as_data_frame data_frame
-#' @importFrom purrr map_df
+#' @importFrom tibble as_data_frame data_frame as_tibble
+#' @importFrom purrr map_df map
 #' @export
 #'
 #' @examples
@@ -131,19 +131,15 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
       return(prior_sample)
     }
 
-    if (!repeat_sample) {
-      shared_param_sample <- gen_single_param_sample(params_perms)
-    }else{
-      shared_param_sample <- NULL
-    }
-
     ## Generate parameter permutations
-    gen_params_sample <-  function(x, df, exc_params, shared_param_sample = NULL){
+    gen_params_sample <-  function(x, df, exc_params, repeat_sample){
 
-      if (is.null(shared_param_sample)) {
+      if (repeat_sample) {
         param_sample <- gen_single_param_sample(df)
       }else{
-        param_sample <- shared_param_sample
+        param_sample <- gen_single_param_sample(df[1,]) %>%
+          map(rep, 2) %>%
+          as_tibble
       }
 
       prior_sample <- param_sample %>%
@@ -165,7 +161,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
     # Extract samples for second row onwards
     sample_params <- map_df(1:parameter_samples, ~ gen_params_sample(., df = params_perms,
                                                                    exc_params = excluded_params,
-                                                                   shared_param_sample = shared_param_sample)) %>%
+                                                                   repeat_sample = repeat_sample)) %>%
       select(-id)
   }
 
