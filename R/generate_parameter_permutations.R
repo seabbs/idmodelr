@@ -117,24 +117,38 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
         return(params)
       }
     }
-    ## Generate parameter permutations
 
-    # Number of samples to test
-    sample_params <- map_df(1:parameter_samples, function(x, df, exc_params){
+    ## Generate a single shared parameter set if sharing parameters for all scenarios
+    gen_single_param_sample <- function(df){
       params_as_matrix <- select(df, -id, -scenario) %>%
         as.matrix %>%
         t
 
-      if (x == 1 | repeat_sample) {
-        prior_sample  <- sampling_function(params = params_as_matrix, ...) %>%
-          t %>%
-          as_data_frame %>%
-          mutate(sample = x) %>%
-          select(sample, everything())
-        if (!repeat_sample) assign("master_prior_sample", prior_sample, envir = parent.frame())
+      prior_sample  <- sampling_function(params = params_as_matrix, ...) %>%
+        t %>%
+        as_data_frame
+
+      return(prior_sample)
+    }
+
+    if (!repeat_sample) {
+      shared_param_sample <- gen_single_param_sample(params_perms)
+    }else{
+      shared_param_sample <- NULL
+    }
+
+    ## Generate parameter permutations
+    gen_params_sample <-  function(x, df, exc_params, shared_param_sample = NULL){
+
+      if (is.null(shared_param_sample)) {
+        param_sample <- gen_single_param_sample(df)
       }else{
-        prior_sample <- master_prior_sample
+        param_sample <- shared_param_sample
       }
+
+      prior_sample <- param_sample %>%
+        mutate(sample = x) %>%
+        select(sample, everything())
 
       join_params <- c("id", "scenario")
       if (!is.null(exc_params)) {
@@ -146,7 +160,12 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
         bind_cols(prior_sample)
 
       return(params_df)
-    }, params_perms, excluded_params) %>%
+    }
+
+    # Extract samples for second row onwards
+    sample_params <- map_df(1:parameter_samples, ~ gen_params_sample(., df = params_perms,
+                                                                   exc_params = excluded_params,
+                                                                   shared_param_sample = shared_param_sample)) %>%
       select(-id)
   }
 
