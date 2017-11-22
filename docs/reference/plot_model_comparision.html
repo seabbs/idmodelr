@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -157,15 +157,15 @@ combined using grid.arrange.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='co'>## Example for unique model output</span>
-<span class='fu'>plot_model_comparision</span>(<span class='no'>iris</span>, <span class='no'>iris</span>, <span class='no'>Petal.Length</span>)</div><img src='plot_model_comparision-2.png' alt='' width='540' height='400' /><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
+<span class='fu'>plot_model_comparision</span>(<span class='no'>iris</span>, <span class='no'>iris</span>, <span class='no'>Petal.Length</span>)</div><div class='img'><img src='plot_model_comparision-1.png' alt='' width='700' height='432.632880098887' /></div><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
 #&gt;   z     cells    name           grob
 #&gt; 1 1 (1-1,1-1) arrange gtable[layout]
 #&gt; 2 2 (1-1,2-2) arrange gtable[layout]</div><div class='input'>
 <span class='co'>## Example for simulated model output</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/bind'>bind_rows</a></span>(<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)),
- <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)),
+ <span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>sim</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fu'>length</span>(<span class='no'>sim</span>)))
 
- <span class='fu'>plot_model_comparision</span>(<span class='no'>df</span>, <span class='no'>iris</span>, <span class='kw'>com_var</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>id_var</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><img src='plot_model_comparision-5.png' alt='' width='540' height='400' /><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
+ <span class='fu'>plot_model_comparision</span>(<span class='no'>df</span>, <span class='no'>iris</span>, <span class='kw'>com_var</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>, <span class='kw'>id_var</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><div class='img'><img src='plot_model_comparision-2.png' alt='' width='700' height='432.632880098887' /></div><div class='output co'>#&gt; TableGrob (1 x 2) "arrange": 2 grobs
 #&gt;   z     cells    name           grob
 #&gt; 1 1 (1-1,1-1) arrange gtable[layout]
 #&gt; 2 2 (1-1,2-2) arrange gtable[layout]</div></pre>

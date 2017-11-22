@@ -5,7 +5,7 @@
 \title{A Function to Perform Scenario Analysis for a Generic Model Object.}
 \usage{
 scenario_analysis(parameter_df, variable_params = NULL, model = NULL,
-  sim_fn = NULL, cores = 1, save = TRUE,
+  sim_fn = NULL, summary_fn = NULL, cores = 1, save = TRUE,
   save_name = "scenario_analysis_results", save_path = NULL,
   save_format = NULL, rerun = FALSE, verbose = FALSE, by_row = FALSE,
   test = FALSE, ...)
@@ -22,6 +22,11 @@ recommended.}
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
 a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
 and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
+
+\item{summary_fn}{A function which accepts a single dataframe arguement customised to fit with the standard
+output of \code{scenario_analysis}  and your \code{simulate_model} function. Defaults to \code{NULL} for which
+no summarisation takes place. Warning: If a previous analysis has been saved, changing this option will not
+summarise the result. The analysis must be rerun.}
 
 \item{cores}{The number of cores to use for the scenario analysis, defaults to 1.}
 
@@ -74,9 +79,16 @@ dummy_sim_fn <- function(object, inits, params, times, as.data.frame) {
  return(x)
 }
 
+## Set up dummy summary function
+dummy_sum_fn <- function(df){
+df <- df \%>\%
+dplyr::mutate(summarised_simulations = simulations)
+
+return(df)
+}
 dummy_model <- function(){}
 
 ## Run scenario analysis
 scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
-                  sim_fn = dummy_sim_fn, cores = 1, save = FALSE)
+                  sim_fn = dummy_sim_fn, cores = 1, save = FALSE, summary_fn = dummy_sum_fn)
 }

@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -90,7 +90,7 @@ It can be used to examine multiple scenarios, with any number of parameter varia
     
 
     <pre class="usage"><span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"scenario_analysis_results"</span>, <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>by_row</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
@@ -109,14 +109,21 @@ Using the default options it will save results when run for the first time, and 
     </tr>
     <tr>
       <th>model</th>
-      <td><p>A model compatible with your <code>sim_fn</code>. A <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> model object is
+      <td><p>A model compatible with your <code>sim_fn</code>. A <code>pomp</code> model object is
 recommended.</p></td>
     </tr>
     <tr>
       <th>sim_fn</th>
       <td><p>A generic simulation function, with the first arguement as the model object,
 a <code>params</code> arguement, and a <code>as.data.frame</code> arguement. Tested to work with <code>trajectory</code>
-and <code>simulate</code> from the <code><a href='http://www.rdocumentation.org/packages/pomp/topics/pomp'>pomp</a></code> package.</p></td>
+and <code>simulate</code> from the <code>pomp</code> package.</p></td>
+    </tr>
+    <tr>
+      <th>summary_fn</th>
+      <td><p>A function which accepts a single dataframe arguement customised to fit with the standard
+output of <code>scenario_analysis</code>  and your <code>simulate_model</code> function. Defaults to <code>NULL</code> for which
+no summarisation takes place. Warning: If a previous analysis has been saved, changing this option will not
+summarise the result. The analysis must be rerun.</p></td>
     </tr>
     <tr>
       <th>cores</th>
@@ -188,19 +195,26 @@ varied parameter combination. Use <code><a href='http://www.rdocumentation.org/p
  <span class='fu'>return</span>(<span class='no'>x</span>)
 }
 
+<span class='co'>## Set up dummy summary function</span>
+<span class='no'>dummy_sum_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>df</span>){
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span> <span class='kw'>%&gt;%</span>
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>summarised_simulations</span> <span class='kw'>=</span> <span class='no'>simulations</span>)
+
+<span class='fu'>return</span>(<span class='no'>df</span>)
+}
 <span class='no'>dummy_model</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){}
 
 <span class='co'>## Run scenario analysis</span>
 <span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
-                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
-#&gt;   scenario variable        parameters      simulations
-#&gt;      &lt;chr&gt;    &lt;dbl&gt;            &lt;list&gt;           &lt;list&gt;
-#&gt; 1   test_1      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 2   test_2      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 3   test_1      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 4   test_2      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 5   test_1      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;
-#&gt; 6   test_2      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;</div></pre>
+                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sum_fn</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 5
+#&gt;   scenario variable        parameters      simulations summarised_simulations
+#&gt;      &lt;chr&gt;    &lt;dbl&gt;            &lt;list&gt;           &lt;list&gt;                 &lt;list&gt;
+#&gt; 1   test_1      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;
+#&gt; 2   test_2      0.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;
+#&gt; 3   test_1      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;
+#&gt; 4   test_2      0.5 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;
+#&gt; 5   test_1      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;
+#&gt; 6   test_2      1.0 &lt;tibble [10 x 9]&gt; &lt;tibble [0 x 0]&gt;       &lt;tibble [0 x 0]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
