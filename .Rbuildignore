@@ -5,3 +5,7 @@
 ^\.travis\.yml$
 ^docs$
 ^Dockerfile$
+^\.bash_history$
+^\.gitconfig$
+^\.git-credential-cache$
+^\.rstudio$

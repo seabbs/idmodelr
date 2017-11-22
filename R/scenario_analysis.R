@@ -45,8 +45,7 @@
 #'
 #'## Set up dummy summary function
 #'dummy_sum_fn <- function(df){
-#'df <- df %>%
-#'dplyr::mutate(summarised_simulations = simulations)
+#'df <- dplyr::mutate(df, summarised_simulations = simulations)
 #'
 #'return(df)
 #'}

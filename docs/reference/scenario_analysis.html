@@ -197,8 +197,7 @@ varied parameter combination. Use <code><a href='http://www.rdocumentation.org/p
 
 <span class='co'>## Set up dummy summary function</span>
 <span class='no'>dummy_sum_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>df</span>){
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span> <span class='kw'>%&gt;%</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>summarised_simulations</span> <span class='kw'>=</span> <span class='no'>simulations</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>df</span>, <span class='kw'>summarised_simulations</span> <span class='kw'>=</span> <span class='no'>simulations</span>)
 
 <span class='fu'>return</span>(<span class='no'>df</span>)
 }
