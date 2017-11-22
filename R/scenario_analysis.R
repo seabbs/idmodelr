@@ -12,6 +12,10 @@
 #' @param cores The number of cores to use for the scenario analysis, defaults to 1.
 #' @param test A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 #' of the number of cores specified.
+#' @param summary_fn A function which excepts a single dataframe arguement customised to fit with the standard
+#' output of \code{scenario_analysis}  and your \code{simulate_model} function. Defaults to \code{NULL} for which
+#' no summarisation takes place. Warning: If a previous analysis has been saved, changing this option will not
+#' summarise the result. The analysis must be rerun.
 #' @param ... Pass additional arguements to sim_fn. Only implemented when a single core is used.
 #' @return A tidy dataframe containing simulated model trajectories for each scenario
 #'  varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
@@ -43,11 +47,12 @@
 #'
 #' ## Run scenario analysis
 #' scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
-#'                   sim_fn = dummy_sim_fn, cores = 1, save = FALSE)
+#'                   sim_fn = dummy_sim_fn, cores = 1, save = FALSE, summary_fn = NULL)
 scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL, sim_fn = NULL,
-                              cores = 1, save = TRUE, save_name = "scenario_analysis_results",
-                              save_path = NULL, save_format = NULL, rerun = FALSE,
-                              verbose = FALSE, by_row = FALSE, test = FALSE, ...) {
+                              summary_fn = NULL, cores = 1, save = TRUE,
+                              save_name = "scenario_analysis_results", save_path = NULL,
+                              save_format = NULL, rerun = FALSE, verbose = FALSE,
+                              by_row = FALSE, test = FALSE, ...) {
   file_rds <- paste0(save_name, ".rds")
   file_path <- ifelse(!is.null(save_path),
                       file.path(save_path, file_rds),
@@ -137,6 +142,11 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
       col_names <- colnames(scenario_results)
       col_names[colnames(scenario_results) %in% group_var_string[-1]] <- variable_params
       colnames(scenario_results) <- col_names
+    }
+
+    if (!is.null(summary_fn)) {
+      scenario_results <- scenario_results %>%
+        summary_fn
     }
   }
 
