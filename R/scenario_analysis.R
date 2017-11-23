@@ -25,7 +25,7 @@
 #' @importFrom tidyr nest
 #' @importFrom purrr map
 #' @importFrom multidplyr create_cluster partition
-#' @importFrom parallel clusterExport
+#' @importFrom parallel clusterExport stopCluster
 #' @examples
 #'
 #' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
@@ -53,7 +53,7 @@
 #'
 #' ## Run scenario analysis
 #' scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
-#'                   sim_fn = dummy_sim_fn, cores = 1, save = FALSE, summary_fn = dummy_sum_fn)
+#'                   sim_fn = dummy_sim_fn, cores = 4, save = FALSE, summary_fn = dummy_sum_fn)
 scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL, sim_fn = NULL,
                               summary_fn = NULL, cores = 1, save = TRUE,
                               save_name = "scenario_analysis_results", save_path = NULL,
@@ -131,6 +131,8 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
     if (cores > 1 || test) {
       scenario_results <- scenario_results %>%
         collect
+
+      parallel::stopCluster(cl = cluster)
     }
 
     ##ungroup results
