@@ -131,8 +131,6 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
     if (cores > 1 || test) {
       scenario_results <- scenario_results %>%
         collect
-
-      parallel::stopCluster(cl = cluster)
     }
 
     ##ungroup results
