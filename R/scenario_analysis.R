@@ -53,7 +53,7 @@
 #'
 #' ## Run scenario analysis
 #' scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
-#'                   sim_fn = dummy_sim_fn, cores = 4, save = FALSE, summary_fn = dummy_sum_fn)
+#'                   sim_fn = dummy_sim_fn, cores = 1, save = FALSE, summary_fn = dummy_sum_fn)
 scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL, sim_fn = NULL,
                               summary_fn = NULL, cores = 1, save = TRUE,
                               save_name = "scenario_analysis_results", save_path = NULL,
