@@ -1,4 +1,4 @@
-#' A Simple Susceptible-High-risk-latent-Low-risk-latent-Infected-Recovered Infectious Disease Model with demographics
+#' A Simple Susceptible-High-risk-latent-Low-risk-latent-Infected-Treated-Recovered Infectious Disease Model with demographics
 #'
 #' @description A more complex SHLIR model flow diagram, with risk groups, treatment, and reinfection for those who have recovered from active disease
 #' @inherit SEIR_ode
@@ -37,9 +37,9 @@
 #' M = 0.2 # Between group mixing
 #' )
 #'
-#' SHLIR_risk_group_ode(1, inits, parameters)
+#' SHLITR_risk_group_ode(1, inits, parameters)
 #'
-SHLIR_risk_group_ode <- function(t, x, params) {
+SHLITR_risk_group_ode <- function(t, x, params) {
 
   ## Specify model compartments - new model compartments need to be added here
   ## Add compartments in the order they appear in your model flow diagram
