@@ -5,7 +5,8 @@
 \title{A Utility Function that Controls if a Plot is Returned/Printed and if it
 is Interactive.}
 \usage{
-interactive_plot(plot, interactive = TRUE, print = TRUE, return = FALSE)
+interactive_plot(plot, interactive = TRUE, print = TRUE,
+  return = FALSE)
 }
 \arguments{
 \item{plot}{A ggplot object}

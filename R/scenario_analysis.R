@@ -25,7 +25,7 @@
 #' @importFrom tidyr nest
 #' @importFrom purrr map
 #' @importFrom furrr future_map
-#' @importFrom future plan mutliprocess sequential
+#' @importFrom future plan multiprocess sequential
 #' @examples
 #'
 #' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))

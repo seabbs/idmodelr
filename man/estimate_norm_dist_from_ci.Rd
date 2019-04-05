@@ -4,8 +4,8 @@
 \alias{estimate_norm_dist_from_ci}
 \title{A Function to Estimate a Normal Distribution from Credible or Confidence Intervals}
 \usage{
-estimate_norm_dist_from_ci(lower_interval = NULL, upper_interval = NULL,
-  interval = "95\%")
+estimate_norm_dist_from_ci(lower_interval = NULL,
+  upper_interval = NULL, interval = "95\%")
 }
 \arguments{
 \item{lower_interval}{Numeric, the lower CI.}

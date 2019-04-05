@@ -5,10 +5,11 @@
 \title{Summarise Model Trajectories}
 \usage{
 summarise_model(traj = NULL, state.names = NULL, data = NULL,
-  time.column = "time", summary = TRUE, replicate.column = "replicate",
-  non.extinct = NULL, init.date = NULL, aggregate_to = NULL,
-  compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", id_col = NULL, groups = NULL, total_pop = TRUE,
+  time.column = "time", summary = TRUE,
+  replicate.column = "replicate", non.extinct = NULL,
+  init.date = NULL, aggregate_to = NULL, compartments = NULL,
+  strat = NULL, hold_out_var = NULL, new_var = "incidence",
+  id_col = NULL, groups = NULL, total_pop = TRUE,
   summary_var = FALSE, verbose = FALSE)
 }
 \arguments{

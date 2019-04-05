@@ -6,7 +6,8 @@
 \usage{
 aggregate_model_internal(df, aggregate_to = NULL, compartments = NULL,
   strat = NULL, hold_out_var = NULL, new_var = "incidence",
-  id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE)
+  id_col = NULL, groups = NULL, total_pop = TRUE,
+  summary_var = FALSE)
 }
 \arguments{
 \item{df}{A dataframe of Model Output.}

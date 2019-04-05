@@ -5,8 +5,9 @@
 \title{A Function to Apply Multiple Aggregations to Model Output}
 \usage{
 aggregate_model(df, aggregate_to = NULL, compartments = NULL,
-  strat = NULL, hold_out_var = NULL, id_col = id_col, groups = NULL,
-  new_var = "incidence", total_pop = TRUE, summary_var = FALSE)
+  strat = NULL, hold_out_var = NULL, id_col = id_col,
+  groups = NULL, new_var = "incidence", total_pop = TRUE,
+  summary_var = FALSE)
 }
 \arguments{
 \item{df}{A dataframe of Model Output.}

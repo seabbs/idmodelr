@@ -10,8 +10,8 @@ plot_model(traj = NULL, state.names = NULL, data = NULL,
   plot = TRUE, colour = "firebrick2", set_theme = theme_minimal,
   init.date = NULL, same = FALSE, aggregate_to = NULL,
   compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", id_col = NULL, groups = NULL, total_pop = TRUE,
-  summary_var = FALSE, verbose = FALSE)
+  new_var = "incidence", id_col = NULL, groups = NULL,
+  total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{traj}{Tibble of model trajectories}

@@ -4,8 +4,8 @@
 \alias{save_data}
 \title{A Function to Save Results in Multiple Formats}
 \usage{
-save_data(df, name = NULL, path = NULL, format = "rds", message = NULL,
-  verbose = TRUE)
+save_data(df, name = NULL, path = NULL, format = "rds",
+  message = NULL, verbose = TRUE)
 }
 \arguments{
 \item{df}{The data to be saved in any R supported format.}

@@ -4,10 +4,11 @@
 \alias{generate_parameter_permutations}
 \title{A Function to Generate Parameter Permutations}
 \usage{
-generate_parameter_permutations(variable_params = NULL, fixed_params = NULL,
-  sample_params = NULL, excluded_params = NULL, scenarios = NULL,
-  sampling_function = NULL, parameter_samples = 1, repeat_sample = TRUE,
-  save = TRUE, save_name = "parameter_permutations", save_path = NULL,
+generate_parameter_permutations(variable_params = NULL,
+  fixed_params = NULL, sample_params = NULL, excluded_params = NULL,
+  scenarios = NULL, sampling_function = NULL, parameter_samples = 1,
+  repeat_sample = TRUE, save = TRUE,
+  save_name = "parameter_permutations", save_path = NULL,
   save_format = NULL, rerun = FALSE, verbose = FALSE, ...)
 }
 \arguments{

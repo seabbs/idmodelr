@@ -4,9 +4,10 @@
 \alias{plot_model_comparision}
 \title{Compare Deterministic Model Trajectories and Stochastic Mean Field Dynamics}
 \usage{
-plot_model_comparision(df1, df2, com_var, id_var = NULL, sum_fn = median,
-  theme = theme_minimal, plot = TRUE, plot_titles = c("a.)", "b.)"),
-  plots_as_list = FALSE, model_1 = NULL, model_2 = NULL)
+plot_model_comparision(df1, df2, com_var, id_var = NULL,
+  sum_fn = median, theme = theme_minimal, plot = TRUE,
+  plot_titles = c("a.)", "b.)"), plots_as_list = FALSE,
+  model_1 = NULL, model_2 = NULL)
 }
 \arguments{
 \item{df1}{A dataframe containing the vector to be compared

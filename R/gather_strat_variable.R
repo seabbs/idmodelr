@@ -6,9 +6,9 @@
 #' @return A dataframe of stratified model output with a single Tidy variable.
 #' @export
 #' @import magrittr
-#' @importFrom tidyr gather_
+#' @importFrom tidyr gather
 #' @importFrom purrr map_df
-#' @importFrom rlang syms `!!!`
+#' @importFrom rlang syms
 #' @examples
 #'
 #' df <- tibble::tibble(time = 0, A1 = 1, A2 = 2, A3 = 3)

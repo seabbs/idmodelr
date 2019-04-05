@@ -4,11 +4,11 @@
 \alias{simulate_model}
 \title{A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing}
 \usage{
-simulate_model(model, sim_fn, inits = NULL, params = NULL, times = NULL,
-  as_tibble = TRUE, by_row = FALSE, aggregate_to = NULL,
-  compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
-  verbose = FALSE, ...)
+simulate_model(model, sim_fn, inits = NULL, params = NULL,
+  times = NULL, as_tibble = TRUE, by_row = FALSE,
+  aggregate_to = NULL, compartments = NULL, strat = NULL,
+  hold_out_var = NULL, new_var = "incidence", total_pop = TRUE,
+  summary_var = FALSE, verbose = FALSE, ...)
 }
 \arguments{
 \item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is

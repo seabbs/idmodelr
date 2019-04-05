@@ -7,8 +7,8 @@
 scenario_analysis(parameter_df, variable_params = NULL, model = NULL,
   sim_fn = NULL, summary_fn = NULL, cores = 1, save = TRUE,
   save_name = "scenario_analysis_results", save_path = NULL,
-  save_format = NULL, rerun = FALSE, verbose = FALSE, by_row = FALSE,
-  test = FALSE, ...)
+  save_format = NULL, rerun = FALSE, verbose = FALSE,
+  by_row = FALSE, test = FALSE, ...)
 }
 \arguments{
 \item{parameter_df}{A dataframe of parameter permutations as produced by \code{\link[idmodelr]{generate_parameter_permutations}}.
