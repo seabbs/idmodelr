@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_pointer_struct.R
 \name{add_pointer_struct}
 \alias{add_pointer_struct}
-\title{Adds Pointer Structure to R objects for use in Pomp}
+\title{Adds Pointer Structure to R objects}
 \usage{
 add_pointer_struct(char, length)
 }
@@ -15,7 +15,7 @@ add_pointer_struct(char, length)
 A character vector of the concatenated character string with sequential numbering
 }
 \description{
-Adds Pointer Structure to R objects for use in Pomp
+Adds Pointer Structure to R objects
 }
 \examples{
 

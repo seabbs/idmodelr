@@ -2,8 +2,7 @@
 #' @inheritParams aggregate_model
 #' @param model A model compatible with your \code{sim_fn}.
 #' @param sim_fn A generic simulation function, with the first arguement as the model object,
-#' a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
-#'   and \code{simulate} from the \code{\link[pomp]{pomp}} package.
+#' a \code{params} arguement, and a \code{as.data.frame} arguement.
 #' @param inits A dataframe of initial conditions, optionally a named vector can be used.
 #' @param params A dataframe of parameters, with each parameter as a variable. Optionally a named vector can be used.
 #' @param times A vector of the times to sample the model for, from a starting time to a final time.

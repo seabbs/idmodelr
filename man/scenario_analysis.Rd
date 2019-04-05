@@ -19,8 +19,7 @@ Using the default options it will save results when run for the first time, and 
 \item{model}{A model compatible with your \code{sim_fn}.}
 
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
-a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
-and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
+a \code{params} arguement, and a \code{as.data.frame} arguement.}
 
 \item{summary_fn}{A function which accepts a single dataframe arguement customised to fit with the standard
 output of \code{scenario_analysis}  and your \code{simulate_model} function. Defaults to \code{NULL} for which

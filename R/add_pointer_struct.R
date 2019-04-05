@@ -1,4 +1,4 @@
-#'Adds Pointer Structure to R objects for use in Pomp
+#'Adds Pointer Structure to R objects
 #'
 #' @param char A character vector.
 #' @param length The length of the returned object.

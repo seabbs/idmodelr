@@ -14,8 +14,7 @@ simulate_model(model, sim_fn, inits = NULL, params = NULL,
 \item{model}{A model compatible with your \code{sim_fn}.}
 
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
-a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
-and \code{simulate} from the \code{\link[pomp]{pomp}} package.}
+a \code{params} arguement, and a \code{as.data.frame} arguement.}
 
 \item{inits}{A dataframe of initial conditions, optionally a named vector can be used.}
 
