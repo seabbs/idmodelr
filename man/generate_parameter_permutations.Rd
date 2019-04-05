@@ -29,8 +29,7 @@ identify each seperate scenarios. If parameters are included here that would nor
 should be added to the excluded_params arguement}
 
 \item{sampling_function}{A sampling function, this should be designed such that it's input is a matrix
-with each paramter having a named row. It should return it's output in the same format. This has been tested with
-the \code{rprior} function from the \href{https://kingaa.github.io/pomp/}{pomp}. If not supplied defaults to passing
+with each paramter having a named row. It should return it's output in the same format. If not supplied defaults to passing
 through parameters, this may not be the required behaviour.}
 
 \item{parameter_samples}{The number of parameter samples to take, defaults to one.}

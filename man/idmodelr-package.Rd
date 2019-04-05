@@ -6,6 +6,8 @@
 \alias{idmodelr-package}
 \title{idmodelr: Utility Functions for Infectious Disease Modelling}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 Contains utility functions for use in infectious disease modelling. Basic modelling tools are also supplied as starting blocks for more complex models.
 }
 \seealso{

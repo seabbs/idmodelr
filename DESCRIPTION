@@ -12,17 +12,17 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.2.0)
 Imports: dplyr,
+    rlang,
     ggplot2,
     gridExtra,
     magrittr,
     purrr,
+    future,
     furrr,
     reshape2,
     stringr,
     tibble,
     tidyr,
-    plotly,
-    readr,
     deSolve
 Suggests: testthat,
     rmarkdown,

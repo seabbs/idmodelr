@@ -15,8 +15,7 @@
 #' identify each seperate scenarios. If parameters are included here that would normally be sampled then they
 #' should be added to the excluded_params arguement
 #' @param sampling_function A sampling function, this should be designed such that it's input is a matrix
-#' with each paramter having a named row. It should return it's output in the same format. This has been tested with
-#' the \code{rprior} function from the [pomp](https://kingaa.github.io/pomp/). If not supplied defaults to passing
+#' with each paramter having a named row. It should return it's output in the same format. If not supplied defaults to passing
 #' through parameters, this may not be the required behaviour.
 #' @param parameter_samples The number of parameter samples to take, defaults to one.
 #' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independantly
@@ -55,6 +54,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
                                             save = TRUE, save_name = "parameter_permutations",
                                             save_path = NULL, save_format = NULL, rerun = FALSE,
                                             verbose = FALSE, ...) {
+  id <- NULL; scenario <- NULL;
   ## defaults to saving file as RDS other options can be specified in addition
   file_rds <- paste0(save_name, ".rds")
   file_path <- ifelse(!is.null(save_path),

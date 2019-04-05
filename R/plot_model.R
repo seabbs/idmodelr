@@ -48,6 +48,7 @@ plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column
                              strat = NULL, hold_out_var = NULL, new_var = "incidence",
                              id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
 {
+  ic_col <- NULL;
   if (!is.null(traj) && "idmodelr" %in% class(traj)) {
     message("Trajectories/simulations have already been summarised by idmodelr - passing directly to plotting function")
     sum_model <- traj

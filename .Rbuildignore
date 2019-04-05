@@ -11,3 +11,10 @@
 ^\.git-credential-cache$
 ^\.rstudio$
 ^inst/scripts$
+^binder$
+^pkgnet$
+^_pkgdown.yml$
+^Makefile$
+^appveyor.yml$
+^.github$
+

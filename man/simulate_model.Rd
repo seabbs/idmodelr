@@ -11,8 +11,7 @@ simulate_model(model, sim_fn, inits = NULL, params = NULL,
   summary_var = FALSE, verbose = FALSE, ...)
 }
 \arguments{
-\item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
-recommended.}
+\item{model}{A model compatible with your \code{sim_fn}.}
 
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
 a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}

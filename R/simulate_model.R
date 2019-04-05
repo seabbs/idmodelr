@@ -1,7 +1,6 @@
 #' A Function to Simulate a Model from a Generic Simulation Function, with Pre and Post Processing
 #' @inheritParams aggregate_model
-#' @param model A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
-#' recommended.
+#' @param model A model compatible with your \code{sim_fn}.
 #' @param sim_fn A generic simulation function, with the first arguement as the model object,
 #' a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}
 #'   and \code{simulate} from the \code{\link[pomp]{pomp}} package.

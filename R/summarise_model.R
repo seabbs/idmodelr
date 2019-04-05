@@ -24,6 +24,7 @@
 #' @import reshape2 ggplot2 stringr magrittr
 #' @importFrom dplyr do mutate group_by
 #' @importFrom tibble as_tibble
+#' @importFrom stats median quantile var
 #' @return A list of summarised/aggregated dataframes for an inputed model trajectory. These are the model trajectories, probability
 #'   of extinction, and model summary trajectories.
 #' @export
@@ -37,6 +38,7 @@ summarise_model <- function(traj = NULL, state.names = NULL, data = NULL, time.c
                             id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE,
                             verbose = FALSE) {
 
+  . <- NULL; infected <- NULL; value <- NULL;
   if (!is.null(init.date)) {
     init.date <- as.Date(init.date)
   }

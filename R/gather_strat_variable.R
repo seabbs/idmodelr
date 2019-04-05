@@ -8,7 +8,7 @@
 #' @import magrittr
 #' @importFrom tidyr gather
 #' @importFrom purrr map_df
-#' @importFrom rlang syms
+#' @importFrom rlang syms sym
 #' @examples
 #'
 #' df <- tibble::tibble(time = 0, A1 = 1, A2 = 2, A3 = 3)
@@ -23,7 +23,7 @@ gather_strat_variable <- function(df,  id_col, compartment, hold_out_var = NULL,
   }
 
   df <- df %>%
-    gather(key = id_col, value = compartment , !!!syms(compartments_long))
+    gather(key = !!sym(id_col), value = !!sym(compartment), !!!syms(compartments_long))
 
   if (!is.null(groups)) {
     df <- map_df(1:strat, function(i, df_internal) {

@@ -59,6 +59,8 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
                               save_name = "scenario_analysis_results", save_path = NULL,
                               save_format = NULL, rerun = FALSE, verbose = FALSE,
                               by_row = FALSE, test = FALSE, ...) {
+  scenario <- NULL; parameters <- NULL
+
   file_rds <- paste0(save_name, ".rds")
   file_path <- ifelse(!is.null(save_path),
                       file.path(save_path, file_rds),

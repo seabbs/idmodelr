@@ -4,7 +4,7 @@
 \alias{model_df_to_vector}
 \title{Extracts a Single Column, Summarises if from Simulation}
 \usage{
-model_df_to_vector(df, com_var, id_var = NULL, sum_fn = median)
+model_df_to_vector(df, com_var, id_var = NULL, sum_fn = NULL)
 }
 \arguments{
 \item{df}{A data frame of dynamic system output.}

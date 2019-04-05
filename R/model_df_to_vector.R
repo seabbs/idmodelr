@@ -9,6 +9,7 @@
 #' @export
 #' @import magrittr
 #' @importFrom dplyr enquo pull group_by summarise bind_rows
+#' @importFrom stats median
 #' @examples
 #' library(dplyr)
 #' ## Extract a vector with no repeats
@@ -20,7 +21,11 @@
 #'
 #' model_df_to_vector(df, Petal.Length, "id", sum_fn = mean)
 model_df_to_vector <- function(df, com_var, id_var = NULL,
-                               sum_fn = median) {
+                               sum_fn = NULL) {
+  if (is.null(sum_fn)) {
+    sum_fn <- median
+  }
+
   com_var <- enquo(com_var)
 
   if ((!is.null(id_var) &&

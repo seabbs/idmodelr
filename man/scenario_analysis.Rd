@@ -16,8 +16,7 @@ Using the default options it will save results when run for the first time, and 
 
 \item{variable_params}{A character vector containing the names of the paramters that are varied in \code{parameter_df}.}
 
-\item{model}{A model compatible with your \code{sim_fn}. A \code{\link[pomp]{pomp}} model object is
-recommended.}
+\item{model}{A model compatible with your \code{sim_fn}.}
 
 \item{sim_fn}{A generic simulation function, with the first arguement as the model object,
 a \code{params} arguement, and a \code{as.data.frame} arguement. Tested to work with \code{trajectory}

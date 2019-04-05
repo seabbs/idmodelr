@@ -11,7 +11,7 @@
 #'
 #' @return Returns nothing, saves data in the specified file formats
 #' @export
-#'
+#' @importFrom utils write.csv
 #' @examples
 #'
 #' ## save_data(cars, name = "cars")
