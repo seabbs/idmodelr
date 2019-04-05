@@ -1,23 +1,19 @@
-#' Summarise and Plot Model Trajectories
-#' @description This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-#' manipulation of several simulations or data. It also allows complex model output to be aggregated.
-#' Additionally if data is present, then an additional plot can be displayed
-#' with data and potentially observations generated. This function is heaviliy
-#' based on [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
-#' the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
-#' @inheritParams summarise_model
-#' @param lines.data Logical. If \code{TRUE}, the data will be plotted as lines.
-#' @param alpha Transparency of the trajectories (between 0 and 1).
-#' @param plot if \code{TRUE} the plot is displayed, and returned otherwise.
-#' @param colour A character vector. If a character, will use that colour to plot trajectories. If "all", use all available colours.
-#'  If \code{NULL}, don't set the colour.
-#' @param same Logical. If \code{TRUE} does not facet plots.
-#' @param set_theme Set the ggplot2 theme, defaults to theme_minimal.
-#' @import reshape2 ggplot2 stringr
-#' @importFrom tibble as_tibble
-#' @return Optionally prints or stores a plot of trajectories
+#' Plot Compartment Populations over Time for a Model Simulation
+#'
+#' @description Make seperate plots for each model compartment. Assumes model output is structured
+#' as that produced from \code{\link[idmodelr]{solve_ode}}.
+#' @param sim A tibble of model output as formated by \code{\link[idmodelr]{solve_ode}}
+#' @param facet Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
+#' otherwise it will be.
+#' @param prev_sim A second tibble of model output formated as for \code{sim}. Used to compare to model runs.
+#' @param model_labels A character vector of model names, defaults to \code{c("Current", "Previous")}.
+#' @return A Plot of each model compartments population over time.
+#' @import ggplot2
+#' @import viridis
+#' @importFrom tidyr gather
+#' @importFrom dplyr mutate bind_rows
 #' @export
-#' @seealso summarise_model aggregate_model
+#'
 #' @examples
 #'
 #'## Intialise
@@ -33,203 +29,97 @@
 #'times <- seq(tbegin, tend, 1)
 #'
 #' ##Vectorise input
-#'parameters <- c(beta = beta)
-#'inits <- c(S = S_0, I = I_0)
+#'parameters <- as.matrix(c(beta = beta))
+#'inits <- as.matrix(c(S = S_0, I = I_0))
 #'
-#'SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
+#'sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 #'
-#'plot_model(SI_sim)
- #'
-plot_model <- function(traj = NULL, state.names = NULL, data = NULL, time.column = "time",
-                             lines.data = FALSE, summary = TRUE, replicate.column = "replicate",
-                             non.extinct = NULL, alpha = 1, plot = TRUE, colour = "firebrick2",
-                             set_theme = theme_minimal, init.date = NULL, same = FALSE,
-                             aggregate_to = NULL, compartments = NULL,
-                             strat = NULL, hold_out_var = NULL, new_var = "incidence",
-                             id_col = NULL, groups = NULL, total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
-{
-  ic_col <- NULL;
-  if (!is.null(traj) && "idmodelr" %in% class(traj)) {
-    message("Trajectories/simulations have already been summarised by idmodelr - passing directly to plotting function")
-    sum_model <- traj
+#'plot_model(sim, facet = FALSE)
+#'
+#'plot_model(sim, facet = TRUE)
+#'
+#'## Compare with an updated model run
+#'
+#'#'## Intialise
+#'R_0 = 1.3
+#'beta = R_0
+#'parameters <- as.matrix(c(beta = beta))
+#'
+#'new_sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
+#'
+#'
+#'plot_model(new_sim,sim, facet = FALSE)
+#'
+#'plot_model(new_sim, sim, facet = TRUE)
+
+plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
+                       facet = TRUE) {
+
+  time <- NULL; Compartment <- NULL; Model <- NULL; Population <- NULL;
+  ## Define default lables for multiple models
+  if (is.null(model_labels)) {
+    model_labels <- c("Current", "Previous")
+  }
+
+  gather_columns_for_plot <- function(sim){
+    order <- colnames(sim)[-1]
+
+    tidy_sim <- sim %>%
+      gather(key = "Compartment", value = "Population", -time) %>%
+      mutate(Compartment = factor(Compartment, levels = order))
+
+    return(tidy_sim)
+  }
+
+  tidy_sim <- gather_columns_for_plot(sim)
+
+  ## Add in previous model simulation if present
+  if (!is.null(prev_sim)) {
+    if ("data.frame" %in% class(prev_sim)) {
+      prev_sim <-  gather_columns_for_plot(prev_sim)
+
+      tidy_sim <- tidy_sim %>%
+        mutate(Model = model_labels[1]) %>%
+        bind_rows(prev_sim %>%
+                    mutate(Model = model_labels[2])) %>%
+        mutate(Model = factor(Model, levels = model_labels))
+    }else{
+      stop("prev_sim must be a model simulation dataframe or not be specified.")
+    }
+  }
+
+  if (!is.null(prev_sim)) {
+    plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment, linetype = Model))
   }else{
-    sum_model <- summarise_model(traj, state.names = state.names, time.column = time.column,
-                                summary = summary, replicate.column = replicate.column,
-                                non.extinct = non.extinct, init.date = init.date, aggregate_to = aggregate_to,
-                                compartments = compartments, strat = strat, hold_out_var = hold_out_var,
-                                id_col = id_col, groups = groups, new_var = new_var, total_pop = total_pop,
-                                summary_var = summary_var, verbose = verbose)
+    plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment))
   }
 
-  if (!is.null(aggregate_to)) {
-    if (aggregate_to %in% "tidy") {
-      if (same) {
-        if (verbose) {
-          message("Cannot plot all states and stratifications on the same graph, seeting same to be FALSE")
-        }
-        same <- FALSE
-      }
-  }
+  plot <- plot +
+    geom_line() +
+    theme_minimal() +
+    labs(x = "Year") +
+    scale_color_viridis(discrete = TRUE, end = 0.9)
 
-    if (is.null(id_col)) {
-      id_col <- "id"
+  if (facet) {
+    plot <- plot +
+      facet_wrap(~Compartment)
+
+    if (!is.null(prev_sim)) {
+      plot <- plot +
+        theme(legend.position = "bottom") +
+        guides(col = FALSE)
+    }else{
+      plot <- plot +
+        theme(legend.position = "none")
     }
   }
 
-  if (!is.null(id_col) && !is.null(colour)) {
-    if (verbose) {
-      message("Cannot customise colour when tidy aggregating")
-    }
-    colour <- NULL
+  ## Add facetting for previous simulation
+  if (!facet && !is.null(prev_sim)) {
+    plot <- plot +
+      theme(legend.position = "bottom") +
+      facet_wrap(~Model)
   }
 
-  if (!is.null(traj) & is.null(sum_model[["sum_traj"]])) {
-    if (summary) {
-      summary <- FALSE
-    }
-  }
-  if (colour == "all" && summary == TRUE) {
-    warning("Ignoring ", sQuote("colour = \"all\""), " which doesn't make sense if ",
-            sQuote("summary == TRUE"))
-    colour <- NULL
-  }
-  if (!is.null(traj)) {
-    if (summary) {
-      melt_states <- c(time.column, "state")
-      if (!is.null(id_col)) {
-        melt_states <- c(melt_states, id_col)
-      }
-        traj.CI.line <- melt(sum_model[["sum_traj"]][c(melt_states,
-                                       "mean", "median")], id.vars = melt_states)
-        traj.CI.area <- melt(sum_model[["sum_traj"]][c(melt_states,
-                                       "low_95", "low_50", "up_50", "up_95")], id.vars = melt_states)
-
-        traj.CI.area$type <- sapply(traj.CI.area$variable,
-                                    function(x) {
-                                      str_split(x, "_")[[1]][1]
-                                    })
-        traj.CI.area$CI <- sapply(traj.CI.area$variable,
-                                  function(x) {
-                                    str_split(x, "_")[[1]][2]
-                                  })
-        traj.CI.area$variable <- NULL
-        caststates <- paste(c(melt_states, "CI~type"), sep = "+", collapse = "+")
-        traj.CI.area <- dcast(traj.CI.area, caststates)
-
-        p <- ggplot(traj.CI.area)
-        if (!same) {
-          p <- p + facet_wrap(~state, scales = "free_y")
-        }
-        if (is.null(colour)) {
-          if (is.null(id_col)) {
-            p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
-                                                                 ymin = "low", ymax = "up", alpha = "CI", fill = id_col,
-                                                                 group = id_col, colour = id_col))
-            p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
-                                                               y = "value", linetype = "variable", fill = id_col,
-                                                               group = id_col, colour = id_col))
-          }else {
-            p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
-                                                                 ymin = "low", ymax = "up", alpha = "CI"))
-            p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
-                                                               y = "value", linetype = "variable"))
-          }
-
-        }
-        else if (colour == "all") {
-          p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
-                                                               ymin = "low", ymax = "up", alpha = "CI", fill = "state"))
-          p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
-                                                             y = "value", linetype = "variable", colour = "state"))
-        }
-        else {
-          p <- p + geom_ribbon(data = traj.CI.area, aes_string(x = time.column,
-                                                               ymin = "low", ymax = "up", alpha = "CI"), fill = colour)
-          p <- p + geom_line(data = traj.CI.line, aes_string(x = time.column,
-                                                             y = "value", linetype = "variable"), colour = colour)
-        }
-        p <- p + scale_alpha_manual("Percentile", values = c(`95` = 0.25,
-                                                             `50` = 0.45), labels = c(`95` = "95th", `50` = "50th"))
-        p <- p + scale_linetype("Stats")
-        p <- p + guides(linetype = guide_legend(order = 1))
-      }
-      else {
-        p <- ggplot(sum_model[["traj"]])
-        if (!same) {
-          p <- p + facet_wrap(~state, scales = "free_y")
-        }
-        if (is.null(colour)) {
-          if (same) {
-            p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column,
-                                                          y = "value", group = "state", color = "state"),
-                               alpha = alpha)
-          }
-          else {
-            if (is.null(id_col)) {
-              p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column, y = "value",
-                                                                        group = id_col, colour = id_col),
-                                 alpha = alpha)
-            }else {
-              p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column, y = "value",
-                                                                        group = replicate.column),
-                                 alpha = alpha)
-            }
-
-          }
-        }
-        else if (colour == "all") {
-          p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column,
-                                                        y = "value", group = replicate.column, color = replicate.column),
-                             alpha = alpha)
-        }
-        else {
-          p <- p + geom_line(data = sum_model[["traj"]], aes_string(x = time.column,
-                                                        y = "value", group = replicate.column), alpha = alpha,
-                             colour = colour)
-        }
-      }
-      if (!is.null(non.extinct)) {
-        p <- p + geom_line(data = sum_model[["prob_ext"]], aes_string(x = time.column,
-                                                       y = "value"), color = "black", alpha = 1)
-      }
-    }
-    else {
-      p <- ggplot()
-    }
-    if (!is.null(data)) {
-      obs_names <- grep("obs", names(sum_model[["obs"]]), value = TRUE)
-      if (length(obs_names) == 0) {
-        obs_names <- setdiff(names(sum_model[["obs"]]), time.column)
-      }
-      if (is.null(id_col)) {
-        data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = "state")
-
-        if (lines.data) {
-          p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                                   y = "value"), colour = "black")
-        }
-        else {
-          p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                                    y = "value"), colour = "black")
-        }
-      }else{
-        data <- melt(sum_model[["obs"]], measure.vars = obs_names, variable.name = c("state", id_col))
-
-        if (lines.data) {
-          p <- p + geom_line(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                                   y = "value", group = id_col, colour = id_col))
-        }
-        else {
-          p <- p + geom_point(data = sum_model[["obs"]], aes_string(x = time.column,
-                                                                    y = "value", group = ic_col, colour = id_col))
-        }
-      }
-    }
-    p <- p  + set_theme() + theme(legend.position = "bottom", legend.box = "horizontal")
-    if (plot) {
-      print(p)
-    }
-    else {
-      return(p)
-    }
+return(plot)
 }

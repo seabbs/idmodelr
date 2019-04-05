@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # Infectious Disease Modelling Utilities  <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.5.8-blue.svg?style=flat)](https://github.com/getTBinR)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.2.0-blue.svg?style=flat)](https://github.com/getTBinR)
 [![Build Status](https://travis-ci.org/seabbs/idmodelr.svg?branch=master)](https://travis-ci.org/seabbs/idmodelr)
 [![codecov](https://codecov.io/gh/seabbs/idmodelr/branch/master/graph/badge.svg)](https://codecov.io/gh/seabbs/idmodelr)
 [![Documentation via pkgdown](https://img.shields.io/badge/Documentation-click here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)

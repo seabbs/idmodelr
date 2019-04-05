@@ -34,5 +34,5 @@ dt <- 1
 parameters <- c(beta = beta, gamma = gamma, tau = tau, mu = mu)
 inits <- c(S = S_0, E = E_0, I = I_0, R_0 = R_0)
 
-SEIR_ode(1, inits, parameters)
+SEIR_demo_ode(1, inits, parameters)
 }

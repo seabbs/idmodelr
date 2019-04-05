@@ -2,92 +2,26 @@
 % Please edit documentation in R/plot_model.R
 \name{plot_model}
 \alias{plot_model}
-\title{Summarise and Plot Model Trajectories}
+\title{Plot Compartment Populations over Time for a Model Simulation}
 \usage{
-plot_model(traj = NULL, state.names = NULL, data = NULL,
-  time.column = "time", lines.data = FALSE, summary = TRUE,
-  replicate.column = "replicate", non.extinct = NULL, alpha = 1,
-  plot = TRUE, colour = "firebrick2", set_theme = theme_minimal,
-  init.date = NULL, same = FALSE, aggregate_to = NULL,
-  compartments = NULL, strat = NULL, hold_out_var = NULL,
-  new_var = "incidence", id_col = NULL, groups = NULL,
-  total_pop = TRUE, summary_var = FALSE, verbose = FALSE)
+plot_model(sim, prev_sim = NULL, model_labels = NULL, facet = TRUE)
 }
 \arguments{
-\item{traj}{Tibble of model trajectories}
+\item{sim}{A tibble of model output as formated by \code{\link[idmodelr]{solve_ode}}}
 
-\item{state.names}{A character vector. Names of the state variables to plot.
-If \code{NULL} (default) all state variables are plotted.}
+\item{prev_sim}{A second tibble of model output formated as for \code{sim}. Used to compare to model runs.}
 
-\item{data}{A data frame. Observation times and observed data. The time column must match that used in the model object, whilt
-the observation name should also match one of those found in the model object.}
+\item{model_labels}{A character vector of model names, defaults to \code{c("Current", "Previous")}.}
 
-\item{time.column}{A character vector. The column in the data that indicates time}
-
-\item{lines.data}{Logical. If \code{TRUE}, the data will be plotted as lines.}
-
-\item{summary}{Logical. If \code{TRUE}, the mean, median as well as the 50th and 95th percentile
-of the trajectories are plotted (default). If \code{FALSE}, all individual trajectories are plotted.}
-
-\item{replicate.column}{A character vector. The column in the data that indicates the replicate
-(if muliple replicates are to be plotted, i.e. if \code{summary} is \code{FALSE}}
-
-\item{non.extinct}{A character vector. Names of the infected states which must be non-zero so the epidemic is still ongoing.
-When the names of these states are provided, the extinction probability is plotted by computing the proportion of faded-out
-epidemics over time. An epidemic has faded-out when all the infected states (whose names are provided) are equal to 0.
-This is only relevant for stochastic models.}
-
-\item{alpha}{Transparency of the trajectories (between 0 and 1).}
-
-\item{plot}{if \code{TRUE} the plot is displayed, and returned otherwise.}
-
-\item{colour}{A character vector. If a character, will use that colour to plot trajectories. If "all", use all available colours.
-If \code{NULL}, don't set the colour.}
-
-\item{set_theme}{Set the ggplot2 theme, defaults to theme_minimal.}
-
-\item{init.date}{Character. Date of the first point of the time series (default to \code{NULL}). If provided, the x-axis will be
-in calendar format. NB: currently only works if the unit of time is the day.}
-
-\item{same}{Logical. If \code{TRUE} does not facet plots.}
-
-\item{aggregate_to}{A character vector or list specifying the aggregation operations to perform on the
-model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
-and incidence.}
-
-\item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
-specified once for all aggregation functions or for each function seperately.}
-
-\item{strat}{The number of stratified groups in the model.}
-
-\item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
-specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
-not need to be used.}
-
-\item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
-
-\item{id_col}{A character string containing the name of the new id column.}
-
-\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
-
-\item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
-calculated when summarsing the model demographics.}
-
-\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
-all stratified levels.}
-
-\item{verbose}{Logical (defaults to \code{FALSE}), indicates if internal process messages should be printed}
+\item{facet}{Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
+otherwise it will be.}
 }
 \value{
-Optionally prints or stores a plot of trajectories
+A Plot of each model compartments population over time.
 }
 \description{
-This function uses faceting to plot all trajectories in a data frame. It allows the conveniant
-manipulation of several simulations or data. It also allows complex model output to be aggregated.
-Additionally if data is present, then an additional plot can be displayed
-with data and potentially observations generated. This function is heaviliy
-based on \href{https://github.com/sbfnk/fitR/blob/master/R/plot.r}{plotTraj} from
-the \href{https://github.com/sbfnk/fitR}{fitR} package written by \href{http://sbfnk.github.io/}{Sebaustian Funk}.
+Make seperate plots for each model compartment. Assumes model output is structured
+as that produced from \code{\link[idmodelr]{solve_ode}}.
 }
 \examples{
 
@@ -104,14 +38,26 @@ tend = 50
 times <- seq(tbegin, tend, 1)
 
 ##Vectorise input
-parameters <- c(beta = beta)
-inits <- c(S = S_0, I = I_0)
+parameters <- as.matrix(c(beta = beta))
+inits <- as.matrix(c(S = S_0, I = I_0))
 
-SI_sim <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
+sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 
-plot_model(SI_sim)
+plot_model(sim, facet = FALSE)
 
-}
-\seealso{
-summarise_model aggregate_model
+plot_model(sim, facet = TRUE)
+
+## Compare with an updated model run
+
+#'## Intialise
+R_0 = 1.3
+beta = R_0
+parameters <- as.matrix(c(beta = beta))
+
+new_sim <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
+
+
+plot_model(new_sim,sim, facet = FALSE)
+
+plot_model(new_sim, sim, facet = TRUE)
 }

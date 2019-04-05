@@ -22,6 +22,7 @@
 #' model_df_to_vector(df, Petal.Length, "id", sum_fn = mean)
 model_df_to_vector <- function(df, com_var, id_var = NULL,
                                sum_fn = NULL) {
+  var <- NULL;
   if (is.null(sum_fn)) {
     sum_fn <- median
   }

@@ -9,6 +9,7 @@
 #' @importFrom purrr map
 #' @importFrom dplyr select bind_cols
 #' @importFrom tibble as_tibble
+#' @importFrom stringr str_extract
 #' @import magrittr
 #' @return A dataframe of model output that has its dimensionality reduced
 #' @export

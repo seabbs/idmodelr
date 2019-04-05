@@ -1,4 +1,4 @@
-context("SI_ode.R")
+context("SIo_ode")
 
 
 
@@ -11,8 +11,7 @@ inits <- c(S = S_0, I = I_0)
 
 test <- SI_ode(1, inits, parameters)
 
-result <- list(c(S = -2.997, S = 2.997))
 
 test_that("SI_ode can correctly return rates of change over one timestep", {
-  expect_equal(result, test)
+  expect_known_output(test, file = "../../tests/test-files/SI_ode/test-01.rds")
 })

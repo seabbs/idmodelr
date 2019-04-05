@@ -3,6 +3,8 @@
 
 ## Feature updates
 
+* Added additional models.
+* Simplified utility functions ready for extension.
 
 ## Package updates
 

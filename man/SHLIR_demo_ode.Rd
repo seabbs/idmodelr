@@ -37,5 +37,5 @@ dt <- 1
 parameters <- c(beta = beta, gamma_H = gamma_H, gamma_L = gamma_L, nu = nu, tau = tau, mu = mu)
 inits <- c(S = S_0, H = H_0, L = L_0, I = I_0, R_0 = R_0)
 
-SHLIR_ode(1, inits, parameters)
+SHLIR_demo_ode(1, inits, parameters)
 }
