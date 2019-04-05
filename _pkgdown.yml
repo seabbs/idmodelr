@@ -1,0 +1,60 @@
+url: samabbott.co.uk/idmodelr/
+  template:
+  params:
+  bootswatch: lumen
+docsearch:
+  api_key:
+  index_name: idmodelr
+
+development:
+  mode: devel
+
+navbar:
+  type: inverse
+left:
+  - text: "Home"
+href: index.html
+  - text: News
+menu:
+  - text: "Blog posts"
+href: https://www.samabbott.co.uk/tags/idmodelr/
+  - text: "------------------"
+- text: "Change log"
+href: news/index.html
+- icon: fa-file-code-o
+text: "Functions"
+href: reference/index.html
+
+reference:
+  - title: Deterministic Compartmental Models
+desc:  Simple deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification.
+contents:
+  - ends_with("I_ode")
+  - ends_with("R_ode")
+  - ends_with("demo_ode")
+- title: Simulation Utilities
+desc: Functions for solving, simulation, and summarising ODE ID models.zs
+contents:
+  - solve_ode
+  - simulate_model
+  - summarise_model
+- title: Plotting Utilities
+desc: Functions for plotting ID models
+contents:
+  - starts_with("plot")
+- title: Workflow Utilities
+desc: Functions to streamline the workflow of using ID models. These include random parameter set generation, scenario analysis and estimation of normal distrubutions based on published information.
+contents:
+  - generate_parameter_permutations
+  - scenario_analysis
+  - estimate_norm_dist_from_ci
+- title: Munging Utilities
+desc: Functions to facilitate munging (i.e manipulation) of ID model simulations
+contents:
+  - starts_with("gather_")
+  - starts_with("aggregate_")
+  - starts_with("combine_")
+  - model_df_to_vector
+- title: General Utilities
+contents:
+  - save_data

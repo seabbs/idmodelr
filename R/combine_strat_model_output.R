@@ -19,8 +19,8 @@
 #' combine_strat_model_output(df, 3, compartments = "S", hold_out_var = "time")
 #'
 combine_strat_model_output <- function(df, strat = NULL,
-                               compartments = NULL,
-                               hold_out_var = NULL
+                                       compartments = NULL,
+                                       hold_out_var = NULL
 ) {
 
   if (is.null(strat)) {

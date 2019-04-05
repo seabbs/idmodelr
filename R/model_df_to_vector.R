@@ -38,4 +38,3 @@ model_df_to_vector <- function(df, com_var, id_var = NULL,
 
   return(df_sum)
 }
-

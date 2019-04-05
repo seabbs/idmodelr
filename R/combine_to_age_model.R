@@ -1,4 +1,3 @@
-
 #' Combine an Infectious Disease Model To a Demographic Model
 #' @description  Similarly to \code{\link[idmodelr]{combine_strat_model_output}} this functions
 #' dedimensionalises model output into just the demographic components.
@@ -70,8 +69,8 @@ combine_to_age_model <- function(df, age_com = NULL,
     )
   if (total_pop) {
     tmp3 <-  tmp3 %>% mutate(N = tmp2 %>%
-                      select(.dots = age_group_names) %>%
-                      rowSums)
+                               select(.dots = age_group_names) %>%
+                               rowSums)
   }
 
   return(tmp3)
