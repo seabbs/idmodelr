@@ -12,8 +12,7 @@ summarise_model(traj = NULL, state.names = NULL, data = NULL,
   summary_var = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{traj}{Data frame, generic model output although tailored
-to work with \href{https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp}{pomp} model objects.}
+\item{traj}{Tibble of model trajectories}
 
 \item{state.names}{A character vector. Names of the state variables to plot.
 If \code{NULL} (default) all state variables are plotted.}

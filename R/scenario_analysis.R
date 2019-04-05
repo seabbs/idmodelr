@@ -24,8 +24,8 @@
 #' @importFrom dplyr select bind_cols group_by ungroup collect arrange_
 #' @importFrom tidyr nest
 #' @importFrom purrr map
-#' @importFrom multidplyr create_cluster partition
-#' @importFrom parallel clusterExport stopCluster
+#' @importFrom furrr future_map
+#' @importFrom future plan mutliprocess sequential
 #' @examples
 #'
 #' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
@@ -69,17 +69,6 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
     save <- FALSE
   }else {
 
-    if (cores > 1 || test) {
-      ## Set up cluster and export functions
-      cluster <- create_cluster(cores)
-      parallel::clusterExport(cluster,
-                              c(as.character(quote(model)),
-                               as.character(quote(sim_fn)),
-                               as.character(quote(by_row)),
-                               as.character(quote(verbose))),
-                              envir = environment())
-    }
-
     ## Run model trajectories
     scenario_results <- parameter_df %>%
       select(-sample)
@@ -110,39 +99,30 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
 
     # partition data between cores
     if (cores > 1 || test) {
-      scenario_results <- scenario_results %>%
-        partition(cluster = cluster)
+      plan(multiprocess, workers = cores)
+    }else{
+      plan(sequential)
     }
 
     # run model simulations for each paramter set
     scenario_results <- scenario_results %>%
-      mutate(simulations = purrr::map(parameters,
+      mutate(simulations = future_map(parameters,
                                        ~ idmodelr::simulate_model(model,
                                                                   sim_fn = sim_fn,
                                                                   params = .,
                                                                   as_tibble = TRUE,
                                                                   by_row = by_row,
                                                                   verbose = verbose,
-                                                                  ...)
+                                                                  ...),
+                                      .progress = TRUE
                                        )
       )
 
-    ## collect results from each core
-    if (cores > 1 || test) {
-      scenario_results <- scenario_results %>%
-        collect
-    }
 
     ##ungroup results
     scenario_results <- scenario_results %>%
       ungroup
 
-    ## drop leftover parallel variables
-    if (cores > 1 || test) {
-      scenario_results <- scenario_results %>%
-        arrange_(.dots = c(group_var_string[-1], group_var_string[1])) %>%
-        select(-PARTITION_ID)
-    }
     ## remove compute variable names and replace with actual variable names
     if (!is.null(variable_params)) {
       col_names <- colnames(scenario_results)

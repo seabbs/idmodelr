@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk}
+\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (0000-0001-8057-8037)
 
 }
 \keyword{internal}

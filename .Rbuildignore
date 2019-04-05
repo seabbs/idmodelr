@@ -1,3 +1,4 @@
+^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
@@ -9,3 +10,4 @@
 ^\.gitconfig$
 ^\.git-credential-cache$
 ^\.rstudio$
+^inst/scripts$

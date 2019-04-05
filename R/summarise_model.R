@@ -4,8 +4,7 @@
 #'   [plotTraj](https://github.com/sbfnk/fitR/blob/master/R/plot.r) from
 #' the [fitR](https://github.com/sbfnk/fitR) package written by [Sebaustian Funk](http://sbfnk.github.io/).
 #' @inheritParams aggregate_model
-#' @param traj Data frame, generic model output although tailored
-#' to work with [pomp](https://www.rdocumentation.org/packages/pomp/versions/1.4.1.1/topics/pomp) model objects.
+#' @param traj Tibble of model trajectories
 #' @param state.names A character vector. Names of the state variables to plot.
 #' If \code{NULL} (default) all state variables are plotted.
 #' @param data A data frame. Observation times and observed data. The time column must match that used in the model object, whilt
