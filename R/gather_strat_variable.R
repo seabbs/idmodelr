@@ -11,7 +11,7 @@
 #' @importFrom rlang syms sym
 #' @examples
 #'
-#' df <- tibble::tibble(time = 0, A1 = 1, A2 = 2, A3 = 3)
+#' df <- data.frame(time = 0, A1 = 1, A2 = 2, A3 = 3)
 #' gather_strat_variable(df, id_col = "Age", compartment = "A",
 #'                       strat = 3, groups = c("Children", "Young adults", "Adults"))
 gather_strat_variable <- function(df,  id_col, compartment, hold_out_var = NULL, strat, groups = NULL) {

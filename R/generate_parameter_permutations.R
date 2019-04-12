@@ -20,11 +20,6 @@
 #' @param parameter_samples The number of parameter samples to take, defaults to one.
 #' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independantly
 #' sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.
-#' @param save Logical specifying if the results should be saved. Defaults to \code{TRUE}.
-#' @param save_name A character string of the name the results should be saved under.
-#' @param save_path A character string indicating the saving location for the results.
-#' If not specified defaults to saving in the working directory.
-#' @param save_format If additional file formats are required, see \code{\link[idmodelr]{save_data}}.
 #' @param rerun A logical indicating if the function should be rerun or saved results should be loaded.
 #' Defaults to \code{FALSE}.
 #' @param verbose A logical, indicating if progress messages should be printed, defaults to \code{FALSE}.
@@ -39,39 +34,28 @@
 #'
 #' @examples
 #'
-#' scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
-#' variable_params <-  tibble::data_frame(variable = c(0, 0.5, 1))
+#' scenarios <- data.frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+#' variable_params <-  data.frame(variable = c(0, 0.5, 1))
 #' fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3, 4))
 #' sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
 #'
 #' generate_parameter_permutations(variable_params, fixed_params, sample_params,
 #'                                 excluded_params = c("variable"), scenarios,
-#'                                 parameter_samples = 1, save = FALSE)
+#'                                 parameter_samples = 1)
 generate_parameter_permutations <- function(variable_params = NULL, fixed_params = NULL,
                                             sample_params = NULL, excluded_params = NULL,
                                             scenarios = NULL, sampling_function = NULL,
                                             parameter_samples = 1, repeat_sample = TRUE,
-                                            save = TRUE, save_name = "parameter_permutations",
-                                            save_path = NULL, save_format = NULL, rerun = FALSE,
-                                            verbose = FALSE, ...) {
+                                            rerun = FALSE, verbose = FALSE, ...) {
   id <- NULL; scenario <- NULL;
-  ## defaults to saving file as RDS other options can be specified in addition
-  file_rds <- paste0(save_name, ".rds")
-  file_path <- ifelse(!is.null(save_path),
-                      file.path(save_path, file_rds),
-                      file_rds)
 
-  if (file.exists(file_path) && !rerun) {
-    sample_params <- readRDS(file_path)
-    save <- FALSE
-  }else {
-    if (!is.null(variable_params)) {
-      if (!"data.frame" %in% class(variable_params)) {
-        stop("variable_params must be a data frame")
-      }
-
-      variable_params <- mutate(variable_params, id = 1)
+  if (!is.null(variable_params)) {
+    if (!"data.frame" %in% class(variable_params)) {
+      stop("variable_params must be a data frame")
     }
+
+    variable_params <- mutate(variable_params, id = 1)
+
 
     if (!is.null(scenarios)) {
       if (!"data.frame" %in% class(scenarios)) {
@@ -162,15 +146,6 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
                                                                    exc_params = excluded_params,
                                                                    repeat_sample = repeat_sample)) %>%
       select(-id)
-  }
-
-  ## save results
-  if (save) {
-    saveRDS(sample_params, file_path)
-    if (!is.null(save_format)) {
-      save_data(sample_params, name = save_name,
-                path = save_path, format = save_format)
-    }
   }
 
   return(sample_params)

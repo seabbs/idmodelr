@@ -5,10 +5,8 @@
 \title{A Function to Perform Scenario Analysis for a Generic Model Object.}
 \usage{
 scenario_analysis(parameter_df, variable_params = NULL, model = NULL,
-  sim_fn = NULL, summary_fn = NULL, cores = 1, save = TRUE,
-  save_name = "scenario_analysis_results", save_path = NULL,
-  save_format = NULL, rerun = FALSE, verbose = FALSE,
-  by_row = FALSE, test = FALSE, ...)
+  sim_fn = NULL, summary_fn = NULL, cores = 1, rerun = FALSE,
+  verbose = FALSE, by_row = FALSE, test = FALSE, ...)
 }
 \arguments{
 \item{parameter_df}{A dataframe of parameter permutations as produced by \code{\link[idmodelr]{generate_parameter_permutations}}.
@@ -27,15 +25,6 @@ no summarisation takes place. Warning: If a previous analysis has been saved, ch
 summarise the result. The analysis must be rerun.}
 
 \item{cores}{The number of cores to use for the scenario analysis, defaults to 1.}
-
-\item{save}{Logical specifying if the results should be saved. Defaults to \code{TRUE}.}
-
-\item{save_name}{A character string of the name the results should be saved under.}
-
-\item{save_path}{A character string indicating the saving location for the results.
-If not specified defaults to saving in the working directory.}
-
-\item{save_format}{If additional file formats are required, see \code{\link[idmodelr]{save_data}}.}
 
 \item{rerun}{A logical indicating if the function should be rerun or saved results should be loaded.
 Defaults to \code{FALSE}.}
@@ -62,14 +51,14 @@ It can be used to examine multiple scenarios, with any number of parameter varia
 }
 \examples{
 
-scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
-variable_params <-  tibble::data_frame(variable = c(0, 0.5, 1))
+scenarios <- data.frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+variable_params <-  data.frame(variable = c(0, 0.5, 1))
 fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3, 4))
 sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
 
 parameter_df <- generate_parameter_permutations(variable_params, fixed_params, sample_params,
                                                 excluded_params = c("variable"), scenarios,
-                                                parameter_samples = 10, save = FALSE)
+                                                parameter_samples = 10)
 
 ## set up dummy simulation function (returning an empty dataframe)
 dummy_sim_fn <- function(object, inits, params, times, as.data.frame) {
@@ -87,5 +76,5 @@ dummy_model <- function(){}
 
 ## Run scenario analysis
 scenario_analysis(parameter_df, variable_params = "variable", model = dummy_model,
-                  sim_fn = dummy_sim_fn, cores = 1, save = FALSE, summary_fn = dummy_sum_fn)
+                  sim_fn = dummy_sim_fn, cores = 1, summary_fn = dummy_sum_fn)
 }

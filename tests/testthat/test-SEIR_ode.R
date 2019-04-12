@@ -1,4 +1,4 @@
-context("SEIR_demo_ode")
+context("SEIR_ode")
 
 
 

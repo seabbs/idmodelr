@@ -28,7 +28,7 @@ A Function to Gather a Stratified Variable into a Tidy Format
 }
 \examples{
 
-df <- tibble::tibble(time = 0, A1 = 1, A2 = 2, A3 = 3)
+df <- data.frame(time = 0, A1 = 1, A2 = 2, A3 = 3)
 gather_strat_variable(df, id_col = "Age", compartment = "A",
                       strat = 3, groups = c("Children", "Young adults", "Adults"))
 }

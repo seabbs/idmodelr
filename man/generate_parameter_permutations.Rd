@@ -7,9 +7,7 @@
 generate_parameter_permutations(variable_params = NULL,
   fixed_params = NULL, sample_params = NULL, excluded_params = NULL,
   scenarios = NULL, sampling_function = NULL, parameter_samples = 1,
-  repeat_sample = TRUE, save = TRUE,
-  save_name = "parameter_permutations", save_path = NULL,
-  save_format = NULL, rerun = FALSE, verbose = FALSE, ...)
+  repeat_sample = TRUE, rerun = FALSE, verbose = FALSE, ...)
 }
 \arguments{
 \item{variable_params}{A dataframe containing any parameter variations to be investigated. If
@@ -37,15 +35,6 @@ through parameters, this may not be the required behaviour.}
 \item{repeat_sample}{A logical (defaults to \code{TRUE}) which indicates if each scenario should independantly
 sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.}
 
-\item{save}{Logical specifying if the results should be saved. Defaults to \code{TRUE}.}
-
-\item{save_name}{A character string of the name the results should be saved under.}
-
-\item{save_path}{A character string indicating the saving location for the results.
-If not specified defaults to saving in the working directory.}
-
-\item{save_format}{If additional file formats are required, see \code{\link[idmodelr]{save_data}}.}
-
 \item{rerun}{A logical indicating if the function should be rerun or saved results should be loaded.
 Defaults to \code{FALSE}.}
 
@@ -63,12 +52,12 @@ parameters to be varied, and scenarios to be investigated.
 }
 \examples{
 
-scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
-variable_params <-  tibble::data_frame(variable = c(0, 0.5, 1))
+scenarios <- data.frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+variable_params <-  data.frame(variable = c(0, 0.5, 1))
 fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3, 4))
 sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
 
 generate_parameter_permutations(variable_params, fixed_params, sample_params,
                                 excluded_params = c("variable"), scenarios,
-                                parameter_samples = 1, save = FALSE)
+                                parameter_samples = 1)
 }

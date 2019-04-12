@@ -28,13 +28,12 @@ left:
 
 reference:
   - title: Deterministic Compartmental Models
-    desc:  Simple deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification.
+    desc:  Deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification etc. See documentation and `model_details` for information.
     contents:
     - ends_with("I_ode")
     - ends_with("R_ode")
     - ends_with("vaccination_ode")
-    - ends_with("risk_group_ode")
-    - ends_with("demo_ode")
+    - ends_with("demographics_ode")
   - title: Simulation Utilities
     desc: Functions for solving, simulation, and summarising ODE ID models.zs
     contents:
@@ -61,6 +60,3 @@ reference:
     - add_pointer_struct
     - summarise_strat_var
     - summarise_var_by_strat
-  - title: General Utilities
-    contents:
-    - save_data

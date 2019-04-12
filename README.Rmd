@@ -22,9 +22,10 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/seabbs/idmodelr.svg?branch=master)](https://travis-ci.org/seabbs/idmodelr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/idmodelr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
+[![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/idmodelr)](https://cran.r-project.org/package=idmodelr)
+[![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4)](https://cran.r-project.org/package=idmodelr)
 
-
-`idmodelr` is an R package that contains utility functions for infectious disease modelling. It also offers some simple compartmental ODE models which can be used for teaching purposes or as the basis for more complex models.
+`idmodelr` is an R package that contains utility functions for infectious disease modelling. It also offers some simple compartmental ODE models which can be used for teaching purposes or as the basis for more complex models. `idmodelr` is intended to act as both a tool for understanding infectious disease models and as a resource for modellers looking for inspiration. As such having as wide a coverage of model types as possible will only improve the package functionality. 
 
 ## Installation
 
@@ -35,12 +36,37 @@ You can install idmodelr from github with:
 devtools::install_github("seabbs/idmodelr")
 ```
 
-## Contributing
+## Quick start
 
-File an issue [here](https://github.com/seabbs/idmodelr/issues) if there is a feature, that you think is missing from the package, or better yet submit a pull request!
+## Dashboard 
+
+A shiny application has been developed that showcases some of the functionality of the `idmodelr` package. This application allows the parameter spaces of a range of models built into `idmodelr` to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found [here](https://github.com/seabbs/exploreidmodels). It can be run locally using the following (*Note: this will install required packages to your system*), 
+
+```{r run-dash, eval = FALSE}
+#install.packages("shiny")
+shiny::runGitHub("exploreidmodels", "seabbs")
+```
+
+or accessed [online](http://www.seabbs.co.uk/shiny/exploreidmodels) (*Note: This version may not be fully up to date*). 
+
+![Snapshot of the integrated dashboard.](man/figures/exploreidmodels.png)
+
+
+## Contributing 
+
+### Contributing a model
+
+Additional models are extremely welcome! 
+
+To add models in the same family as those already implemented (i.e [`SIR_ode`](https://github.com/seabbs/idmodelr/blob/master/R/SIR.R)) please follow the implemented coding style closely (alternatively open an [issue](https://github.com/seabbs/idmodelr/issues) explaining why this style needs updating). Models should be named using their compartments in capitals followed by lower case model details, and finally the model type. An example of this is the `SIR_demographics_ode` model. For highly complex models only the most major model details should be listed (aim for less than 40 characters). An entry for `model_details` is also required (see [`model_details.R`](https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R for help with this)). Please consider also adding to the testing suite for your new model.Models can either be added via a pull request (i.e make all desired changes and then run `make`) or via an issue. 
+
+To add a new family of models (i.e stochastic models (*Note: These are currently planned in the current development cycle*)) please open an [issue](https://github.com/seabbs/idmodelr/issues) outlining your proposed approach. A new family of models is likely to require at least its own `solve_` (equivalent to [`solve_ode`](https://github.com/seabbs/idmodelr/blob/master/R/solve.R)) function and may also require other package changes.
+
+### Other contributions
+
+File an issue [here](https://github.com/seabbs/idmodelr/issues) if there is any other feature, that you think is missing from the package, or better yet submit a pull request!
 
 Please note that the `idmodelr` project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
-
 
 ### Docker
 

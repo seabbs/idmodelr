@@ -29,7 +29,7 @@ A Function to Gather Multiple Stratified Variables into a Tidy Format
 \examples{
 
 
-df <- tibble::tibble(time = 0, A1 = 1, A2 = 2, A3 = 3, B1 = 2, B2 = 3, B3 = 0)
+df <- data.frame(time = 0, A1 = 1, A2 = 2, A3 = 3, B1 = 2, B2 = 3, B3 = 0)
 gather_strat_multi_variable(df, id_col = "Age", compartment = c("A", "B"), hold_out_var = "time",
                             strat = 3, groups = c("Children", "Young adults", "Adults"))
 

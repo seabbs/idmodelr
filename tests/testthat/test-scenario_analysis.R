@@ -8,7 +8,7 @@ sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
 
 parameter_df <- generate_parameter_permutations(variable_params, fixed_params, sample_params,
                                                 excluded_params = c("variable"), scenarios,
-                                                parameter_samples = 10, save = FALSE)
+                                                parameter_samples = 10)
 
 ## set up dummy simulation function (returning an empty dataframe)
 dummy_sim_fn <- function(object, inits, params, times, as.data.frame) {
@@ -31,7 +31,7 @@ test_that("scenaria_analysis works correctly on sample data
           with a dummy model and simulation function", {
    results <- scenario_analysis(parameter_df, variable_params = "variable",
                                 model = dummy_model, sim_fn = dummy_sim_fn,
-                                cores = 1, save = FALSE)
+                                cores = 1)
 
    expect_equal(variations, dplyr::select(results, scenario, variable))
    expect_equal(parameters, tidyr::unnest(dplyr::select(results[1,], parameters)))

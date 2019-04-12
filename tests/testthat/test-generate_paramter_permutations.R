@@ -8,7 +8,7 @@ context("generate_parameter_permutations")
 
  df_results <- generate_parameter_permutations(variable_params, fixed_params, sample_params,
                                  excluded_params = c("variable"), scenarios,
-                                 parameter_samples = 1, save = FALSE)
+                                 parameter_samples = 1)
 
  df_check <- tibble::data_frame(scenario = rep(c("test_1", "test_2"), 2), variable = c(0, 0, 1, 1),
                                 sample = as.integer(1), scenario_param = rep(c(0, 1), 2), fixed_1 = 2, fixed_21 = 1,
@@ -22,6 +22,6 @@ context("generate_parameter_permutations")
  test_that("generate_parameter_permutations can use a single parameter sample", {
    df_results <- generate_parameter_permutations(variable_params, fixed_params, sample_params,
                                                  excluded_params = c("variable", "scenario_param"), scenarios,
-                                                 parameter_samples = 1, save = FALSE, repeat_sample = FALSE)
+                                                 parameter_samples = 1, repeat_sample = FALSE)
              expect_equal(df_results, df_check)
            })
