@@ -87,7 +87,7 @@
 <a href="#infectious-disease-modelling-utilities" class="anchor"></a>Infectious Disease Modelling Utilities <img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
 
-<p><code>idmodelr</code> is an R package that contains utility functions for infectious disease modelling. It also offers some simple compartmental ODE models which can be used for teaching purposes or as the basis for more complex models.</p>
+<p><code>idmodelr</code> is an R package that contains utility functions for infectious disease modelling. It also offers some simple compartmental ODE models which can be used for teaching purposes or as the basis for more complex models. <code>idmodelr</code> is intended to act as both a tool for understanding infectious disease models and as a resource for modellers looking for inspiration. As such having as wide a coverage of model types as possible will only improve the package functionality.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -95,16 +95,42 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"seabbs/idmodelr"</span>)</a></code></pre></div>
 </div>
+<div id="quick-start" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quick-start" class="anchor"></a>Quick start</h2>
+</div>
+<div id="dashboard" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dashboard" class="anchor"></a>Dashboard</h2>
+<p>A shiny application has been developed that showcases some of the functionality of the <code>idmodelr</code> package. This application allows the parameter spaces of a range of models built into <code>idmodelr</code> to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found <a href="https://github.com/seabbs/exploreidmodels">here</a>. It can be run locally using the following (<em>Note: this will install required packages to your system</em>),</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<p>or accessed <a href="http://www.seabbs.co.uk/shiny/exploreidmodels">online</a> (<em>Note: This version may not be fully up to date</em>).</p>
+<div class="figure">
+<img src="reference/figures/exploreidmodels.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
+</div>
+</div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>File an issue <a href="https://github.com/seabbs/idmodelr/issues">here</a> if there is a feature, that you think is missing from the package, or better yet submit a pull request!</p>
+<div id="contributing-a-model" class="section level3">
+<h3 class="hasAnchor">
+<a href="#contributing-a-model" class="anchor"></a>Contributing a model</h3>
+<p>Additional models are extremely welcome!</p>
+<p>To add models in the same family as those already implemented (i.e <a href="https://github.com/seabbs/idmodelr/blob/master/R/SIR.R"><code>SIR_ode</code></a>) please follow the implemented coding style closely (alternatively open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> explaining why this style needs updating). Models should be named using their compartments in capitals followed by lower case model details, and finally the model type. An example of this is the <code>SIR_demographics_ode</code> model. For highly complex models only the most major model details should be listed (aim for less than 40 characters). An entry for <code>model_details</code> is also required (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R%20for%20help%20with%20this"><code>model_details.R</code></a>). Please consider also adding to the testing suite for your new model.Models can either be added via a pull request (i.e make all desired changes and then run <code>make</code>) or via an issue.</p>
+<p>To add a new family of models (i.e stochastic models (<em>Note: These are currently planned in the current development cycle</em>)) please open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> outlining your proposed approach. A new family of models is likely to require at least its own <code>solve_</code> (equivalent to <a href="https://github.com/seabbs/idmodelr/blob/master/R/solve.R"><code>solve_ode</code></a>) function and may also require other package changes.</p>
+</div>
+<div id="other-contributions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-contributions" class="anchor"></a>Other contributions</h3>
+<p>File an issue <a href="https://github.com/seabbs/idmodelr/issues">here</a> if there is any other feature, that you think is missing from the package, or better yet submit a pull request!</p>
 <p>Please note that the <code>idmodelr</code> project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
 <div id="docker" class="section level3">
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory. Alternatively, access the development environment via <a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
@@ -153,6 +179,8 @@
 <li><a href="https://travis-ci.org/seabbs/idmodelr"><img src="https://travis-ci.org/seabbs/idmodelr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/seabbs/idmodelr"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/seabbs/idmodelr?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/idmodelr" alt="metacran monthly downloads"></a></li>
+<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4" alt="metacran downloads"></a></li>
 </ul>
 </div>
 </div>

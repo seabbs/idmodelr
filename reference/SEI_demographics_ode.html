@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Susceptible-Infected-Recovered Model — SIR_ode • idmodelr</title>
+<title>Susceptible-Exposed-Infected Model with Simple Demographics — SEI_demographics_ode • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,9 +37,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Susceptible-Infected-Recovered Model — SIR_ode" />
+<meta property="og:title" content="Susceptible-Exposed-Infected Model with Simple Demographics — SEI_demographics_ode" />
 
-<meta property="og:description" content="Susceptible-Infected-Recovered Model" />
+<meta property="og:description" content="Susceptible-Exposed-Infected Model with Simple Demographics" />
 
 <meta property="og:image" content="samabbott.co.uk/idmodelr/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -117,18 +117,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Susceptible-Infected-Recovered Model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/idmodelr/blob/master/R/SIR.R'><code>R/SIR.R</code></a></small>
-    <div class="hidden name"><code>SIR_ode.Rd</code></div>
+    <h1>Susceptible-Exposed-Infected Model with Simple Demographics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/idmodelr/blob/master/R/SEI.R'><code>R/SEI.R</code></a></small>
+    <div class="hidden name"><code>SEI_demographics_ode.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Susceptible-Infected-Recovered Model</p>
+    <p>Susceptible-Exposed-Infected Model with Simple Demographics</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>SIR_ode</span>(<span class='no'>t</span>, <span class='no'>x</span>, <span class='no'>params</span>)</pre>
+    <pre class="usage"><span class='fu'>SEI_demographics_ode</span>(<span class='no'>t</span>, <span class='no'>x</span>, <span class='no'>params</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,18 +155,18 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>##Model Input</span>
 <span class='no'>S_0</span> <span class='kw'>&lt;-</span> <span class='fl'>989</span>
+<span class='no'>E_0</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>
 <span class='no'>I_0</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
-<span class='no'>R_0</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 <span class='no'>beta</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-<span class='no'>tau</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
+<span class='no'>gamma</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>/<span class='fl'>2</span>
+<span class='no'>mu</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>/<span class='fl'>81</span>
 <span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='no'>gamma</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='no'>mu</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>E</span> <span class='kw'>=</span> <span class='no'>E_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='no'>tau</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>, <span class='kw'>R_0</span> <span class='kw'>=</span> <span class='no'>R_0</span>)
-
-<span class='fu'>SIR_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;          S          S          I 
-#&gt; -2.9969697  0.9969697  2.0000000 
+<span class='fu'>SEI_demographics_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;         S         S         E 
+#&gt; -2.831198 -2.156457  4.987654 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

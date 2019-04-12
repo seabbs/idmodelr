@@ -130,7 +130,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section-deterministic-compartmental-models" class="hasAnchor"><a href="#section-deterministic-compartmental-models" class="anchor"></a>Deterministic Compartmental Models</h2>
-          <p class="section-desc"><p>Simple deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification.</p></p>
+          <p class="section-desc"><p>Deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification etc. See documentation and <code>model_details</code> for information.</p></p>
         </th>
       </tr>
       <tr>
@@ -138,73 +138,91 @@
         <td>
           <p><code><a href="SEI_ode.html">SEI_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Exposed-Infected Infectious Disease Model</p></td>
+        <td><p>Susceptible-Exposed-Infected Model</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="SI_ode.html">SI_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Infected Infectious Disease Model</p></td>
+        <td><p>Susceptible-Infected Model</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="SEIR_ode.html">SEIR_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Exposed-Infected-Recovered Infectious Disease Model</p></td>
+        <td><p>Susceptible-Exposed-Infected-Recovered Model</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="SHLIR_ode.html">SHLIR_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-High-risk-latent-Low-risk-latent-Infected-Recovered Infectious Disease Model</p></td>
+        <td><p>Susceptible-High-risk-latent-Low-risk-latent-Infected-Recovered Model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SHLITR_ode.html">SHLITR_ode()</a></code> </p>
+        </td>
+        <td><p>Susceptible-High-risk-latent-Low-risk-latent-Infected-Treated-Recovered Model</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="SIR_ode.html">SIR_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Infected-Recovered Infectious Disease Model</p></td>
+        <td><p>Susceptible-Infected-Recovered Model</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="SIR_vaccination_ode.html">SIR_vaccination_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Infected-Recovered Infectious Disease Model  with Simple Demographics</p></td>
+        <td><p>Susceptible-Infected-Recovered Model with Vaccination</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SHLITR_risk_group_ode.html">SHLITR_risk_group_ode()</a></code> </p>
+          <p><code><a href="SEIR_demographics_ode.html">SEIR_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-High-risk-latent-Low-risk-latent-Infected-Treated-Recovered Infectious Disease Model with demographics</p></td>
+        <td><p>Susceptible-Exposed-Infected-Recovered Model with Simple Demographics</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SEIR_demo_ode.html">SEIR_demo_ode()</a></code> </p>
+          <p><code><a href="SEI_demographics_ode.html">SEI_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Exposed-Infected-Recovered Infectious Disease Model  with Simple Demographics</p></td>
+        <td><p>Susceptible-Exposed-Infected Model with Simple Demographics</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SEI_demo_ode.html">SEI_demo_ode()</a></code> </p>
+          <p><code><a href="SHLIR_demographics_ode.html">SHLIR_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Susceptible-Exposed-Infected Infectious Disease Model with Simple Demographics</p></td>
+        <td><p>Susceptible-High-risk-latent-Low-risk-latent-Infected-Recovered Model with Simple Demographics</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SHLIR_demo_ode.html">SHLIR_demo_ode()</a></code> </p>
+          <p><code><a href="SHLITR_demographics_ode.html">SHLITR_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-High-risk-latent-Low-risk-latent-Infected-Recovered Infectious Disease Model with demographics</p></td>
+        <td><p>Susceptible-High-risk-latent-Low-risk-latent-Infected-Treated-Recovered Model with Simple Demographics</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SIR_demo_ode.html">SIR_demo_ode()</a></code> </p>
+          <p><code><a href="SHLITR_risk_demographics_ode.html">SHLITR_risk_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Simple Susceptible-Infected-Recovered Infectious Disease Model  with Simple Demographics</p></td>
+        <td><p>Susceptible-High-risk-latent-Low-risk-latent-Infected-Treated-Recovered Model with Demographics, Stratified by Risk</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SI_demo_ode.html">SI_demo_ode()</a></code> </p>
+          <p><code><a href="SIR_demographics_ode.html">SIR_demographics_ode()</a></code> </p>
         </td>
-        <td><p>A Susceptible-Infected Infectious Disease Model with Simple Demographics</p></td>
+        <td><p>Susceptible-Infected-Recovered Model with Simple Demographics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SIR_vaccination_demographics_ode.html">SIR_vaccination_demographics_ode()</a></code> </p>
+        </td>
+        <td><p>Susceptible-Infected-Recovered Model with Simple Demographics and Vaccination</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SI_demographics_ode.html">SI_demographics_ode()</a></code> </p>
+        </td>
+        <td><p>Susceptible-Infected Model with Simple Demographics</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -340,20 +358,6 @@
         </td>
         <td><p>Sum a Stratified Variable by Stratification Level</p></td>
       </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-general-utilities" class="hasAnchor"><a href="#section-general-utilities" class="anchor"></a>General Utilities</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="save_data.html">save_data()</a></code> </p>
-        </td>
-        <td><p>A Function to Save Results in Multiple Formats</p></td>
-      </tr>
     </tbody>
     </table>
   </div>
@@ -366,7 +370,6 @@
       <li><a href="#section-plotting-utilities">Plotting Utilities</a></li>
       <li><a href="#section-workflow-utilities">Workflow Utilities</a></li>
       <li><a href="#section-munging-utilities">Munging Utilities</a></li>
-      <li><a href="#section-general-utilities">General Utilities</a></li>
     </ul>
   </div>
 </div>

@@ -133,10 +133,8 @@ It can be used to examine multiple scenarios, with any number of parameter varia
     </div>
 
     <pre class="usage"><span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>save_name</span> <span class='kw'>=</span> <span class='st'>"scenario_analysis_results"</span>, <span class='kw'>save_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>save_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>by_row</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>rerun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>by_row</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,23 +167,6 @@ summarise the result. The analysis must be rerun.</p></td>
     <tr>
       <th>cores</th>
       <td><p>The number of cores to use for the scenario analysis, defaults to 1.</p></td>
-    </tr>
-    <tr>
-      <th>save</th>
-      <td><p>Logical specifying if the results should be saved. Defaults to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>save_name</th>
-      <td><p>A character string of the name the results should be saved under.</p></td>
-    </tr>
-    <tr>
-      <th>save_path</th>
-      <td><p>A character string indicating the saving location for the results.
-If not specified defaults to saving in the working directory.</p></td>
-    </tr>
-    <tr>
-      <th>save_format</th>
-      <td><p>If additional file formats are required, see <code><a href='save_data.html'>save_data</a></code>.</p></td>
     </tr>
     <tr>
       <th>rerun</th>
@@ -221,14 +202,14 @@ varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/ref
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/deprecated.html'>data_frame</a></span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
-<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/deprecated.html'>data_frame</a></span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
+<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
 <span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
 <span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
 
 <span class='no'>parameter_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
                                                 <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
-                                                <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+                                                <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
 <span class='co'>## set up dummy simulation function (returning an empty dataframe)</span>
 <span class='no'>dummy_sim_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>inits</span>, <span class='no'>params</span>, <span class='no'>times</span>, <span class='no'>as.data.frame</span>) {
@@ -246,12 +227,12 @@ varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/ref
 
 <span class='co'>## Run scenario analysis</span>
 <span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
-                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sum_fn</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+                  <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sum_fn</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘purrr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    is_null</span></div><div class='output co'>#&gt; # A tibble: 6 x 5
 #&gt;   scenario variable parameters        simulations      summarised_simulations
-#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;           &lt;list&gt;                
+#&gt;   &lt;fct&gt;       &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;           &lt;list&gt;                
 #&gt; 1 test_1        0   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
 #&gt; 2 test_2        0   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
 #&gt; 3 test_1        0.5 &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
