@@ -1,7 +1,7 @@
-# Contributing to getTBinR
+# Contributing to idmodelr
 
-This outlines how to propose a change to getTBinR. For more detailed
-info about contributing to this, and other tidyverse packages, please see the
+This outlines how to propose a change to idmodelr. For more detailed
+info about contributing to this, and other packages, please see the
 [**development contributing guide**](https://rstd.io/tidy-contrib).
 
 ### Fixing typos
@@ -40,7 +40,7 @@ GitHub username, and links to relevant issue(s)/PR(s).
 
 ### Code of Conduct
 
-Please note that the getTBinR project is released with a
+Please note that the idmodelr project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this
 project you agree to abide by its terms.
 
