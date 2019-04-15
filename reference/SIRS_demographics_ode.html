@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>idmodelr: Infectious Disease Model Library and Utilities — idmodelr-package • idmodelr</title>
+<title>Susceptible-Infected-Recovered-Susceptible Model with Simple Demographics — SIRS_demographics_ode • idmodelr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,24 +37,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="idmodelr: Infectious Disease Model Library and Utilities — idmodelr-package" />
+<meta property="og:title" content="Susceptible-Infected-Recovered-Susceptible Model with Simple Demographics — SIRS_demographics_ode" />
 
-<meta property="og:description" content="
-Explore a range of infectious disease models in a consistent framework. 
-    The primary aim of idmodelr is to provide a library of infectious disease models
-    for researchers, students, and other interested individuals. These models can be 
-    used to understand the underlying dynamics and as a reference point when developing
-    models for research. idmodelr also provides a range of utilities. These include: plotting 
-    functionality; a simulation wrapper; scenario analysis tooling; an interactive 
-    dashboard; tools for handling mult-dimensional models; and both model and parameter
-    look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)
-    and [epimodel](http://www.epimodel.org), idmodelr serves primarily as an educational 
-    resource. After users have explored model dynamics with idmodelr they may then 
-    implement their model using one of these packages in order to utilise the model
-    fitting tools they provide.  For newer modellers, this package reduces the barrier
-    to entry by containing multiple infectious disease models, providing a consistent
-    framework for simulation and visualisation, and signposting towards other, more 
-    research focussed, resources." />
+<meta property="og:description" content="Susceptible-Infected-Recovered-Susceptible Model with Simple Demographics" />
 
 <meta property="og:image" content="samabbott.co.uk/idmodelr/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -132,52 +117,67 @@ Explore a range of infectious disease models in a consistent framework.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>idmodelr: Infectious Disease Model Library and Utilities</h1>
-    <small class="dont-index">Source: <a href='https://github.com/seabbs/idmodelr/blob/master/R/idmodelr.R'><code>R/idmodelr.R</code></a></small>
-    <div class="hidden name"><code>idmodelr-package.Rd</code></div>
+    <h1>Susceptible-Infected-Recovered-Susceptible Model with Simple Demographics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/seabbs/idmodelr/blob/master/R/SIRS.R'><code>R/SIRS.R</code></a></small>
+    <div class="hidden name"><code>SIRS_demographics_ode.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><img src='figures/logo.png' align='right' /></p>
-<p>Explore a range of infectious disease models in a consistent framework. 
-    The primary aim of idmodelr is to provide a library of infectious disease models
-    for researchers, students, and other interested individuals. These models can be 
-    used to understand the underlying dynamics and as a reference point when developing
-    models for research. idmodelr also provides a range of utilities. These include: plotting 
-    functionality; a simulation wrapper; scenario analysis tooling; an interactive 
-    dashboard; tools for handling mult-dimensional models; and both model and parameter
-    look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)
-    and [epimodel](http://www.epimodel.org), idmodelr serves primarily as an educational 
-    resource. After users have explored model dynamics with idmodelr they may then 
-    implement their model using one of these packages in order to utilise the model
-    fitting tools they provide.  For newer modellers, this package reduces the barrier
-    to entry by containing multiple infectious disease models, providing a consistent
-    framework for simulation and visualisation, and signposting towards other, more 
-    research focussed, resources.</p>
+    <p>Susceptible-Infected-Recovered-Susceptible Model with Simple Demographics</p>
     
     </div>
 
-        
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <pre class="usage"><span class='fu'>SIRS_demographics_ode</span>(<span class='no'>t</span>, <span class='no'>x</span>, <span class='no'>params</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>t</th>
+      <td><p>The timestep overwhich to calculate derivatives</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>A numeric vector of compartment populations.</p></td>
+    </tr>
+    <tr>
+      <th>params</th>
+      <td><p>A named vector of paramter values.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='http://www.samabbott.co.uk/idmodelr'>http://www.samabbott.co.uk/idmodelr</a></p></li>
-<li><p><a href='https://github.com/seabbs/idmodelr'>https://github.com/seabbs/idmodelr</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/seabbs/idmodelr/issues'>https://github.com/seabbs/idmodelr/issues</a></p></li>
-</ul></div>
+    <p>A vector of derivatives</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>##Model Input</span>
+<span class='no'>S_0</span> <span class='kw'>&lt;-</span> <span class='fl'>989</span>
+<span class='no'>I_0</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
+<span class='no'>R_0</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>
+<span class='no'>beta</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
+<span class='no'>chi</span> <span class='kw'>&lt;-</span> <span class='fl'>0.5</span>
+<span class='no'>tau</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
+<span class='no'>mu</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>/<span class='fl'>81</span>
+<span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
+
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='no'>tau</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='no'>mu</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>, <span class='kw'>R_0</span> <span class='kw'>=</span> <span class='no'>R_0</span>)
+
+<span class='fu'>SIRS_demographics_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(substitute(expr), data, enclos = parent.frame()): object 'chi' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
-    <h2>Author</h2>
-    <p><strong>Maintainer</strong>: Sam Abbott <a href='mailto:contact@samabbott.co.uk'>contact@samabbott.co.uk</a> (0000-0001-8057-8037)</p>
   </div>
 </div>
 

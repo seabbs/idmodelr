@@ -4,10 +4,22 @@
     <loc>samabbott.co.uk/idmodelr//index.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SEIRS_demographics_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SEIRS_ode.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/idmodelr//reference/SEIR_demographics_ode.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/SEIR_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SEIS_demographics_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SEIS_ode.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/SEI_demographics_ode.html</loc>
@@ -34,6 +46,18 @@
     <loc>samabbott.co.uk/idmodelr//reference/SHLITR_risk_ode.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIRS_demographics_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIRS_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIRS_vaccination_demographics_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIRS_vaccination_ode.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/idmodelr//reference/SIR_demographics_ode.html</loc>
   </url>
   <url>
@@ -44,6 +68,12 @@
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/SIR_vaccination_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIS_demographics_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/SIS_ode.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/SI_demographics_ode.html</loc>
