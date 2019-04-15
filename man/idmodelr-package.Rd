@@ -8,7 +8,22 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-Contains utility functions for use in infectious disease modelling. Basic modelling tools are also supplied as starting blocks for more complex models.
+Explore a range of infectious disease models in a consistent framework. 
+    The primary aim of `idmodelr` is to provide a library of infectious disease models
+    for researchers, students, and other interested individuals. These models can be 
+    used to understand the underlying dynamics and as a reference point when developing
+    models for research. `idmodelr` also provides a range of utilities that may be
+    useful when interacting with complex models. These utilities include: plotting 
+    functionality; a simulation wrapper; scenario analysis tooling; an interactive 
+    dashboard; tools for handling mult-dimensional models; and both model and parameter
+    look up tables. Unlike other modelling packages such as [`pomp`](https://kingaa.github.io/pomp/), [`libbi`](http://libbi.org)
+    and [`epimodel`](http://www.epimodel.org), `idmodelr` serves primarily as an educational 
+    resource. After users have explored model dynamics with `idmodelr` they may then 
+    implement their model using one of these packages in order to utilise the model
+    fitting tools they provide.  For newer modellers, this package reduces the barrier
+    to entry by containing multiple infectious disease models, providing a consistent
+    framework for simulation and visualisation, and signposting towards other, more 
+    research focussed, resources.
 }
 \seealso{
 Useful links:

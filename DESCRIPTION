@@ -7,26 +7,43 @@ Authors@R:
            role = c("aut", "cre"),
            email = "contact@samabbott.co.uk",
            comment = c(ORCID = "0000-0001-8057-8037"))
-Description: Contains utility functions for use in infectious disease modelling. Basic modelling tools are also supplied as starting blocks for more complex models.
+Description: Explore a range of infectious disease models in a consistent framework. 
+    The primary aim of idmodelr is to provide a library of infectious disease models
+    for researchers, students, and other interested individuals. These models can be 
+    used to understand the underlying dynamics and as a reference point when developing
+    models for research. idmodelr also provides a range of utilities that may be
+    useful when interacting with complex models. These utilities include: plotting 
+    functionality; a simulation wrapper; scenario analysis tooling; an interactive 
+    dashboard; tools for handling mult-dimensional models; and both model and parameter
+    look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)
+    and [epimodel](http://www.epimodel.org), idmodelr serves primarily as an educational 
+    resource. After users have explored model dynamics with idmodelr they may then 
+    implement their model using one of these packages in order to utilise the model
+    fitting tools they provide.  For newer modellers, this package reduces the barrier
+    to entry by containing multiple infectious disease models, providing a consistent
+    framework for simulation and visualisation, and signposting towards other, more 
+    research focussed, resources. 
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.2.0)
-Imports: dplyr,
-    rlang,
-    ggplot2,
-    viridis,
-    magrittr,
-    purrr,
-    future,
-    furrr,
-    stringr,
-    tibble,
-    tidyr,
-    deSolve
-Suggests: testthat,
-    rmarkdown,
-    knitr,
-    pkgnet,
+Imports: 
+    dplyr (>= 0.8.0.1),
+    rlang (>= 0.3.3),
+    ggplot2 (>= 3.1.0.9000),
+    viridis (>= 0.5.1),
+    magrittr (>= 1.5),
+    purrr (>= 0.3.2),
+    future (>= 1.12.0),
+    furrr (>= 0.1.0),
+    stringr (>= 1.4.0),
+    tibble (>= 2.1.1),
+    tidyr (>= 0.8.3),
+    deSolve (>= 1.21)
+Suggests: 
+    testthat (>= 2.0.1),
+    rmarkdown (>= 1.12),
+    knitr (>= 1.22),
+    pkgnet (>= 0.3.2)
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/idmodelr, 
      https://github.com/seabbs/idmodelr
