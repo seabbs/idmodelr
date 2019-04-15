@@ -51,6 +51,6 @@ test_that("simulate_model can handle multiple simulations at once.", {
   inits_df <- data.frame(S = rep(S_0, 2), I = rep(I_0, 2))
   parameters_df <- data.frame(beta = rep(beta, 2))
   test <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits_df, parameters_df,
-                         times, by_row = TRUE)
+                         times, by_row = TRUE, verbose = TRUE)
   expect_known_output(test, file = "../../tests/test-files/simulate_model/test-02.rds")
 })
