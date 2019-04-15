@@ -5,9 +5,9 @@
 \title{A Function to Apply Multiple Aggregations to Model Output}
 \usage{
 aggregate_model(df, aggregate_to = NULL, compartments = NULL,
-  strat = NULL, hold_out_var = NULL, id_col = id_col,
-  groups = NULL, new_var = "incidence", total_pop = TRUE,
-  summary_var = FALSE)
+  strat = NULL, hold_out_var = NULL, id_col = NULL, groups = NULL,
+  new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
+  test = FALSE)
 }
 \arguments{
 \item{df}{A dataframe of Model Output.}
@@ -36,6 +36,9 @@ calculated when summarsing the model demographics.}
 
 \item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
 all stratified levels.}
+
+\item{test, }{Logical defaults to \code{FALSE}. For testing, returns the processed inputs rather than
+performing the aggregation.}
 }
 \value{
 An aggregated dataframe.

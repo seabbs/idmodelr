@@ -17,11 +17,26 @@
 #' @seealso aggregate_model aggregate_model_internal combine_to_age_model combine_strat_model_output summarise_var_by_strat
 #' @examples
 #'
-#' df <- data.frame(A1 = 1, B1 = 1, A2 = 1, B2 = 1, A3 = 1, B3 = 1)
-#' aggregate_model_internal(df, aggregate_to = "incidence",
-#'                          compartments = c("A", "B"), strat = 3,
-#'                          summary_var = TRUE)
+#' df <- data.frame(time = 1, A1 = 1, B1 = 1, A2 = 1, B2 = 1, A3 = 1, B3 = 1)
 #'
+#'## Incidence
+#'aggregate_model_internal(df, aggregate_to = "incidence",
+#'                         compartments = c("A", "B"), strat = 3,
+#'                         summary_var = TRUE)
+#'
+#'## Demographic
+#'aggregate_model_internal(df, aggregate_to = "demographic",
+#'                         compartments = c("A", "B"), strat = 3,
+#'                         summary_var = TRUE)
+#'## Disease
+#'aggregate_model_internal(df, aggregate_to = "disease",
+#'                         compartments = c("A", "B"), strat = 3,
+#'                         summary_var = TRUE)
+#'## Tidy (long)
+#'aggregate_model_internal(df, aggregate_to = "tidy",
+#'                         compartments = c("A", "B"), hold_out_var = "time", strat = 3,
+#'                         summary_var = TRUE, id_col = "Age",
+#'                         groups = c("Children", "Young adults", "Adults"))
 aggregate_model_internal <- function(df, aggregate_to = NULL, compartments = NULL,
                                      strat = NULL, hold_out_var= NULL, new_var = "incidence",
                                      id_col = NULL, groups = NULL, total_pop = TRUE,

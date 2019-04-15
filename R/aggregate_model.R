@@ -10,7 +10,8 @@
 #' @param hold_out_var A character vector or list specifying the unique compartments that will not be aggregated. May either be
 #' specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
 #' not need to be used.
-#'
+#' @param test, Logical defaults to \code{FALSE}. For testing, returns the processed inputs rather than
+#' performing the aggregation.
 #' @export
 #'
 #' @examples
@@ -22,8 +23,9 @@
 #'
 #'
 aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat = NULL,
-                            hold_out_var = NULL, id_col = id_col, groups = NULL,
-                            new_var = "incidence", total_pop = TRUE, summary_var = FALSE) {
+                            hold_out_var = NULL, id_col = NULL, groups = NULL,
+                            new_var = "incidence", total_pop = TRUE, summary_var = FALSE,
+                            test = FALSE) {
   if (length(aggregate_to) > 1) {
     if (length(compartments) == 1) {
       compartments <- rep(list(compartments), length(aggregate_to))
@@ -53,11 +55,20 @@ aggregate_model <- function(df, aggregate_to = NULL, compartments = NULL, strat 
       hold_out_var <- list(hold_out_var)
   }
 
-  for (i in 1:length(aggregate_to)) {
-  df <- aggregate_model_internal(df, aggregate_to = aggregate_to[i], compartments = compartments[[i]],
-                                 strat = strat[i], hold_out_var = hold_out_var[[i]], new_var = new_var,
-                                 id_col = id_col, groups = groups, total_pop = total_pop, summary_var = summary_var)
+  if (!test) {
+    for (i in 1:length(aggregate_to)) {
+      df <- aggregate_model_internal(df, aggregate_to = aggregate_to[i],
+                                     compartments = compartments[[i]],
+                                     strat = strat[i], hold_out_var = hold_out_var[[i]],
+                                     new_var = new_var,
+                                     id_col = id_col, groups = groups, total_pop = total_pop,
+                                     summary_var = summary_var)
+    }
+  }else{
+    df <- c(aggregate_to, compartments, strat,
+               hold_out_var,  new_var, id_col, groups)
   }
+
 
   return(df)
 }
