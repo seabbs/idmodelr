@@ -129,9 +129,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>aggregate_model</span>(<span class='no'>df</span>, <span class='kw'>aggregate_to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compartments</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='no'>id_col</span>,
-  <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>strat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>hold_out_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>id_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>new_var</span> <span class='kw'>=</span> <span class='st'>"incidence"</span>, <span class='kw'>total_pop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>summary_var</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,6 +182,11 @@ calculated when summarsing the model demographics.</p></td>
       <th>summary_var</th>
       <td><p>A logical (defaults to <code>FALSE</code>), specifiying whether to add an additional summary variable across
 all stratified levels.</p></td>
+    </tr>
+    <tr>
+      <th>test, </th>
+      <td><p>Logical defaults to <code>FALSE</code>. For testing, returns the processed inputs rather than
+performing the aggregation.</p></td>
     </tr>
     </table>
     
