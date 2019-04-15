@@ -4,7 +4,7 @@
 \name{idmodelr-package}
 \alias{idmodelr}
 \alias{idmodelr-package}
-\title{idmodelr: Utility Functions for Infectious Disease Modelling}
+\title{idmodelr: Infectious Disease Model Library and Utilities}
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
@@ -12,8 +12,7 @@ Explore a range of infectious disease models in a consistent framework.
     The primary aim of idmodelr is to provide a library of infectious disease models
     for researchers, students, and other interested individuals. These models can be 
     used to understand the underlying dynamics and as a reference point when developing
-    models for research. idmodelr also provides a range of utilities that may be
-    useful when interacting with complex models. These utilities include: plotting 
+    models for research. idmodelr also provides a range of utilities. These include: plotting 
     functionality; a simulation wrapper; scenario analysis tooling; an interactive 
     dashboard; tools for handling mult-dimensional models; and both model and parameter
     look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)

@@ -3,11 +3,12 @@
 
 ## Feature updates
 
-
+* Added SIS family of models
 
 ## Package updates
 
 * New package title
+* Updated license
 
 
 # idmodelr 0.2.0

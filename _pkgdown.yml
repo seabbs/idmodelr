@@ -31,6 +31,7 @@ reference:
     desc:  Deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification etc. See documentation and `model_details` for information.
     contents:
     - ends_with("I_ode")
+    - ends_with("S_ode")
     - ends_with("R_ode")
     - ends_with("vaccination_ode")
     - ends_with("demographics_ode")
