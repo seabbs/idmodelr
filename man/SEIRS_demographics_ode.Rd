@@ -32,7 +32,8 @@ chi <- 0.5
 mu <- 1/81
 dt <- 1
 
-parameters <- c(beta = beta, gamma = gamma, tau = tau, mu = mu)
+parameters <- c(beta = beta, gamma = gamma, chi = chi,
+                tau = tau, mu = mu)
 inits <- c(S = S_0, E = E_0, I = I_0, R_0 = R_0)
 
 SEIRS_demographics_ode(1, inits, parameters)

@@ -13,7 +13,7 @@ chi <- 0.5
 dt <- 1
 mu = 1/84
 
-parameters <- c(beta = beta, gamma = gamma, mu = mu)
+parameters <- c(beta = beta, gamma = gamma, chi = chi, mu = mu)
 inits <- c(S = S_0, E = E_0, I = I_0)
 
 test <- SEIS_demographics_ode(1, inits, parameters)

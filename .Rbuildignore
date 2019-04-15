@@ -1,3 +1,4 @@
+^data-raw$
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -17,4 +18,4 @@
 ^Makefile$
 ^appveyor.yml$
 ^.github$
-
+^data-raw$

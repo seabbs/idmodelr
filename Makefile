@@ -1,13 +1,18 @@
 default: all
 
 
-all: update_deps package docs man/figures/logo.png README.md build_report git_commit
+all: update_deps build_data package docs man/figures/logo.png README.md build_report git_commit
 
 
 ## Update dependencies based on those installed
 .PHONY: update_deps
 update_deps:
 		 Rscript -e "usethis::use_tidy_versions(overwrite = TRUE)"
+
+#Update data
+.PHONY: build_data
+build_data:
+		cd data-raw && make
 
 #build update documents and build package
 .PHONY: package
