@@ -12,10 +12,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Infectious Disease Modelling Utilities  <img src="man/figures/logo.png" align="right" alt="" width="120" />
+#  Infectious Disease Model Library and Utilities  <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.2.0-blue.svg?style=flat)](https://github.com/idmodelr)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat)](https://github.com/idmodelr)
 [![Documentation via pkgdown](https://img.shields.io/badge/Documentation-click here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
 [![Development documentation via pkgdown](https://img.shields.io/badge/Development Documentation-click here!-lightblue.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/dev)
 [![badge](https://img.shields.io/badge/Launch-idmodelr-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio)
