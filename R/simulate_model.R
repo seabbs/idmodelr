@@ -82,7 +82,10 @@ simulate_model <- function(model, sim_fn, inits = NULL, params = NULL, times = N
       })
     }else {
       sim <- map_df(1:ncol(params_as_matrix), function(i) {
-        traj <- sim_fn(model, inits = inits_as_matrix[,i], params = params_as_matrix[,i], as.data.frame = as_tibble, ...)
+        traj <- sim_fn(model, inits = inits_as_matrix[,i],
+                       params = params_as_matrix[,i],
+                       as.data.frame = as_tibble,
+                       times = times, ...)
         traj$traj <- i
 
         if (verbose) {

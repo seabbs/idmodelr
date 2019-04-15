@@ -32,6 +32,11 @@ test_that("simulate_model errors when given parameters as a list", {
   expect_error(simulate_model(model = SI_ode, sim_fn = solve_ode, inits, as.list(parameters), times))
 })
 
+test_that("simulate_model errors when given initial conditions as a list", {
+
+  expect_error(simulate_model(model = SI_ode, sim_fn = solve_ode, as.list(inits), parameters, times))
+})
+
 
 test_that("simulate_model errors when initial conditions and parameters have different numbers of rows.", {
 
@@ -45,6 +50,7 @@ test_that("simulate_model can handle multiple simulations at once.", {
 
   inits_df <- data.frame(S = rep(S_0, 2), I = rep(I_0, 2))
   parameters_df <- data.frame(beta = rep(beta, 2))
-  test <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits_df, parameters_df, times)
+  test <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits_df, parameters_df,
+                         times, by_row = TRUE)
   expect_known_output(test, file = "../../tests/test-files/simulate_model/test-02.rds")
 })
