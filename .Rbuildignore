@@ -19,3 +19,4 @@
 ^appveyor.yml$
 ^.github$
 ^data-raw$
+^inst/paper$
