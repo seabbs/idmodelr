@@ -112,13 +112,91 @@
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
+<p>In this quick start guide we are going to be defining, simulating and plotting a Susceptible-Infected-Recovered deterministic compartmental model with simple population demographics (births = deaths). The first step is to load the <code>idmodelr</code> package.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(idmodelr)</a></code></pre></div>
+<p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed and the parameter and initialisation requirements it has.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">SIR_demographics_ode</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function (t, x, params) </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; {</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     S &lt;- x[1]</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;     I &lt;- x[2]</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;     R &lt;- x[3]</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;     with(as.list(params), {</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;         N = S + I + R</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;         dS = -beta * S * I/N - mu * S + mu * N</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;         dI = beta * S * I/N - tau * I - mu * I</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;         dR = tau * I - mu * R</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;         derivatives &lt;- c(dS, dI, dR)</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;         list(derivatives)</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;     })</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; &lt;bytecode: 0x2612648&gt;</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
+<p>Parameterise the model.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, ##Transmission rate = contact rate * transmission probablity</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">tau =</span> <span class="fl">0.5</span>, ## Rate recovcery = 1 / duration of infection</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> ## Natural birth/death rate = 1 / average lifespan</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">)</a></code></pre></div>
+<p>Specify the initial population by compartment.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">R =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  )</a></code></pre></div>
+<p>Specify the timespan over which to run the model.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
+<p>Simulate the model.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">traj &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">          inits, parameters,</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">traj</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; # A tibble: 501 x 4</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;     time     S     I      R</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  1   0    999   1    0     </span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  2   0.1  999.  1.28 0.0567</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  3   0.2  998.  1.64 0.129 </span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  4   0.3  998.  2.11 0.222 </span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;  5   0.4  997.  2.70 0.342 </span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;  6   0.5  996.  3.46 0.494 </span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt;  7   0.6  995.  4.43 0.690 </span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt;  8   0.7  993.  5.67 0.940 </span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt;  9   0.8  991.  7.25 1.26  </span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt; 10   0.9  989.  9.28 1.67  </span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; # … with 491 more rows</span></a></code></pre></div>
+<p>Summarise the model.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/summarise_model.html">summarise_model</a></span>(traj)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 1 x 6</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   `Final size: S` `Final size: I` `Final size: R` `Epidemic peak …</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1             136              31             833              3.5</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; # … with 2 more variables: `Epidemic peak` &lt;dbl&gt;, `Epidemic</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; #   duration` &lt;dbl&gt;</span></a></code></pre></div>
+<p>Plot the model trajectory.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, <span class="dt">facet =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-9-1.png" width="700"></p>
+<p>Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">parameters_up &lt;-<span class="st"> </span>parameters</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">parameters_up[<span class="st">"mu"</span>] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">traj_up &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">          inits, parameters_up,</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, traj_up, <span class="dt">facet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-11-1.png" width="700"></p>
+<p>See the package vignettes for more help getting started and some additional ideas for exploring infectious disease model dynamics.</p>
 </div>
 <div id="dashboard" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dashboard" class="anchor"></a>Dashboard</h2>
 <p>A shiny application has been developed that showcases some of the functionality of the <code>idmodelr</code> package. This application allows the parameter spaces of a range of models built into <code>idmodelr</code> to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found <a href="https://github.com/seabbs/exploreidmodels">here</a>. It can be run locally using the following (<em>Note: this will install required packages to your system</em>),</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
 <p>or accessed <a href="http://www.seabbs.co.uk/shiny/exploreidmodels">online</a> (<em>Note: This version may not be fully up to date</em>).</p>
 <div class="figure">
 <img src="reference/figures/exploreidmodels.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
@@ -144,7 +222,7 @@
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory. Alternatively, access the development environment via <a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
@@ -195,6 +273,7 @@
 <li><a href="https://codecov.io/github/seabbs/idmodelr?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/idmodelr" alt="metacran monthly downloads"></a></li>
 <li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4" alt="metacran downloads"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.2641048"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>
