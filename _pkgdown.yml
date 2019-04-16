@@ -36,7 +36,7 @@ reference:
     - ends_with("vaccination_ode")
     - ends_with("demographics_ode")
   - title: Simulation Utilities
-    desc: Functions for solving, simulation, and summarising ODE ID models.zs
+    desc: Functions for solving, simulating, and summarising ID models.
     contents:
     - solve_ode
     - simulate_model

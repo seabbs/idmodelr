@@ -30,7 +30,7 @@ Explore a range of infectious disease models in a consistent framework. The prim
 
 ## Installation
 
-You can install idmodelr from github with:
+You can install the development version of `idmodelr` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")

@@ -43,7 +43,7 @@ signposting towards other, more research, focussed resources.
 
 ## Installation
 
-You can install idmodelr from github with:
+You can install the development version of `idmodelr` from github with:
 
 ``` r
 # install.packages("devtools")
@@ -90,7 +90,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x559972eca060>
+#> <bytecode: 0x5582fc5893c8>
 #> <environment: namespace:idmodelr>
 ```
 
