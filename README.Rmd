@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/"
 )
 ```
 
@@ -24,6 +24,7 @@ knitr::opts_chunk$set(
 [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
 [![metacran monthly downloads](http://cranlogs.r-pkg.org/badges/idmodelr)](https://cran.r-project.org/package=idmodelr)
 [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4)](https://cran.r-project.org/package=idmodelr)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 
 Explore a range of infectious disease models in a consistent framework. The primary aim of `idmodelr` is to provide a library of infectious disease models for researchers, students, and other interested individuals. These models can be used to understand the underlying dynamics and as a reference point when developing models for research. `idmodelr` also provides a range of utilities. These include: plotting functionality; a simulation wrapper; scenario analysis tooling; an interactive dashboard; tools for handling mult-dimensional models; and both model and parameter look up tables. Unlike other modelling packages such as [`pomp`](https://kingaa.github.io/pomp/), [`libbi`](http://libbi.org) and [`epimodel`](http://www.epimodel.org), `idmodelr` serves primarily as an educational resource. After users have explored model dynamics with `idmodelr` they may then implement their model using one of these packages in order to utilise the model fitting tools they provide.  For newer modellers, this package reduces the barrier to entry by containing multiple infectious disease models, providing a consistent framework for simulation and visualisation, and signposting towards other, more research, focussed resources. 
 
@@ -37,6 +38,90 @@ devtools::install_github("seabbs/idmodelr")
 ```
 
 ## Quick start
+
+In this quick start guide we are going to be defining, simulating and plotting a Susceptible-Infected-Recovered deterministic compartmental model with simple population demographics (births = deaths). The first step is to load the `idmodelr` package.
+
+```{r}
+library(idmodelr)
+```
+
+Now look at the model and the model help file (`?SIR_demographics_ode`) to get an understanding of how the model is constructed and the parameter and initialisation requirements it has.
+
+```{r}
+SIR_demographics_ode
+```
+
+Parameterise the model.
+
+```{r}
+parameters <- c(
+  beta = 3, ##Transmission rate = contact rate * transmission probablity
+  tau = 0.5, ## Rate recovcery = 1 / duration of infection
+  mu = 1/81 ## Natural birth/death rate = 1 / average lifespan
+)
+```
+
+Specify the initial population by compartment.
+
+```{r}
+inits <- c(
+  S = 999,
+  I = 1,
+  R = 0
+  )
+
+```
+
+Specify the timespan over which to run the model.
+
+```{r}
+times <- seq(0, 50, 0.1)
+```
+
+Simulate the model.
+
+
+```{r}
+traj <- solve_ode(model = SIR_demographics_ode,
+          inits, parameters,
+          times, as.data.frame = TRUE)
+
+
+traj
+```
+
+Summarise the model. 
+
+```{r}
+summarise_model(traj)
+```
+Plot the model trajectory.
+
+```{r}
+plot_model(traj, facet = FALSE)
+```
+
+
+Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.
+
+```{r}
+parameters_up <- parameters
+parameters_up["mu"] <- 1 / 20
+
+
+traj_up <- solve_ode(model = SIR_demographics_ode,
+          inits, parameters_up,
+          times, as.data.frame = TRUE)
+
+```
+
+Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?
+
+```{r}
+plot_model(traj, traj_up, facet = TRUE)
+```
+
+See the package vignettes for more help getting started and some additional ideas for exploring infectious disease model dynamics.
 
 ## Dashboard 
 

@@ -95,30 +95,22 @@ plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
   }
 
   plot <- plot +
-    geom_line() +
+    geom_line(size = 1.1) +
     theme_minimal() +
     labs(x = "Year") +
-    scale_color_viridis(discrete = TRUE, end = 0.9)
+    scale_color_viridis(discrete = TRUE, end = 0.9) +
+    theme(legend.position = "top")
 
   if (facet) {
     plot <- plot +
-      facet_wrap(~Compartment)
-
-    if (!is.null(prev_sim)) {
-      plot <- plot +
-        theme(legend.position = "bottom") +
-        guides(col = FALSE)
-    }else{
-      plot <- plot +
-        theme(legend.position = "none")
-    }
+      facet_wrap(~Compartment) +
+      guides(col = FALSE)
   }
 
   ## Add facetting for previous simulation
-  if (!facet && !is.null(prev_sim)) {
+  if (is.null(prev_sim)) {
     plot <- plot +
-      theme(legend.position = "bottom") +
-      facet_wrap(~Model)
+      guides(linetype = FALSE)
   }
 
 return(plot)

@@ -27,8 +27,8 @@ Depends:
     R (>= 3.2.0)
 Imports: 
     dplyr (>= 0.8.0.1),
-    rlang (>= 0.3.3),
-    ggplot2 (>= 3.1.0.9000),
+    rlang (>= 0.3.4),
+    ggplot2 (>= 3.1.1),
     viridis (>= 0.5.1),
     magrittr (>= 1.5),
     purrr (>= 0.3.2),
@@ -42,7 +42,7 @@ Suggests:
     testthat (>= 2.0.1),
     rmarkdown (>= 1.12),
     knitr (>= 1.22),
-    pkgnet (>= 0.3.2)
+    pkgnet (>= 0.4.0)
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/idmodelr, 
      https://github.com/seabbs/idmodelr
