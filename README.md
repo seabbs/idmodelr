@@ -32,7 +32,7 @@ functionality; a simulation wrapper; scenario analysis tooling; an
 interactive dashboard; tools for handling mult-dimensional models; and
 both model and parameter look up tables. Unlike other modelling packages
 such as [`pomp`](https://kingaa.github.io/pomp/),
-[`libbi`](http://libbi.org) and [`epimodel`](http://www.epimodel.org),
+[`libbi`](http://libbi.org) and [`EpiModel`](http://www.epimodel.org),
 `idmodelr` serves primarily as an educational resource. After users have
 explored model dynamics with `idmodelr` they may then implement their
 model using one of these packages in order to utilise the model fitting
@@ -90,7 +90,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x5582fc5893c8>
+#> <bytecode: 0x55c0cdd7c328>
 #> <environment: namespace:idmodelr>
 ```
 
