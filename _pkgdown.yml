@@ -4,8 +4,8 @@ template:
   params:
     bootswatch: lumen
     docsearch:
-     api_key: 1234
-     index_name: idmodelr
+     api_key: ec77738e3c0c9f4b2529464269a70757
+     index_name: samabbott-idmodelr
 
 development:
   mode: unreleased
