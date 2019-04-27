@@ -160,8 +160,8 @@
 <span class='no'>chi</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
 <span class='no'>mu</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>/<span class='fl'>81</span>
 <span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='no'>mu</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='no'>mu</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
 <span class='fu'>SIS_demographics_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(substitute(expr), data, enclos = parent.frame()): object 'chi' not found</span></div></pre>
   </div>

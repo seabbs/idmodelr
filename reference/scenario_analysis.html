@@ -202,26 +202,26 @@ varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/ref
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
-<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
-<span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
-<span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
+<span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"test_1"</span>, <span class='st'>"test_2"</span>), <span class='kw'>scenario_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='no'>variable_params</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>))
+<span class='no'>fixed_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fixed_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>fixed_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>4</span>))
+<span class='no'>sample_params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sample_1</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>sample_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
 
 <span class='no'>parameter_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='generate_parameter_permutations.html'>generate_parameter_permutations</a></span>(<span class='no'>variable_params</span>, <span class='no'>fixed_params</span>, <span class='no'>sample_params</span>,
-                                                <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
+                                                <span class='kw'>excluded_params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"variable"</span>), <span class='no'>scenarios</span>,
                                                 <span class='kw'>parameter_samples</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
 <span class='co'>## set up dummy simulation function (returning an empty dataframe)</span>
 <span class='no'>dummy_sim_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>inits</span>, <span class='no'>params</span>, <span class='no'>times</span>, <span class='no'>as.data.frame</span>) {
  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>()
- <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>x</span>)
+ <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>x</span>)
 }
 
 <span class='co'>## Set up dummy summary function</span>
 <span class='no'>dummy_sum_fn</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>df</span>){
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>df</span>, <span class='kw'>summarised_simulations</span> <span class='kw'>=</span> <span class='no'>simulations</span>)
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/function'>return</a></span>(<span class='no'>df</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>df</span>)
 }
 <span class='no'>dummy_model</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){}
 

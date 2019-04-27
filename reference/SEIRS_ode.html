@@ -164,9 +164,9 @@
 <span class='no'>chi</span> <span class='kw'>&lt;-</span> <span class='fl'>0.5</span>
 <span class='no'>dt</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='no'>gamma</span>,
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>, <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='no'>gamma</span>,
                 <span class='kw'>chi</span> <span class='kw'>=</span> <span class='no'>chi</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='no'>tau</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>E</span> <span class='kw'>=</span> <span class='no'>E_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>, <span class='kw'>R_0</span> <span class='kw'>=</span> <span class='no'>R_0</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>E</span> <span class='kw'>=</span> <span class='no'>E_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>, <span class='kw'>R_0</span> <span class='kw'>=</span> <span class='no'>R_0</span>)
 
 <span class='fu'>SEIRS_ode</span>(<span class='fl'>1</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt;      S      S      E      I 

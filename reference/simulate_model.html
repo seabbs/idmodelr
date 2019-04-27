@@ -235,11 +235,11 @@ all stratified levels.</p></td>
 <span class='co'>##Time for model to run over</span>
 <span class='no'>tbegin</span> <span class='kw'>=</span> <span class='fl'>0</span>
 <span class='no'>tend</span> <span class='kw'>=</span> <span class='fl'>50</span>
-<span class='no'>times</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='no'>tbegin</span>, <span class='no'>tend</span>, <span class='fl'>1</span>)
+<span class='no'>times</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='no'>tbegin</span>, <span class='no'>tend</span>, <span class='fl'>1</span>)
 
 <span class='co'>##Vectorise input</span>
-<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
-<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='no'>beta</span>)
+<span class='no'>inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>S</span> <span class='kw'>=</span> <span class='no'>S_0</span>, <span class='kw'>I</span> <span class='kw'>=</span> <span class='no'>I_0</span>)
 
 <span class='no'>SI_sim</span> <span class='kw'>&lt;-</span> <span class='fu'>simulate_model</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>SI_ode</span>, <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>solve_ode</span>, <span class='no'>inits</span>, <span class='no'>parameters</span>, <span class='no'>times</span>)</div></pre>
   </div>

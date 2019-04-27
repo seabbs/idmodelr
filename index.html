@@ -113,7 +113,7 @@
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
 <p>In this quick start guide we are going to be defining, simulating and plotting a Susceptible-Infected-Recovered deterministic compartmental model with simple population demographics (births = deaths). The first step is to load the <code>idmodelr</code> package.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(idmodelr)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(idmodelr)</a></code></pre></div>
 <p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed and the parameter and initialisation requirements it has.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">SIR_demographics_ode</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function (t, x, params) </span></a>
@@ -130,22 +130,22 @@
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;         list(derivatives)</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;     })</span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; &lt;bytecode: 0x1527928&gt;</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; &lt;bytecode: 0x12642c8&gt;</span></a>
 <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
 <p>Parameterise the model.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, ##Transmission rate = contact rate * transmission probablity</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">tau =</span> <span class="fl">0.5</span>, ## Rate recovcery = 1 / duration of infection</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> ## Natural birth/death rate = 1 / average lifespan</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">)</a></code></pre></div>
 <p>Specify the initial population by compartment.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">R =</span> <span class="dv">0</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">  )</a></code></pre></div>
 <p>Specify the timespan over which to run the model.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
 <p>Simulate the model.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">traj &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">          inits, parameters,</a>
@@ -196,7 +196,7 @@
 <a href="#dashboard" class="anchor"></a>Dashboard</h2>
 <p>A shiny application has been developed that showcases some of the functionality of the <code>idmodelr</code> package. This application allows the parameter spaces of a range of models built into <code>idmodelr</code> to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found <a href="https://github.com/seabbs/exploreidmodels">here</a>. It can be run locally using the following (<em>Note: this will install required packages to your system</em>),</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/runUrl">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/runUrl.html">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
 <p>or accessed <a href="http://www.seabbs.co.uk/shiny/exploreidmodels">online</a> (<em>Note: This version may not be fully up to date</em>).</p>
 <div class="figure">
 <img src="reference/figures/exploreidmodels.png" alt="Snapshot of the integrated dashboard."><p class="caption">Snapshot of the integrated dashboard.</p>
