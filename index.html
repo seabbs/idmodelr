@@ -145,98 +145,287 @@
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
 <p>In this quick start guide we are going to be defining, simulating and plotting a Susceptible-Infected-Recovered deterministic compartmental model with simple population demographics (births = deaths). The first step is to load the <code>idmodelr</code> package.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(idmodelr)</a></code></pre></div>
-<p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed and the parameter and initialisation requirements it has.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">SIR_demographics_ode</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function(t, x, params) {</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   ## Specify model compartments</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   S &lt;- x[1]</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   I &lt;- x[2]</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   R &lt;- x[3]</span></a>
+<p>The next step is to find the model of interest amongst those implemented in <code>idmodelr</code>. <code>model_details</code> lists all of the models implemented in <code>idmodelr</code> and can be search using <code>dplyr</code>, base R, or other dataframe tools.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;   with(as.list(params),{</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;     ## Specify total population</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;     N = S + I + R</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;     ## Derivative Expressions</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;     dS = - beta * S * I / N - mu * S + mu * N</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;     dI = beta * S * I / N - tau * I - mu * I</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;     dR = tau * I - mu * R</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;     ## output</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;     derivatives &lt;- c(dS, dI, dR)</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;     list(derivatives)</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;   })</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; &lt;bytecode: 0x565171a2cea8&gt;</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">model_details <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(model_family <span class="op">%in%</span><span class="st"> "SIR"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="5%">
+<col width="4%">
+<col width="5%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="4%">
+<col width="6%">
+<col width="6%">
+<col width="8%">
+<col width="4%">
+<col width="6%">
+<col width="3%">
+<col width="17%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">model</th>
+<th align="left">model_family</th>
+<th align="left">time</th>
+<th align="left">type</th>
+<th align="left">recovered</th>
+<th align="left">exposed</th>
+<th align="left">treated</th>
+<th align="left">susceptible</th>
+<th align="left">risk_stratified</th>
+<th align="left">non_exponential</th>
+<th align="left">simple_demographics</th>
+<th align="left">vaccination</th>
+<th align="left">disease_example</th>
+<th align="left">language</th>
+<th align="left">parameters</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">SIR_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”)</td>
+</tr>
+<tr class="even">
+<td align="left">SIR_demographics_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “mu”)</td>
+</tr>
+<tr class="odd">
+<td align="left">SIR_vaccination_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “lambda”)</td>
+</tr>
+<tr class="even">
+<td align="left">SIR_vaccination_demographics_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “lambda”, “alpha”, “mu”)</td>
+</tr>
+</tbody>
+</table>
+<p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">SIR_demographics_ode</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; function(t, x, params) {</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   ## Specify model compartments</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   S &lt;- x[1]</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   I &lt;- x[2]</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;   R &lt;- x[3]</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;   with(as.list(params),{</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;     ## Specify total population</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;     N = S + I + R</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;     ## Derivative Expressions</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;     dS = - beta * S * I / N - mu * S + mu * N</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;     dI = beta * S * I / N - tau * I - mu * I</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;     dR = tau * I - mu * R</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;     ## output</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;     derivatives &lt;- c(dS, dI, dR)</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;     list(derivatives)</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;   })</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; &lt;bytecode: 0x5593deb733d8&gt;</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
+<p>Check the parameters required by the model using <code>required_parameters</code>. This returns a table containing all the parameters that must be defined in order to use the model as well as descriptive information for each parameter.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="reference/required_parameters.html">required_parameters</a></span>(<span class="st">"SIR_demographics_ode"</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(parameters)</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="4%">
+<col width="9%">
+<col width="66%">
+<col width="2%">
+<col width="8%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">parameter</th>
+<th align="left">parameter_family</th>
+<th align="left">description</th>
+<th align="left">type</th>
+<th align="left">risk_stratified</th>
+<th align="left">non_exponential</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">beta</td>
+<td align="left">transmission</td>
+<td align="left">Transmission rate = the transmission probability per contact * the number of contacts each individual has.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="left">tau</td>
+<td align="left">recovery</td>
+<td align="left">Recovery rate. The reciprocal of the time infectious.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="odd">
+<td align="left">mu</td>
+<td align="left">demographics</td>
+<td align="left">The natural mortality rate. The reciprocal of the average lifespan. (for simple demographics this is also the birth rate.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
 <p>Parameterise the model.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, ##Transmission rate = contact rate * transmission probablity</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">tau =</span> <span class="fl">0.5</span>, ## Rate recovcery = 1 / duration of infection</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> ## Natural birth/death rate = 1 / average lifespan</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">)</a></code></pre></div>
-<p>Specify the initial population by compartment.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">R =</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">  )</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, ##Transmission rate = contact rate * transmission probablity</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">  <span class="dt">tau =</span> <span class="fl">0.5</span>, ## Rate recovcery = 1 / duration of infection</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> ## Natural birth/death rate = 1 / average lifespan</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">)</a></code></pre></div>
+<p>Check the initial conditions required by looking at the start of the model function. In most cases this should match up to the model name (i.e S, I and R for an SIR model) but risk stratification etc. will require additional compartments.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">R =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  )</a></code></pre></div>
 <p>Specify the timespan over which to run the model.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
 <p>Simulate the model.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">traj &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">          inits, parameters,</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">traj</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; # A tibble: 501 x 4</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;     time     S     I      R</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  1   0    999   1    0     </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  2   0.1  999.  1.28 0.0567</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  3   0.2  998.  1.64 0.129 </span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  4   0.3  998.  2.11 0.222 </span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;  5   0.4  997.  2.70 0.342 </span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;  6   0.5  996.  3.46 0.494 </span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt;  7   0.6  995.  4.43 0.690 </span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt;  8   0.7  993.  5.67 0.940 </span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt;  9   0.8  991.  7.25 1.26  </span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt; 10   0.9  989.  9.28 1.67  </span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; # … with 491 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">traj &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">          inits, parameters,</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">traj</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; # A tibble: 501 x 4</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt;     time     S     I      R</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt;  1   0    999   1    0     </span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt;  2   0.1  999.  1.28 0.0567</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;  3   0.2  998.  1.64 0.129 </span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;  4   0.3  998.  2.11 0.222 </span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;  5   0.4  997.  2.70 0.342 </span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt;  6   0.5  996.  3.46 0.494 </span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt;  7   0.6  995.  4.43 0.690 </span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt;  8   0.7  993.  5.67 0.940 </span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt;  9   0.8  991.  7.25 1.26  </span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt; 10   0.9  989.  9.28 1.67  </span></a>
+<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt; # … with 491 more rows</span></a></code></pre></div>
 <p>Summarise the model.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/summarise_model.html">summarise_model</a></span>(traj)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 1 x 6</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   `Final size: S` `Final size: I` `Final size: R` `Epidemic peak …</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1             136              31             833              3.5</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; # … with 2 more variables: `Epidemic peak` &lt;dbl&gt;, `Epidemic</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; #   duration` &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="reference/summarise_model.html">summarise_model</a></span>(traj) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="14%">
+<col width="14%">
+<col width="20%">
+<col width="14%">
+<col width="19%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">Final size: S</th>
+<th align="right">Final size: I</th>
+<th align="right">Final size: R</th>
+<th align="right">Epidemic peak time</th>
+<th align="right">Epidemic peak</th>
+<th align="right">Epidemic duration</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">136</td>
+<td align="right">31</td>
+<td align="right">833</td>
+<td align="right">3.5</td>
+<td align="right">533</td>
+<td align="right">Inf</td>
+</tr></tbody>
+</table>
 <p>Plot the model trajectory.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, <span class="dt">facet =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="reference/figures/unnamed-chunk-9-1.png"><!-- --></p>
-<p>Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">parameters_up &lt;-<span class="st"> </span>parameters</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">parameters_up[<span class="st">"mu"</span>] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">20</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">traj_up &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">          inits, parameters_up,</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, traj_up, <span class="dt">facet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, <span class="dt">facet =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="reference/figures/unnamed-chunk-11-1.png"><!-- --></p>
+<p>Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">parameters_up &lt;-<span class="st"> </span>parameters</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">parameters_up[<span class="st">"mu"</span>] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">traj_up &lt;-<span class="st"> </span><span class="kw"><a href="reference/solve_ode.html">solve_ode</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">          inits, parameters_up,</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">          times, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, traj_up, <span class="dt">facet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-13-1.png"><!-- --></p>
 <p>See the package vignettes for more help getting started and some additional ideas for exploring infectious disease model dynamics.</p>
 </div>
 <div id="dashboard" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dashboard" class="anchor"></a>Dashboard</h2>
 <p>A shiny application has been developed that showcases some of the functionality of the <code>idmodelr</code> package. This application allows the parameter spaces of a range of models built into <code>idmodelr</code> to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found <a href="https://github.com/seabbs/exploreidmodels">here</a>. It can be run locally using the following (<em>Note: this will install required packages to your system</em>),</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/runUrl.html">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/runUrl.html">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
 <p><img src="reference/figures/exploreidmodels.png" alt="Snapshot of the integrated dashboard."></p>
 </div>
 <div id="contributing" class="section level2">
@@ -259,7 +448,7 @@
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory. Alternatively, access the development environment via <a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
