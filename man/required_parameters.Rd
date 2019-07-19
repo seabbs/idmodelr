@@ -20,7 +20,7 @@ fuzzy matching has been used it can also given information of the parameter requ
 }
 \examples{
 
-Check the parameters required by the "SIR_ode" model
+## Check the parameters required by the "SIR_ode" model
 required_parameters("SIR_ode")
 
 

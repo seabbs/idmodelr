@@ -12,7 +12,7 @@
 #' @importFrom dplyr filter
 #' @examples
 #'
-#' ##Check the parameters required by the "SIR_ode" model
+#' ## Check the parameters required by the "SIR_ode" model
 #' required_parameters("SIR_ode")
 #'
 #'
