@@ -12,7 +12,7 @@
 #' @importFrom dplyr filter
 #' @examples
 #'
-#' Check the parameters required by the "SIR_ode" model
+#' ##Check the parameters required by the "SIR_ode" model
 #' required_parameters("SIR_ode")
 #'
 #'
@@ -23,6 +23,8 @@ required_parameters <- function(model = NULL) {
   parameters <- unlist(
     idmodelr::model_details[grepl(model, idmodelr::model_details$model), "parameters"]
     )
+
+  parameter <- NULL
 
   lookup <- dplyr::filter(idmodelr::parameter_details, parameter %in% parameters)
 
