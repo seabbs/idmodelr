@@ -8,7 +8,7 @@
 #' @export
 #' @import magrittr
 #' @importFrom dplyr select bind_cols
-#' @importFrom tibble as_tibble
+#' @importFrom tibble enframe
 #' @seealso summarise_var_by_strat
 #' @examples
 #' df <- dplyr::mutate(iris, Petal.Length1 = Petal.Length, Petal.Length2 = Petal.Length)
@@ -26,7 +26,7 @@ summarise_strat_var <- function(df, vars, strat = NULL, new_var = "sum") {
   new_var <- df %>%
     select(.vars = var_strat) %>%
     rowSums %>%
-    as_tibble %>%
+    enframe(name = NULL) %>%
     set_names(new_var)
 
   df <- bind_cols(new_var, df)

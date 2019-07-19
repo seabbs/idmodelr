@@ -1,8 +1,8 @@
 context("generate_parameter_permutations")
 
 
- scenarios <- tibble::data_frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
- variable_params <-  tibble::data_frame(variable = c(0, 1))
+ scenarios <- tibble::tibble(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
+ variable_params <-  tibble::tibble(variable = c(0, 1))
  fixed_params <- c(fixed_1 = 2, fixed_2 = c(1, 3))
  sample_params <- c(sample_1 = 2, sample_2 = c(2, 1))
 
@@ -10,7 +10,7 @@ context("generate_parameter_permutations")
                                  excluded_params = c("variable"), scenarios,
                                  parameter_samples = 1)
 
- df_check <- tibble::data_frame(scenario = rep(c("test_1", "test_2"), 2), variable = c(0, 0, 1, 1),
+ df_check <- tibble::tibble(scenario = rep(c("test_1", "test_2"), 2), variable = c(0, 0, 1, 1),
                                 sample = as.integer(1), scenario_param = rep(c(0, 1), 2), fixed_1 = 2, fixed_21 = 1,
                                 fixed_22 = 3, sample_1 = 2, sample_21 = 2, sample_22 = 1)
 

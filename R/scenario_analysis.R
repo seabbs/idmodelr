@@ -25,7 +25,7 @@
 #' @importFrom tidyr nest
 #' @importFrom purrr map
 #' @importFrom furrr future_map
-#' @importFrom future plan multiprocess sequential
+#' @importFrom future plan multisession sequential
 #' @examples
 #'
 #' scenarios <- data.frame(scenario = c("test_1", "test_2"), scenario_param = c(0, 1))
@@ -91,7 +91,7 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
 
   # partition data between cores
   if (cores > 1 || test) {
-    plan(multiprocess, workers = cores)
+    plan(multisession, workers = cores)
   }else{
     plan(sequential)
   }

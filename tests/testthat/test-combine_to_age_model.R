@@ -2,10 +2,10 @@ context("combine_to_age_model.R")
 library(tibble)
 
 ## Data frames for tests
-df <- data_frame(time = c(1, 2), S1 = c(1,2), S2 = c(1, 3), E1 = c(4, 1), E2 = c(3, 4))
+df <- tibble(time = c(1, 2), S1 = c(1,2), S2 = c(1, 3), E1 = c(4, 1), E2 = c(3, 4))
 
 
-df_age <- data_frame(time = c(1, 2), age_group_1 = c(5, 3),
+df_age <- tibble(time = c(1, 2), age_group_1 = c(5, 3),
                                age_group_2 = c(4, 7), N = c(9, 10))
 
 

@@ -6,7 +6,7 @@
 #' @param interval A character string indicating the percentage interval the CI represents. Defaults to "95\%".
 #' @return A dataframe containing the mean and standard deviation of the normal distribution summarised by the provided CI's.
 #' @export
-#' @importFrom tibble data_frame
+#' @importFrom tibble tibble
 #' @examples
 #'
 #' ## Run function to estimate normal distribution for a 95% CI of 1, to 2
@@ -30,6 +30,6 @@ if (!(interval %in% "95%")) {
   mean <- lower_interval + (upper_interval - lower_interval)/2
   sd <- (upper_interval - mean)/z
 
-  out <- tibble::data_frame(mean = mean, sd = sd)
+  out <- tibble::tibble(mean = mean, sd = sd)
   return(out)
 }

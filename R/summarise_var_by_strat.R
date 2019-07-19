@@ -8,7 +8,7 @@
 #' @import magrittr
 #' @importFrom purrr map
 #' @importFrom dplyr select bind_cols
-#' @importFrom tibble as_tibble
+#' @importFrom tibble enframe
 #' @return An updated data frame containing the summarised variable for each stratified level
 #' and for the whole population.
 #' @export
@@ -37,7 +37,7 @@ summarise_var_by_strat <- function(df, vars, strat = NULL, new_var, summary_var 
       new_var <- df %>%
         select(.vars = var_strat) %>%
         rowSums %>%
-        as_tibble %>%
+        enframe(name = NULL) %>%
         set_names(paste0(new_var, y))
 
       return(new_var)

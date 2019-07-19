@@ -71,7 +71,7 @@ summarise_model <- function(sim) {
 
   ## Format output
   sum_stat <- sum_stat %>%
-    rename_at(.vars = colnames(.)[!grepl("epi_", colnames(.))], .funs = funs(paste0("Final size: ", .))) %>%
+    rename_at(.vars = colnames(.)[!grepl("epi_", colnames(.))], list(~ paste0("Final size: ", .))) %>%
     rename(`Epidemic peak time` = epi_peak_time,
            `Epidemic peak` = epi_peak_size,
            `Epidemic duration` = epi_dur)

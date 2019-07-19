@@ -12,7 +12,7 @@
 #' @seealso combine_strat_model_output
 #' @importFrom purrr map
 #' @importFrom dplyr select bind_cols mutate
-#' @importFrom tibble as_tibble
+#' @importFrom tibble enframe
 #' @import magrittr
 #' @examples
 #'
@@ -53,10 +53,10 @@ combine_to_age_model <- function(df, age_com = NULL,
   tmp2 <- 1:age_com %>% map(function(x) {
     tmp_ret <- tmp %>%
       map(x) %>%
-      map(as_tibble) %>%
+      map(~enframe(., name = NULL)) %>%
       bind_cols %>%
       rowSums %>%
-      as_tibble
+      enframe(name = NULL)
     return(tmp_ret)
   }) %>%
     bind_cols %>%

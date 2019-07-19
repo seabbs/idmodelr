@@ -64,9 +64,36 @@ step is to load the `idmodelr` package.
 library(idmodelr)
 ```
 
+The next step is to find the model of interest amongst those implemented
+in `idmodelr`. `model_details` lists all of the models implemented in
+`idmodelr` and can be search using `dplyr`, base R, or other dataframe
+tools.
+
+``` r
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+model_details %>% 
+  dplyr::filter(model_family %in% "SIR") %>% 
+  knitr::kable()
+```
+
+| model                               | model\_family | time       | type          | recovered | exposed | treated | susceptible | risk\_stratified | non\_exponential | simple\_demographics | vaccination | disease\_example | language | parameters                                |
+| :---------------------------------- | :------------ | :--------- | :------------ | :-------- | :------ | :------ | :---------- | :--------------- | :--------------- | :------------------- | :---------- | :--------------- | :------- | :---------------------------------------- |
+| SIR\_ode                            | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | no                   | no          | none             | R        | c(“beta”, “tau”)                          |
+| SIR\_demographics\_ode              | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | yes                  | no          | none             | R        | c(“beta”, “tau”, “mu”)                    |
+| SIR\_vaccination\_ode               | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | no                   | yes         | none             | R        | c(“beta”, “tau”, “lambda”)                |
+| SIR\_vaccination\_demographics\_ode | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | yes                  | yes         | none             | R        | c(“beta”, “tau”, “lambda”, “alpha”, “mu”) |
+
 Now look at the model and the model help file (`?SIR_demographics_ode`)
-to get an understanding of how the model is constructed and the
-parameter and initialisation requirements it has.
+to get an understanding of how the model is constructed.
 
 ``` r
 SIR_demographics_ode
@@ -93,9 +120,26 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x565171a2cea8>
+#> <bytecode: 0x55e3a15a2998>
 #> <environment: namespace:idmodelr>
 ```
+
+Check the parameters required by the model using `required_parameters`.
+This returns a table containing all the parameters that must be defined
+in order to use the model as well as descriptive information for each
+parameter.
+
+``` r
+parameters <- required_parameters("SIR_demographics_ode")
+
+knitr::kable(parameters)
+```
+
+| parameter | parameter\_family | description | type | risk\_stratified | non\_exponential |
+| :-------- | :---------------- | :---------- | :--- | :--------------- | :--------------- |
+| beta      | transmission      |             | rate | no               | no               |
+| tau       | recovery          |             | rate | no               | no               |
+| mu        | demographics      |             | rate | no               | no               |
 
 Parameterise the model.
 
@@ -107,7 +151,10 @@ parameters <- c(
 )
 ```
 
-Specify the initial population by compartment.
+Check the initial conditions required by looking at the start of the
+model function. In most cases this should match up to the model name
+(i.e S, I and R for an SIR model) but risk stratification etc. will
+require additional compartments.
 
 ``` r
 inits <- c(
@@ -166,7 +213,7 @@ Plot the model trajectory.
 plot_model(traj, facet = FALSE)
 ```
 
-![](man/figures/unnamed-chunk-9-1.png)<!-- -->
+![](man/figures/unnamed-chunk-11-1.png)<!-- -->
 
 Vary the model parameters, by increasing the mortality rate, and then
 simulate the updated model.
@@ -188,7 +235,7 @@ impact of increasing mortality been?
 plot_model(traj, traj_up, facet = TRUE)
 ```
 
-![](man/figures/unnamed-chunk-11-1.png)<!-- -->
+![](man/figures/unnamed-chunk-13-1.png)<!-- -->
 
 See the package vignettes for more help getting started and some
 additional ideas for exploring infectious disease model dynamics.

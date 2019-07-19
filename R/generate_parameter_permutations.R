@@ -28,7 +28,7 @@
 #' @return A dataframe containing sampled parameter permutations
 #' @importFrom dplyr mutate full_join select bind_cols everything
 #' @import magrittr
-#' @importFrom tibble as_data_frame data_frame as_tibble
+#' @importFrom tibble as_tibble tibble as_tibble
 #' @importFrom purrr map_df map
 #' @export
 #'
@@ -74,7 +74,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
     }else if (!is.null(variable_params) && is.null(scenarios)) {
       params_perms <- variable_params
     }else{
-      params_perms <- data_frame(id = 1)
+      params_perms <- tibble(id = 1)
     }
 
     if (!is.null(fixed_params) || !is.null(sample_params)) {
@@ -89,7 +89,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
       ## munge join_params
       join_params <- join_params %>%
         t %>%
-        as_data_frame %>%
+        as_tibble %>%
         mutate(id = 1)
 
       params_perms <- params_perms %>%
@@ -110,7 +110,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
 
       prior_sample  <- sampling_function(params = params_as_matrix, ...) %>%
         t %>%
-        as_data_frame
+        as_tibble
 
       return(prior_sample)
     }

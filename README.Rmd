@@ -46,10 +46,28 @@ In this quick start guide we are going to be defining, simulating and plotting a
 library(idmodelr)
 ```
 
-Now look at the model and the model help file (`?SIR_demographics_ode`) to get an understanding of how the model is constructed and the parameter and initialisation requirements it has.
+The next step is to find the model of interest amongst those implemented in `idmodelr`. `model_details` lists all of the models implemented in `idmodelr` and can be search using `dplyr`, base R, or other dataframe tools. 
+
+```{r}
+library(dplyr)
+
+model_details %>% 
+  dplyr::filter(model_family %in% "SIR") %>% 
+  knitr::kable()
+```
+
+Now look at the model and the model help file (`?SIR_demographics_ode`) to get an understanding of how the model is constructed.
 
 ```{r}
 SIR_demographics_ode
+```
+
+Check the parameters required by the model using `required_parameters`. This returns a table containing all the parameters that must be defined in order to use the model as well as descriptive information for each parameter. 
+
+```{r}
+parameters <- required_parameters("SIR_demographics_ode")
+
+knitr::kable(parameters)
 ```
 
 Parameterise the model.
@@ -62,7 +80,7 @@ parameters <- c(
 )
 ```
 
-Specify the initial population by compartment.
+Check the initial conditions required by looking at the start of the model function. In most cases this should match up to the model name (i.e S, I and R for an SIR model) but risk stratification etc. will require additional compartments.
 
 ```{r}
 inits <- c(
@@ -70,7 +88,6 @@ inits <- c(
   I = 1,
   R = 0
   )
-
 ```
 
 Specify the timespan over which to run the model.
