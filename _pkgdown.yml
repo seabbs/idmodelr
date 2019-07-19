@@ -8,20 +8,26 @@ template:
      index_name: samabbott-idmodelr
 
 development:
-  mode: unreleased
+  mode: release
 
 navbar:
   type: inverse
-left:
-  - text: "Home"
-    href: index.html
-  - text: News
-    menu:
-    - text: "Blog posts"
-      href: https://www.samabbott.co.uk/tags/idmodelr/
-    - text: "------------------"
-    - text: "Change log"
-      href: news/index.html
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lookup tables"
+      menu:
+      - text: "Model details"
+        href: articles/model_details.html
+      - text: "Parameter details"
+        href: articles/parameter_details.html
+    - text: News
+      menu:
+      - text: "Blog posts"
+        href: https://www.samabbott.co.uk/tags/idmodelr/
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html
     - icon: fa-file-code-o
       text: "Functions"
       href: reference/index.html
@@ -39,6 +45,7 @@ reference:
     - ends_with("S_ode")
     - ends_with("R_ode")
     - ends_with("vaccination_ode")
+    - ends_with("risk_ode")
     - ends_with("demographics_ode")
   - title: Simulation Utilities
     desc: Functions for solving, simulating, and summarising ID models.
