@@ -112,7 +112,13 @@
     <loc>samabbott.co.uk/idmodelr//reference/idmodelr-package.html</loc>
   </url>
   <url>
+    <loc>samabbott.co.uk/idmodelr//reference/model_details.html</loc>
+  </url>
+  <url>
     <loc>samabbott.co.uk/idmodelr//reference/model_df_to_vector.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//reference/parameter_details.html</loc>
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/plot_model.html</loc>
@@ -134,5 +140,11 @@
   </url>
   <url>
     <loc>samabbott.co.uk/idmodelr//reference/summarise_var_by_strat.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//articles/model_details.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr//articles/parameter_details.html</loc>
   </url>
 </urlset>
