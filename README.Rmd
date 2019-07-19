@@ -111,7 +111,8 @@ traj
 Summarise the model. 
 
 ```{r}
-summarise_model(traj)
+summarise_model(traj) %>% 
+  knitr::kable()
 ```
 
 Plot the model trajectory.

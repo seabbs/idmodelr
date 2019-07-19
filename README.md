@@ -120,7 +120,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x55e3a15a2998>
+#> <bytecode: 0x5593deb733d8>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -135,11 +135,11 @@ parameters <- required_parameters("SIR_demographics_ode")
 knitr::kable(parameters)
 ```
 
-| parameter | parameter\_family | description | type | risk\_stratified | non\_exponential |
-| :-------- | :---------------- | :---------- | :--- | :--------------- | :--------------- |
-| beta      | transmission      |             | rate | no               | no               |
-| tau       | recovery          |             | rate | no               | no               |
-| mu        | demographics      |             | rate | no               | no               |
+| parameter | parameter\_family | description                                                                                                               | type | risk\_stratified | non\_exponential |
+| :-------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------ | :--- | :--------------- | :--------------- |
+| beta      | transmission      | Transmission rate = the transmission probability per contact \* the number of contacts each individual has.               | rate | no               | no               |
+| tau       | recovery          | Recovery rate. The reciprocal of the time infectious.                                                                     | rate | no               | no               |
+| mu        | demographics      | The natural mortality rate. The reciprocal of the average lifespan. (for simple demographics this is also the birth rate. | rate | no               | no               |
 
 Parameterise the model.
 
@@ -198,14 +198,13 @@ traj
 Summarise the model.
 
 ``` r
-summarise_model(traj)
-#> # A tibble: 1 x 6
-#>   `Final size: S` `Final size: I` `Final size: R` `Epidemic peak …
-#>             <dbl>           <dbl>           <dbl>            <dbl>
-#> 1             136              31             833              3.5
-#> # … with 2 more variables: `Epidemic peak` <dbl>, `Epidemic
-#> #   duration` <dbl>
+summarise_model(traj) %>% 
+  knitr::kable()
 ```
+
+| Final size: S | Final size: I | Final size: R | Epidemic peak time | Epidemic peak | Epidemic duration |
+| ------------: | ------------: | ------------: | -----------------: | ------------: | ----------------: |
+|           136 |            31 |           833 |                3.5 |           533 |               Inf |
 
 Plot the model trajectory.
 
