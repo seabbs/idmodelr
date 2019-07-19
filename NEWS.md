@@ -6,11 +6,13 @@
 * Added SIS family of models.
 * Added `model_details` dataframe listing model details.
 * Added `parameter_details` dataframe listing details on common modelling parameters.
+* `plot_model` can now accept a list of simulations and plot each seperately
 
 ## Package updates
 
 * New package title
 * Updated license
+* Image tests via `vdiffr`.
 
 
 # idmodelr 0.2.0
