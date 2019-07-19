@@ -2,16 +2,20 @@
 #'
 #' @description Make seperate plots for each model compartment. Assumes model output is structured
 #' as that produced from \code{\link[idmodelr]{solve_ode}}.
-#' @param sim A tibble of model output as formated by \code{\link[idmodelr]{solve_ode}}
+#' @param sim A tibble of model output as formated by \code{\link[idmodelr]{solve_ode}}. Optionally a list of simulations
+#' can be passed when comparing multiple model runs.
 #' @param facet Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
 #' otherwise it will be.
-#' @param prev_sim A second tibble of model output formated as for \code{sim}. Used to compare to model runs.
-#' @param model_labels A character vector of model names, defaults to \code{c("Current", "Previous")}.
+#' @param prev_sim A second tibble of model output formated as for \code{sim}. Used to compare to model runs. Can only be
+#' supplied if \code{sim} is not a list.
+#' @param model_labels A character vector of model names. Defaults to \code{c("Current", "Previous")} when two model simulations are used
+#' and the list names when \code{sim} is a list. If \code{sim} is unnamed the index of the list is used.
 #' @return A Plot of each model compartments population over time.
 #' @import ggplot2
 #' @import viridis
 #' @importFrom tidyr gather
 #' @importFrom dplyr mutate bind_rows
+#' @importFrom purrr map_dfr
 #' @export
 #'
 #' @examples
@@ -51,14 +55,42 @@
 #'plot_model(new_sim,sim, facet = FALSE)
 #'
 #'plot_model(new_sim, sim, facet = TRUE)
+#'
+#'## Passing in the simulations as a list
+#'plot_model(list("Current" = new_sim, "Previous" = sim), facet = TRUE)
 
 plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
                        facet = TRUE) {
 
+  ## redefine is.list to not catch dataframes
+  is.list <- function(l) {
+    log <- any(class(l) %in% "list")
+
+    return(log)
+  }
+
+  if (!is.null(prev_sim) && is.list(sim)) {
+    stop("Both a previous simulation and a list of models have been passed.
+         Only one of these options may be used at once.")
+  }
+
   time <- NULL; Compartment <- NULL; Model <- NULL; Population <- NULL;
   ## Define default lables for multiple models
   if (is.null(model_labels)) {
-    model_labels <- c("Current", "Previous")
+
+    if (!is.null(prev_sim)) {
+      model_labels <- c("Current", "Previous")
+    }else if (is.list(sim)) {
+      if (is.null(names(sim))) {
+        model_labels <- as.character(1:length(sim))
+      }else{
+        model_labels <- names(sim)
+      }
+    }
+  }
+
+  if (is.list(sim)) {
+    names(sim) <- model_labels
   }
 
   gather_columns_for_plot <- function(sim){
@@ -71,7 +103,12 @@ plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
     return(tidy_sim)
   }
 
-  tidy_sim <- gather_columns_for_plot(sim)
+  if (is.list(sim)) {
+    tidy_sim <- map_dfr(sim, gather_columns_for_plot, .id = "Model")
+  }else{
+    tidy_sim <- gather_columns_for_plot(sim)
+  }
+
 
   ## Add in previous model simulation if present
   if (!is.null(prev_sim)) {
@@ -88,7 +125,7 @@ plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
     }
   }
 
-  if (!is.null(prev_sim)) {
+  if (!is.null(prev_sim) | is.list(sim)) {
     plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment, linetype = Model))
   }else{
     plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment))
@@ -109,8 +146,10 @@ plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
 
   ## Add facetting for previous simulation
   if (is.null(prev_sim)) {
-    plot <- plot +
-      guides(linetype = FALSE)
+    if (!is.list(sim)) {
+      plot <- plot +
+        guides(linetype = FALSE)
+    }
   }
 
 return(plot)
