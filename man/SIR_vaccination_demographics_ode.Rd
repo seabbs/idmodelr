@@ -32,7 +32,6 @@ tau <- 2
 mu <- 1/81
 alpha <- 0.8
 lambda <- 0.7
-dt <- 1
 
 parameters <- c(beta = beta, tau = tau, mu = mu,
                 alpha = 0.8, lambda = 0.7)

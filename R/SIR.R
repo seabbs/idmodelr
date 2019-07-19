@@ -10,7 +10,6 @@
 #' R_0 <- 0
 #' beta <- 3
 #' tau <- 2
-#' dt <- 1
 #'
 #' parameters <- c(beta = beta, tau = tau)
 #' inits <- c(S = S_0, I = I_0, R_0 = R_0)
@@ -53,7 +52,7 @@ SIR_ode <- function(t, x, params) {
 #' beta <- 3
 #' tau <- 2
 #' mu <- 1/81
-#' dt <- 1
+#'
 #'
 #' parameters <- c(beta = beta, tau = tau, mu = mu)
 #' inits <- c(S = S_0, I = I_0, R_0 = R_0)
@@ -100,7 +99,6 @@ SIR_demographics_ode <- function(t, x, params) {
 #' beta <- 3
 #' tau <- 2
 #' lambda <- 0.7
-#' dt <- 1
 #'
 #' parameters <- c(beta = beta, tau = tau,
 #'                 lambda = 0.7)
@@ -158,7 +156,6 @@ SIR_vaccination_ode <- function(t, x, params) {
 #' mu <- 1/81
 #' alpha <- 0.8
 #' lambda <- 0.7
-#' dt <- 1
 #'
 #' parameters <- c(beta = beta, tau = tau, mu = mu,
 #'                 alpha = 0.8, lambda = 0.7)

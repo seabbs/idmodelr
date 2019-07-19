@@ -27,6 +27,11 @@ left:
       href: reference/index.html
 
 reference:
+  - title: Datasets
+    desc: Datasets built into the package. These include details of implemented models and common parameters.
+    contents:
+    - model_details
+    - parameter_details
   - title: Deterministic Compartmental Models
     desc:  Deterministic compartmental ODE models potentially including demographic processes, vaccination, and/or risk stratification etc. See documentation and `model_details` for information.
     contents:

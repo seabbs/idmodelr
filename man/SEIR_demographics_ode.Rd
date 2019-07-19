@@ -29,7 +29,6 @@ beta <- 3
 gamma <-  1/2
 tau <- 2
 mu <- 1/81
-dt <- 1
 
 parameters <- c(beta = beta, gamma = gamma, tau = tau, mu = mu)
 inits <- c(S = S_0, E = E_0, I = I_0, R_0 = R_0)

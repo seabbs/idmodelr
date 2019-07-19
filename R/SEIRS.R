@@ -13,7 +13,6 @@
 #' gamma <-  1/2
 #' tau <- 2
 #' chi <- 0.5
-#' dt <- 1
 #'
 #' parameters <- c(beta = beta, gamma = gamma,
 #'                 chi = chi, tau = tau)
@@ -63,7 +62,6 @@ SEIRS_ode <- function(t, x, params) {
 #' tau <- 2
 #' chi <- 0.5
 #' mu <- 1/81
-#' dt <- 1
 #'
 #' parameters <- c(beta = beta, gamma = gamma, chi = chi,
 #'                 tau = tau, mu = mu)

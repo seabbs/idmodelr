@@ -29,7 +29,6 @@ beta <- 3
 gamma <-  1/2
 tau <- 2
 chi <- 0.5
-dt <- 1
 
 parameters <- c(beta = beta, gamma = gamma,
                 chi = chi, tau = tau)

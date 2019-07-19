@@ -1,0 +1,31 @@
+---
+title: "Model details"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Model details}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(idmodelr)
+```
+
+
+
+```{r}
+if(!knitr:::is_latex_output()) {
+ DT::datatable(model_details, filter = 'top', options = list(
+  pageLength = nrow(model_details), autoWidth = TRUE
+))
+}else{
+  knitr::kable(model_details)
+  }
+```

@@ -31,7 +31,6 @@ gamma_H = 1/5 # Rate of progression to active symptoms from high risk latent
 nu = 1/2 #Rate of progression from high to low risk latent
 gamma_L = 1/100 # Rate of progression to active symptoms for low risk latent
 tau = 1/2 # Rate of recovery
-dt <- 1
 
 parameters <- c(beta = beta, gamma_H = gamma_H, gamma_L = gamma_L, nu = nu, tau = tau)
 inits <- c(S = S_0, H = H_0, L = L_0, I = I_0, R_0 = R_0)

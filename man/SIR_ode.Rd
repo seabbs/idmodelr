@@ -26,7 +26,6 @@ I_0 <- 1
 R_0 <- 0
 beta <- 3
 tau <- 2
-dt <- 1
 
 parameters <- c(beta = beta, tau = tau)
 inits <- c(S = S_0, I = I_0, R_0 = R_0)

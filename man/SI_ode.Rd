@@ -24,7 +24,6 @@ Susceptible-Infected Model
 S_0 <- 999
 I_0 <- 1
 beta <- 3
-dt <- 1
 parameters <- c(beta = beta)
 inits <- c(S = S_0, I = I_0)
 

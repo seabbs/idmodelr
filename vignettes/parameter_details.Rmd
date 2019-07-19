@@ -1,0 +1,30 @@
+---
+title: "Parameter details"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Parameter details}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(idmodelr)
+```
+
+
+```{r}
+if(!knitr:::is_latex_output()) {
+ DT::datatable(parameter_details, filter = 'top', options = list(
+  pageLength = nrow(parameter_details), autoWidth = TRUE
+))
+}else{
+  knitr::kable(parameter_details)
+  }
+```

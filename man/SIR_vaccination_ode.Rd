@@ -30,7 +30,6 @@ R_v_0 <- 0
 beta <- 3
 tau <- 2
 lambda <- 0.7
-dt <- 1
 
 parameters <- c(beta = beta, tau = tau,
                 lambda = 0.7)

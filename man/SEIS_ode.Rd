@@ -27,7 +27,6 @@ I_0 <- 1
 beta <- 3
 chi <- 0.5
 gamma = 1/2
-dt <- 1
 parameters <- c(beta = beta, gamma = gamma, chi = chi)
 inits <- c(S = S_0, E = E_0, I = I_0)
 

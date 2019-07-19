@@ -19,7 +19,6 @@
 #'
 #' parameters <- c(
 #' beta = 3, # Rate of transmission
-#' beta_H = 6, # High risk rate of transmission
 #' gamma_H = 1/5, # Rate of progression to active symptoms from high risk latent
 #' nu = 1/2, #Rate of progression from high to low risk latent
 #' gamma_L = 1/100, # Rate of progression to active symptoms for low risk latent
@@ -84,7 +83,6 @@ SHLITR_ode <- function(t, x, params) {
 #'
 #' parameters <- c(
 #' beta = 3, # Rate of transmission
-#' beta_H = 6, # High risk rate of transmission
 #' gamma_H = 1/5, # Rate of progression to active symptoms from high risk latent
 #' nu = 1/2, #Rate of progression from high to low risk latent
 #' gamma_L = 1/100, # Rate of progression to active symptoms for low risk latent

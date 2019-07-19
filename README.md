@@ -3,6 +3,9 @@
 
 # Infectious disease model library and utilities <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat)](https://github.com/idmodelr)
 [![Documentation via
@@ -90,7 +93,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x55c0cdd7c328>
+#> <bytecode: 0x565171a2cea8>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -208,9 +211,6 @@ system*),
 shiny::runGitHub("exploreidmodels", "seabbs")
 ```
 
-or accessed [online](http://www.seabbs.co.uk/shiny/exploreidmodels)
-(*Note: This version may not be fully up to date*).
-
 ![Snapshot of the integrated
 dashboard.](man/figures/exploreidmodels.png)
 
@@ -231,12 +231,11 @@ model. For highly complex models only the most major model details
 should be listed (aim for less than 40 characters). An entry for
 `model_details` is also required (see
 [`model_details.R`](https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R%20for%20help%20with%20this)).
-Please consider also adding to the testing suite for your new
-model.Models can either be added via a pull request (i.e make all
-desired changes and then run `make`) or via an issue.
+Please consider also adding to the testing suite for your new model.
+Models can either be added via a pull request (i.e make all desired
+changes and then run `make`) or via an issue.
 
-To add a new family of models (i.e stochastic models (*Note: These are
-currently planned in the current development cycle*)) please open an
+To add a new family of models (i.e stochastic models) please open an
 [issue](https://github.com/seabbs/idmodelr/issues) outlining your
 proposed approach. A new family of models is likely to require at least
 its own `solve_` (equivalent to
