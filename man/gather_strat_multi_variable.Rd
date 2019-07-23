@@ -18,7 +18,8 @@ gather_strat_multi_variable(df, id_col, compartments = NULL,
 
 \item{strat}{An integer specifying the number of stratifications to reduce.}
 
-\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
+\item{groups}{A character vector with length equal to the level of stratification.
+Used to name the stratified levels.}
 }
 \value{
 A dataframe of stratified model output with multiple Tidy variables.

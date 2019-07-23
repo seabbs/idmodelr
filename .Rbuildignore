@@ -14,10 +14,11 @@
 ^inst/scripts$
 ^binder$
 ^pkgnet$
-^_pkgdown.yml$
+^_pkgdown\.yml$
 ^Makefile$
-^appveyor.yml$
+^appveyor\.yml$
 ^.github$
 ^data-raw$
 ^inst/paper$
 ^pkgdown$
+^cran-comments\.md$

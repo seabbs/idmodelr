@@ -25,7 +25,8 @@ disease, demographic, or incidence.}
 
 \item{id_col}{A character string containing the name of the new id column.}
 
-\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
+\item{groups}{A character vector with length equal to the level of stratification.
+Used to name the stratified levels.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
 calculated when summarising the model demographics.}

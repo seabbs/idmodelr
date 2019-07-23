@@ -27,7 +27,8 @@ not need to be used.}
 
 \item{id_col}{A character string containing the name of the new id column.}
 
-\item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
+\item{groups}{A character vector with length equal to the level of stratification.
+Used to name the stratified levels.}
 
 \item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
 

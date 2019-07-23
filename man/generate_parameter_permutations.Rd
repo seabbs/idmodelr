@@ -27,13 +27,15 @@ identify each separate scenarios. If parameters are included here that would nor
 should be added to the excluded_params argument}
 
 \item{sampling_function}{A sampling function, this should be designed such that it's input is a matrix
-with each parameter having a named row. It should return it's output in the same format. If not supplied defaults to passing
+with each parameter having a named row. It should return it's output in the same format. If not supplied
+defaults to passing
 through parameters, this may not be the required behaviour.}
 
 \item{parameter_samples}{The number of parameter samples to take, defaults to one.}
 
 \item{repeat_sample}{A logical (defaults to \code{TRUE}) which indicates if each scenario should independently
-sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.}
+sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled
+parameter set.}
 
 \item{rerun}{A logical indicating if the function should be rerun or saved results should be loaded.
 Defaults to \code{FALSE}.}
