@@ -8,11 +8,10 @@ citEntry(entry = "Article",
   volume       = "*",
   number       = "*",
   pages        = "*",
-  doi          = "*",
+  doi          = "10.5281/zenodo.2641048",
 
   textVersion  =
   paste("Sam Abbott (2019).",
-        "idmodelr",
-        "*",
-        "*")
+        "idmodelr,",
+        "DOI: 10.5281/zenodo.2641048")
 )
