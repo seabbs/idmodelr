@@ -47,8 +47,8 @@
 
 <meta property="og:title" content="A Function to Generate Parameter Permutations — generate_parameter_permutations" />
 
-<meta property="og:description" content="A function to generate paramter permutations from a generic sampling function (or if not given
-from the inputed parameters). This function can be used to rapidly generate new parameter combinations given
+<meta property="og:description" content="A function to generate parameter permutations from a generic sampling function (or if not given
+from the input parameters). This function can be used to rapidly generate new parameter combinations given
 parameters to be varied, and scenarios to be investigated." />
 
 <meta property="og:image" content="samabbott.co.uk/idmodelr/logo.png" />
@@ -177,8 +177,8 @@ parameters to be varied, and scenarios to be investigated." />
 
     <div class="ref-description">
     
-    <p>A function to generate paramter permutations from a generic sampling function (or if not given
-from the inputed parameters). This function can be used to rapidly generate new parameter combinations given
+    <p>A function to generate parameter permutations from a generic sampling function (or if not given
+from the input parameters). This function can be used to rapidly generate new parameter combinations given
 parameters to be varied, and scenarios to be investigated.</p>
     
     </div>
@@ -194,16 +194,16 @@ parameters to be varied, and scenarios to be investigated.</p>
     <tr>
       <th>variable_params</th>
       <td><p>A dataframe containing any parameter variations to be investigated. If
-these paramters would normalling be sampled then they should be added to the excluded_params arguement.</p></td>
+these parameters would normally be sampled then they should be added to the excluded_params argument.</p></td>
     </tr>
     <tr>
       <th>fixed_params</th>
       <td><p>A named vector of parameters that are not sampled by the sampling function. If
-these paramters would usually be sampled then they should be added to the excluded_params arguement.</p></td>
+these parameters would usually be sampled then they should be added to the excluded_params argument.</p></td>
     </tr>
     <tr>
       <th>sample_params</th>
-      <td><p>A named vector of paramters to be sampled. If a sampling function is not supplied these
+      <td><p>A named vector of parameters to be sampled. If a sampling function is not supplied these
 parameters will be used in the final permutation dataframe.</p></td>
     </tr>
     <tr>
@@ -214,13 +214,13 @@ kept.</p></td>
     <tr>
       <th>scenarios</th>
       <td><p>A dataframe of possible scenarios to investigate. It must contain a scenario variable to
-identify each seperate scenarios. If parameters are included here that would normally be sampled then they
-should be added to the excluded_params arguement</p></td>
+identify each separate scenarios. If parameters are included here that would normally be sampled then they
+should be added to the excluded_params argument</p></td>
     </tr>
     <tr>
       <th>sampling_function</th>
       <td><p>A sampling function, this should be designed such that it's input is a matrix
-with each paramter having a named row. It should return it's output in the same format. If not supplied defaults to passing
+with each parameter having a named row. It should return it's output in the same format. If not supplied defaults to passing
 through parameters, this may not be the required behaviour.</p></td>
     </tr>
     <tr>
@@ -229,7 +229,7 @@ through parameters, this may not be the required behaviour.</p></td>
     </tr>
     <tr>
       <th>repeat_sample</th>
-      <td><p>A logical (defaults to <code>TRUE</code>) which indicates if each scenario should independantly
+      <td><p>A logical (defaults to <code>TRUE</code>) which indicates if each scenario should independently
 sample from the sampling function. If set to <code>FALSE</code> then each scenario will share the same sampled parameter set.</p></td>
     </tr>
     <tr>
@@ -243,7 +243,7 @@ Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguements to be passed to the sampling_function.</p></td>
+      <td><p>Additional arguments to be passed to the sampling_function.</p></td>
     </tr>
     </table>
     
