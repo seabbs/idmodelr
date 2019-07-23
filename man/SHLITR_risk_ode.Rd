@@ -7,11 +7,11 @@
 SHLITR_risk_ode(t, x, params)
 }
 \arguments{
-\item{t}{The timestep overwhich to calculate derivatives}
+\item{t}{The timestep over which to calculate derivatives}
 
 \item{x}{A numeric vector of compartment populations.}
 
-\item{params}{A named vector of paramter values.}
+\item{params}{A named vector of parameter values.}
 }
 \value{
 A vector of derivatives

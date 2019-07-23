@@ -2,7 +2,7 @@
 % Please edit documentation in R/combine_strat_model_output.R
 \name{combine_strat_model_output}
 \alias{combine_strat_model_output}
-\title{Reduces the Dimensionality of a Stratifed Model}
+\title{Reduces the Dimensionality of a Stratified Model}
 \usage{
 combine_strat_model_output(df, strat = NULL, compartments = NULL,
   hold_out_var = NULL)
@@ -21,7 +21,7 @@ A dataframe of model output that has its dimensionality reduced
 }
 \description{
 Reduces the dimensions of stratified model output. Default behaviour is to remove stratification for all
-variables. However, variables to dedimensionalise can be selected, as can variables to preserve with there structure intact.
+variables. However, variables to reduce the dimensions of can be selected, as can variables to preserve with there structure intact.
 }
 \examples{
 

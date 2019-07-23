@@ -13,8 +13,8 @@ simulate_model(model, sim_fn, inits = NULL, params = NULL,
 \arguments{
 \item{model}{A model compatible with your \code{sim_fn}.}
 
-\item{sim_fn}{A generic simulation function, with the first arguement as the model object,
-a \code{params} arguement, and a \code{as.data.frame} arguement.}
+\item{sim_fn}{A generic simulation function, with the first argument as the model object,
+a \code{params} argument, and a \code{as.data.frame} argument.}
 
 \item{inits}{A dataframe of initial conditions, optionally a named vector can be used.}
 
@@ -34,20 +34,20 @@ model output. Operations are carried out in the order specified. Implemented opt
 and incidence.}
 
 \item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
-specified once for all aggregation functions or for each function seperately.}
+specified once for all aggregation functions or for each function separately.}
 
 \item{strat}{The number of stratified groups in the model.}
 
 \item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
-specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+specified once for all aggregation functions or for each function separately. If compartments is set then this argument does
 not need to be used.}
 
 \item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
-calculated when summarsing the model demographics.}
+calculated when summarising the model demographics.}
 
-\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifying whether to add an additional summary variable across
 all stratified levels.}
 
 \item{verbose}{Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.}

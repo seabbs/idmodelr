@@ -2,7 +2,7 @@
 % Please edit documentation in R/required_parameters.R
 \name{required_parameters}
 \alias{required_parameters}
-\title{Lookup the Details of Parameters Requiered by a Model}
+\title{Lookup the Details of Parameters Required by a Model}
 \usage{
 required_parameters(model = NULL)
 }

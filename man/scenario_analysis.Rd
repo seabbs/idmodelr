@@ -16,10 +16,10 @@ Using the default options it will save results when run for the first time, and 
 
 \item{model}{A model compatible with your \code{sim_fn}.}
 
-\item{sim_fn}{A generic simulation function, with the first arguement as the model object,
-a \code{params} arguement, and a \code{as.data.frame} arguement.}
+\item{sim_fn}{A generic simulation function, with the first argument as the model object,
+a \code{params} argument, and a \code{as.data.frame} argument.}
 
-\item{summary_fn}{A function which accepts a single dataframe arguement customised to fit with the standard
+\item{summary_fn}{A function which accepts a single dataframe argument customised to fit with the standard
 output of \code{scenario_analysis}  and your \code{simulate_model} function. Defaults to \code{NULL} for which
 no summarisation takes place. Warning: If a previous analysis has been saved, changing this option will not
 summarise the result. The analysis must be rerun.}
@@ -38,7 +38,7 @@ multiple simulations for a single parameter set - for this scenario a block base
 \item{test}{A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 of the number of cores specified.}
 
-\item{...}{Pass additional arguements to sim_fn. Only implemented when a single core is used.}
+\item{...}{Pass additional arguments to sim_fn. Only implemented when a single core is used.}
 }
 \value{
 A tidy dataframe containing simulated model trajectories for each scenario

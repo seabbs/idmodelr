@@ -8,7 +8,7 @@
 \describe{
 \item{parameter}{Name of the parameter.}
 \item{parameter_family}{Descriptive parameter family (i.e. transmission).}
-\item{description}{What is this paramwter.}
+\item{description}{What is this parameter.}
 \item{type}{What type of parameter is this (i.e rate, proportion, probability etc.).}
 \item{risk_stratified}{Is this parameter used in risk stratified models (yes/no).}
 \item{non_exponential}{Is this parameter a non-exponential rate (yes/no).}

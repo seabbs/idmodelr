@@ -12,7 +12,7 @@ gather_strat_variable(df, id_col, compartment, hold_out_var = NULL,
 
 \item{id_col}{A character string containing the name of the new id column.}
 
-\item{compartment}{The compartment to dedimensionalise.}
+\item{compartment}{The compartment to reduce the dimension of.}
 
 \item{hold_out_var}{A character vector specifying the variables to keep unchanged. Defaults to NULL}
 

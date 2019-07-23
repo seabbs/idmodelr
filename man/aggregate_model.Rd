@@ -17,12 +17,12 @@ model output. Operations are carried out in the order specified. Implemented opt
 and incidence.}
 
 \item{compartments}{A character vector or list specifying the unique compartments to aggregate. May either be
-specified once for all aggregation functions or for each function seperately.}
+specified once for all aggregation functions or for each function separately.}
 
 \item{strat}{The number of stratified groups in the model.}
 
 \item{hold_out_var}{A character vector or list specifying the unique compartments that will not be aggregated. May either be
-specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+specified once for all aggregation functions or for each function separately. If compartments is set then this argument does
 not need to be used.}
 
 \item{id_col}{A character string containing the name of the new id column.}
@@ -32,9 +32,9 @@ not need to be used.}
 \item{new_var}{A character vector specifying the new variable to add when aggregating incidence.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
-calculated when summarsing the model demographics.}
+calculated when summarising the model demographics.}
 
-\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifying whether to add an additional summary variable across
 all stratified levels.}
 
 \item{test, }{Logical defaults to \code{FALSE}. For testing, returns the processed inputs rather than

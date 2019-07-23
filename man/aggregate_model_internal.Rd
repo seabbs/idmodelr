@@ -28,9 +28,9 @@ disease, demographic, or incidence.}
 \item{groups}{A character vector with length equal to the level of stratification. Used to name the stratified levels.}
 
 \item{total_pop}{A logical (defaults to \code{TRUE}) indicating if the total population should be
-calculated when summarsing the model demographics.}
+calculated when summarising the model demographics.}
 
-\item{summary_var}{A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+\item{summary_var}{A logical (defaults to \code{FALSE}), specifying whether to add an additional summary variable across
 all stratified levels.}
 }
 \value{

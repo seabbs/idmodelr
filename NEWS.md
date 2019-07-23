@@ -5,7 +5,7 @@
 * Added SIS family of models.
 * Added `model_details` dataframe listing model details.
 * Added `parameter_details` dataframe listing details on common modelling parameters.
-* `plot_model` can now accept a list of simulations and plot each seperately
+* `plot_model` can now accept a list of simulations and plot each separately
 * Added a other resources vignette that details R based infectious disease modelling resources.
 
 ## Package updates

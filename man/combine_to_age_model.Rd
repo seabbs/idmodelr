@@ -24,7 +24,7 @@ A dataframe which summarises the demographic process of a model.
 }
 \description{
 Similarly to \code{\link[idmodelr]{combine_strat_model_output}} this functions
-dedimensionalises model output into just the demographic components.
+reduces the dimension of model output into just the demographic components.
 }
 \examples{
 

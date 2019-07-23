@@ -7,23 +7,23 @@
 plot_model(sim, prev_sim = NULL, model_labels = NULL, facet = TRUE)
 }
 \arguments{
-\item{sim}{A tibble of model output as formated by \code{\link[idmodelr]{solve_ode}}. Optionally a list of simulations
+\item{sim}{A tibble of model output as formatted by \code{\link[idmodelr]{solve_ode}}. Optionally a list of simulations
 can be passed when comparing multiple model runs.}
 
-\item{prev_sim}{A second tibble of model output formated as for \code{sim}. Used to compare to model runs. Can only be
+\item{prev_sim}{A second tibble of model output formatted as for \code{sim}. Used to compare to model runs. Can only be
 supplied if \code{sim} is not a list.}
 
 \item{model_labels}{A character vector of model names. Defaults to \code{c("Current", "Previous")} when two model simulations are used
 and the list names when \code{sim} is a list. If \code{sim} is unnamed the index of the list is used.}
 
-\item{facet}{Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be facetted
+\item{facet}{Logical, defaults to \code{TRUE}. If \code{FALSE} then the plot will not be faceted
 otherwise it will be.}
 }
 \value{
 A Plot of each model compartments population over time.
 }
 \description{
-Make seperate plots for each model compartment. Assumes model output is structured
+Make separate plots for each model compartment. Assumes model output is structured
 as that produced from \code{\link[idmodelr]{solve_ode}}.
 }
 \examples{

@@ -9,7 +9,7 @@
 #' @param hold_out_var A character  vector specifying the unique compartments not to aggregate.
 #' @param new_var A character vector specifying the new variable to add when aggregating incidence.
 #' @param total_pop A logical (defaults to \code{TRUE}) indicating if the total population should be
-#' calculated when summarsing the model demographics.
+#' calculated when summarising the model demographics.
 #' @param summary_var A logical (defaults to \code{FALSE}), specifying whether to add an additional summary variable across
 #' all stratified levels.
 #' @return An aggregated dataframe.

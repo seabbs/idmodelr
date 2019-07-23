@@ -8,7 +8,7 @@ solve_ode(model = NULL, inits = NULL, params = NULL, times = NULL,
   as.data.frame = TRUE, ...)
 }
 \arguments{
-\item{model}{A model formated as required by \code{\link[deSolve]{lsoda}}, see \code{\link[idmodelr]{SI_ode}} for an example.}
+\item{model}{A model formatted as required by \code{\link[deSolve]{lsoda}}, see \code{\link[idmodelr]{SI_ode}} for an example.}
 
 \item{inits}{The initial state (states) of the model. Can either be supplied as a named vector or as a matrix with each
 row representing a parameter.}
@@ -16,12 +16,12 @@ row representing a parameter.}
 \item{params}{A named vector or matrix of parameters. The matrix must have a row for each parameter and if \code{inits} is specified
 as a matrix then \code{params} must have the same number of columns}
 
-\item{times}{A numeric vector of the times for which explict model estimates are required, this does not effect
+\item{times}{A numeric vector of the times for which explicit model estimates are required, this does not effect
 the timestep used by the solver}
 
 \item{as.data.frame}{A logical (defaults to \code{TRUE}) indicating if the results should be returned as a data frame.}
 
-\item{...}{Additional arguements to pass to \code{\link[deSolve]{lsoda}}.}
+\item{...}{Additional arguments to pass to \code{\link[deSolve]{lsoda}}.}
 }
 \value{
 A dataframe or lsoda object containing a single or multiple model trajectories
