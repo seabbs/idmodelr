@@ -45,8 +45,9 @@ with `idmodelr` they may then implement their model using one of these
 packages in order to utilise the model fitting tools they provide. For
 newer modellers, this package reduces the barrier to entry by containing
 multiple infectious disease models, providing a consistent framework for
-simulation and visualisation, and [signposting]() towards other, more
-research, focussed resources.
+simulation and visualisation, and
+[signposting](https://www.samabbott.co.uk/idmodelr/articles/resources.html)
+towards other, more research, focussed resources.
 
 ## Installation
 
@@ -124,7 +125,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x560c9a534750>
+#> <bytecode: 0x55ed5c76d220>
 #> <environment: namespace:idmodelr>
 ```
 

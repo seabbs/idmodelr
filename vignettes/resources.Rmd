@@ -93,7 +93,6 @@ Whilst the full course is not available online the [course website](https://bris
 
 ## Books
 
-
 ### [Infectious Diseases of Humans: Dynamics and Control](https://www.amazon.co.uk/Infectious-Diseases-Humans-Dynamics-Publications/dp/019854040X)
 
 The standard reference text on which many undergraduate and Msc. courses have been built. This book deals with infectious diseases in terms of the dynamics of their interaction with host populations. The book combines mathematical models with extensive use of epidemiological and other data. Whilst now a little dated this book is still a great resource for providing a firm introduction to infectious disease modelling. 
