@@ -4,6 +4,7 @@ pkgdown_sha: e3cee56df1eaa875b86171427a3a0eb3d5157b71
 articles:
   model_details: model_details.html
   parameter_details: parameter_details.html
+  resources: resources.html
 urls:
   reference: samabbott.co.uk/idmodelr//reference
   article: samabbott.co.uk/idmodelr//articles
