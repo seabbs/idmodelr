@@ -120,7 +120,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x5593deb733d8>
+#> <bytecode: 0x555fb6fe2da8>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -293,6 +293,10 @@ function and may also require other package changes.
 File an issue [here](https://github.com/seabbs/idmodelr/issues) if there
 is any other feature, that you think is missing from the package, or
 better yet submit a pull request\!
+
+Of particular interest are integrations of other model families
+(i.e. discrete, stochastic) and models implemented in other languages
+(i.e C) that integrate with R.
 
 Please note that the `idmodelr` project is released with a [Contributor
 Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this

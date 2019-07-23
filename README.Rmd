@@ -169,6 +169,8 @@ To add a new family of models (i.e stochastic models) please open an [issue](htt
 
 File an issue [here](https://github.com/seabbs/idmodelr/issues) if there is any other feature, that you think is missing from the package, or better yet submit a pull request!
 
+Of particular interest are integrations of other model families (i.e. discrete, stochastic) and models implemented in other languages (i.e C) that integrate with R.
+
 Please note that the `idmodelr` project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ### Docker
