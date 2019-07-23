@@ -1,6 +1,5 @@
 # idmodelr 0.3.0
 
-
 ## Feature updates
 
 * Added SIS family of models.
