@@ -7,16 +7,16 @@
 * Added `model_details` dataframe listing model details.
 * Added `parameter_details` dataframe listing details on common modelling parameters.
 * `plot_model` can now accept a list of simulations and plot each seperately
+* Added a other resources vignette that details R based infectious disease modelling resources.
 
 ## Package updates
 
 * New package title
 * Updated license
 * Image tests via `vdiffr`.
-
+* Update README to point to resource signposting and switched to using `simulate_model`
 
 # idmodelr 0.2.0
-
 
 ## Feature updates
 
