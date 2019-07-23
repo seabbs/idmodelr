@@ -1,7 +1,7 @@
-#' Reduces the Dimensionality of a Stratifed Model
+#' Reduces the Dimensionality of a Stratified Model
 #'
 #' @description Reduces the dimensions of stratified model output. Default behaviour is to remove stratification for all
-#' variables. However, variables to dedimensionalise can be selected, as can variables to preserve with there structure intact.
+#' variables. However, variables to reduce the dimensions of can be selected, as can variables to preserve with there structure intact.
 #' @param df A data frame with variables stratified using numeric labels.
 #' @param strat An integer specifying the number of stratifications to reduce.
 #' @param compartments A character vector specifying the unique population compartments.

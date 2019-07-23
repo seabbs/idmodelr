@@ -20,3 +20,4 @@
 ^.github$
 ^data-raw$
 ^inst/paper$
+^pkgdown$

@@ -1,7 +1,7 @@
 #' A Function to Gather a Stratified Variable into a Tidy Format
 #' @inheritParams combine_strat_model_output
 #' @param id_col A character string containing the name of the new id column.
-#' @param compartment The compartment to dedimensionalise.
+#' @param compartment The compartment to reduce the dimension of.
 #' @param groups A character vector with length equal to the level of stratification. Used to name the stratified levels.
 #' @return A dataframe of stratified model output with a single Tidy variable.
 #' @export

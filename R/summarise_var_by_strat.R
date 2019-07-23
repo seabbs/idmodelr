@@ -1,8 +1,8 @@
 #' Sum a Stratified Variable by Stratification Level
 #'
-#' @details Takes compartmental infectious disease output and adds summary statisitics for
+#' @details Takes compartmental infectious disease output and adds summary statistics for
 #' each stratified population, optionally adding a final summary statistic for the whole population.
-#' @param summary_var A logical (defaults to \code{FALSE}), specifiying whether to add an additional summary variable across
+#' @param summary_var A logical (defaults to \code{FALSE}), specifying whether to add an additional summary variable across
 #' all stratified levels when aggregating incidence.
 #' @inherit summarise_strat_var
 #' @import magrittr

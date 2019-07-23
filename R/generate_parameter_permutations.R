@@ -1,29 +1,29 @@
 #' A Function to Generate Parameter Permutations
 #'
-#' @description A function to generate paramter permutations from a generic sampling function (or if not given
-#' from the inputed parameters). This function can be used to rapidly generate new parameter combinations given
+#' @description A function to generate parameter permutations from a generic sampling function (or if not given
+#' from the input parameters). This function can be used to rapidly generate new parameter combinations given
 #' parameters to be varied, and scenarios to be investigated.
 #' @param variable_params A dataframe containing any parameter variations to be investigated. If
-#' these paramters would normalling be sampled then they should be added to the excluded_params arguement.
+#' these parameters would normally be sampled then they should be added to the excluded_params argument.
 #' @param fixed_params A named vector of parameters that are not sampled by the sampling function. If
-#' these paramters would usually be sampled then they should be added to the excluded_params arguement.
-#' @param sample_params A named vector of paramters to be sampled. If a sampling function is not supplied these
+#' these parameters would usually be sampled then they should be added to the excluded_params argument.
+#' @param sample_params A named vector of parameters to be sampled. If a sampling function is not supplied these
 #' parameters will be used in the final permutation dataframe.
 #' @param excluded_params A character vector indicating which parameters should have there sampled values
 #' kept.
 #' @param scenarios A dataframe of possible scenarios to investigate. It must contain a scenario variable to
-#' identify each seperate scenarios. If parameters are included here that would normally be sampled then they
-#' should be added to the excluded_params arguement
+#' identify each separate scenarios. If parameters are included here that would normally be sampled then they
+#' should be added to the excluded_params argument
 #' @param sampling_function A sampling function, this should be designed such that it's input is a matrix
-#' with each paramter having a named row. It should return it's output in the same format. If not supplied defaults to passing
+#' with each parameter having a named row. It should return it's output in the same format. If not supplied defaults to passing
 #' through parameters, this may not be the required behaviour.
 #' @param parameter_samples The number of parameter samples to take, defaults to one.
-#' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independantly
+#' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independently
 #' sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.
 #' @param rerun A logical indicating if the function should be rerun or saved results should be loaded.
 #' Defaults to \code{FALSE}.
 #' @param verbose A logical, indicating if progress messages should be printed, defaults to \code{FALSE}.
-#' @param ... Additional arguements to be passed to the sampling_function.
+#' @param ... Additional arguments to be passed to the sampling_function.
 #'
 #' @return A dataframe containing sampled parameter permutations
 #' @importFrom dplyr mutate full_join select bind_cols everything
@@ -64,7 +64,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
       scenarios <- mutate(scenarios, id = 1)
     }
 
-    ## Bind scenarios and variable paramters together
+    ## Bind scenarios and variable parameters together
     ## If neither are supplied then a sample of the normal parameters will be drawn
     if (!is.null(variable_params) && !is.null(scenarios)) {
       params_perms <- variable_params %>%

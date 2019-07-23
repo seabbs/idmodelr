@@ -2,15 +2,15 @@
 #'
 #' @description This function acts as a simple wrapper for lsoda, allowing for multiple parameter sets and
 #' initial conditions. It also allows \code{\link[deSolve]{lsoda}} to be used within the idmodelr framework.
-#' @param model A model formated as required by \code{\link[deSolve]{lsoda}}, see \code{\link[idmodelr]{SI_ode}} for an example.
+#' @param model A model formatted as required by \code{\link[deSolve]{lsoda}}, see \code{\link[idmodelr]{SI_ode}} for an example.
 #' @param inits The initial state (states) of the model. Can either be supplied as a named vector or as a matrix with each
 #' row representing a parameter.
 #' @param params A named vector or matrix of parameters. The matrix must have a row for each parameter and if \code{inits} is specified
 #' as a matrix then \code{params} must have the same number of columns
-#' @param times A numeric vector of the times for which explict model estimates are required, this does not effect
+#' @param times A numeric vector of the times for which explicit model estimates are required, this does not effect
 #' the timestep used by the solver
 #' @param as.data.frame A logical (defaults to \code{TRUE}) indicating if the results should be returned as a data frame.
-#' @param ... Additional arguements to pass to \code{\link[deSolve]{lsoda}}.
+#' @param ... Additional arguments to pass to \code{\link[deSolve]{lsoda}}.
 #' @seealso \code{\link[deSolve]{lsoda}} \code{\link[idmodelr]{SI_ode}}
 #' @return A dataframe or lsoda object containing a single or multiple model trajectories
 #' @export

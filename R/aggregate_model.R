@@ -6,9 +6,9 @@
 #' model output. Operations are carried out in the order specified. Implemented options are; disease, demographic,
 #' and incidence.
 #' @param compartments A character vector or list specifying the unique compartments to aggregate. May either be
-#' specified once for all aggregation functions or for each function seperately.
+#' specified once for all aggregation functions or for each function separately.
 #' @param hold_out_var A character vector or list specifying the unique compartments that will not be aggregated. May either be
-#' specified once for all aggregation functions or for each function seperately. If compartments is set then this arguement does
+#' specified once for all aggregation functions or for each function separately. If compartments is set then this argument does
 #' not need to be used.
 #' @param test, Logical defaults to \code{FALSE}. For testing, returns the processed inputs rather than
 #' performing the aggregation.

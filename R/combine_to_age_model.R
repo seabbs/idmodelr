@@ -1,6 +1,6 @@
 #' Combine an Infectious Disease Model To a Demographic Model
 #' @description  Similarly to \code{\link[idmodelr]{combine_strat_model_output}} this functions
-#' dedimensionalises model output into just the demographic components.
+#' reduces the dimension of model output into just the demographic components.
 #' @inherit combine_strat_model_output
 #' @param df A dataframe of model output.
 #' @param age_com Integer indicating the number of age compartments.

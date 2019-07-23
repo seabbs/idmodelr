@@ -15,7 +15,7 @@ The primary aim of `idmodelr` is to serve as an interactive, `R` based, educatio
 
 ### [Pomp](https://kingaa.github.io/pomp)
 
-`pomp` provides a very general realization of nonlinear partially-observed Markov processes (AKA nonlinear stochastic dynamical systems). These are a generalization of linear state-space and hidden Markov models to nonlinear, non-Gaussian processes in either discrete or continuous time. In pomp, one can implement a model by specifying its unobserved process and measurement components; the package uses these functions in algorithms to simulate, analyze, and fit the model to data. 
+`pomp` provides a very general realization of nonlinear partially-observed Markov processes (AKA nonlinear stochastic dynamical systems). These are a generalization of linear state-space and hidden Markov models to nonlinear, non-Gaussian processes in either discrete or continuous time. In pomp, one can implement a model by specifying its unobserved process and measurement components; the package uses these functions in algorithms to simulate, analyse, and fit the model to data. 
 
 #### Pros
 
@@ -70,7 +70,7 @@ Alongside LibBi, [`RBi`](https://github.com/sbfnk/RBi) provides an R interface.
 
 ### [EpiModel](http://www.epimodel.org)
 
-`EpiModel` is an `R` package that provides tools for simulating and analyzing mathematical models of infectious disease dynamics. Supported epidemic model classes include deterministic compartmental models, stochastic individual contact models, and stochastic network models. Disease types include SI, SIR, and SIS epidemics with and without demography, with utilities available for expansion to construct and simulate epidemic models of arbitrary complexity.
+`EpiModel` is an `R` package that provides tools for simulating and analysing mathematical models of infectious disease dynamics. Supported epidemic model classes include deterministic compartmental models, stochastic individual contact models, and stochastic network models. Disease types include SI, SIR, and SIS epidemics with and without demography, with utilities available for expansion to construct and simulate epidemic models of arbitrary complexity.
 
 #### Pros
 

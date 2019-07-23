@@ -12,11 +12,11 @@
 #' @param cores The number of cores to use for the scenario analysis, defaults to 1.
 #' @param test A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 #' of the number of cores specified.
-#' @param summary_fn A function which accepts a single dataframe arguement customised to fit with the standard
+#' @param summary_fn A function which accepts a single dataframe argument customised to fit with the standard
 #' output of \code{scenario_analysis}  and your \code{simulate_model} function. Defaults to \code{NULL} for which
 #' no summarisation takes place. Warning: If a previous analysis has been saved, changing this option will not
 #' summarise the result. The analysis must be rerun.
-#' @param ... Pass additional arguements to sim_fn. Only implemented when a single core is used.
+#' @param ... Pass additional arguments to sim_fn. Only implemented when a single core is used.
 #' @return A tidy dataframe containing simulated model trajectories for each scenario
 #'  varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
 #' @export

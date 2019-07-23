@@ -1,4 +1,4 @@
-#' Lookup the Details of Parameters Requiered by a Model
+#' Lookup the Details of Parameters Required by a Model
 #'
 #' @description This function simplifies the process of checking which parameters a given `idmodelr` model depends on.
 #' It is effectively an interface to \code{\link[idmodelr]{parameter_details}} via \code{\link[idmodelr]{model_details}}. As
