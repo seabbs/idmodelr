@@ -120,7 +120,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x55f8faf12538>
+#> <bytecode: 0x563f95ac2020>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -144,7 +144,7 @@ knitr::kable(parameters)
 Parameterise the model.
 
 ``` r
-parameters <- c(
+parameters <- data.frame(
   beta = 3, ##Transmission rate = contact rate * transmission probablity
   tau = 0.5, ## Rate recovcery = 1 / duration of infection
   mu = 1/81 ## Natural birth/death rate = 1 / average lifespan
@@ -157,7 +157,7 @@ model function. In most cases this should match up to the model name
 require additional compartments.
 
 ``` r
-inits <- c(
+inits <- data.frame(
   S = 999,
   I = 1,
   R = 0
@@ -173,9 +173,11 @@ times <- seq(0, 50, 0.1)
 Simulate the model.
 
 ``` r
-traj <- solve_ode(model = SIR_demographics_ode,
-          inits, parameters,
-          times, as.data.frame = TRUE)
+traj <- simulate_model(model = SIR_demographics_ode,
+                       sim_fn = solve_ode, ##as solving an ode
+                       inits = inits,
+                       params = parameters,
+                       times = times)
 
 
 traj
@@ -219,12 +221,14 @@ simulate the updated model.
 
 ``` r
 parameters_up <- parameters
-parameters_up["mu"] <- 1 / 20
+parameters_up[["mu"]] <- 1 / 20
 
 
-traj_up <- solve_ode(model = SIR_demographics_ode,
-          inits, parameters_up,
-          times, as.data.frame = TRUE)
+traj_up <- simulate_model(model = SIR_demographics_ode,
+                          sim_fn = solve_ode,
+                          inits, 
+                          parameters_up,
+                          times)
 ```
 
 Plot the original trajectory and the updated trajectory. What has the

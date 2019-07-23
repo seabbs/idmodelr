@@ -73,7 +73,7 @@ knitr::kable(parameters)
 Parameterise the model.
 
 ```{r}
-parameters <- c(
+parameters <- data.frame(
   beta = 3, ##Transmission rate = contact rate * transmission probablity
   tau = 0.5, ## Rate recovcery = 1 / duration of infection
   mu = 1/81 ## Natural birth/death rate = 1 / average lifespan
@@ -83,7 +83,7 @@ parameters <- c(
 Check the initial conditions required by looking at the start of the model function. In most cases this should match up to the model name (i.e S, I and R for an SIR model) but risk stratification etc. will require additional compartments.
 
 ```{r}
-inits <- c(
+inits <- data.frame(
   S = 999,
   I = 1,
   R = 0
@@ -100,9 +100,11 @@ Simulate the model.
 
 
 ```{r}
-traj <- solve_ode(model = SIR_demographics_ode,
-          inits, parameters,
-          times, as.data.frame = TRUE)
+traj <- simulate_model(model = SIR_demographics_ode,
+                       sim_fn = solve_ode, ##as solving an ode
+                       inits = inits,
+                       params = parameters,
+                       times = times)
 
 
 traj
@@ -126,13 +128,14 @@ Vary the model parameters, by increasing the mortality rate, and then simulate t
 
 ```{r}
 parameters_up <- parameters
-parameters_up["mu"] <- 1 / 20
+parameters_up[["mu"]] <- 1 / 20
 
 
-traj_up <- solve_ode(model = SIR_demographics_ode,
-          inits, parameters_up,
-          times, as.data.frame = TRUE)
-
+traj_up <- simulate_model(model = SIR_demographics_ode,
+                          sim_fn = solve_ode,
+                          inits, 
+                          parameters_up,
+                          times)
 ```
 
 Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?
