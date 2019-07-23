@@ -11,8 +11,8 @@
 #' @param model_labels A character vector of model names. Defaults to \code{c("Current", "Previous")} when two model simulations are used
 #' and the list names when \code{sim} is a list. If \code{sim} is unnamed the index of the list is used.
 #' @return A Plot of each model compartments population over time.
-#' @import ggplot2
-#' @import viridis
+#' @importFrom ggplot2 ggplot aes aes_string guides facet_wrap geom_line theme_minimal theme labs
+#' @importFrom viridis scale_color_viridis
 #' @importFrom tidyr gather
 #' @importFrom dplyr mutate bind_rows
 #' @importFrom purrr map_dfr
@@ -126,9 +126,9 @@ plot_model <- function(sim, prev_sim = NULL, model_labels = NULL,
   }
 
   if (!is.null(prev_sim) | is.list(sim)) {
-    plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment, linetype = Model))
+    plot <- ggplot(tidy_sim, aes_string(x = "time", y = "Population", col = "Compartment", linetype = "Model"))
   }else{
-    plot <- ggplot(tidy_sim, aes(x = time, y = Population, col = Compartment))
+    plot <- ggplot(tidy_sim, aes_string(x = "time", y = "Population", col = "Compartment"))
   }
 
   plot <- plot +

@@ -15,6 +15,10 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Articles"
+      menu:
+      - text: "Other resources"
+        href: articles/resources.html
     - text: "Lookup tables"
       menu:
       - text: "Model details"

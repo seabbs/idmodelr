@@ -1,0 +1,116 @@
+---
+title: "Other resources"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Other resources}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+The primary aim of `idmodelr` is to serve as an interactive, `R` based, educational resource. For users interested in learning more, or aiming to conduct more involved analysis there are a variety of great packages, courses, books and other resources available. This vignette aims to signpost towards some of these (focusing on those using `R`). Pull requests containing additional resources and/or pros and cons of current resources are welcome. 
+
+## Modelling packages
+
+### [Pomp](https://kingaa.github.io/pomp)
+
+`pomp` provides a very general realization of nonlinear partially-observed Markov processes (AKA nonlinear stochastic dynamical systems). These are a generalization of linear state-space and hidden Markov models to nonlinear, non-Gaussian processes in either discrete or continuous time. In pomp, one can implement a model by specifying its unobserved process and measurement components; the package uses these functions in algorithms to simulate, analyze, and fit the model to data. 
+
+#### Pros
+
+* Detailed documentation with multiple case studies.
+* Fast as C compatible.
+* Stable but still under active development.
+
+#### Cons
+
+* Uses a custom model specification so that `pomp` models may be hard to use with other tools.
+* Little tooling provided for highly complex vectorised models.
+
+### [LibBi](http://libbi.org)
+
+LibBi is used for state-space modelling and Bayesian inference on high-performance computer hardware, including multi-core CPUs, many-core GPUs (graphics processing units) and distributed-memory clusters. The staple methods of LibBi are based on sequential Monte Carlo (SMC), also known as particle filtering. These methods include particle Markov chain Monte Carlo (PMCMC) and SMC2. Other methods include the extended Kalman filter and some parameter optimisation routines. LibBi consists of a C++ template library, as well as a parser and compiler, written in Perl, for its own modelling language.
+
+Alongside LibBi, [`RBi`](https://github.com/sbfnk/RBi) provides an R interface. 
+
+#### Pros
+
+* Fast and scalable as a key focus is on performance.
+* Built around PMCMC and SMC2 both of which are relatively easily understood plug and play methods. 
+* R interface dramatically improves the ease of use from R without compromising on speed. 
+* Stable.
+* `RBi` is under active development.
+
+#### Cons
+
+* `LibBi` itself is no longer under active development.
+* Documentation for `LibBi` is relatively sparse and there are few examples of more complex models. 
+* Debugging can be extremely time consuming as bugs may occur at the R level or in the underlying LibBi code. 
+* Each model run, fit etc. requires recompilation. 
+* Custom modelling language means that models cannot be easily ported elsewhere. 
+
+### [Odin](https://github.com/mrc-ide/odin)
+
+`odin` implements a high-level language for describing and implementing ordinary differential equations in R. It provides a "domain specific language" (DSL) which looks like R but is compiled directly to C. The actual solution of the differential equations is done with the deSolve package, giving access to the excellent Livermore solvers (lsoda, lsode, etc), or with dde for use with delay differential equations.
+
+#### Pros
+
+* Still under active development. 
+* Removes the need for C but still results in fast models.
+* Functionality clearly explained in the documentation. 
+
+
+#### Cons
+
+* Still under active development.
+* `odin` does not contain model fitting routines.
+* Code conversion may fail for complex models.
+
+
+### [EpiModel](http://www.epimodel.org)
+
+`EpiModel` is an `R` package that provides tools for simulating and analyzing mathematical models of infectious disease dynamics. Supported epidemic model classes include deterministic compartmental models, stochastic individual contact models, and stochastic network models. Disease types include SI, SIR, and SIS epidemics with and without demography, with utilities available for expansion to construct and simulate epidemic models of arbitrary complexity.
+
+#### Pros
+
+* Highly detailed and extensive documentation.
+* Extends to network models
+
+#### Cons
+
+* Relatively high barrier to entry as the package structure is quite complex
+* Performance may be poor as implemented primarily in R (speed improvements using C may be possible).
+
+
+## Courses
+
+### [Bristol Infectious Disease Dynamics Modelling Course](https://bristolmathmodellers.github.io/biddmodellingcourse/)
+
+Run as a two day short course at the University of Bristol, this course aims to cover the basics of infectious disease modelling both for those planning on implementing their own models and those planning to work with modelers. This course focuses on applied, policy relevant, modelling. Sign up [here](https://www.bristol.ac.uk/medical-school/study/short-courses/essentials-of-infectious-disease-modelling-and-economic-evaluation/)
+
+Whilst the full course is not available online the [course website](https://bristolmathmodellers.github.io/biddmodellingcourse/) contains the majority of the course practicals.
+
+## Books
+
+
+### [Infectious Diseases of Humans: Dynamics and Control](https://www.amazon.co.uk/Infectious-Diseases-Humans-Dynamics-Publications/dp/019854040X)
+
+The standard reference text on which many undergraduate and Msc. courses have been built. This book deals with infectious diseases in terms of the dynamics of their interaction with host populations. The book combines mathematical models with extensive use of epidemiological and other data. Whilst now a little dated this book is still a great resource for providing a firm introduction to infectious disease modelling. 
+
+### [Modeling Infectious Diseases in Humans and Animals](http://www.modelinginfectiousdiseases.org)
+
+Another standard reference text. This book provides a comprehensive introduction to the modeling of infectious diseases in humans and animals, focusing on recent developments as well as more traditional approaches. Code is provided for each model introduced and analyses are explained in detail. This book is aimed at readers with some background mathematical and computational knowledge. 
+
+### [Epidemics: Models and Data using R](https://www.springer.com/gp/book/9783319974866) 
+
+This book is designed to be a practical study in infectious disease dynamics. The book offers an easy to follow implementation and analysis of mathematical epidemiology. It focuses on recent case studies in order to explore various conceptual, mathematical, and statistical issues. Whilst light on theory (you may need to supplement this with other resources) this book provides full R code and is accompanied by an [R package](https://github.com/objornstad/epimdr).
+
+## Other
+
+### [Epirecipes](http://epirecip.es/epicookbook/)
+
+This project aims to collate mathematical models of infectious disease transmission, with implementations in R, Python, and Julia.
+
+It provides user submitted interactive notebooks.
+

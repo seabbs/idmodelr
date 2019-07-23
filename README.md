@@ -36,13 +36,17 @@ interactive dashboard; tools for handling mult-dimensional models; and
 both model and parameter look up tables. Unlike other modelling packages
 such as [`pomp`](https://kingaa.github.io/pomp/),
 [`libbi`](http://libbi.org) and [`EpiModel`](http://www.epimodel.org),
-`idmodelr` serves primarily as an educational resource. After users have
-explored model dynamics with `idmodelr` they may then implement their
-model using one of these packages in order to utilise the model fitting
-tools they provide. For newer modellers, this package reduces the
-barrier to entry by containing multiple infectious disease models,
-providing a consistent framework for simulation and visualisation, and
-signposting towards other, more research, focussed resources.
+`idmodelr` serves primarily as an educational resource. It is most
+comparable to
+[`epirecipes`](http://epirecip.es/epicookbook/chapters/simple) but
+provides a more consistent framework, an `R` based workflow, and
+additional utility tooling. After users have explored model dynamics
+with `idmodelr` they may then implement their model using one of these
+packages in order to utilise the model fitting tools they provide. For
+newer modellers, this package reduces the barrier to entry by containing
+multiple infectious disease models, providing a consistent framework for
+simulation and visualisation, and [signposting]() towards other, more
+research, focussed resources.
 
 ## Installation
 
@@ -120,7 +124,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x563f95ac2020>
+#> <bytecode: 0x560c9a534750>
 #> <environment: namespace:idmodelr>
 ```
 
