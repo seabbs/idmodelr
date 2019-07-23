@@ -51,7 +51,13 @@ towards other, more research, focussed resources.
 
 ## Installation
 
-You can install the development version of `idmodelr` from github with:
+Install the CRAN version:
+
+``` r
+install.packages("idmodelr")
+```
+
+Alternatively install the development version from GitHub:
 
 ``` r
 # install.packages("devtools")
@@ -125,7 +131,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x56233c18f7d8>
+#> <bytecode: 0x564cca084650>
 #> <environment: namespace:idmodelr>
 ```
 

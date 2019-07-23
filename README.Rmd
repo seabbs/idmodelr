@@ -31,12 +31,19 @@ Explore a range of infectious disease models in a consistent framework. The prim
 
 ## Installation
 
-You can install the development version of `idmodelr` from github with:
+Install the CRAN version:
+
+```{r cran-installation, eval = FALSE}
+install.packages("idmodelr")
+```
+
+Alternatively install the development version from GitHub:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("seabbs/idmodelr")
 ```
+
 
 ## Quick start
 
