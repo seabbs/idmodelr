@@ -19,5 +19,6 @@ test <- SEI_demographics_ode(1, inits, parameters)
 
 
 test_that("SEI_demographics_ode can correctly return rates of change over one timestep", {
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/SEI_demographics_ode/test-01.rds")
 })

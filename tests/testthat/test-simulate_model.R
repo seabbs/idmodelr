@@ -22,7 +22,7 @@ test_that("simulate_model can correctly solve the SI_ode", {
 
   test <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits, parameters, times)
 
-
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/simulate_model/test-01.rds")
 })
 
@@ -52,5 +52,6 @@ test_that("simulate_model can handle multiple simulations at once.", {
   parameters_df <- data.frame(beta = rep(beta, 2))
   test <- simulate_model(model = SI_ode, sim_fn = solve_ode, inits_df, parameters_df,
                          times, by_row = TRUE, verbose = TRUE)
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/simulate_model/test-02.rds")
 })

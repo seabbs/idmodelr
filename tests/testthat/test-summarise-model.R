@@ -21,5 +21,6 @@ test <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE
 test <- summarise_model(test)
 
 test_that("summarise_mdoel can correctly summarise the SI_ode", {
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/summarise_model/test-01.rds")
 })

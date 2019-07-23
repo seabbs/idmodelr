@@ -19,6 +19,7 @@ inits <- as.matrix(c(S = S_0, I = I_0))
 test <- solve_ode(model = SI_ode, inits, parameters, times, as.data.frame = TRUE)
 
 
-test_that("solve_ode can correlt solve the SI_ode", {
+test_that("solve_ode can correctly solve the SI_ode", {
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/solve_ode/test-01.rds")
 })

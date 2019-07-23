@@ -131,7 +131,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x564cca084650>
+#> <bytecode: 0x56216ce79d90>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -314,8 +314,9 @@ is any other feature, that you think is missing from the package, or
 better yet submit a pull request\!
 
 Please note that the `idmodelr` project is released with a [Contributor
-Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
-project, you agree to abide by its terms.
+Code of
+Conduct](https://github.com/seabbs/idmodelr/blob/master/.github/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 ### Docker
 

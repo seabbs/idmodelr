@@ -179,7 +179,7 @@ To add a new family of models (i.e stochastic models) please open an [issue](htt
 
 File an issue [here](https://github.com/seabbs/idmodelr/issues) if there is any other feature, that you think is missing from the package, or better yet submit a pull request!
 
-Please note that the `idmodelr` project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the `idmodelr` project is released with a [Contributor Code of Conduct](https://github.com/seabbs/idmodelr/blob/master/.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ### Docker
 

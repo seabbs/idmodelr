@@ -10,6 +10,7 @@ test_that("aggregate_model can correctly process the inputs without aggregation.
                           compartments = c("A", "B"), strat = 3,
                           summary_var = TRUE, test = TRUE)
 
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/aggregate_model/test-01.rds")
 })
 
@@ -19,7 +20,7 @@ test_that("aggregate_model can correctly process the inputs without aggregation,
   test <- aggregate_model(df, aggregate_to = "incidence",
                           compartments = c("A", "B"), strat = 3,
                           summary_var = TRUE, test = TRUE, hold_out_var = "time")
-
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/aggregate_model/test-02.rds")
 })
 

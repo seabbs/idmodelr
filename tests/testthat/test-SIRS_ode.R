@@ -18,5 +18,6 @@ test <- SIRS_ode(1, inits, parameters)
 
 
 test_that("SIRS_ode can correctly return rates of change over one timestep", {
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/SIRS_ode/test-01.rds")
 })

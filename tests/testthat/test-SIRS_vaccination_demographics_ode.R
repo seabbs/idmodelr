@@ -24,5 +24,6 @@ inits <- c(S_u = S_u_0, I_u = I_u_0, R_u_0 = R_u_0,
 test <- SIRS_vaccination_demographics_ode(1, inits, parameters)
 
 test_that("SIRS_vaccination_demographics_ode can correctly return rates of change over one timestep", {
+  skip_on_cran()
   expect_known_output(test, file = "../../tests/test-files/SIRS_vaccination_demographics_ode/test-01.rds")
 })
