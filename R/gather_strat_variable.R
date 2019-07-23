@@ -2,7 +2,8 @@
 #' @inheritParams combine_strat_model_output
 #' @param id_col A character string containing the name of the new id column.
 #' @param compartment The compartment to reduce the dimension of.
-#' @param groups A character vector with length equal to the level of stratification. Used to name the stratified levels.
+#' @param groups A character vector with length equal to the level of stratification.
+#'  Used to name the stratified levels.
 #' @return A dataframe of stratified model output with a single Tidy variable.
 #' @export
 #' @import magrittr
@@ -31,7 +32,8 @@ gather_strat_variable <- function(df,  id_col, compartment, hold_out_var = NULL,
 
       df_temp[[id_col]] <- groups[i]
       return(df_temp)
-    }, df)
+    }
+    , df)
   }
 
   df[[id_col]] <- as.factor(df[[id_col]])

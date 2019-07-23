@@ -76,7 +76,8 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
       tmp <- df[variable_params[x]]
       colnames(tmp) <- paste0("tmp_var_", x)
       return(tmp)
-    }, scenario_results) %>%
+    }
+    , scenario_results) %>%
       bind_cols
 
     scenario_results <- compute_var %>%

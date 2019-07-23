@@ -15,11 +15,13 @@
 #' identify each separate scenarios. If parameters are included here that would normally be sampled then they
 #' should be added to the excluded_params argument
 #' @param sampling_function A sampling function, this should be designed such that it's input is a matrix
-#' with each parameter having a named row. It should return it's output in the same format. If not supplied defaults to passing
+#' with each parameter having a named row. It should return it's output in the same format. If not supplied
+#' defaults to passing
 #' through parameters, this may not be the required behaviour.
 #' @param parameter_samples The number of parameter samples to take, defaults to one.
 #' @param repeat_sample A logical (defaults to \code{TRUE}) which indicates if each scenario should independently
-#' sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled parameter set.
+#' sample from the sampling function. If set to \code{FALSE} then each scenario will share the same sampled
+#'  parameter set.
 #' @param rerun A logical indicating if the function should be rerun or saved results should be loaded.
 #' Defaults to \code{FALSE}.
 #' @param verbose A logical, indicating if progress messages should be printed, defaults to \code{FALSE}.
@@ -120,7 +122,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
       if (repeat_sample) {
         param_sample <- gen_single_param_sample(df)
       }else{
-        param_sample <- gen_single_param_sample(df[1,]) %>%
+        param_sample <- gen_single_param_sample(df[1, ]) %>%
           map(rep, nrow(df)) %>%
           as_tibble
       }
@@ -135,7 +137,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
         prior_sample <- prior_sample[, !(colnames(prior_sample) %in% exc_params)]
       }
 
-      params_df <- df[,join_params] %>%
+      params_df <- df[, join_params] %>%
         bind_cols(prior_sample)
 
       return(params_df)
@@ -150,4 +152,3 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
 
   return(sample_params)
 }
-

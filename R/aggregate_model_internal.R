@@ -38,8 +38,9 @@
 #'                         summary_var = TRUE, id_col = "Age",
 #'                         groups = c("Children", "Young adults", "Adults"))
 aggregate_model_internal <- function(df, aggregate_to = NULL, compartments = NULL,
-                                     strat = NULL, hold_out_var= NULL, new_var = "incidence",
-                                     id_col = NULL, groups = NULL, total_pop = TRUE,
+                                     strat = NULL, hold_out_var= NULL,
+                                     new_var = "incidence", id_col = NULL,
+                                     groups = NULL, total_pop = TRUE,
                                      summary_var = FALSE) {
 
   if (aggregate_to %in% "demographic") {
@@ -54,12 +55,14 @@ aggregate_model_internal <- function(df, aggregate_to = NULL, compartments = NUL
   }
 
   if (aggregate_to %in% "incidence") {
-    df <- summarise_var_by_strat(df, vars = compartments, strat = strat, new_var = new_var, summary_var = summary_var)
+    df <- summarise_var_by_strat(df, vars = compartments, strat = strat,
+                                 new_var = new_var, summary_var = summary_var)
   }
 
   if (aggregate_to %in% "tidy") {
-    df <- gather_strat_multi_variable(df, id_col = id_col , compartments = compartments, hold_out_var = hold_out_var,
-                                                  strat = strat, groups = groups)
+    df <- gather_strat_multi_variable(df, id_col = id_col , compartments = compartments,
+                                      hold_out_var = hold_out_var,
+                                      strat = strat, groups = groups)
   }
 
   return(df)

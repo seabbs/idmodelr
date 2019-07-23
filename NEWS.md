@@ -14,6 +14,7 @@
 * Updated license
 * Image tests via `vdiffr`.
 * Update README to point to resource signposting and switched to using `simulate_model`
+* Linted code
 
 # idmodelr 0.2.0
 

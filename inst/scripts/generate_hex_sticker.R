@@ -23,8 +23,8 @@ parameters <- c(beta = beta, tau = tau, mu = mu)
 
 inits <- c(S = S_0, I = I_0, R_0 = R_0)
 
-tbegin = 0
-tend = 50
+tbegin <- 0
+tend <- 50
 times <- seq(tbegin, tend, 0.1)
 
 # Simulate model ----------------------------------------------------------
@@ -53,7 +53,8 @@ hex_fig <- plot +
   scale_x_continuous(breaks = NULL) +
   scale_y_continuous(breaks = NULL) +
   labs(x = "", y = "") +
-  theme_void() + theme_transparent()+
+  theme_void() +
+  theme_transparent() +
   theme(legend.position = "none",
         panel.background = element_blank())
 
@@ -64,14 +65,12 @@ sticker(hex_fig,
         p_size = 23,
         p_color = "#FFFFFFDD",
         s_x = 1,
-        s_y=.8,
-        s_width=1.5,
-        s_height=0.7,
+        s_y = .8,
+        s_width = 1.5,
+        s_height = 0.7,
         h_fill = "#646770",
         h_color ="#b3ccff",
-        filename="./man/figures/logo.png",
+        filename = "./man/figures/logo.png",
         url = "https://samabbott.co.uk/idmodelr",
         u_color = "#FFFFFFDD",
         u_size = 3.5)
-
-

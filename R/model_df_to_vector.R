@@ -29,7 +29,7 @@ model_df_to_vector <- function(df, com_var, id_var = NULL,
 
   com_var <- enquo(com_var)
 
-  if ((!is.null(id_var) &&
+  if ( (!is.null(id_var) &&
        any(colnames(df) %in% id_var))) {
     df_sum <- df %>%
       group_by(.dots = id_var) %>%

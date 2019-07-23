@@ -23,12 +23,13 @@ estimate_norm_dist_from_ci <- function(lower_interval = NULL,
                                                        interval = "95%") {
 
 if (!(interval %in% "95%")) {
-  stop("Only a 95% credible interval has been implemented, please fork the package on github and add your required interbal")
+  stop("Only a 95% credible interval has been implemented, please fork the
+       package on github and add your required interval")
 }
   z <- 1.96
 
-  mean <- lower_interval + (upper_interval - lower_interval)/2
-  sd <- (upper_interval - mean)/z
+  mean <- lower_interval + (upper_interval - lower_interval) / 2
+  sd <- (upper_interval - mean) / z
 
   out <- tibble::tibble(mean = mean, sd = sd)
   return(out)
