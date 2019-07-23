@@ -19,7 +19,7 @@ navbar:
       menu:
       - text: "Other resources"
         href: articles/resources.html
-    - text: "Lookup tables"
+    - text: "Models & parameters"
       menu:
       - text: "Model details"
         href: articles/model_details.html
@@ -64,6 +64,7 @@ reference:
   - title: Workflow Utilities
     desc: Functions to streamline the workflow of using ID models. These include random parameter set generation, scenario analysis and estimation of normal distrubutions based on published information.
     contents:
+    - required_parameters
     - generate_parameter_permutations
     - scenario_analysis
     - estimate_norm_dist_from_ci
