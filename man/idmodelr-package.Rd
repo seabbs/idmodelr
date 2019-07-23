@@ -15,9 +15,9 @@ Explore a range of infectious disease models in a consistent framework.
     models for research. idmodelr also provides a range of utilities. These include: plotting 
     functionality; a simulation wrapper; scenario analysis tooling; an interactive 
     dashboard; tools for handling mult-dimensional models; and both model and parameter
-    look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)
-    and [EpiModel](http://www.epimodel.org), idmodelr serves primarily as an educational 
-    resource. It is most comparable to [`epirecipes`](http://epirecip.es/epicookbook/chapters/simple)
+    look up tables. Unlike other modelling packages such as [pomp](<https://kingaa.github.io/pomp/>), [libbi](<http://libbi.org>)
+    and [EpiModel](<http://www.epimodel.or>), idmodelr serves primarily as an educational 
+    resource. It is most comparable to [`epirecipes`](<http://epirecip.es/epicookbook/chapters/simple>)
     but provides a more consistent framework, an `R` based workflow, and additional utility tooling. 
     After users have explored model dynamics with idmodelr they may then 
     implement their model using one of these packages in order to utilise the model

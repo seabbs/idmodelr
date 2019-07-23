@@ -7,7 +7,7 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat)](https://github.com/idmodelr)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
 [![Documentation via
 pkgdown](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
 [![Development documentation via
@@ -125,7 +125,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x55ed5c76d220>
+#> <bytecode: 0x56233c18f7d8>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -285,7 +285,7 @@ finally the model type. An example of this is the `SIR_demographics_ode`
 model. For highly complex models only the most major model details
 should be listed (aim for less than 40 characters). An entry for
 `model_details` is also required (see
-[`model_details.R`](https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R%20for%20help%20with%20this)).
+[`model_details.R`](https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R)).
 If new parameters have been used then a description must be added to
 `parameter_details` (see
 [`parameter_details.R`](https://github.com/seabbs/idmodelr/blob/master/data-raw/parameter_details.R)).
