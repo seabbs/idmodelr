@@ -26,9 +26,9 @@
     models for research. idmodelr also provides a range of utilities. These include: plotting 
     functionality; a simulation wrapper; scenario analysis tooling; an interactive 
     dashboard; tools for handling mult-dimensional models; and both model and parameter
-    look up tables. Unlike other modelling packages such as [pomp](https://kingaa.github.io/pomp/), [libbi](http://libbi.org)
-    and [EpiModel](http://www.epimodel.org), idmodelr serves primarily as an educational 
-    resource. It is most comparable to [`epirecipes`](http://epirecip.es/epicookbook/chapters/simple)
+    look up tables. Unlike other modelling packages such as [pomp](&lt;https://kingaa.github.io/pomp/&gt;), [libbi](&lt;http://libbi.org&gt;)
+    and [EpiModel](&lt;http://www.epimodel.or&gt;), idmodelr serves primarily as an educational 
+    resource. It is most comparable to [`epirecipes`](&lt;http://epirecip.es/epicookbook/chapters/simple&gt;)
     but provides a more consistent framework, an `R` based workflow, and additional utility tooling. 
     After users have explored model dynamics with idmodelr they may then 
     implement their model using one of these packages in order to utilise the model
@@ -304,7 +304,7 @@
 <a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;     list(derivatives)</span></a>
 <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;   })</span></a>
 <a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; &lt;bytecode: 0x55ed5c76d220&gt;</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; &lt;bytecode: 0x56233c18f7d8&gt;</span></a>
 <a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
 <p>Check the parameters required by the model using <code>required_parameters</code>. This returns a table containing all the parameters that must be defined in order to use the model as well as descriptive information for each parameter.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="reference/required_parameters.html">required_parameters</a></span>(<span class="st">"SIR_demographics_ode"</span>)</a>
@@ -453,7 +453,7 @@
 <h3 class="hasAnchor">
 <a href="#contributing-a-model" class="anchor"></a>Contributing a model</h3>
 <p>Additional models are extremely welcome!</p>
-<p>To add models in the same family as those already implemented (i.e <a href="https://github.com/seabbs/idmodelr/blob/master/R/SIR.R"><code>SIR_ode</code></a>) please follow the implemented coding style closely (alternatively open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> explaining why this style needs updating). Models should be named using their compartments in capitals followed by lower case model details, and finally the model type. An example of this is the <code>SIR_demographics_ode</code> model. For highly complex models only the most major model details should be listed (aim for less than 40 characters). An entry for <code>model_details</code> is also required (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R%20for%20help%20with%20this"><code>model_details.R</code></a>). If new parameters have been used then a description must be added to <code>parameter_details</code> (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/parameter_details.R"><code>parameter_details.R</code></a>). Please consider also adding to the testing suite for your new model (or flagging the lack of tests). Models can either be added via a pull request or via an issue.</p>
+<p>To add models in the same family as those already implemented (i.e <a href="https://github.com/seabbs/idmodelr/blob/master/R/SIR.R"><code>SIR_ode</code></a>) please follow the implemented coding style closely (alternatively open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> explaining why this style needs updating). Models should be named using their compartments in capitals followed by lower case model details, and finally the model type. An example of this is the <code>SIR_demographics_ode</code> model. For highly complex models only the most major model details should be listed (aim for less than 40 characters). An entry for <code>model_details</code> is also required (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R"><code>model_details.R</code></a>). If new parameters have been used then a description must be added to <code>parameter_details</code> (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/parameter_details.R"><code>parameter_details.R</code></a>). Please consider also adding to the testing suite for your new model (or flagging the lack of tests). Models can either be added via a pull request or via an issue.</p>
 <p>To add a new family of models (i.e stochastic models) please open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> outlining your proposed approach. A new family of models is likely to require at least its own <code>solve_</code> (equivalent to <a href="https://github.com/seabbs/idmodelr/blob/master/R/solve.R"><code>solve_ode</code></a>) function and may also require other package changes. Models implemented in other languages (i.e C) are also very welcome.</p>
 </div>
 <div id="other-contributions" class="section level3">
@@ -516,7 +516,7 @@
 <ul class="list-unstyled">
 <li><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 <li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://www.r-pkg.org/badges/version/idmodelr" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/idmodelr"><img src="https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat" alt="develVersion"></a></li>
+<li><a href="https://github.com/seabbs/idmodelr"><img src="https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat" alt="develVersion"></a></li>
 <li><a href="https://www.samabbott.co.uk/idmodelr/"><img src="https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat" alt="Documentation via pkgdown"></a></li>
 <li><a href="https://www.samabbott.co.uk/idmodelr/dev"><img src="https://img.shields.io/badge/Development%20Documentation-click%20here!-lightblue.svg?style=flat" alt="Development documentation via pkgdown"></a></li>
 <li><a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio"><img src="https://img.shields.io/badge/Launch-idmodelr-lightblue.svg" alt="badge"></a></li>
