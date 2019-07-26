@@ -24,7 +24,6 @@
 #'  parameter set.
 #' @param rerun A logical indicating if the function should be rerun or saved results should be loaded.
 #' Defaults to \code{FALSE}.
-#' @param verbose A logical, indicating if progress messages should be printed, defaults to \code{FALSE}.
 #' @param ... Additional arguments to be passed to the sampling_function.
 #'
 #' @return A dataframe containing sampled parameter permutations
@@ -48,7 +47,7 @@ generate_parameter_permutations <- function(variable_params = NULL, fixed_params
                                             sample_params = NULL, excluded_params = NULL,
                                             scenarios = NULL, sampling_function = NULL,
                                             parameter_samples = 1, repeat_sample = TRUE,
-                                            rerun = FALSE, verbose = FALSE, ...) {
+                                            rerun = FALSE, ...) {
   id <- NULL; scenario <- NULL;
 
   if (!is.null(variable_params)) {
