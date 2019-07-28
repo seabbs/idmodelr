@@ -1,11 +1,9 @@
 ## Resubmission
 
-* Dropped `` from description.
-* Added '' around all package mentions.
-* Dropped markdown linking to alternative packages from description.
-* Links in description are to other R packages and modelling resources so have not been formated as references.
-* Dropped `verbose` from `generate_parameter_permutations`.
-* Full license required for future JOSS submission: https://joss.readthedocs.io/en/latest/review_checklist.html
+* Dropped License from package description
+* License to Rbuildignore
+
+Thanks for your time! 
 
 ## Test environments
 

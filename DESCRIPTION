@@ -24,7 +24,7 @@ Description: Explore a range of infectious disease models in a consistent framew
     to entry by containing multiple infectious disease models, providing a consistent
     framework for simulation and visualisation, and signposting towards other, more 
     research focussed, resources. 
-License: GPL-3 | file LICENSE
+License: GPL-3
 Depends: 
     R (>= 3.3.0)
 Imports: 
