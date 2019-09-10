@@ -3,6 +3,9 @@
 ## Package updates
 
 * Reorganised badges in the readme and package website to make them easier to navigate.
+* Updated the use of  `{tidyr}` in the `scenario_analysis` to work with the soon to be released version. Based on [this](https://github.com/tidyverse/tidyr/blob/master/NEWS.md) update.
+
+
 # idmodelr 0.3.0
 
 ## Feature updates
