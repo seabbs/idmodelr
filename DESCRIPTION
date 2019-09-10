@@ -30,7 +30,7 @@ Depends:
 Imports: 
     dplyr (>= 0.8.3),
     rlang (>= 0.4.0),
-    ggplot2 (>= 3.2.0),
+    ggplot2 (>= 3.2.1),
     viridis (>= 0.5.1),
     magrittr (>= 1.5),
     purrr (>= 0.3.2),
@@ -41,11 +41,11 @@ Imports:
     tidyr (>= 0.8.3),
     deSolve (>= 1.24)
 Suggests: 
-    testthat (>= 2.1.1),
-    rmarkdown (>= 1.14),
-    knitr (>= 1.23),
+    testthat (>= 2.2.1),
+    rmarkdown (>= 1.15),
+    knitr (>= 1.24),
     pkgnet (>= 0.4.0),
-    DT (>= 0.7),
+    DT (>= 0.8),
     vdiffr (>= 0.3.1)
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/idmodelr, 

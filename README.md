@@ -7,7 +7,7 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.3.1-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
 [![Documentation via
 pkgdown](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
 [![Development documentation via
@@ -131,7 +131,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x56216ce79d90>
+#> <bytecode: 0x564d95702d20>
 #> <environment: namespace:idmodelr>
 ```
 
