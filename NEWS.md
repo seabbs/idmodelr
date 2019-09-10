@@ -1,6 +1,8 @@
 # idmodelr 0.3.1
 
+## Package updates
 
+* Reorganised badges in the readme and package website to make them easier to navigate.
 # idmodelr 0.3.0
 
 ## Feature updates

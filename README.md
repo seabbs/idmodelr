@@ -3,27 +3,14 @@
 
 # Infectious disease model library and utilities <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![badge](https://img.shields.io/badge/Launch-idmodelr-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.3.1-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
-[![Documentation via
-pkgdown](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
-[![Development documentation via
-pkgdown](https://img.shields.io/badge/Development%20Documentation-click%20here!-lightblue.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/dev)
-[![badge](https://img.shields.io/badge/Launch-idmodelr-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio)
-[![Travis-CI Build
-Status](https://travis-ci.org/seabbs/idmodelr.svg?branch=master)](https://travis-ci.org/seabbs/idmodelr)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/idmodelr)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 [![metacran monthly
 downloads](http://cranlogs.r-pkg.org/badges/idmodelr)](https://cran.r-project.org/package=idmodelr)
 [![metacran
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4)](https://cran.r-project.org/package=idmodelr)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 
 Explore a range of infectious disease models in a consistent framework.
 The primary aim of `idmodelr` is to provide a library of infectious
@@ -63,6 +50,24 @@ Alternatively install the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("seabbs/idmodelr")
 ```
+
+## Documentation
+
+[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
+[![Development
+documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/dev)
+[![Getting
+started](https://img.shields.io/badge/Documentation-getting%20started-yellow.svg?style=flat)](https://www.samabbott.co.uk/idmodelr)
+[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/reference/index.html)
+
+## Testing
+
+[![Travis-CI Build
+Status](https://travis-ci.org/seabbs/idmodelr.svg?branch=master)](https://travis-ci.org/seabbs/idmodelr)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/idmodelr)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
 
 ## Quick start
 
@@ -131,7 +136,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x564d95702d20>
+#> <bytecode: 0x558dfaeeded8>
 #> <environment: namespace:idmodelr>
 ```
 
