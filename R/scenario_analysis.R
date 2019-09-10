@@ -21,7 +21,7 @@
 #'  varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
 #' @export
 #' @import magrittr
-#' @importFrom dplyr select bind_cols group_by ungroup collect arrange_
+#' @importFrom dplyr select bind_cols group_by ungroup collect rename
 #' @importFrom tidyr nest
 #' @importFrom purrr map
 #' @importFrom furrr future_map
@@ -88,7 +88,8 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
   # Group and nest by parameter sets
   scenario_results <- scenario_results %>%
     group_by(.dots = group_var_string) %>%
-    nest(.key = parameters)
+    nest() %>%
+    rename(parameters = data)
 
   # partition data between cores
   if (cores > 1 || test) {

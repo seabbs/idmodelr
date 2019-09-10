@@ -21,11 +21,11 @@ dummy_model <- function(){}
 variations <- tibble::tibble(scenario = rep(c("test_1", "test_2"), 3),
                              variable = c(0.0, 0.0, 0.5, 0.5, 1.0, 1.0))
 
-parameters <- tibble::tibble(variable = rep(0, 10), scenario_param = rep(0, 10),
+test_parameters <- tibble::tibble(variable = rep(0, 10), scenario_param = rep(0, 10),
                              fixed_1 = rep(2, 10), fixed_21 = rep(1, 10), fixed_22 = rep(3, 10),
                              fixed_23 = rep(4, 10), sample_1 = rep(2, 10), sample_21 = rep(2, 10),
                              sample_22 = rep(1, 10))
-simulations <- tibble::tibble()
+test_simulations <- tibble::tibble()
 
 test_that("scenaria_analysis works correctly on sample data
           with a dummy model and simulation function", {
@@ -34,8 +34,8 @@ test_that("scenaria_analysis works correctly on sample data
                                 cores = 1)
 
    expect_equal(variations, dplyr::select(results, scenario, variable))
-   expect_equal(parameters, tidyr::unnest(dplyr::select(results[1,], parameters)))
-   expect_equal(simulations, tidyr::unnest(dplyr::select(results[1,], simulations)))
+   expect_equal(test_parameters, tidyr::unnest(dplyr::select(results[1,], parameters), cols = parameters))
+   expect_equal(test_simulations, tidyr::unnest(dplyr::select(results[1,], simulations), cols = simulations))
 
           })
 
@@ -47,8 +47,8 @@ test_that("scenario_analysis works correctly on sample data
                                          cores = 1, save = FALSE, test = TRUE)
 
             expect_equal(variations, dplyr::select(results, scenario, variable))
-            expect_equal(parameters, tidyr::unnest(dplyr::select(results[1,], parameters)))
-            expect_equal(simulations, tidyr::unnest(dplyr::select(results[1,], simulations)))
+            expect_equal(test_parameters, tidyr::unnest(dplyr::select(results[1,], parameters), cols = parameters))
+            expect_equal(test_simulations, tidyr::unnest(dplyr::select(results[1,], simulations), cols = simulations))
 
           })
 
