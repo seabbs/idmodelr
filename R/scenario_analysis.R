@@ -57,7 +57,7 @@
 scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL, sim_fn = NULL,
                               summary_fn = NULL, cores = 1, rerun = FALSE, verbose = FALSE,
                               by_row = FALSE, test = FALSE, ...) {
-  scenario <- NULL; parameters <- NULL
+  scenario <- NULL; parameters <- NULL; data <- NULL;
 
 
 
