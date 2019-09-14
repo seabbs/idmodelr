@@ -247,7 +247,7 @@ of the number of cores specified.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tidy dataframe containing simulated model trajectories for each scenario
-varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/reference/unnest.html'>unnest</a></code> to examine all simulation results.</p>
+varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></code> to examine all simulation results.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -277,14 +277,14 @@ varied parameter combination. Use <code><a href='https://tidyr.tidyverse.org/ref
 <span class='co'>## Run scenario analysis</span>
 <span class='fu'>scenario_analysis</span>(<span class='no'>parameter_df</span>, <span class='kw'>variable_params</span> <span class='kw'>=</span> <span class='st'>"variable"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>dummy_model</span>,
                   <span class='kw'>sim_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sim_fn</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>summary_fn</span> <span class='kw'>=</span> <span class='no'>dummy_sum_fn</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 5
-#&gt;   scenario variable parameters        simulations      summarised_simulations
-#&gt;   &lt;fct&gt;       &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;           &lt;list&gt;                
-#&gt; 1 test_1        0   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
-#&gt; 2 test_2        0   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
-#&gt; 3 test_1        0.5 &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
-#&gt; 4 test_2        0.5 &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
-#&gt; 5 test_1        1   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
-#&gt; 6 test_2        1   &lt;tibble [10 × 9]&gt; &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      </div></pre>
+#&gt;   scenario variable     parameters simulations      summarised_simulations
+#&gt;   &lt;fct&gt;       &lt;dbl&gt; &lt;list&lt;df[,9]&gt;&gt; &lt;list&gt;           &lt;list&gt;                
+#&gt; 1 test_1        0         [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
+#&gt; 2 test_2        0         [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
+#&gt; 3 test_1        0.5       [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
+#&gt; 4 test_2        0.5       [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
+#&gt; 5 test_1        1         [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      
+#&gt; 6 test_2        1         [10 × 9] &lt;tibble [0 × 0]&gt; &lt;tibble [0 × 0]&gt;      </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
