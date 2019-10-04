@@ -9,3 +9,4 @@ docs
 cache
 inst/doc
 pkgdown
+.local
