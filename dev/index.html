@@ -5,15 +5,37 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utility Functions for Infectious Disease Modelling • idmodelr</title>
+<title>Infectious Disease Model Library and Utilities • idmodelr</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Utility Functions for Infectious Disease Modelling">
-<meta property="og:description" content="Contains utility functions for use in infectious disease modelling. Basic modelling tools are also supplied as starting blocks for more complex models.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Infectious Disease Model Library and Utilities">
+<meta property="og:description" content="Explore a range of infectious disease models in a consistent framework. 
+    The primary aim of idmodelr is to provide a library of infectious disease models
+    for researchers, students, and other interested individuals. These models can be 
+    used to understand the underlying dynamics and as a reference point when developing
+    models for research. idmodelr also provides a range of utilities. These include: plotting 
+    functionality; a simulation wrapper; scenario analysis tooling; an interactive 
+    dashboard; tools for handling mult-dimensional models; and both model and parameter
+    look up tables. Unlike other modelling packages such as pomp (&lt;https://kingaa.github.io/pomp/&gt;), libbi (&lt;http://libbi.org&gt;)
+    and EpiModel (&lt;http://www.epimodel.or&gt;), idmodelr serves primarily as an educational 
+    resource. It is most comparable to epirecipes (&lt;http://epirecip.es/epicookbook/chapters/simple&gt;)
+    but provides a more consistent framework, an R based workflow, and additional utility tooling. 
+    After users have explored model dynamics with idmodelr they may then 
+    implement their model using one of these packages in order to utilise the model
+    fitting tools they provide.  For newer modellers, this package reduces the barrier
+    to entry by containing multiple infectious disease models, providing a consistent
+    framework for simulation and visualisation, and signposting towards other, more 
+    research focussed, resources. ">
 <meta property="og:image" content="samabbott.co.uk/idmodelr/logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="noindex">
@@ -23,7 +45,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -35,23 +57,64 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">idmodelr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
      
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/resources.html">Other resources</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Models &amp; parameters
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/model_details.html">Model details</a>
+    </li>
+    <li>
+      <a href="articles/parameter_details.html">Parameter details</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="https://www.samabbott.co.uk/tags/idmodelr/">Blog posts</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="news/index.html">Change log</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
+  <a href="reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -76,36 +139,347 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="infectious-disease-modelling-utilities" class="section level1">
+      </header><div class="row">
+  <div class="contents col-md-9">
+<div id="infectious-disease-model-library-and-utilities" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#infectious-disease-modelling-utilities" class="anchor"></a>Infectious Disease Modelling Utilities <img src="reference/figures/logo.png" align="right" alt="" width="120">
+<a href="#infectious-disease-model-library-and-utilities" class="anchor"></a>Infectious disease model library and utilities <img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
 
-<p><code>idmodelr</code> is an R package that contains utility functions for infectious disease modelling. It also offers some simple compartmental ODE models which can be used for teaching purposes or as the basis for more complex models.</p>
+<p>Explore a range of infectious disease models in a consistent framework. The primary aim of <code>idmodelr</code> is to provide a library of infectious disease models for researchers, students, and other interested individuals. These models can be used to understand the underlying dynamics and as a reference point when developing models for research. <code>idmodelr</code> also provides a range of utilities. These include: plotting functionality; a simulation wrapper; scenario analysis tooling; an interactive dashboard; tools for handling mult-dimensional models; and both model and parameter look up tables. Unlike other modelling packages such as <a href="https://kingaa.github.io/pomp/"><code>pomp</code></a>, <a href="http://libbi.org"><code>libbi</code></a> and <a href="http://www.epimodel.org"><code>EpiModel</code></a>, <code>idmodelr</code> serves primarily as an educational resource. It is most comparable to <a href="http://epirecip.es/epicookbook/chapters/simple"><code>epirecipes</code></a> but provides a more consistent framework, an <code>R</code> based workflow, and additional utility tooling. After users have explored model dynamics with <code>idmodelr</code> they may then implement their model using one of these packages in order to utilise the model fitting tools they provide. For newer modellers, this package reduces the barrier to entry by containing multiple infectious disease models, providing a consistent framework for simulation and visualisation, and <a href="https://www.samabbott.co.uk/idmodelr/articles/resources.html">signposting</a> towards other, more research, focussed resources.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install idmodelr from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"seabbs/idmodelr"</span>)</a></code></pre></div>
+<p>Install the CRAN version:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"idmodelr"</span>)</a></code></pre></div>
+<p>Alternatively install the development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"seabbs/idmodelr"</span>)</a></code></pre></div>
+</div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p><a href="https://www.samabbott.co.uk/idmodelr/"><img src="https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat" alt="Documentation"></a> <a href="https://www.samabbott.co.uk/idmodelr/dev"><img src="https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat" alt="Development documentation"></a> <a href="https://www.samabbott.co.uk/idmodelr"><img src="https://img.shields.io/badge/Documentation-getting%20started-yellow.svg?style=flat" alt="Getting started"></a> <a href="https://www.samabbott.co.uk/idmodelr/reference/index.html"><img src="https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat" alt="Functions"></a></p>
+</div>
+<div id="testing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#testing" class="anchor"></a>Testing</h2>
+<p><a href="https://travis-ci.org/seabbs/idmodelr"><img src="https://travis-ci.org/seabbs/idmodelr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/seabbs/idmodelr"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/github/seabbs/idmodelr?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg" alt="Coverage Status"></a></p>
+</div>
+<div id="quick-start" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quick-start" class="anchor"></a>Quick start</h2>
+<p>In this quick start guide we are going to be defining, simulating and plotting a Susceptible-Infected-Recovered deterministic compartmental model with simple population demographics (births = deaths). The first step is to load the <code>idmodelr</code> package.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(idmodelr)</a></code></pre></div>
+<p>The next step is to find the model of interest amongst those implemented in <code>idmodelr</code>. <code>model_details</code> lists all of the models implemented in <code>idmodelr</code> and can be search using <code>dplyr</code>, base R, or other dataframe tools.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">model_details <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(model_family <span class="op">%in%</span><span class="st"> "SIR"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="5%">
+<col width="4%">
+<col width="5%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="4%">
+<col width="6%">
+<col width="6%">
+<col width="8%">
+<col width="4%">
+<col width="6%">
+<col width="3%">
+<col width="17%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">model</th>
+<th align="left">model_family</th>
+<th align="left">time</th>
+<th align="left">type</th>
+<th align="left">recovered</th>
+<th align="left">exposed</th>
+<th align="left">treated</th>
+<th align="left">susceptible</th>
+<th align="left">risk_stratified</th>
+<th align="left">non_exponential</th>
+<th align="left">simple_demographics</th>
+<th align="left">vaccination</th>
+<th align="left">disease_example</th>
+<th align="left">language</th>
+<th align="left">parameters</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">SIR_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”)</td>
+</tr>
+<tr class="even">
+<td align="left">SIR_demographics_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “mu”)</td>
+</tr>
+<tr class="odd">
+<td align="left">SIR_vaccination_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “lambda”)</td>
+</tr>
+<tr class="even">
+<td align="left">SIR_vaccination_demographics_ode</td>
+<td align="left">SIR</td>
+<td align="left">continuous</td>
+<td align="left">deterministic</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">none</td>
+<td align="left">R</td>
+<td align="left">c(“beta”, “tau”, “lambda”, “alpha”, “mu”)</td>
+</tr>
+</tbody>
+</table>
+<p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">SIR_demographics_ode</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; function(t, x, params) {</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   ## Specify model compartments</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   S &lt;- x[1]</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   I &lt;- x[2]</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;   R &lt;- x[3]</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;   with(as.list(params),{</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;     ## Specify total population</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;     N = S + I + R</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;     ## Derivative Expressions</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;     dS = - beta * S * I / N - mu * S + mu * N</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;     dI = beta * S * I / N - tau * I - mu * I</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;     dR = tau * I - mu * R</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;     ## output</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;     derivatives &lt;- c(dS, dI, dR)</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;     list(derivatives)</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;   })</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; &lt;bytecode: 0x558dfaeeded8&gt;</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></a></code></pre></div>
+<p>Check the parameters required by the model using <code>required_parameters</code>. This returns a table containing all the parameters that must be defined in order to use the model as well as descriptive information for each parameter.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="reference/required_parameters.html">required_parameters</a></span>(<span class="st">"SIR_demographics_ode"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(parameters)</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="4%">
+<col width="9%">
+<col width="66%">
+<col width="2%">
+<col width="8%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">parameter</th>
+<th align="left">parameter_family</th>
+<th align="left">description</th>
+<th align="left">type</th>
+<th align="left">risk_stratified</th>
+<th align="left">non_exponential</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">beta</td>
+<td align="left">transmission</td>
+<td align="left">Transmission rate = the transmission probability per contact * the number of contacts each individual has.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="left">tau</td>
+<td align="left">recovery</td>
+<td align="left">Recovery rate. The reciprocal of the time infectious.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="odd">
+<td align="left">mu</td>
+<td align="left">demographics</td>
+<td align="left">The natural mortality rate. The reciprocal of the average lifespan. (for simple demographics this is also the birth rate.</td>
+<td align="left">rate</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p>Parameterise the model.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="dt">beta =</span> <span class="dv">3</span>, ##Transmission rate = contact rate * transmission probablity</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="dt">tau =</span> <span class="fl">0.5</span>, ## Rate recovcery = 1 / duration of infection</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">mu =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">81</span> ## Natural birth/death rate = 1 / average lifespan</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">)</a></code></pre></div>
+<p>Check the initial conditions required by looking at the start of the model function. In most cases this should match up to the model name (i.e S, I and R for an SIR model) but risk stratification etc. will require additional compartments.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">inits &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  <span class="dt">S =</span> <span class="dv">999</span>,</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="dt">I =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  <span class="dt">R =</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  )</a></code></pre></div>
+<p>Specify the timespan over which to run the model.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">times &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</a></code></pre></div>
+<p>Simulate the model.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">traj &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_model.html">simulate_model</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                       <span class="dt">sim_fn =</span> solve_ode, ##as solving an ode</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">                       <span class="dt">inits =</span> inits,</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">                       <span class="dt">params =</span> parameters,</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">                       <span class="dt">times =</span> times)</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">traj</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; # A tibble: 501 x 4</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt;     time     S     I      R</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt;  1   0    999   1    0     </span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt;  2   0.1  999.  1.28 0.0567</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;  3   0.2  998.  1.64 0.129 </span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;  4   0.3  998.  2.11 0.222 </span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;  5   0.4  997.  2.70 0.342 </span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;  6   0.5  996.  3.46 0.494 </span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt;  7   0.6  995.  4.43 0.690 </span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;  8   0.7  993.  5.67 0.940 </span></a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt;  9   0.8  991.  7.25 1.26  </span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 10   0.9  989.  9.28 1.67  </span></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; # … with 491 more rows</span></a></code></pre></div>
+<p>Summarise the model.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/summarise_model.html">summarise_model</a></span>(traj) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</a></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="14%">
+<col width="14%">
+<col width="20%">
+<col width="14%">
+<col width="19%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">Final size: S</th>
+<th align="right">Final size: I</th>
+<th align="right">Final size: R</th>
+<th align="right">Epidemic peak time</th>
+<th align="right">Epidemic peak</th>
+<th align="right">Epidemic duration</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">136</td>
+<td align="right">31</td>
+<td align="right">833</td>
+<td align="right">3.5</td>
+<td align="right">533</td>
+<td align="right">Inf</td>
+</tr></tbody>
+</table>
+<p>Plot the model trajectory.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, <span class="dt">facet =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-11-1.png"><!-- --></p>
+<p>Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">parameters_up &lt;-<span class="st"> </span>parameters</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">parameters_up[[<span class="st">"mu"</span>]] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">traj_up &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_model.html">simulate_model</a></span>(<span class="dt">model =</span> SIR_demographics_ode,</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">                          <span class="dt">sim_fn =</span> solve_ode,</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">                          inits, </a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">                          parameters_up,</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">                          times)</a></code></pre></div>
+<p>Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="reference/plot_model.html">plot_model</a></span>(traj, traj_up, <span class="dt">facet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="reference/figures/unnamed-chunk-13-1.png"><!-- --></p>
+<p>See the package vignettes for more help getting started and some additional ideas for exploring infectious disease model dynamics.</p>
+</div>
+<div id="dashboard" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dashboard" class="anchor"></a>Dashboard</h2>
+<p>A shiny application has been developed that showcases some of the functionality of the <code>idmodelr</code> package. This application allows the parameter spaces of a range of models built into <code>idmodelr</code> to be explored in an interactive session. It is designed to be used as a teaching aid when introducing people to the concepts behind infectious disease models without requiring them to interact with the underlying code. The code for the dashboard can be found <a href="https://github.com/seabbs/exploreidmodels">here</a>. It can be run locally using the following (<em>Note: this will install required packages to your system</em>),</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">#install.packages("shiny")</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">shiny<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shiny/man/runUrl.html">runGitHub</a></span>(<span class="st">"exploreidmodels"</span>, <span class="st">"seabbs"</span>)</a></code></pre></div>
+<p><img src="reference/figures/exploreidmodels.png" alt="Snapshot of the integrated dashboard."></p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>File an issue <a href="https://github.com/seabbs/idmodelr/issues">here</a> if there is a feature, that you think is missing from the package, or better yet submit a pull request!</p>
-<p>Please note that the <code>idmodelr</code> project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div id="contributing-a-model" class="section level3">
+<h3 class="hasAnchor">
+<a href="#contributing-a-model" class="anchor"></a>Contributing a model</h3>
+<p>Additional models are extremely welcome!</p>
+<p>To add models in the same family as those already implemented (i.e <a href="https://github.com/seabbs/idmodelr/blob/master/R/SIR.R"><code>SIR_ode</code></a>) please follow the implemented coding style closely (alternatively open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> explaining why this style needs updating). Models should be named using their compartments in capitals followed by lower case model details, and finally the model type. An example of this is the <code>SIR_demographics_ode</code> model. For highly complex models only the most major model details should be listed (aim for less than 40 characters). An entry for <code>model_details</code> is also required (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/model_details.R"><code>model_details.R</code></a>). If new parameters have been used then a description must be added to <code>parameter_details</code> (see <a href="https://github.com/seabbs/idmodelr/blob/master/data-raw/parameter_details.R"><code>parameter_details.R</code></a>). Please consider also adding to the testing suite for your new model (or flagging the lack of tests). Models can either be added via a pull request or via an issue.</p>
+<p>To add a new family of models (i.e stochastic models) please open an <a href="https://github.com/seabbs/idmodelr/issues">issue</a> outlining your proposed approach. A new family of models is likely to require at least its own <code>solve_</code> (equivalent to <a href="https://github.com/seabbs/idmodelr/blob/master/R/solve.R"><code>solve_ode</code></a>) function and may also require other package changes. Models implemented in other languages (i.e C) are also very welcome.</p>
+</div>
+<div id="other-contributions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-contributions" class="anchor"></a>Other contributions</h3>
+<p>File an issue <a href="https://github.com/seabbs/idmodelr/issues">here</a> if there is any other feature, that you think is missing from the package, or better yet submit a pull request!</p>
+<p>Please note that the <code>idmodelr</code> project is released with a <a href="https://github.com/seabbs/idmodelr/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
 <div id="docker" class="section level3">
 <h3 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h3>
 <p>This packge was developed in a docker container based on the <a href="https://hub.docker.com/r/rocker/tidyverse/">tidyverse</a> docker image. To run the docker image run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr</a></code></pre></div>
 <p>The rstudio client can be found on port <code>:8787</code> at your local machines ip. The default username:password is seabbs:seabbs, set the user with <code>-e USER=username</code>, and the password with <code>- e PASSWORD=newpasswordhere</code>. The default is to save the analysis files into the user directory. Alternatively, access the development environment via <a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
@@ -116,6 +490,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=idmodelr">https://​cloud.r-project.org/​package=idmodelr</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/seabbs/idmodelr">https://​github.com/​seabbs/​idmodelr</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/seabbs/idmodelr/issues">https://​github.com/​seabbs/​idmodelr/​issues</a>
@@ -125,9 +501,14 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+</ul>
+</div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 <div class="citation">
@@ -139,27 +520,22 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Sam Abbott <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8057-8037" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>Sam Abbott <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8057-8037" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://www.r-pkg.org/badges/version/idmodelr" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/getTBinR"><img src="https://img.shields.io/badge/devel%20version-0.2.0-blue.svg?style=flat" alt="develVersion"></a></li>
-<li><a href="https://travis-ci.org/seabbs/idmodelr"><img src="https://travis-ci.org/seabbs/idmodelr.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://codecov.io/gh/seabbs/idmodelr"><img src="https://codecov.io/gh/seabbs/idmodelr/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://www.samabbott.co.uk/idmodelr/"><img src="https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat" alt="Documentation via pkgdown"></a></li>
-<li><a href="https://www.samabbott.co.uk/idmodelr/dev"><img src="https://img.shields.io/badge/Development%20Documentation-click%20here!-lightblue.svg?style=flat" alt="Development documentation via pkgdown"></a></li>
 <li><a href="https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio"><img src="https://img.shields.io/badge/Launch-idmodelr-lightblue.svg" alt="badge"></a></li>
-<li><a href="https://travis-ci.org/seabbs/idmodelr"><img src="https://travis-ci.org/seabbs/idmodelr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/seabbs/idmodelr"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/github/seabbs/idmodelr?branch=master"><img src="https://img.shields.io/codecov/c/github/seabbs/getTBinR/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://www.r-pkg.org/badges/version/idmodelr" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://github.com/seabbs/idmodelr"><img src="https://img.shields.io/badge/devel%20version-0.3.2-blue.svg?style=flat" alt="develVersion"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.2641048"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg" alt="DOI"></a></li>
+<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/idmodelr" alt="metacran monthly downloads"></a></li>
+<li><a href="https://cran.r-project.org/package=idmodelr"><img src="http://cranlogs.r-pkg.org/badges/grand-total/idmodelr?color=ff69b4" alt="metacran downloads"></a></li>
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -168,8 +544,9 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
 </div>
 
@@ -178,8 +555,8 @@
   docsearch({
     
     
-    apiKey: '1234',
-    indexName: 'idmodelr',
+    apiKey: 'ec77738e3c0c9f4b2529464269a70757',
+    indexName: 'samabbott-idmodelr',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {
