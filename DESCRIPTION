@@ -2,11 +2,15 @@ Package: idmodelr
 Type: Package
 Version: 0.3.2
 Title: Infectious Disease Model Library and Utilities
-Authors@R: 
+Authors@R: c( 
     person(given = "Sam Abbott",
            role = c("aut", "cre"),
            email = "contact@samabbott.co.uk",
-           comment = c(ORCID = "0000-0001-8057-8037"))
+           comment = c(ORCID = "0000-0001-8057-8037")),
+    person(given = "Akira Endo",
+           role = c("aut"),
+           email = "akira.endo@lshtm.ac.uk",
+           comment = c(ORCID = "0000-0001-6377-7296")))       
 Description: Explore a range of infectious disease models in a consistent framework. 
     The primary aim of 'idmodelr' is to provide a library of infectious disease models
     for researchers, students, and other interested individuals. These models can be 
