@@ -50,27 +50,24 @@ combine_to_age_model <- function(df, age_com = NULL,
   ## Age group names
   age_group_names <- paste0("age_group_", 1:age_com)
 
-  tmp2 <- 1:age_com %>% map(function(x) {
+  tmp2 <- suppressMessages(1:age_com %>% map(function(x) {
     tmp_ret <- tmp %>%
       map(x) %>%
       map(~enframe(., name = NULL)) %>%
-      bind_cols %>%
-      rowSums %>%
+      bind_cols() %>%
+      rowSums() %>%
       enframe(name = NULL)
     return(tmp_ret)
   }) %>%
-    bind_cols %>%
+    bind_cols() %>%
     set_names(age_group_names)
+  )
 
-  tmp3 <- tmp2 %>%
-    bind_cols(df %>%
-                select(.dots = hold_out_var) %>%
-                set_names(hold_out_var)
-    )
+  tmp3 <- bind_cols(select(df, one_of(hold_out_var)), tmp2)
+
   if (total_pop) {
-    tmp3 <-  tmp3 %>% mutate(N = tmp2 %>%
-                               select(.dots = age_group_names) %>%
-                               rowSums)
+    N <- rowSums(select(tmp2, one_of(age_group_names)))
+    tmp3 <- tmp3 %>% mutate(N = N)
   }
 
   return(tmp3)
