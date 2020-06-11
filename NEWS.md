@@ -1,5 +1,3 @@
-# idmodelr 0.3.2 (developmemt)
-
 
 # idmodelr 0.3.1
 

@@ -5,7 +5,7 @@
 
 [![badge](https://img.shields.io/badge/Launch-idmodelr-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.3.2-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.3.1-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 [![metacran monthly
 downloads](http://cranlogs.r-pkg.org/badges/idmodelr)](https://cran.r-project.org/package=idmodelr)
@@ -136,7 +136,7 @@ SIR_demographics_ode
 #>     list(derivatives)
 #>   })
 #> }
-#> <bytecode: 0x558dfaeeded8>
+#> <bytecode: 0x55b523bde228>
 #> <environment: namespace:idmodelr>
 ```
 
