@@ -1,10 +1,11 @@
-pandoc: '2.2'
-pkgdown: 1.4.1.9000
-pkgdown_sha: 134033d9d744c548c6fbe297bc0fbd1a2f498e83
+pandoc: 2.7.3
+pkgdown: 1.5.1.9000
+pkgdown_sha: ee70a69b5de661b82b6dd086f4e97b2d3d7fd4ab
 articles:
   model_details: model_details.html
   parameter_details: parameter_details.html
   resources: resources.html
+last_built: 2020-06-11T09:40Z
 urls:
   reference: samabbott.co.uk/idmodelr//reference
   article: samabbott.co.uk/idmodelr//articles
