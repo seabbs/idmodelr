@@ -4,8 +4,14 @@
 \alias{gather_strat_multi_variable}
 \title{A Function to Gather Multiple Stratified Variables into a Tidy Format}
 \usage{
-gather_strat_multi_variable(df, id_col, compartments = NULL,
-  hold_out_var = NULL, strat = NULL, groups = NULL)
+gather_strat_multi_variable(
+  df,
+  id_col,
+  compartments = NULL,
+  hold_out_var = NULL,
+  strat = NULL,
+  groups = NULL
+)
 }
 \arguments{
 \item{df}{A data frame with variables stratified using numeric labels.}

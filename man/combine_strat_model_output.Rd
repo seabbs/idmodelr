@@ -4,8 +4,12 @@
 \alias{combine_strat_model_output}
 \title{Reduces the Dimensionality of a Stratified Model}
 \usage{
-combine_strat_model_output(df, strat = NULL, compartments = NULL,
-  hold_out_var = NULL)
+combine_strat_model_output(
+  df,
+  strat = NULL,
+  compartments = NULL,
+  hold_out_var = NULL
+)
 }
 \arguments{
 \item{df}{A data frame with variables stratified using numeric labels.}

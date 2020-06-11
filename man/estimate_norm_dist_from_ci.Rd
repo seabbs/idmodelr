@@ -4,15 +4,18 @@
 \alias{estimate_norm_dist_from_ci}
 \title{A Function to Estimate a Normal Distribution from Credible or Confidence Intervals}
 \usage{
-estimate_norm_dist_from_ci(lower_interval = NULL,
-  upper_interval = NULL, interval = "95\%")
+estimate_norm_dist_from_ci(
+  lower_interval = NULL,
+  upper_interval = NULL,
+  interval = "95\%"
+)
 }
 \arguments{
 \item{lower_interval}{Numeric, the lower CI.}
 
 \item{upper_interval}{Numeric, the upper CI}
 
-\item{interval}{A character string indicating the percentage interval the CI represents. Defaults to "95\%".}
+\item{interval}{A character string indicating the percentage interval the CI represents.}
 }
 \value{
 A dataframe containing the mean and standard deviation of the normal distribution summarised by the provided CI's.

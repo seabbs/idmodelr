@@ -4,8 +4,13 @@
 \alias{combine_to_age_model}
 \title{Combine an Infectious Disease Model To a Demographic Model}
 \usage{
-combine_to_age_model(df, age_com = NULL, compartments = NULL,
-  hold_out_var = NULL, total_pop = TRUE)
+combine_to_age_model(
+  df,
+  age_com = NULL,
+  compartments = NULL,
+  hold_out_var = NULL,
+  total_pop = TRUE
+)
 }
 \arguments{
 \item{df}{A dataframe of model output.}

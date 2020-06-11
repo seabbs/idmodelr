@@ -11,7 +11,7 @@
 #' @export
 #' @seealso combine_strat_model_output
 #' @importFrom purrr map
-#' @importFrom dplyr select bind_cols mutate
+#' @importFrom dplyr select bind_cols mutate one_of
 #' @importFrom tibble enframe
 #' @import magrittr
 #' @examples

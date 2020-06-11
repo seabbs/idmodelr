@@ -6,7 +6,7 @@
 \alias{idmodelr-package}
 \title{idmodelr: Infectious Disease Model Library and Utilities}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Explore a range of infectious disease models in a consistent framework. 
     The primary aim of 'idmodelr' is to provide a library of infectious disease models
@@ -36,7 +36,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (0000-0001-8057-8037)
+\strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (\href{https://orcid.org/0000-0001-8057-8037}{ORCID})
+
+Authors:
+\itemize{
+  \item Akira Endo \email{akira.endo@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-6377-7296}{ORCID})
+}
 
 }
 \keyword{internal}

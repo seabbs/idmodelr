@@ -4,10 +4,18 @@
 \alias{generate_parameter_permutations}
 \title{A Function to Generate Parameter Permutations}
 \usage{
-generate_parameter_permutations(variable_params = NULL,
-  fixed_params = NULL, sample_params = NULL, excluded_params = NULL,
-  scenarios = NULL, sampling_function = NULL, parameter_samples = 1,
-  repeat_sample = TRUE, rerun = FALSE, ...)
+generate_parameter_permutations(
+  variable_params = NULL,
+  fixed_params = NULL,
+  sample_params = NULL,
+  excluded_params = NULL,
+  scenarios = NULL,
+  sampling_function = NULL,
+  parameter_samples = 1,
+  repeat_sample = TRUE,
+  rerun = FALSE,
+  ...
+)
 }
 \arguments{
 \item{variable_params}{A dataframe containing any parameter variations to be investigated. If

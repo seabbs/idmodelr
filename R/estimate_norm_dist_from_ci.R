@@ -3,7 +3,7 @@
 #'
 #' @param lower_interval Numeric, the lower CI.
 #' @param upper_interval Numeric, the upper CI
-#' @param interval A character string indicating the percentage interval the CI represents. Defaults to "95\%".
+#' @param interval A character string indicating the percentage interval the CI represents.
 #' @return A dataframe containing the mean and standard deviation of the normal distribution summarised by the provided CI's.
 #' @export
 #' @importFrom tibble tibble

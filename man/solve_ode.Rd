@@ -4,8 +4,14 @@
 \alias{solve_ode}
 \title{A Simple Wrapper for lsoda}
 \usage{
-solve_ode(model = NULL, inits = NULL, params = NULL, times = NULL,
-  as.data.frame = TRUE, ...)
+solve_ode(
+  model = NULL,
+  inits = NULL,
+  params = NULL,
+  times = NULL,
+  as.data.frame = TRUE,
+  ...
+)
 }
 \arguments{
 \item{model}{A model formatted as required by \code{\link[deSolve]{lsoda}}, see \code{\link[idmodelr]{SI_ode}} for an example.}

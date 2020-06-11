@@ -4,7 +4,8 @@
 \name{model_details}
 \alias{model_details}
 \title{Model Details}
-\format{A data frame with 22 rows and 14 variables.
+\format{
+A data frame with 22 rows and 14 variables.
 \describe{
 \item{model}{Name of the model function.}
 \item{model_family}{Name of the model family (i.e. SIR)}
@@ -21,7 +22,8 @@
 \item{disease_example}{Which diseases (if any) can this model be used for.}
 \item{language}{What language is this model written in (i.e. R, C etc.).}
 \item{parameters}{A list of parameters required by the model}.
-}}
+}
+}
 \usage{
 model_details
 }
