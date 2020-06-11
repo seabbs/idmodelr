@@ -16,7 +16,7 @@
 #' required_parameters("SIR_ode")
 #'
 #'
-#' ## Use fizzy matching to look at paramters for all SIR models
+#' ## Use fizzy matching to look at parameters for all SIR models
 #' required_parameters("SIR")
 required_parameters <- function(model = NULL) {
 

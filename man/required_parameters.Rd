@@ -24,6 +24,6 @@ fuzzy matching has been used it can also given information of the parameter requ
 required_parameters("SIR_ode")
 
 
-## Use fizzy matching to look at paramters for all SIR models
+## Use fizzy matching to look at parameters for all SIR models
 required_parameters("SIR")
 }

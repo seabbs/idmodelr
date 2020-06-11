@@ -22,7 +22,7 @@ scenario_analysis(
 \item{parameter_df}{A dataframe of parameter permutations as produced by \code{\link[idmodelr]{generate_parameter_permutations}}.
 Using the default options it will save results when run for the first time, and afterwards load them in.}
 
-\item{variable_params}{A character vector containing the names of the paramters that are varied in \code{parameter_df}.}
+\item{variable_params}{A character vector containing the names of the parameters that are varied in \code{parameter_df}.}
 
 \item{model}{A model compatible with your \code{sim_fn}.}
 
@@ -41,7 +41,7 @@ Defaults to \code{FALSE}.}
 
 \item{verbose}{Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.}
 
-\item{by_row}{Logical (defaults to \code{FALSE}) indicating if inputed parameters should be inputed as a block to \code{sim_fn}
+\item{by_row}{Logical (defaults to \code{FALSE}) indicating if inputted parameters should be inputted as a block to \code{sim_fn}
 or individually. If \code{TRUE} then function will always return a tibble. Does not currently work with sim_fn that produces
 multiple simulations for a single parameter set - for this scenario a block based approach or post processing is required.}
 

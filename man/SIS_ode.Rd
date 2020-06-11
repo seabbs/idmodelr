@@ -11,7 +11,7 @@ SIS_ode(t, x, params)
 
 \item{x}{A numeric vector of compartment populations.}
 
-\item{params}{A named vector of paramter values.}
+\item{params}{A named vector of parameter values.}
 }
 \value{
 A vector of derivatives

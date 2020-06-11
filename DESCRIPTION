@@ -50,7 +50,8 @@ Suggests:
     knitr (>= 1.23),
     pkgnet (>= 0.4.0),
     DT (>= 0.7),
-    vdiffr (>= 0.3.1)
+    vdiffr (>= 0.3.1),
+    spelling
 VignetteBuilder: knitr
 URL: http://www.samabbott.co.uk/idmodelr, 
      https://github.com/seabbs/idmodelr

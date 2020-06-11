@@ -87,7 +87,7 @@ Alongside LibBi, [`RBi`](https://github.com/sbfnk/RBi) provides an R interface.
 
 ### [Bristol Infectious Disease Dynamics Modelling Course](https://bristolmathmodellers.github.io/biddmodellingcourse/)
 
-Run as a two day short course at the University of Bristol, this course aims to cover the basics of infectious disease modelling both for those planning on implementing their own models and those planning to work with modelers. This course focuses on applied, policy relevant, modelling.
+Run as a two day short course at the University of Bristol, this course aims to cover the basics of infectious disease modelling both for those planning on implementing their own models and those planning to work with modellers. This course focuses on applied, policy relevant, modelling.
 
 Whilst the full course is not available online the [course website](https://bristolmathmodellers.github.io/biddmodellingcourse/) contains the majority of the course practicals.
 

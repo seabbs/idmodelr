@@ -8,7 +8,7 @@
 #' It can be used to examine multiple scenarios, with any number of parameter variations, for multiple samples.
 #' @param parameter_df A dataframe of parameter permutations as produced by \code{\link[idmodelr]{generate_parameter_permutations}}.
 #' Using the default options it will save results when run for the first time, and afterwards load them in.
-#' @param variable_params A character vector containing the names of the paramters that are varied in \code{parameter_df}.
+#' @param variable_params A character vector containing the names of the parameters that are varied in \code{parameter_df}.
 #' @param cores The number of cores to use for the scenario analysis, defaults to 1.
 #' @param test A logical (defaults to \code{FALSE}) if \code{TRUE} function uses multicore functionality regardless
 #' of the number of cores specified.
@@ -98,7 +98,7 @@ scenario_analysis <- function(parameter_df, variable_params = NULL, model = NULL
     plan(sequential)
   }
 
-  # run model simulations for each paramter set
+  # run model simulations for each parameter set
   scenario_results <- scenario_results %>%
     mutate(simulations = future_map(parameters,
                                     ~ idmodelr::simulate_model(model,

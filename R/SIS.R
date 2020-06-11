@@ -2,7 +2,7 @@
 #'
 #' @param t The timestep overwhich to calculate derivatives
 #' @param x A numeric vector of compartment populations.
-#' @param params A named vector of paramter values.
+#' @param params A named vector of parameter values.
 #'
 #' @return A vector of derivatives
 #' @export

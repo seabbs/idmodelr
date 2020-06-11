@@ -8,7 +8,7 @@
 #' @param times A vector of the times to sample the model for, from a starting time to a final time.
 #' @param as_tibble Logical (defaults to \code{TRUE}) indicating if the output
 #'  should be returned as a tibble, otherwise returned as the default \code{sim_fn} output.
-#' @param by_row Logical (defaults to \code{FALSE}) indicating if inputed parameters should be inputed as a block to \code{sim_fn}
+#' @param by_row Logical (defaults to \code{FALSE}) indicating if inputted parameters should be inputted as a block to \code{sim_fn}
 #' or individually. If \code{TRUE} then function will always return a tibble. Does not currently work with sim_fn that produces
 #' multiple simulations for a single parameter set - for this scenario a block based approach or post processing is required.
 #' @param verbose Logical (defaults to \code{FALSE}) indicating if progress information should be printed to the console.
