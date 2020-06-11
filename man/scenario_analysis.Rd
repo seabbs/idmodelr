@@ -52,7 +52,7 @@ of the number of cores specified.}
 }
 \value{
 A tidy dataframe containing simulated model trajectories for each scenario
-varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
+varied parameter combination. Use `tidyr::unnest`` to examine all simulation results.
 }
 \description{
 This function uses parameter permutations produced by

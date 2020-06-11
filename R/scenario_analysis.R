@@ -18,7 +18,7 @@
 #' summarise the result. The analysis must be rerun.
 #' @param ... Pass additional arguments to sim_fn. Only implemented when a single core is used.
 #' @return A tidy dataframe containing simulated model trajectories for each scenario
-#'  varied parameter combination. Use \code{\link[tidyr]{unnest}} to examine all simulation results.
+#'  varied parameter combination. Use `tidyr::unnest`` to examine all simulation results.
 #' @export
 #' @import magrittr
 #' @importFrom dplyr select bind_cols group_by ungroup collect rename

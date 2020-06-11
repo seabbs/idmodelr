@@ -1,6 +1,6 @@
 Package: idmodelr
 Type: Package
-Version: 0.3.1
+Version: 0.3.2
 Title: Infectious Disease Model Library and Utilities
 Authors@R: c( 
     person(given = "Sam Abbott",
