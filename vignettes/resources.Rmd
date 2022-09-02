@@ -13,7 +13,7 @@ The primary aim of `idmodelr` is to serve as an interactive, `R` based, educatio
 
 ## Modelling packages
 
-### [Pomp](https://kingaa.github.io/pomp)
+### [Pomp](https://kingaa.github.io/pomp/)
 
 `pomp` provides a very general realization of nonlinear partially-observed Markov processes (AKA nonlinear stochastic dynamical systems). These are a generalization of linear state-space and hidden Markov models to nonlinear, non-Gaussian processes in either discrete or continuous time. In pomp, one can implement a model by specifying its unobserved process and measurement components; the package uses these functions in algorithms to simulate, analyse, and fit the model to data. 
 
