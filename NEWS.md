@@ -1,4 +1,8 @@
 
+# idmodelr 0.4.0
+
+This release updates documentation in line with new CRAN guidelines and updates the CI to use GitHub Actions.
+
 # idmodelr 0.3.2
 
 ## Package updates
