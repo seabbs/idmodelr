@@ -56,7 +56,7 @@ Suggests:
     vdiffr (>= 0.3.1),
     spelling
 VignetteBuilder: knitr
-URL: http://www.samabbott.co.uk/idmodelr, 
+URL: https://samabbott.co.uk/idmodelr/, 
      https://github.com/seabbs/idmodelr
 BugReports: https://github.com/seabbs/idmodelr/issues
 Encoding: UTF-8

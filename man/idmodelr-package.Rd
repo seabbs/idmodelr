@@ -13,7 +13,7 @@ Explore a range of infectious disease models in a consistent framework. The prim
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://www.samabbott.co.uk/idmodelr}
+  \item \url{https://samabbott.co.uk/idmodelr/}
   \item \url{https://github.com/seabbs/idmodelr}
   \item Report bugs at \url{https://github.com/seabbs/idmodelr/issues}
 }

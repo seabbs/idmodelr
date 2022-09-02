@@ -101,7 +101,7 @@ The standard reference text on which many undergraduate and Msc. courses have be
 
 Another standard reference text. This book provides a comprehensive introduction to the modeling of infectious diseases in humans and animals, focusing on recent developments as well as more traditional approaches. Code is provided for each model introduced and analyses are explained in detail. This book is aimed at readers with some background mathematical and computational knowledge. 
 
-### [Epidemics: Models and Data using R](https://www.springer.com/gp/book/9783319974866) 
+### [Epidemics: Models and Data using R](https://link.springer.com/book/10.1007/978-3-319-97487-3) 
 
 This book is designed to be a practical study in infectious disease dynamics. The book offers an easy to follow implementation and analysis of mathematical epidemiology. It focuses on recent case studies in order to explore various conceptual, mathematical, and statistical issues. Whilst light on theory (you may need to supplement this with other resources) this book provides full R code and is accompanied by an [R package](https://github.com/objornstad/epimdr).
 
