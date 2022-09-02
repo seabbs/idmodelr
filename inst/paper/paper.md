@@ -1,4 +1,4 @@
----
+s---
 title: 'idmodelr: an R package containing a library of infectious disease models and utilities'
 tags:
   - R
@@ -26,7 +26,7 @@ Infectious disease models are being increasingly used by the public health resea
 
  Unlike other modelling packages such as ``pomp`` [@pomp], ``libbi`` [@libbi], and ``EpiModel`` [@epimodel], `idmodelr` serves primarily as an exploratory tool. It is most comparable to ``epirecipes`` [@epirecipes] but provides a more consistent framework, an ``R`` based workflow, and additional utility tooling. After users have explored model dynamics with `idmodelr` they may then implement their model using one of these packages in order to utilise the model fitting tools they provide or develop their own. 
  
-  The ``idmodelr`` package allows a large range of infectious disease models to be simulated, summarised and plotted without exhaustive domain, or ``R``, knowledge. It also contains functions that can help more advanced users with munging complex mutli-dimensional models, streamlining scenario analysis, looking up parameter definitions, and developing new models. It is hoped that future releases will build on the current library of models, introduce new model families, and expand on the available tooling. A dashboard has been developed that makes use of some of the package functionality to allow users to explore a range of infectious disease models in an interactive interface. See https://www.samabbott.co.uk/idmodelr/ for documentation.
+  The ``idmodelr`` package allows a large range of infectious disease models to be simulated, summarised and plotted without exhaustive domain, or ``R``, knowledge. It also contains functions that can help more advanced users with munging complex multi-dimensional models, streamlining scenario analysis, looking up parameter definitions, and developing new models. It is hoped that future releases will build on the current library of models, introduce new model families, and expand on the available tooling. A dashboard has been developed that makes use of some of the package functionality to allow users to explore a range of infectious disease models in an interactive interface. See https://www.samabbott.co.uk/idmodelr/ for documentation.
 
 
 # References
