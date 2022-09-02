@@ -33,7 +33,7 @@ packages in order to utilise the model fitting tools they provide. For
 newer modellers, this package reduces the barrier to entry by containing
 multiple infectious disease models, providing a consistent framework for
 simulation and visualisation, and
-[signposting](https://www.samabbott.co.uk/idmodelr/articles/resources.html)
+[signposting](https://samabbott.co.uk/idmodelr/articles/resources.html)
 towards other, more research, focussed resources.
 
 ## Installation
