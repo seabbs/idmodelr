@@ -171,7 +171,7 @@
 <div class="section level2">
 <h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a>
 </h2>
-<p><a href="https://travis-ci.org/seabbs/idmodelr" class="external-link"><img src="https://travis-ci.org/seabbs/idmodelr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/seabbs/idmodelr" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/github/seabbs/idmodelr?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg" alt="Coverage Status"></a></p>
+<p><a href="https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://codecov.io/github/seabbs/idmodelr?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg" alt="Coverage Status"></a></p>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -196,21 +196,21 @@
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="15%">
+<col width="13%">
 <col width="5%">
 <col width="4%">
-<col width="5%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
+<col width="6%">
 <col width="4%">
+<col width="3%">
+<col width="3%">
+<col width="5%">
 <col width="6%">
 <col width="6%">
 <col width="8%">
-<col width="4%">
+<col width="5%">
 <col width="6%">
-<col width="3%">
-<col width="17%">
+<col width="4%">
+<col width="13%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">model</th>
@@ -245,7 +245,7 @@
 <td align="left">no</td>
 <td align="left">none</td>
 <td align="left">R</td>
-<td align="left">c(“beta”, “tau”)</td>
+<td align="left">beta, tau</td>
 </tr>
 <tr class="even">
 <td align="left">SIR_demographics_ode</td>
@@ -262,7 +262,7 @@
 <td align="left">no</td>
 <td align="left">none</td>
 <td align="left">R</td>
-<td align="left">c(“beta”, “tau”, “mu”)</td>
+<td align="left">beta, tau , mu</td>
 </tr>
 <tr class="odd">
 <td align="left">SIR_vaccination_ode</td>
@@ -279,7 +279,7 @@
 <td align="left">yes</td>
 <td align="left">none</td>
 <td align="left">R</td>
-<td align="left">c(“beta”, “tau”, “lambda”)</td>
+<td align="left">beta , tau , lambda</td>
 </tr>
 <tr class="even">
 <td align="left">SIR_vaccination_demographics_ode</td>
@@ -296,49 +296,40 @@
 <td align="left">yes</td>
 <td align="left">none</td>
 <td align="left">R</td>
-<td align="left">c(“beta”, “tau”, “lambda”, “alpha”, “mu”)</td>
+<td align="left">beta , tau , lambda, alpha , mu</td>
 </tr>
 </tbody>
 </table>
 <p>Now look at the model and the model help file (<code><a href="reference/SIR_demographics_ode.html">?SIR_demographics_ode</a></code>) to get an understanding of how the model is constructed.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">SIR_demographics_ode</span></span>
-<span><span class="co">#&gt; function(t, x, params) {</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   ## Specify model compartments</span></span>
-<span><span class="co">#&gt;   S &lt;- x[1]</span></span>
-<span><span class="co">#&gt;   I &lt;- x[2]</span></span>
-<span><span class="co">#&gt;   R &lt;- x[3]</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   with(as.list(params),{</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     ## Specify total population</span></span>
-<span><span class="co">#&gt;     N = S + I + R</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     ## Derivative Expressions</span></span>
-<span><span class="co">#&gt;     dS = - beta * S * I / N - mu * S + mu * N</span></span>
-<span><span class="co">#&gt;     dI = beta * S * I / N - tau * I - mu * I</span></span>
-<span><span class="co">#&gt;     dR = tau * I - mu * R</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     ## output</span></span>
-<span><span class="co">#&gt;     derivatives &lt;- c(dS, dI, dR)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     list(derivatives)</span></span>
-<span><span class="co">#&gt;   })</span></span>
+<span><span class="co">#&gt; function (t, x, params) </span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;     S &lt;- x[1]</span></span>
+<span><span class="co">#&gt;     I &lt;- x[2]</span></span>
+<span><span class="co">#&gt;     R &lt;- x[3]</span></span>
+<span><span class="co">#&gt;     with(as.list(params), {</span></span>
+<span><span class="co">#&gt;         N = S + I + R</span></span>
+<span><span class="co">#&gt;         dS = -beta * S * I/N - mu * S + mu * N</span></span>
+<span><span class="co">#&gt;         dI = beta * S * I/N - tau * I - mu * I</span></span>
+<span><span class="co">#&gt;         dR = tau * I - mu * R</span></span>
+<span><span class="co">#&gt;         derivatives &lt;- c(dS, dI, dR)</span></span>
+<span><span class="co">#&gt;         list(derivatives)</span></span>
+<span><span class="co">#&gt;     })</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x55e88e6356c0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x7f84af241370&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:idmodelr&gt;</span></span></code></pre></div>
 <p>Check the parameters required by the model using <code>required_parameters</code>. This returns a table containing all the parameters that must be defined in order to use the model as well as descriptive information for each parameter.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/required_parameters.html">required_parameters</a></span><span class="op">(</span><span class="st">"SIR_demographics_ode"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">parameters</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="4%">
+<col width="5%">
 <col width="9%">
-<col width="66%">
-<col width="2%">
+<col width="64%">
+<col width="3%">
 <col width="8%">
 <col width="8%">
 </colgroup>
@@ -404,7 +395,7 @@
 <span></span>
 <span></span>
 <span><span class="va">traj</span></span>
-<span><span class="co">#&gt; # A tibble: 501 x 4</span></span>
+<span><span class="co">#&gt; # A tibble: 501 × 4</span></span>
 <span><span class="co">#&gt;     time     S     I      R</span></span>
 <span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt;  1   0    999   1    0     </span></span>
@@ -417,18 +408,19 @@
 <span><span class="co">#&gt;  8   0.7  993.  5.67 0.940 </span></span>
 <span><span class="co">#&gt;  9   0.8  991.  7.25 1.26  </span></span>
 <span><span class="co">#&gt; 10   0.9  989.  9.28 1.67  </span></span>
-<span><span class="co">#&gt; # … with 491 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # … with 491 more rows</span></span>
+<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>Summarise the model.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/summarise_model.html">summarise_model</a></span><span class="op">(</span><span class="va">traj</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="14%">
-<col width="14%">
-<col width="14%">
+<col width="15%">
+<col width="15%">
+<col width="15%">
 <col width="20%">
-<col width="14%">
+<col width="15%">
 <col width="19%">
 </colgroup>
 <thead><tr class="header">
@@ -450,7 +442,9 @@
 </table>
 <p>Plot the model trajectory.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">traj</span>, facet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">traj</span>, facet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; =</span></span>
+<span><span class="co">#&gt; "none")` instead.</span></span></code></pre></div>
 <p><img src="reference/figures/unnamed-chunk-11-1.png"><!-- --></p>
 <p>Vary the model parameters, by increasing the mortality rate, and then simulate the updated model.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -465,7 +459,9 @@
 <span>                          <span class="va">times</span><span class="op">)</span></span></code></pre></div>
 <p>Plot the original trajectory and the updated trajectory. What has the impact of increasing mortality been?</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">traj</span>, <span class="va">traj_up</span>, facet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">traj</span>, <span class="va">traj_up</span>, facet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; =</span></span>
+<span><span class="co">#&gt; "none")` instead.</span></span></code></pre></div>
 <p><img src="reference/figures/unnamed-chunk-13-1.png"><!-- --></p>
 <p>See the package vignettes for more help getting started and some additional ideas for exploring infectious disease model dynamics.</p>
 </div>
