@@ -4,7 +4,7 @@
 # Infectious disease model library and utilities <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![badge](https://img.shields.io/badge/Launch-idmodelr-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/idmodelr)](https://cran.r-project.org/package=idmodelr)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.3.2-blue.svg?style=flat)](https://github.com/seabbs/idmodelr)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 [![metacran monthly
@@ -62,10 +62,7 @@ started](https://img.shields.io/badge/Documentation-getting%20started-yellow.svg
 
 ## Testing
 
-[![Travis-CI Build
-Status](https://travis-ci.org/seabbs/idmodelr.svg?branch=master)](https://travis-ci.org/seabbs/idmodelr)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/seabbs/idmodelr?branch=master&svg=true)](https://ci.appveyor.com/project/seabbs/idmodelr)
+[![R-CMD-check](https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
 
@@ -101,42 +98,33 @@ model_details %>%
   knitr::kable()
 ```
 
-| model                               | model\_family | time       | type          | recovered | exposed | treated | susceptible | risk\_stratified | non\_exponential | simple\_demographics | vaccination | disease\_example | language | parameters                                |
-| :---------------------------------- | :------------ | :--------- | :------------ | :-------- | :------ | :------ | :---------- | :--------------- | :--------------- | :------------------- | :---------- | :--------------- | :------- | :---------------------------------------- |
-| SIR\_ode                            | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | no                   | no          | none             | R        | c(“beta”, “tau”)                          |
-| SIR\_demographics\_ode              | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | yes                  | no          | none             | R        | c(“beta”, “tau”, “mu”)                    |
-| SIR\_vaccination\_ode               | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | no                   | yes         | none             | R        | c(“beta”, “tau”, “lambda”)                |
-| SIR\_vaccination\_demographics\_ode | SIR           | continuous | deterministic | no        | no      | no      | no          | no               | no               | yes                  | yes         | none             | R        | c(“beta”, “tau”, “lambda”, “alpha”, “mu”) |
+| model                            | model_family | time       | type          | recovered | exposed | treated | susceptible | risk_stratified | non_exponential | simple_demographics | vaccination | disease_example | language | parameters                      |
+|:---------------------------------|:-------------|:-----------|:--------------|:----------|:--------|:--------|:------------|:----------------|:----------------|:--------------------|:------------|:----------------|:---------|:--------------------------------|
+| SIR_ode                          | SIR          | continuous | deterministic | no        | no      | no      | no          | no              | no              | no                  | no          | none            | R        | beta, tau                       |
+| SIR_demographics_ode             | SIR          | continuous | deterministic | no        | no      | no      | no          | no              | no              | yes                 | no          | none            | R        | beta, tau , mu                  |
+| SIR_vaccination_ode              | SIR          | continuous | deterministic | no        | no      | no      | no          | no              | no              | no                  | yes         | none            | R        | beta , tau , lambda             |
+| SIR_vaccination_demographics_ode | SIR          | continuous | deterministic | no        | no      | no      | no          | no              | no              | yes                 | yes         | none            | R        | beta , tau , lambda, alpha , mu |
 
 Now look at the model and the model help file (`?SIR_demographics_ode`)
 to get an understanding of how the model is constructed.
 
 ``` r
 SIR_demographics_ode
-#> function(t, x, params) {
-#> 
-#>   ## Specify model compartments
-#>   S <- x[1]
-#>   I <- x[2]
-#>   R <- x[3]
-#> 
-#>   with(as.list(params),{
-#> 
-#>     ## Specify total population
-#>     N = S + I + R
-#> 
-#>     ## Derivative Expressions
-#>     dS = - beta * S * I / N - mu * S + mu * N
-#>     dI = beta * S * I / N - tau * I - mu * I
-#>     dR = tau * I - mu * R
-#> 
-#>     ## output
-#>     derivatives <- c(dS, dI, dR)
-#> 
-#>     list(derivatives)
-#>   })
+#> function (t, x, params) 
+#> {
+#>     S <- x[1]
+#>     I <- x[2]
+#>     R <- x[3]
+#>     with(as.list(params), {
+#>         N = S + I + R
+#>         dS = -beta * S * I/N - mu * S + mu * N
+#>         dI = beta * S * I/N - tau * I - mu * I
+#>         dR = tau * I - mu * R
+#>         derivatives <- c(dS, dI, dR)
+#>         list(derivatives)
+#>     })
 #> }
-#> <bytecode: 0x55e88e6356c0>
+#> <bytecode: 0x7f84af241370>
 #> <environment: namespace:idmodelr>
 ```
 
@@ -151,11 +139,11 @@ parameters <- required_parameters("SIR_demographics_ode")
 knitr::kable(parameters)
 ```
 
-| parameter | parameter\_family | description                                                                                                               | type | risk\_stratified | non\_exponential |
-| :-------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------ | :--- | :--------------- | :--------------- |
-| beta      | transmission      | Transmission rate = the transmission probability per contact \* the number of contacts each individual has.               | rate | no               | no               |
-| tau       | recovery          | Recovery rate. The reciprocal of the time infectious.                                                                     | rate | no               | no               |
-| mu        | demographics      | The natural mortality rate. The reciprocal of the average lifespan. (for simple demographics this is also the birth rate. | rate | no               | no               |
+| parameter | parameter_family | description                                                                                                               | type | risk_stratified | non_exponential |
+|:----------|:-----------------|:--------------------------------------------------------------------------------------------------------------------------|:-----|:----------------|:----------------|
+| beta      | transmission     | Transmission rate = the transmission probability per contact \* the number of contacts each individual has.               | rate | no              | no              |
+| tau       | recovery         | Recovery rate. The reciprocal of the time infectious.                                                                     | rate | no              | no              |
+| mu        | demographics     | The natural mortality rate. The reciprocal of the average lifespan. (for simple demographics this is also the birth rate. | rate | no              | no              |
 
 Parameterise the model.
 
@@ -197,7 +185,7 @@ traj <- simulate_model(model = SIR_demographics_ode,
 
 
 traj
-#> # A tibble: 501 x 4
+#> # A tibble: 501 × 4
 #>     time     S     I      R
 #>    <dbl> <dbl> <dbl>  <dbl>
 #>  1   0    999   1    0     
@@ -211,6 +199,7 @@ traj
 #>  9   0.8  991.  7.25 1.26  
 #> 10   0.9  989.  9.28 1.67  
 #> # … with 491 more rows
+#> # ℹ Use `print(n = ...)` to see more rows
 ```
 
 Summarise the model.
@@ -221,13 +210,15 @@ summarise_model(traj) %>%
 ```
 
 | Final size: S | Final size: I | Final size: R | Epidemic peak time | Epidemic peak | Epidemic duration |
-| ------------: | ------------: | ------------: | -----------------: | ------------: | ----------------: |
+|--------------:|--------------:|--------------:|-------------------:|--------------:|------------------:|
 |           136 |            31 |           833 |                3.5 |           533 |               Inf |
 
 Plot the model trajectory.
 
 ``` r
 plot_model(traj, facet = FALSE)
+#> Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+#> "none")` instead.
 ```
 
 ![](man/figures/unnamed-chunk-11-1.png)<!-- -->
@@ -252,6 +243,8 @@ impact of increasing mortality been?
 
 ``` r
 plot_model(traj, traj_up, facet = TRUE)
+#> Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+#> "none")` instead.
 ```
 
 ![](man/figures/unnamed-chunk-13-1.png)<!-- -->
@@ -284,7 +277,7 @@ dashboard.](man/figures/exploreidmodels.png)
 
 ### Contributing a model
 
-Additional models are extremely welcome\!
+Additional models are extremely welcome!
 
 To add models in the same family as those already implemented (i.e
 [`SIR_ode`](https://github.com/seabbs/idmodelr/blob/master/R/SIR.R))
@@ -316,7 +309,7 @@ in other languages (i.e C) are also very welcome.
 
 File an issue [here](https://github.com/seabbs/idmodelr/issues) if there
 is any other feature, that you think is missing from the package, or
-better yet submit a pull request\!
+better yet submit a pull request!
 
 Please note that the `idmodelr` project is released with a [Contributor
 Code of
@@ -327,8 +320,7 @@ By contributing to this project, you agree to abide by its terms.
 
 This packge was developed in a docker container based on the
 [tidyverse](https://hub.docker.com/r/rocker/tidyverse/) docker image. To
-run the docker image
-run:
+run the docker image run:
 
 ``` bash
 docker run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs seabbs/idmodelr
@@ -336,8 +328,8 @@ docker run -d -p 8787:8787 --name idmodelr -e USER=seabbs -e PASSWORD=seabbs sea
 
 The rstudio client can be found on port `:8787` at your local machines
 ip. The default username:password is seabbs:seabbs, set the user with
-`-e USER=username`, and the password with `- e
-PASSWORD=newpasswordhere`. The default is to save the analysis files
-into the user directory. Alternatively, access the development
+`-e USER=username`, and the password with
+`- e PASSWORD=newpasswordhere`. The default is to save the analysis
+files into the user directory. Alternatively, access the development
 environment via
 [binder](https://mybinder.org/v2/gh/seabbs/idmodelr/master?urlpath=rstudio).

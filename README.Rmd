@@ -48,6 +48,7 @@ devtools::install_github("seabbs/idmodelr")
 
 ## Testing
 
+[![R-CMD-check](https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/seabbs/idmodelr/actions/workflows/R-CMD-check.yaml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/seabbs/idmodelr/master.svg)](https://codecov.io/github/seabbs/idmodelr?branch=master)
 
 
