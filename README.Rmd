@@ -40,10 +40,10 @@ devtools::install_github("seabbs/idmodelr")
 
 ## Documentation
 
-[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
-[![Development documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/dev)
-[![Getting started](https://img.shields.io/badge/Documentation-getting started-yellow.svg?style=flat)](https://www.samabbott.co.uk/idmodelr)
-[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/reference/index.html)
+[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://samabbott.co.uk/idmodelr/)
+[![Development documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://samabbott.co.uk/idmodelr/dev/)
+[![Getting started](https://img.shields.io/badge/Documentation-getting started-yellow.svg?style=flat)](https://samabbott.co.uk/idmodelr/)
+[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://samabbott.co.uk/idmodelr/reference/index.html)
 
 
 ## Testing

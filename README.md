@@ -53,12 +53,12 @@ devtools::install_github("seabbs/idmodelr")
 
 ## Documentation
 
-[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/)
+[![Documentation](https://img.shields.io/badge/Documentation-release-lightgrey.svg?style=flat)](https://samabbott.co.uk/idmodelr/)
 [![Development
-documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/dev)
+documentation](https://img.shields.io/badge/Documentation-development-lightblue.svg?style=flat)](https://samabbott.co.uk/idmodelr/dev/)
 [![Getting
-started](https://img.shields.io/badge/Documentation-getting%20started-yellow.svg?style=flat)](https://www.samabbott.co.uk/idmodelr)
-[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://www.samabbott.co.uk/idmodelr/reference/index.html)
+started](https://img.shields.io/badge/Documentation-getting%20started-yellow.svg?style=flat)](https://samabbott.co.uk/idmodelr/)
+[![Functions](https://img.shields.io/badge/Documentation-functions-orange.svg?style=flat)](https://samabbott.co.uk/idmodelr/reference/index.html)
 
 ## Testing
 
@@ -124,7 +124,7 @@ SIR_demographics_ode
 #>         list(derivatives)
 #>     })
 #> }
-#> <bytecode: 0x7f84af241370>
+#> <bytecode: 0x7fb5c4a7da08>
 #> <environment: namespace:idmodelr>
 ```
 
