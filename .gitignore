@@ -10,3 +10,4 @@ cache
 inst/doc
 pkgdown
 .local
+.DS_Store
