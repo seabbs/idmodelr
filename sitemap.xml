@@ -1,156 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>samabbott.co.uk/idmodelr//index.html</loc>
+    <loc>samabbott.co.uk/idmodelr/404.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIRS_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIRS_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIR_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIR_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/SUPPORT.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIS_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/articles/index.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEIS_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/articles/model_details.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEI_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/articles/parameter_details.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SEI_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/articles/resources.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLIR_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/authors.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLIR_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/index.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLITR_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/news/index.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLITR_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIRS_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLITR_risk_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIRS_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SHLITR_risk_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIR_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIRS_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIR_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIRS_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIS_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIRS_vaccination_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEIS_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIRS_vaccination_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEI_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIR_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SEI_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIR_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLIR_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIR_vaccination_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLIR_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIR_vaccination_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLITR_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIS_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLITR_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SIS_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLITR_risk_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SI_demographics_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SHLITR_risk_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/SI_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIRS_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/add_pointer_struct.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIRS_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/aggregate_model.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIRS_vaccination_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/aggregate_model_internal.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIRS_vaccination_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/combine_strat_model_output.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIR_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/combine_to_age_model.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIR_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/estimate_norm_dist_from_ci.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIR_vaccination_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/gather_strat_multi_variable.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIR_vaccination_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/gather_strat_variable.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIS_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/generate_parameter_permutations.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SIS_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/idmodelr-package.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SI_demographics_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/model_details.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/SI_ode.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/model_df_to_vector.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/add_pointer_struct.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/parameter_details.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/aggregate_model.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/plot_model.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/aggregate_model_internal.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/required_parameters.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/combine_strat_model_output.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/scenario_analysis.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/combine_to_age_model.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/simulate_model.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/estimate_norm_dist_from_ci.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/solve_ode.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/gather_strat_multi_variable.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/summarise_model.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/gather_strat_variable.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/summarise_strat_var.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/generate_parameter_permutations.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//reference/summarise_var_by_strat.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/idmodelr-package.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//articles/model_details.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/index.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//articles/parameter_details.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/model_details.html</loc>
   </url>
   <url>
-    <loc>samabbott.co.uk/idmodelr//articles/resources.html</loc>
+    <loc>samabbott.co.uk/idmodelr/reference/model_df_to_vector.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/parameter_details.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/plot_model.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/required_parameters.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/scenario_analysis.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/simulate_model.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/solve_ode.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/summarise_model.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/summarise_strat_var.html</loc>
+  </url>
+  <url>
+    <loc>samabbott.co.uk/idmodelr/reference/summarise_var_by_strat.html</loc>
   </url>
 </urlset>

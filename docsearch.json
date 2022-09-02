@@ -2,21 +2,21 @@
   "index_name": "samabbott-idmodelr",
   "start_urls": [
     {
-      "url": "samabbott.co.uk/idmodelr//index.html",
+      "url": "samabbott.co.uk/idmodelr/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "samabbott.co.uk/idmodelr//reference",
+      "url": "samabbott.co.uk/idmodelr/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "samabbott.co.uk/idmodelr//articles",
+      "url": "samabbott.co.uk/idmodelr/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "samabbott.co.uk/idmodelr//sitemap.xml"
+    "samabbott.co.uk/idmodelr/sitemap.xml"
   ],
   "selectors": {
     "homepage": {
